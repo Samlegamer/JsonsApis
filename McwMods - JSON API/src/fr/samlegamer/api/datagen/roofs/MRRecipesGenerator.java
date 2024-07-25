@@ -5,6 +5,7 @@ import fr.samlegamer.utils.APIWriter;
 
 public class MRRecipesGenerator
 {
+	@Deprecated
 	public static void init(String location)
 	{
 		File folderData = new File(location + "data/");

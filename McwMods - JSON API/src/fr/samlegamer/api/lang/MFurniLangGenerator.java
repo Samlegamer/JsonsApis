@@ -7,12 +7,14 @@ import java.io.IOException;
 import java.util.List;
 
 import fr.samlegamer.Main;
+import fr.samlegamer.McwAPI;
+import fr.samlegamer.utils.IModFiles;
 
-public class MFurniLangGenerator
+public class MFurniLangGenerator implements IModFiles.ILang
 {
-	public static void initAllEnglish(String Modid, List<String> mat, List<String> matLang)
+	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(Main.LOCATION + " En_Us_Wood_Furnitures.json");
+		File file = new File(Main.LOCATION + "En_Us_Wood_Furnitures.json");
 		
 		if(!file.exists())
 		{
@@ -21,67 +23,65 @@ public class MFurniLangGenerator
 				FileWriter writer = new FileWriter(file);
 				BufferedWriter buffer = new BufferedWriter(writer);
 			
-				int nbm = 0;
 				buffer.write("{");
 				buffer.newLine();
 				
-				for(String i : mat)
+				for(int nbm = 0;nbm < MAT_WOOD.size(); nbm++)
 				{
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_wardrobe\":\""+matLang.get(nbm)+" Wardrobe\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_wardrobe\":\""+MAJ_MAT.get(nbm)+" Wardrobe\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_modern_wardrobe\":\""+matLang.get(nbm)+" Modern Wardrobe\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\""+MAJ_MAT.get(nbm)+" Modern Wardrobe\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_double_wardrobe\":\""+matLang.get(nbm)+" Double Wardrobe\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_wardrobe\":\""+MAJ_MAT.get(nbm)+" Double Wardrobe\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_bookshelf\":\""+matLang.get(nbm)+" Bookshelf\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf\":\""+MAJ_MAT.get(nbm)+" Bookshelf\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_bookshelf_cupboard\":\""+matLang.get(nbm)+" Cupboard Bookshelf\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf_cupboard\":\""+MAJ_MAT.get(nbm)+" Cupboard Bookshelf\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_drawer\":\""+matLang.get(nbm)+" Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_drawer\":\""+MAJ_MAT.get(nbm)+" Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_double_drawer\":\""+matLang.get(nbm)+" Double Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_drawer\":\""+MAJ_MAT.get(nbm)+" Double Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_bookshelf_drawer\":\""+matLang.get(nbm)+" Bookshelf Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf_drawer\":\""+MAJ_MAT.get(nbm)+" Bookshelf Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_lower_bookshelf_drawer\":\""+matLang.get(nbm)+" Lower Bookshelf Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_lower_bookshelf_drawer\":\""+MAJ_MAT.get(nbm)+" Lower Bookshelf Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_large_drawer\":\""+matLang.get(nbm)+" Large Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_large_drawer\":\""+MAJ_MAT.get(nbm)+" Large Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_lower_triple_drawer\":\""+matLang.get(nbm)+" Lower Triple Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_lower_triple_drawer\":\""+MAJ_MAT.get(nbm)+" Lower Triple Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_triple_drawer\":\""+matLang.get(nbm)+" Triple Drawer\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_triple_drawer\":\""+MAJ_MAT.get(nbm)+" Triple Drawer\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_desk\":\""+matLang.get(nbm)+" Desk\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_desk\":\""+MAJ_MAT.get(nbm)+" Desk\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_covered_desk\":\""+matLang.get(nbm)+" Covered Desk\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_covered_desk\":\""+MAJ_MAT.get(nbm)+" Covered Desk\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_modern_desk\":\""+matLang.get(nbm)+" Modern Desk\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_desk\":\""+MAJ_MAT.get(nbm)+" Modern Desk\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_table\":\""+matLang.get(nbm)+" Table\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_table\":\""+MAJ_MAT.get(nbm)+" Table\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_end_table\":\""+matLang.get(nbm)+" End Table\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_end_table\":\""+MAJ_MAT.get(nbm)+" End Table\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_coffee_table\":\""+matLang.get(nbm)+" Coffee Table\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_coffee_table\":\""+MAJ_MAT.get(nbm)+" Coffee Table\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_glass_table\":\""+matLang.get(nbm)+" Glass Table\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_glass_table\":\""+MAJ_MAT.get(nbm)+" Glass Table\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_chair\":\""+matLang.get(nbm)+" Chair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_chair\":\""+MAJ_MAT.get(nbm)+" Chair\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_modern_chair\":\""+matLang.get(nbm)+" Modern Chair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_chair\":\""+MAJ_MAT.get(nbm)+" Modern Chair\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_striped_chair\":\""+matLang.get(nbm)+" Striped Chair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_striped_chair\":\""+MAJ_MAT.get(nbm)+" Striped Chair\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_stool_chair\":\""+matLang.get(nbm)+" Stool\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_stool_chair\":\""+MAJ_MAT.get(nbm)+" Stool\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_counter\":\""+matLang.get(nbm)+" Counter\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_counter\":\""+MAJ_MAT.get(nbm)+" Counter\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_drawer_counter\":\""+matLang.get(nbm)+" Drawer Counter\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_drawer_counter\":\""+MAJ_MAT.get(nbm)+" Drawer Counter\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_double_drawer_counter\":\""+matLang.get(nbm)+" Double Drawer Counter\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_drawer_counter\":\""+MAJ_MAT.get(nbm)+" Double Drawer Counter\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_cupboard_counter\":\""+matLang.get(nbm)+" Cupboard Counter\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_cupboard_counter\":\""+MAJ_MAT.get(nbm)+" Cupboard Counter\",");
 					buffer.newLine();
-					nbm++;
 				}
 				
 				buffer.write("//Finish");
@@ -90,12 +90,18 @@ public class MFurniLangGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Main.LOCATION);
+				McwAPI.message(file);
 			}
 			catch (IOException e)
 			{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
+		// TODO Auto-generated method stub
+		
 	}
 }

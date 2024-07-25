@@ -7,10 +7,12 @@ import java.io.IOException;
 import fr.samlegamer.utils.APIWriter;
 
 /*
- *  For compatibility that adds several types of wood ex: bop:cherry_bridge & byg:cherry_bridge
+ *  Old new use in BridgesForClones.java
  */
+@Deprecated
 public class CustomizerMB
 {
+	@Deprecated
 	public static class BridgeLog
 	{
 		public static void createBlockstate(String location, String modid, String blockstateName, String extraNModid)
@@ -82,6 +84,7 @@ public class CustomizerMB
 		}
 	}
 	
+	@Deprecated
 	public static class RopeBridge
 	{	
 		public static void createBlockstate(String location, String modid, String blockstateName, String extraNModid)
@@ -220,6 +223,7 @@ public class CustomizerMB
 
 	}
 	
+	@Deprecated
 	public static class StairWood
 	{
 		public static void createBlockstate(String location, String modid, String woodMat, String extraNModid)
@@ -381,6 +385,7 @@ public class CustomizerMB
 		}
 	}
 
+	@Deprecated
 	public static class StairRope
 	{
 		public static void createBlockstate(String location, String modid, String woodMat, String extraNModid)
@@ -542,6 +547,7 @@ public class CustomizerMB
 		}
 	}
 
+	@Deprecated
 	public static class PierWood
 	{
 		public static void createBlockstate(String location, String modid, String woodMat, String extraNModid)
@@ -627,6 +633,7 @@ public class CustomizerMB
 		}
 	}
 
+	@Deprecated
 	public static class BridgeRailWood
 	{
 		public static void createBlockstate(String location, String modid, String blockstateName, String extraNModid)

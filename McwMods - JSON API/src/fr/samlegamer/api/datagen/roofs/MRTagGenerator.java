@@ -6,9 +6,13 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class MRTagGenerator
+import fr.samlegamer.McwAPI;
+import fr.samlegamer.utils.IModFiles;
+
+public class MRTagGenerator implements IModFiles.ITagData
 {
-	public static void AxeDataGen(String LOCATION, String Modid, List<String> Mat)
+	@Override
+	public void AxeDataGenWood(String LOCATION, String Modid, List<String> Mat)
 	{		
 		File file = new File(LOCATION + "MineableAxeData.json");
 		
@@ -61,12 +65,18 @@ public class MRTagGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				McwAPI.message(file);
 			}
 			catch (IOException e)
 			{
 				e.printStackTrace();
 			}	
 		}
+	}
+
+	@Override
+	public void PickaxeDataGen(String LOCATION, String CompatModid, List<String> MAT_ROCK) {
+		// TODO Auto-generated method stub
+		
 	}
 }

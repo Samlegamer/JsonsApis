@@ -2,7 +2,7 @@ package fr.samlegamer.utils;
 
 import java.util.List;
 
-import fr.samlegamer.api.code.MBTabBuild;
+import fr.samlegamer.api.code.bridges.MBTabBuild;
 import fr.samlegamer.api.inits.InitAllBridges;
 
 public class UtilsModsList
@@ -14,8 +14,9 @@ public class UtilsModsList
 		{
 			ModsList.abnormalsWood(MAT_WOOD);
 			ModsList.abnormalsRock(MAT_ROCK, WALL, FLOOR);
-			MBTabBuild.builderToAddWood(LOCATION, MAT_WOOD, ClassMod);
-			MBTabBuild.builderToAddStone(LOCATION, MAT_ROCK, ClassMod);
+			MBTabBuild mb = new MBTabBuild();
+			mb.builderToAddWood(LOCATION, MAT_WOOD, ClassMod);
+			mb.builderToAddStone(LOCATION, MAT_ROCK, ClassMod);
 		}
 
 		@Override

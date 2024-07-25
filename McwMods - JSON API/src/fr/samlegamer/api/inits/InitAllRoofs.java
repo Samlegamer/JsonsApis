@@ -2,16 +2,18 @@ package fr.samlegamer.api.inits;
 
 import java.util.List;
 import fr.samlegamer.api.clientgen.roofs.MacawsRoofs;
-import fr.samlegamer.api.datagen.roofs.MRCodeGenerator;
+import fr.samlegamer.api.code.roofs.MRCodeGenerator;
 import fr.samlegamer.api.datagen.roofs.MRRecipesGenerator;
-import fr.samlegamer.api.datagen.roofs.MRTagGenerator;
+import fr.samlegamer.api.datagen.roofs.MRTagsGenerator;
 import fr.samlegamer.api.lang.MRLangGenerator;
 
+@Deprecated
 public class InitAllRoofs
 {
 	public static void init(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidExtended, List<String> MATERIAL, List<String> MAJ_MAT, boolean isStem)
 	{
-		MRTagGenerator.AxeDataGen(LOCATION, CompatModid, MATERIAL);
+		MRTagsGenerator m = new MRTagsGenerator();
+		m.AxeDataGenWood(LOCATION, CompatModid, MATERIAL);
 		MRRecipesGenerator.init(LOCATION);
 		MacawsRoofs.init(LOCATION);
 		MRCodeGenerator.init(LOCATION);
@@ -115,7 +117,8 @@ public class InitAllRoofs
 			MRRecipesGenerator.UpperSteepLog.loot_tables(LOCATION, CompatModid, i);
 			MRRecipesGenerator.UpperSteepLog.recipe(LOCATION, ModidExtended, CompatModid, i, isStem);
 		}
-		MRLangGenerator.initAllEnglish(CompatModid, MATERIAL, MAJ_MAT);
+		MRLangGenerator lang = new MRLangGenerator();
+		lang.initAllWoodEnglish(CompatModid, MATERIAL, MAJ_MAT);
 	}
 
 	public static void initWithCustom(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidExtended, List<String> MATERIAL, boolean isStem)

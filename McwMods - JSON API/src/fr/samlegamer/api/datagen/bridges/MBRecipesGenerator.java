@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MBRecipesGenerator
 {
+	@Deprecated
 	public static void init(String location)
 	{
 		File folderData = new File(location + "data/");

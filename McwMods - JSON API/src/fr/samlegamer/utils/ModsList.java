@@ -109,6 +109,39 @@ public class ModsList
 		}
 	}
 	
+	public static void bygWildUp(List<String> MATERIAL)
+	{
+			MATERIAL.add("aspen");
+			MATERIAL.add("baobab");
+			MATERIAL.add("blue_enchanted");
+			MATERIAL.add("cherry");
+			MATERIAL.add("cika");
+			MATERIAL.add("cypress");
+			MATERIAL.add("ebony");
+			MATERIAL.add("ether");
+			MATERIAL.add("fir");
+			MATERIAL.add("green_enchanted");
+			MATERIAL.add("holly");
+			MATERIAL.add("jacaranda");
+			MATERIAL.add("lament");
+			MATERIAL.add("mahogany");
+			MATERIAL.add("white_mangrove");
+			MATERIAL.add("maple");
+			MATERIAL.add("nightshade");
+			MATERIAL.add("palm");
+			MATERIAL.add("pine");
+			MATERIAL.add("rainbow_eucalyptus");
+			MATERIAL.add("redwood");
+			MATERIAL.add("skyris");
+			MATERIAL.add("willow");
+			MATERIAL.add("witch_hazel");
+			MATERIAL.add("zelkova");
+			MATERIAL.add("bulbis");
+			MATERIAL.add("imparius");
+			MATERIAL.add("sythian");
+	}
+
+	
 	public static void bygLang(List<String> MATERIAL)
 	{
 			MATERIAL.add("Aspen");
@@ -173,19 +206,20 @@ public class ModsList
 			MATERIAL.add("Sythian");
 	}
 	
-	public static void bop(List<String> MATERIAL)
+	public static void bop(List<String> MAT_WOOD, boolean cherryMC)
 	{
-		MATERIAL.add("cherry");
-		MATERIAL.add("dead");
-		MATERIAL.add("fir");
-		MATERIAL.add("hellbark");
-		MATERIAL.add("jacaranda");
-		MATERIAL.add("magic");
-		MATERIAL.add("mahogany");
-		MATERIAL.add("palm");
-		MATERIAL.add("redwood");
-		MATERIAL.add("umbran");
-		MATERIAL.add("willow");
+		if(!cherryMC) { MAT_WOOD.add("cherry"); }
+		
+		MAT_WOOD.add("dead");
+		MAT_WOOD.add("fir");
+		MAT_WOOD.add("hellbark");
+		MAT_WOOD.add("jacaranda");
+		MAT_WOOD.add("magic");
+		MAT_WOOD.add("mahogany");
+		MAT_WOOD.add("palm");
+		MAT_WOOD.add("redwood");
+		MAT_WOOD.add("umbran");
+		MAT_WOOD.add("willow");
 	}
 	
 	public static void bop1204(List<String> MAT_WOOD)

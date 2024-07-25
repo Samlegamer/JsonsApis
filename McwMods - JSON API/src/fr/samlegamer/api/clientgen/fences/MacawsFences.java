@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MacawsFences
 {//+ nameMaterial + (isStemTexture ? "_stem" : "_log") +
 	public static void InitFolders(String location)

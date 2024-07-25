@@ -5,9 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import fr.samlegamer.McwAPI;
+
 public class APIWriter
 {
-	public static void write(String location, File fileIn, String write)
+	public static void write(@Deprecated String location, File fileIn, String write)
 	{
 		if(!fileIn.exists())
 		{
@@ -21,7 +23,7 @@ public class APIWriter
 				buffer.close();
 				writer.close();
 				fileIn.createNewFile();
-				System.out.println("The File " + fileIn + " wild be generated on this folder : " + location);
+				McwAPI.message(fileIn);
 			}
 			catch (IOException e)
 			{

@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MacawsRoofs
 {
+	@Deprecated
 	public static void init(String location)
 	{
 		//Base
@@ -80,7 +82,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -113,7 +115,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_open.createNewFile();
-					System.out.println("Le fichier " + roof_open + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_open + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -139,7 +141,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_closed.createNewFile();
-					System.out.println("Le fichier " + roof_closed + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_closed + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -166,7 +168,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -208,7 +210,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -241,7 +243,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_open.createNewFile();
-					System.out.println("Le fichier " + roof_open + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_open + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -267,7 +269,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_closed.createNewFile();
-					System.out.println("Le fichier " + roof_closed + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_closed + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -294,7 +296,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -376,7 +378,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -406,7 +408,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f1.createNewFile();
-					System.out.println("Le fichier " + f1 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -426,7 +428,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f2.createNewFile();
-					System.out.println("Le fichier " + f2 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -446,7 +448,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f3.createNewFile();
-					System.out.println("Le fichier " + f3 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f3 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -470,7 +472,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f4.createNewFile();
-					System.out.println("Le fichier " + f4 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f4 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -494,7 +496,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f5.createNewFile();
-					System.out.println("Le fichier " + f5 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f5 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -514,7 +516,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f6.createNewFile();
-					System.out.println("Le fichier " + f6 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f6 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -541,7 +543,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -623,7 +625,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -653,7 +655,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f1.createNewFile();
-					System.out.println("Le fichier " + f1 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -673,7 +675,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f2.createNewFile();
-					System.out.println("Le fichier " + f2 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -693,7 +695,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f3.createNewFile();
-					System.out.println("Le fichier " + f3 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f3 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -713,7 +715,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f4.createNewFile();
-					System.out.println("Le fichier " + f4 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f4 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -733,7 +735,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f5.createNewFile();
-					System.out.println("Le fichier " + f5 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f5 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -753,7 +755,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f6.createNewFile();
-					System.out.println("Le fichier " + f6 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f6 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -780,7 +782,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -876,7 +878,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -902,7 +904,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -928,7 +930,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -955,7 +957,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1050,7 +1052,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1076,7 +1078,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1102,7 +1104,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1129,7 +1131,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1211,7 +1213,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1244,7 +1246,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1270,7 +1272,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1296,7 +1298,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1323,7 +1325,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1405,7 +1407,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1438,7 +1440,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1464,7 +1466,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1490,7 +1492,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1517,7 +1519,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1597,7 +1599,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1634,7 +1636,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_roof_end.createNewFile();
-					System.out.println("Le fichier " + top_roof_end + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_roof_end + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1659,7 +1661,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_roof.createNewFile();
-					System.out.println("Le fichier " + top_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1684,7 +1686,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_pyramid.createNewFile();
-					System.out.println("Le fichier " + top_pyramid + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_pyramid + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1709,7 +1711,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_outer.createNewFile();
-					System.out.println("Le fichier " + top_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1734,7 +1736,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_inner.createNewFile();
-					System.out.println("Le fichier " + top_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1759,7 +1761,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					four_way_roof.createNewFile();
-					System.out.println("Le fichier " + four_way_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + four_way_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1784,7 +1786,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					three_way_roof.createNewFile();
-					System.out.println("Le fichier " + three_way_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + three_way_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1811,7 +1813,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1891,7 +1893,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1928,7 +1930,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_roof_end.createNewFile();
-					System.out.println("Le fichier " + top_roof_end + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_roof_end + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1953,7 +1955,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_roof.createNewFile();
-					System.out.println("Le fichier " + top_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -1978,7 +1980,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_pyramid.createNewFile();
-					System.out.println("Le fichier " + top_pyramid + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_pyramid + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2003,7 +2005,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_outer.createNewFile();
-					System.out.println("Le fichier " + top_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2028,7 +2030,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					top_inner.createNewFile();
-					System.out.println("Le fichier " + top_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + top_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2053,7 +2055,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					four_way_roof.createNewFile();
-					System.out.println("Le fichier " + four_way_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + four_way_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2078,7 +2080,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					three_way_roof.createNewFile();
-					System.out.println("Le fichier " + three_way_roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + three_way_roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2105,7 +2107,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2187,7 +2189,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2218,7 +2220,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f1.createNewFile();
-					System.out.println("Le fichier " + f1 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2238,7 +2240,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f2.createNewFile();
-					System.out.println("Le fichier " + f2 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2258,7 +2260,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f3.createNewFile();
-					System.out.println("Le fichier " + f3 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f3 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2278,7 +2280,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f4.createNewFile();
-					System.out.println("Le fichier " + f4 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f4 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2298,7 +2300,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f5.createNewFile();
-					System.out.println("Le fichier " + f5 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f5 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2318,7 +2320,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f6.createNewFile();
-					System.out.println("Le fichier " + f6 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f6 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2346,7 +2348,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2428,7 +2430,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2459,7 +2461,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f1.createNewFile();
-					System.out.println("Le fichier " + f1 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2479,7 +2481,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f2.createNewFile();
-					System.out.println("Le fichier " + f2 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2499,7 +2501,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f3.createNewFile();
-					System.out.println("Le fichier " + f3 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f3 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2519,7 +2521,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f4.createNewFile();
-					System.out.println("Le fichier " + f4 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f4 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2539,7 +2541,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f5.createNewFile();
-					System.out.println("Le fichier " + f5 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f5 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2559,7 +2561,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					f6.createNewFile();
-					System.out.println("Le fichier " + f6 + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + f6 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2587,7 +2589,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2669,7 +2671,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2702,7 +2704,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2728,7 +2730,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2754,7 +2756,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2781,7 +2783,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2863,7 +2865,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2896,7 +2898,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof.createNewFile();
-					System.out.println("Le fichier " + roof + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2922,7 +2924,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_inner.createNewFile();
-					System.out.println("Le fichier " + roof_inner + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_inner + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2948,7 +2950,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					roof_outer.createNewFile();
-					System.out.println("Le fichier " + roof_outer + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + roof_outer + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{
@@ -2975,7 +2977,7 @@ public class MacawsRoofs
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + Location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + Location);
 				}
 				catch (IOException e)
 				{

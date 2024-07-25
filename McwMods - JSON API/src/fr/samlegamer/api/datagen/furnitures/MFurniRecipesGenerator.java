@@ -6,6 +6,8 @@ import fr.samlegamer.utils.APIWriter;
 
 public class MFurniRecipesGenerator
 {//   + material + (isStemTexture ? "_stem" : "_log") +
+	
+	@Deprecated
 	public static void init(String location)
 	{
 		File folderData = new File(location + "data/");

@@ -6,11 +6,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public class MBLangGenerator
+import fr.samlegamer.Main;
+import fr.samlegamer.McwAPI;
+import fr.samlegamer.utils.IModFiles;
+
+public class MBLangGenerator implements IModFiles.ILang
 {
-	public static void WoodBridges(String LOCATION, String Modid, List<String> mat, List<String> matLang)
+	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(LOCATION + "En_Us_Wood_Bridges.json");
+		File file = new File(Main.LOCATION + "En_Us_Wood_Bridges.json");
 		
 		if(!file.exists())
 		{
@@ -23,19 +27,19 @@ public class MBLangGenerator
 				buffer.write("{");
 				buffer.newLine();
 
-				for(int nbm = 0;nbm<mat.size();nbm++)
+				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
 				{
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_log_bridge_middle\":\""+matLang.get(nbm)+" Bridge\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_log_bridge_middle\":\""+MAJ_MAT.get(nbm)+" Bridge\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_bridge_pier\":\""+matLang.get(nbm)+" Bridge Support\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bridge_pier\":\""+MAJ_MAT.get(nbm)+" Bridge Support\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+".rope_"+mat.get(nbm)+"_bridge\":\"Rope "+matLang.get(nbm)+" Bridge\",");
+					buffer.write("\"block."+CompatModid+".rope_"+MAT_WOOD.get(nbm)+"_bridge\":\"Rope "+MAJ_MAT.get(nbm)+" Bridge\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_log_bridge_stair\":\""+matLang.get(nbm)+" Bridge Stair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_log_bridge_stair\":\""+MAJ_MAT.get(nbm)+" Bridge Stair\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_rope_bridge_stair\":\""+matLang.get(nbm)+" Rope Bridge Stair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_rope_bridge_stair\":\""+MAJ_MAT.get(nbm)+" Rope Bridge Stair\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+mat.get(nbm)+"_rail_bridge\":\""+matLang.get(nbm)+" Rail Bridge\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_rail_bridge\":\""+MAJ_MAT.get(nbm)+" Rail Bridge\",");
 					buffer.newLine();
 				}
 				
@@ -45,7 +49,7 @@ public class MBLangGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				McwAPI.message(file);
 			}
 			catch (IOException e)
 			{
@@ -54,9 +58,9 @@ public class MBLangGenerator
 		}
 	}
 
-	public static void StoneBridges(String LOCATION, String Modid, List<String> Mat, List<String> MatLang, int MatNumber)
+	public void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT)
 	{
-		File file = new File(LOCATION + "En_Us_Stone_Bridges.json");
+		File file = new File(Main.LOCATION + "En_Us_Stone_Bridges.json");
 		
 		if(!file.exists())
 		{
@@ -64,32 +68,28 @@ public class MBLangGenerator
 			{
 				FileWriter writer = new FileWriter(file);
 				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				int nbm = 0;
 				buffer.write("{");
 				buffer.newLine();
 				
-				for(String i : Mat)
+				for(int nbm = 0; nbm < MAT_ROCK.size(); nbm++)
 				{
-					buffer.write("\"block."+Modid+"."+Mat.get(nbm)+"_bridge\":\""+MatLang.get(nbm)+" Bridge\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_bridge\":\""+MAJ_MAT.get(nbm)+" Bridge\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+Mat.get(nbm)+"_bridge_pier\": \""+MatLang.get(nbm)+" Bridge Support\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_bridge_pier\": \""+MAJ_MAT.get(nbm)+" Bridge Support\",");
 					buffer.newLine();
-					buffer.write("\"block."+Modid+"."+Mat.get(nbm)+"_bridge_stair\": \""+MatLang.get(nbm)+" Bridge Stair\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_bridge_stair\": \""+MAJ_MAT.get(nbm)+" Bridge Stair\",");
 					buffer.newLine();
 					nbm++;
 				}
-
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				McwAPI.message(file);
 			}
 			catch (IOException e)
 			{
 				e.printStackTrace();
 			}
-			
 		}
 	}
 }

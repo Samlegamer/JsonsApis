@@ -4,9 +4,11 @@ import java.io.File;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MBWarden // + nameMaterial + (isStemTexture ? "_stem" : "_log") +
 {	
 	//Maj 3.0.0
+	@Deprecated
 	public static void init(String location)
 	{
 		File folderBlockstates = new File(location + "blockstates/");

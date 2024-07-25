@@ -174,7 +174,7 @@ public class MRCodeGenFabric
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -182,4 +182,6 @@ public class MRCodeGenFabric
 			}
 		}
 	}
+
+	
 }

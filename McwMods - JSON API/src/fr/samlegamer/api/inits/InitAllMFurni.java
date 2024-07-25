@@ -8,13 +8,16 @@ import fr.samlegamer.api.datagen.furnitures.MFurniRecipesGenerator;
 import fr.samlegamer.api.datagen.furnitures.MFurniTagsGenerator;
 import fr.samlegamer.api.lang.MFurniLangGenerator;
 
+@Deprecated
 public class InitAllMFurni
 {
 	public static void WardenAllWood(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidExtended, List<String> MATERIAL, List<String> MAJ_MAT, boolean isStem)
 	{
+		MFurniTagsGenerator tags = new MFurniTagsGenerator();
 		McwFurnitures.InitFolders(LOCATION);
-		MFurniLangGenerator.initAllEnglish(CompatModid, MATERIAL, MAJ_MAT);
-		MFurniTagsGenerator.AxeDataGen(LOCATION, CompatModid, MATERIAL);
+		MFurniLangGenerator lang = new MFurniLangGenerator();
+		lang.initAllWoodEnglish(CompatModid, MATERIAL, MAJ_MAT);
+		tags.AxeDataGenWood(LOCATION, CompatModid, MATERIAL);
 		MFurniRecipesGenerator.init(LOCATION);
 		
 		for(String i : MATERIAL)

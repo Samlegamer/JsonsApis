@@ -2,10 +2,11 @@ package fr.samlegamer.api.inits;
 
 import java.util.List;
 import fr.samlegamer.api.clientgen.fences.MacawsFences;
-import fr.samlegamer.api.datagen.fences.MFCodeGenerator;
+import fr.samlegamer.api.code.fences.MFCodeGenerator;
 import fr.samlegamer.api.datagen.fences.MFRecipesGenerator;
-import fr.samlegamer.api.datagen.fences.MFTagGenerator;
+import fr.samlegamer.api.datagen.fences.MFTagsGenerator;
 
+@Deprecated
 public class InitAllFences
 {
 	public static void init(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidExtended, List<String> MATERIAL, List<String> MAJ_MAT, boolean isStem, boolean gen117Tags)
@@ -62,8 +63,9 @@ public class InitAllFences
 			
 			if(gen117Tags)
 			{
-				MFTagGenerator.AxeDataGen(LOCATION, CompatModid, MATERIAL);
-				MFTagGenerator.FencesDataGen(LOCATION, CompatModid, MATERIAL);
+				MFTagsGenerator tags = new MFTagsGenerator();
+				tags.AxeDataGenWood(LOCATION, CompatModid, MATERIAL);
+				tags.FencesDataGen(LOCATION, CompatModid, MATERIAL);
 			}
 		}
 	}

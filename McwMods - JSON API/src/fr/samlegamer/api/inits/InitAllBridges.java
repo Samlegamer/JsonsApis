@@ -6,13 +6,15 @@ import fr.samlegamer.api.clientgen.bridges.MBWarden;
 import fr.samlegamer.api.datagen.bridges.MBRecipesGenerator;
 import fr.samlegamer.api.lang.MBLangGenerator;
 
+@Deprecated
 public class InitAllBridges
 {
 	public static void WardenAllWood(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidExtended, List<String> MATERIAL, List<String> MAJ_MAT, boolean isStem)
 	{
 		MBWarden.init(LOCATION);
 		MBRecipesGenerator.init(LOCATION);
-		MBLangGenerator.WoodBridges(LOCATION, CompatModid, MATERIAL, MAJ_MAT);
+		MBLangGenerator lang = new MBLangGenerator();
+		lang.initAllWoodEnglish(CompatModid, MATERIAL, MAJ_MAT);
 		
 		for(String i : MATERIAL)
 		{

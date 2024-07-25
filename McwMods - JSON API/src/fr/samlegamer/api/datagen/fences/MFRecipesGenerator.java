@@ -4,8 +4,10 @@ import java.io.File;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MFRecipesGenerator
 {
+	@Deprecated
 	public static void init(String location)
 	{
 		File folderData = new File(location + "data/");

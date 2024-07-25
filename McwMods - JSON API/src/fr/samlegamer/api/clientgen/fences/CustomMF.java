@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class CustomMF
 {
 	public static class HighleyGate
@@ -31,7 +32,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -54,7 +55,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p2.createNewFile();
-				System.out.println("Le fichier " + p2 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -86,7 +87,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -108,7 +109,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p2.createNewFile();
-				System.out.println("Le fichier " + p2 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -140,7 +141,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -172,7 +173,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -205,7 +206,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -229,7 +230,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p2.createNewFile();
-				System.out.println("Le fichier " + p2 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -261,7 +262,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p1.createNewFile();
-				System.out.println("Le fichier " + p1 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p1 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -284,7 +285,7 @@ public class CustomMF
 				buffer.close();
 				writer.close();
 				p2.createNewFile();
-				System.out.println("Le fichier " + p2 + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + p2 + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{

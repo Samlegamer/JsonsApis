@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class CustomMB
 {
+	@Deprecated
 	public static void InitFolders(String location)
 	{
 		File folderBlockstates = new File(location + "blockstates/");
@@ -52,6 +54,7 @@ public class CustomMB
 		}
 	}
 
+	@Deprecated
 	public static class BridgeLog
 	{
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -107,6 +110,7 @@ public class CustomMB
 		}
 	}
 	
+	@Deprecated
 	public static class RopeBridge
 	{
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -183,6 +187,7 @@ public class CustomMB
 		}
 	}
 	
+	@Deprecated
 	public static class BridgeStone
 	{
 		public static void createModelBlock(String location, String TFMWall, String TFMFloor, String nameMaterial, String textureWall, String textureFloor)
@@ -401,6 +406,7 @@ public class CustomMB
 	}
 	}
 	
+	@Deprecated
 	public static class StairWood
 	{
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -528,6 +534,7 @@ public class CustomMB
 		}
 	}
 
+	@Deprecated
 	public static class StairRope
 	{
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -660,6 +667,7 @@ public class CustomMB
 		}
 	}
 
+	@Deprecated
 	public static class StairStone
 	{
 		public static void createModelBlock(String location, String TFMWall, String TFMFloor, String nameMaterial, String textureWall, String textureFloor)
@@ -787,6 +795,7 @@ public class CustomMB
 		}
 	}
 	
+	@Deprecated
 	public static class PierWood
 	{		
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -894,6 +903,7 @@ public class CustomMB
 		}
 	}
 	
+	@Deprecated
 	public static class PierStone
 	{
 		public static void createModelBlock(String location, String TFMWall, String TFMFloor, String nameMaterial, String textureWall)
@@ -970,6 +980,7 @@ public class CustomMB
 		}
 	}
 	
+	@Deprecated
 	public static class BridgeRailWood
 	{	
 		public static void createModelBlock(String location, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)

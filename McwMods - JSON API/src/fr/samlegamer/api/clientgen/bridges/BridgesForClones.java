@@ -6,7 +6,7 @@ import fr.samlegamer.utils.APIWriter;
 
 /*
  * It's used for McwBridges Modding Legacy
- * If your addons use à cherry wood in 2 mod ex: bop:cherry byg:cherry
+ * If your addons use ï¿½ cherry wood in 2 mod ex: bop:cherry byg:cherry
  * then use this to add prefix in the file like "bop_"/"byg_" ex: bop_cherry_bridge byg_cherry_bridge
  */
 public class BridgesForClones
