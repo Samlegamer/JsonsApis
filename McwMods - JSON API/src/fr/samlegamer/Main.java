@@ -5,7 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.code.MRTabBuild;
+import fr.samlegamer.api.code.roofs.MRTabBuild;
+import fr.samlegamer.api.code.roofs.RoofsCodeGeneratorForge;
+import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.roofs.RoofsTagGenerator;
+import fr.samlegamer.api.lang.RoofsLangGenerator;
+import fr.samlegamer.api.lang.mod.English;
+import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.ModsList;
@@ -22,24 +28,32 @@ public class Main
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
 	public static final String CompatModid = Compatibilities.BYG_ROOFS_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = ""; //For recipes (ex: bop:cherry_log)
+	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MRBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
-		
+	
 	public static void main(String[] args)
 	{
-		ModsList.bygWildUp(MAT_WOOD);
-		//chargeLang(new MRLangGenerator());
+		boolean isStem = Boolean.TRUE;
+		ModsList.byg120(MAT_WOOD, isStem);
 		McwAPI.RoofsGenFolder(LOCATION);
-		//McwAPI.DataGenFolder(LOCATION);
+		McwAPI.DataGenFolder(LOCATION);
 		//chargebyIModFile(new McwModsRessources("mcwroofs", ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), false);
-		//MRTabBuild.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		genCustom(new McwModsRessources("mcwroofs", ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD));
-		//recipeAndLoot(new McwDataGen("mcwroofs", "1.21"));
-		//tag(new MRTagGenerator());
-		//McwAPI.DataGenFolder(LOCATION);
-		/*
-		MBTagsGenerator Bdata = new MBTagsGenerator();
+		MRTabBuild tab = new MRTabBuild();
+		genCustom(new McwModsRessources("mcwroofs", ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), isStem);
+		recipeAndLoot(new McwDataGen("mcwroofs"), isStem);
+		MAT_WOOD.clear();
+		ModsList.byg120(MAT_WOOD);
+		English.BYG.byg120Lang(MAJ_MAT);
+		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		chargeLangEnglish(new RoofsLangGenerator());
+		tag(new RoofsTagGenerator());
+		chargeCodeJavaForge(new RoofsCodeGeneratorForge(), true, true);
+		MAJ_MAT.clear();
+		French.BYG.byg120Lang(MAJ_MAT);
+		chargeLangFrench(new RoofsLangGenerator());
+		
+		/*MBTagsGenerator Bdata = new MBTagsGenerator();
 		Bdata.TagsWood(LOCATION, CompatModid, MAT_WOOD);*/
 		/*McwDataGen genRecipe = new McwDataGen("mcwbridges");
 		genRecipe.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);*/
@@ -243,11 +257,25 @@ public class Main
 		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
+	public static void recipeAndLoot(IModFiles.IData f, boolean isStem)
+	{
+		f.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		f.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+	
 	private static void genCustom(McwModsRessources client)
 	{
 		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client.createModelItem(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+	}
+	
+	private static void genCustom(McwModsRessources client, boolean isStem)
+	{
+		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+		client.createModelItem(LOCATION, CompatModid, MAT_WOOD);
+		client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", isStem ? "stem" : "log", isStem ? "stripped_stem" : "stripped_log");
 	}
 
 	/*
@@ -263,8 +291,19 @@ public class Main
 	/*
 	 * Create a lang File (en_us)
 	 */
-	public static void chargeLang(IModFiles.ILang f)
+	public static void chargeLangEnglish(IModFiles.ILang f)
 	{
 		f.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_MAT);
+	}
+	
+	public static void chargeLangFrench(IModFiles.ILang f)
+	{
+		f.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_MAT);
+	}
+	
+	public static void chargeCodeJavaForge(IModFiles.IProgram.JavaForge forge, boolean supNetherUpdate, boolean TrailsandTales)
+	{
+		forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		forge.registerBlockLog(LOCATION, MAT_WOOD, supNetherUpdate, TrailsandTales);
 	}
 }

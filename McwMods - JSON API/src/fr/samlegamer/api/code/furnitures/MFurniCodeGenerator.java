@@ -74,6 +74,60 @@ public class MFurniCodeGenerator
 							+ "  public static final RegistryObject<Block> "+i+"_double_drawer_counter = BLOCKS.register(\""+i+"_double_drawer_counter\", () -> new StorageCounter(Blocks.OAK_LOG.defaultblockstate(), AbstractBlock.Properties.of(Material.WOOD).harvestLevel(1).harvestTool(ToolType.AXE).strength(2.0F, 2.3F)));\r\n"
 							+ "  \r\n"
 							+ "  public static final RegistryObject<Block> "+i+"_cupboard_counter = BLOCKS.register(\""+i+"_cupboard_counter\", () -> new StorageCounter(Blocks.OAK_LOG.defaultblockstate(), AbstractBlock.Properties.of(Material.WOOD).harvestLevel(1).harvestTool(ToolType.AXE).strength(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_wardrobe = BLOCKS.register(\"stripped_"+i+"_wardrobe\", () -> new TallFurnitureHinge(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_modern_wardrobe = BLOCKS.register(\"stripped_"+i+"_modern_wardrobe\", () -> new TallFurnitureHinge(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_double_wardrobe = BLOCKS.register(\"stripped_"+i+"_double_wardrobe\", () -> new TallFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_bookshelf = BLOCKS.register(\"stripped_"+i+"_bookshelf\", () -> new BookCabinet(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_bookshelf_cupboard = BLOCKS.register(\"stripped_"+i+"_bookshelf_cupboard\", () -> new BookCabinetHinge(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_drawer = BLOCKS.register(\"stripped_"+i+"_drawer\", () -> new WideFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_double_drawer = BLOCKS.register(\"stripped_"+i+"_double_drawer\", () -> new WideFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_bookshelf_drawer = BLOCKS.register(\"stripped_"+i+"_bookshelf_drawer\", () -> new BookDrawer(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_lower_bookshelf_drawer = BLOCKS.register(\"stripped_"+i+"_lower_bookshelf_drawer\", () -> new BookDrawer(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_large_drawer = BLOCKS.register(\"stripped_"+i+"_large_drawer\", () -> new WideFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_lower_triple_drawer = BLOCKS.register(\"stripped_"+i+"_lower_triple_drawer\", () -> new WideFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_triple_drawer = BLOCKS.register(\"stripped_"+i+"_triple_drawer\", () -> new WideFurniture(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_desk = BLOCKS.register(\"stripped_"+i+"_desk\", () -> new Desk(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_covered_desk = BLOCKS.register(\"stripped_"+i+"_covered_desk\", () -> new Desk(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_modern_desk = BLOCKS.register(\"stripped_"+i+"_modern_desk\", () -> new Desk(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_table = BLOCKS.register(\"stripped_"+i+"_table\", () -> new TableHitbox(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_end_table = BLOCKS.register(\"stripped_"+i+"_end_table\", () -> new TableHitbox(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_coffee_table = BLOCKS.register(\"stripped_"+i+"_coffee_table\", () -> new Table(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_glass_table = BLOCKS.register(\"stripped_"+i+"_glass_table\", () -> new TableHitbox(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_chair = BLOCKS.register(\"stripped_"+i+"_chair\", () -> new ClassicChair(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_modern_chair = BLOCKS.register(\"stripped_"+i+"_modern_chair\", () -> new ModernChair(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_striped_chair = BLOCKS.register(\"stripped_"+i+"_striped_chair\", () -> new StripedChair(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_stool_chair = BLOCKS.register(\"stripped_"+i+"_stool_chair\", () -> new Chair(AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_counter = BLOCKS.register(\"stripped_"+i+"_counter\", () -> new Counter(Blocks.field_196662_n.func_176223_P(), AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_drawer_counter = BLOCKS.register(\"stripped_"+i+"_drawer_counter\", () -> new StorageCounter(Blocks.field_196662_n.func_176223_P(), AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_double_drawer_counter = BLOCKS.register(\"stripped_"+i+"_double_drawer_counter\", () -> new StorageCounter(Blocks.field_196662_n.func_176223_P(), AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
+							+ "  \r\n"
+							+ "  public static final RegistryObject<Block> stripped_"+i+"_cupboard_counter = BLOCKS.register(\"stripped_"+i+"_cupboard_counter\", () -> new CupboardCounter(Blocks.field_196662_n.func_176223_P(), AbstractBlock.Properties.func_200949_a(Material.field_151575_d, MaterialColor.field_151663_o).func_200948_a(2.0F, 2.3F)));\r\n"
 							+ "  ");
 					buffer.newLine();
 					
@@ -82,7 +136,7 @@ public class MFurniCodeGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + LOCATION);
 			}
 			catch (IOException e)
 			{
@@ -112,7 +166,7 @@ public class MFurniCodeGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + LOCATION);
 			}
 			catch (IOException e)
 			{

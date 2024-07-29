@@ -9,7 +9,7 @@ import java.util.List;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
-public class MRTagGenerator implements IModFiles.ITagData
+public class RoofsTagGenerator implements IModFiles.ITagData
 {
 	@Override
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> Mat)
@@ -31,34 +31,19 @@ public class MRTagGenerator implements IModFiles.ITagData
 				for(String i : Mat)
 				{
 					buffer.write("    \""+Modid+":"+i+"_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_attic_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_top_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_lower_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_steep_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_upper_lower_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_upper_steep_roof\",\r\n"+ "");
-					buffer.newLine();
-
 					buffer.write("    \""+Modid+":"+i+"_planks_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_attic_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_top_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_lower_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_steep_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_upper_lower_roof\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_planks_upper_steep_roof\",\r\n"+ "");
-					buffer.newLine();
 				}
 				
 				buffer.write("  ]\r\n" + "}");

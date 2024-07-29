@@ -25,34 +25,19 @@ public class MRTabBuild implements IModFiles.IProgram.TabBuild
 				for(String i : MAT_WOOD)
 				{
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_attic_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_top_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_lower_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_steep_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_upper_lower_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_upper_steep_roof.get());\r\n"+ "");
-					buffer.newLine();
-					
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_attic_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_top_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_lower_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_steep_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_upper_lower_roof.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_planks_upper_steep_roof.get());\r\n"+ "");
-					buffer.newLine();
 				}
 				
 				buffer.newLine();

@@ -6,6 +6,8 @@ public interface IModFiles
 {
 	public static interface IData
 	{
+		void AdvancementsLogAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood);
+
 		void RecipesLogAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood);
 		void LootTableLogAll(String LOCATION, String CompatModid, List<String> MAT_WOOD);
 		void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK);
@@ -36,7 +38,8 @@ public interface IModFiles
 		
 		public static interface JavaForge
 		{
-			
+			void InitRendersLog(String Location, List<String> Material, String ClassMod);
+			void registerBlockLog(String Location, List<String> Material, boolean supNetherUpdate, boolean TrailsandTales);
 		}
 		
 		public static interface JavaNeoForge
@@ -53,7 +56,8 @@ public interface IModFiles
 	public static interface ILang
 	{
 		void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
-		
+		void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
+
 		void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
 	}
 }

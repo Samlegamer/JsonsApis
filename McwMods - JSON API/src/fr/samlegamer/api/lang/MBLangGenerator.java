@@ -92,4 +92,10 @@ public class MBLangGenerator implements IModFiles.ILang
 			}
 		}
 	}
+
+	@Override
+	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
+		// TODO Auto-generated method stub
+		
+	}
 }

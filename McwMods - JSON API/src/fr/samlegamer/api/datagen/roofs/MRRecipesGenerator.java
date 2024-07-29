@@ -3,6 +3,7 @@ package fr.samlegamer.api.datagen.roofs;
 import java.io.File;
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class MRRecipesGenerator
 {
 	@Deprecated

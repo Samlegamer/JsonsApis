@@ -104,4 +104,10 @@ public class MFurniLangGenerator implements IModFiles.ILang
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
+		// TODO Auto-generated method stub
+		
+	}
 }

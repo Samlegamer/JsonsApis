@@ -14,6 +14,7 @@ public class McwAPI
 		TAGS_BLOCK("data"+File.separator+"tags"+File.separator+"block"+File.separator),
 		TAGS_ITEM("data"+File.separator+"tags"+File.separator+"item"+File.separator),
 		RECIPE("data"+File.separator+"recipes"+File.separator), 
+		ADVANCEMENT_RECIPE("data"+File.separator+"advancements"+File.separator+"recipes"+File.separator), 
 		LOOT_TABLES("data"+File.separator+"loot_tables"+File.separator+"blocks"+File.separator),
 		BLOCKSTATES("blockstates"+File.separator),
 		MODELS("models"+File.separator),
@@ -113,6 +114,8 @@ public class McwAPI
 	public static void DataGenFolder(String location)
 	{
 		File folderData = new File(location + "data/");
+		File folderAvancement = new File(location + "data/advancements/");
+		File folderAvancementRecipe = new File(location + "data/advancements/recipes");
 		File folderRecipes = new File(location + "data/recipes/");
 		File folderLoot_Tables = new File(location + "data/loot_tables/");
 		File folderBlocks = new File(location + "data/loot_tables/blocks/");
@@ -122,7 +125,7 @@ public class McwAPI
 		File folderTagsItem = new File(location + "data/tags/item/");
 
 		if(!folderData.exists() || !folderRecipes.exists() || !folderLoot_Tables.exists() || !folderBlocks.exists() || 
-		!folderTags.exists() || !folderTagsBlock.exists() || !folderTagsBlockMineable.exists() || !folderTagsItem.exists())
+		!folderTags.exists() || !folderTagsBlock.exists() || !folderTagsBlockMineable.exists() || !folderTagsItem.exists() || !folderAvancement.exists() || !folderAvancementRecipe.exists())
 		{
 			folderData.mkdir();
 			folderRecipes.mkdir();
@@ -132,6 +135,8 @@ public class McwAPI
 			folderTagsBlock.mkdir();
 			folderTagsBlockMineable.mkdir();
 			folderTagsItem.mkdir();
+			folderAvancement.mkdir();
+			folderAvancementRecipe.mkdir();
 		}
 	}
 	

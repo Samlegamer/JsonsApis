@@ -2,6 +2,8 @@ package fr.samlegamer.utils;
 
 import java.util.List;
 
+import fr.samlegamer.api.lang.mod.English;
+
 public class ModsList
 {
 	public static void bygRock(List<String> MATERIAL, List<String> WALL, List<String> FLOOR)
@@ -109,6 +111,74 @@ public class ModsList
 		}
 	}
 	
+	public static void byg120(List<String> MATERIAL, boolean isStem)
+	{
+		if(!isStem)
+		{
+			MATERIAL.add("aspen");
+			MATERIAL.add("baobab");
+			MATERIAL.add("blue_enchanted");
+			MATERIAL.add("cika");
+			MATERIAL.add("cypress");
+			MATERIAL.add("ebony");
+			MATERIAL.add("fir");
+			MATERIAL.add("green_enchanted");
+			MATERIAL.add("holly");
+			MATERIAL.add("ironwood");
+			MATERIAL.add("jacaranda");
+			MATERIAL.add("mahogany");
+			MATERIAL.add("maple");
+			MATERIAL.add("palm");
+			MATERIAL.add("pine");
+			MATERIAL.add("rainbow_eucalyptus");
+			MATERIAL.add("redwood");
+			MATERIAL.add("sakura");
+			MATERIAL.add("skyris");
+			MATERIAL.add("white_mangrove");
+			MATERIAL.add("willow");
+			MATERIAL.add("witch_hazel");
+			MATERIAL.add("zelkova");
+		}
+		else
+		{
+			MATERIAL.add("florus");
+		}
+	}
+	
+	public static void byg120(List<String> MATERIAL)
+	{
+		MATERIAL.add("aspen");
+		MATERIAL.add("baobab");
+		MATERIAL.add("blue_enchanted");
+		MATERIAL.add("cika");
+		MATERIAL.add("cypress");
+		MATERIAL.add("ebony");
+		MATERIAL.add("fir");
+		MATERIAL.add("green_enchanted");
+		MATERIAL.add("holly");
+		MATERIAL.add("ironwood");
+		MATERIAL.add("jacaranda");
+		MATERIAL.add("mahogany");
+		MATERIAL.add("maple");
+		MATERIAL.add("palm");
+		MATERIAL.add("pine");
+		MATERIAL.add("rainbow_eucalyptus");
+		MATERIAL.add("redwood");
+		MATERIAL.add("sakura");
+		MATERIAL.add("skyris");
+		MATERIAL.add("white_mangrove");
+		MATERIAL.add("willow");
+		MATERIAL.add("witch_hazel");
+		MATERIAL.add("zelkova");
+		MATERIAL.add("florus");
+	}
+
+	@Deprecated
+	public static void byg120Lang(List<String> MATERIAL)
+	{
+		English.BYG.byg120Lang(MATERIAL);
+	}
+	
 	public static void bygWildUp(List<String> MATERIAL)
 	{
 			MATERIAL.add("aspen");
@@ -141,75 +211,21 @@ public class ModsList
 			MATERIAL.add("sythian");
 	}
 
-	
+	@Deprecated
 	public static void bygLang(List<String> MATERIAL)
 	{
-			MATERIAL.add("Aspen");
-			MATERIAL.add("Baobab");
-			MATERIAL.add("Blue Enchanted");
-			MATERIAL.add("Cherry");
-			MATERIAL.add("Cika");
-			MATERIAL.add("Cypress");
-			MATERIAL.add("Ebony");
-			MATERIAL.add("Ether");
-			MATERIAL.add("Fir");
-			MATERIAL.add("Green Enchanted");
-			MATERIAL.add("Holly");
-			MATERIAL.add("Jacaranda");
-			MATERIAL.add("Lament");
-			MATERIAL.add("Mahogany");
-			MATERIAL.add("Mangrove");
-			MATERIAL.add("Maple");
-			MATERIAL.add("Nightshade");
-			MATERIAL.add("Palm");
-			MATERIAL.add("Pine");
-			MATERIAL.add("Rainbow Eucalyptus");
-			MATERIAL.add("Redwood");
-			MATERIAL.add("Skyris");
-			MATERIAL.add("Willow");
-			MATERIAL.add("Witch_hazel");
-			MATERIAL.add("Zelkova");
-			MATERIAL.add("Bulbis");
-			MATERIAL.add("Imparius");
-			MATERIAL.add("Sythian");
+		English.BYG.bygLang(MATERIAL);
 	}
 	
+	@Deprecated
 	public static void bygLangWildUp(List<String> MATERIAL)
 	{
-			MATERIAL.add("Aspen");
-			MATERIAL.add("Baobab");
-			MATERIAL.add("Blue Enchanted");
-			MATERIAL.add("Cherry");
-			MATERIAL.add("Cika");
-			MATERIAL.add("Cypress");
-			MATERIAL.add("Ebony");
-			MATERIAL.add("Ether");
-			MATERIAL.add("Fir");
-			MATERIAL.add("Green Enchanted");
-			MATERIAL.add("Holly");
-			MATERIAL.add("Jacaranda");
-			MATERIAL.add("Lament");
-			MATERIAL.add("Mahogany");
-			MATERIAL.add("White Mangrove");
-			MATERIAL.add("Maple");
-			MATERIAL.add("Nightshade");
-			MATERIAL.add("Palm");
-			MATERIAL.add("Pine");
-			MATERIAL.add("Rainbow Eucalyptus");
-			MATERIAL.add("Redwood");
-			MATERIAL.add("Skyris");
-			MATERIAL.add("Willow");
-			MATERIAL.add("Witch_hazel");
-			MATERIAL.add("Zelkova");
-			MATERIAL.add("Bulbis");
-			MATERIAL.add("Imparius");
-			MATERIAL.add("Sythian");
+		English.BYG.bygLangWildUp(MATERIAL);
 	}
 	
 	public static void bop(List<String> MAT_WOOD, boolean cherryMC)
 	{
 		if(!cherryMC) { MAT_WOOD.add("cherry"); }
-		
 		MAT_WOOD.add("dead");
 		MAT_WOOD.add("fir");
 		MAT_WOOD.add("hellbark");

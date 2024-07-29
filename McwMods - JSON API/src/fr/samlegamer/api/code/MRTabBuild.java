@@ -6,6 +6,8 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+import fr.samlegamer.McwAPI;
+
 public class MRTabBuild
 {
 	public static void builderToAddWood(String location, List<String> MAT_WOOD, String ClassBR)
@@ -57,7 +59,7 @@ public class MRTabBuild
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'�tre g�n�rer � l'emplacement : " + location);
+				McwAPI.message(file);
 			}
 			catch (IOException e)
 			{
