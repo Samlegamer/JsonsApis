@@ -6,8 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+@Deprecated
 public class MFurnituresCodeGenFabric
 {
+	@Deprecated
 	public static void init(String location, List<String> mat, String classBlock)
 	{
 		File file = new File(location + "CodeGenFabric [Macaw's Furnitures]" + ".json");
@@ -172,7 +174,7 @@ public class MFurnituresCodeGenFabric
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{

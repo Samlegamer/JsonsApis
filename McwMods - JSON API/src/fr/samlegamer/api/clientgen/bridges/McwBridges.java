@@ -16,10 +16,9 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
 /*
- * Derived to MBWarden
- * For future update use this class
- * version 0.0.1
+ * Use McwModsRessources
  */
+@Deprecated
 public class McwBridges implements IModFiles.IClient
 {
 	private static final String s = File.separator;
@@ -49,11 +48,11 @@ public class McwBridges implements IModFiles.IClient
 	                            .map(line -> line.replace("acacia", i))
 	                            .collect(Collectors.toList());
 
-	                    // Déterminer le nouveau nom de fichier
+	                    // Dï¿½terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
 
-	                    // Écrire le contenu modifié dans un nouveau fichier
+	                    // ï¿½crire le contenu modifiï¿½ dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath.toFile());
 	                } catch (IOException e) {
@@ -95,11 +94,11 @@ public class McwBridges implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
 			                            .collect(Collectors.toList());
 		
-			                    // Déterminer le nouveau nom de fichier
+			                    // Dï¿½terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
 			                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
-			                    // Écrire le contenu modifié dans un nouveau fichier
+			                    // ï¿½crire le contenu modifiï¿½ dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 			                    McwAPI.message(newFilePath.toFile());
 			                } catch (IOException e) {
@@ -143,11 +142,11 @@ public class McwBridges implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
 			                            .collect(Collectors.toList());
 		
-			                    // Déterminer le nouveau nom de fichier
+			                    // Dï¿½terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
 			                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
-			                    // Écrire le contenu modifié dans un nouveau fichier
+			                    // ï¿½crire le contenu modifiï¿½ dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 			                    McwAPI.message(newFilePath.toFile());
 			                } catch (IOException e) {
@@ -187,11 +186,11 @@ public class McwBridges implements IModFiles.IClient
 	                            .map(line -> line.replace("acacia", i))
 	                            .collect(Collectors.toList());
 
-	                    // Déterminer le nouveau nom de fichier
+	                    // Dï¿½terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), newFileName);
 
-	                    // Écrire le contenu modifié dans un nouveau fichier
+	                    // ï¿½crire le contenu modifiï¿½ dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath.toFile());
 	                } catch (IOException e) {
@@ -229,11 +228,11 @@ public class McwBridges implements IModFiles.IClient
 	                            .map(line -> line.replace("acacia", i))
 	                            .collect(Collectors.toList());
 
-	                    // Déterminer le nouveau nom de fichier
+	                    // Dï¿½terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
 
-	                    // Écrire le contenu modifié dans un nouveau fichier
+	                    // ï¿½crire le contenu modifiï¿½ dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath.toFile());
 	                } catch (IOException e) {

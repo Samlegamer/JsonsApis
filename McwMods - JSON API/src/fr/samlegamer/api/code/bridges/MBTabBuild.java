@@ -86,4 +86,10 @@ public class MBTabBuild implements IModFiles.IProgram.TabBuild
 			}
 		}
 	}
+
+	@Override
+	public void fabricWood(String location, List<String> MAT_WOOD, String ClassBR) {
+		// TODO Auto-generated method stub
+		
+	}
 }

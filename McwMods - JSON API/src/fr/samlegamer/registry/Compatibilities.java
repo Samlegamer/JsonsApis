@@ -13,5 +13,10 @@ public class Compatibilities
 	public static final String BYG_MODID_120 = "biomeswevegone";
 	public static final String BYG_ROOFS_FABRIC_MODID = "z_mcwroofsbyg";
 	
+	public static final String BOP_FURNITURE_MODID = "mcwfurnituresbop";
+	public static final String BYG_FURNITURE_MODID = "mcwfurnituresbyg";
+
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
+	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
+
 }

@@ -72,6 +72,39 @@ public class ModsList
 		}
 	}
 	
+	public static void bygAssets(List<String> MATERIAL)
+	{
+		MATERIAL.add("aspen");
+		MATERIAL.add("baobab");
+		MATERIAL.add("blue_enchanted");
+		MATERIAL.add("cherry");
+		MATERIAL.add("cika");
+		MATERIAL.add("cypress");
+		MATERIAL.add("ebony");
+		MATERIAL.add("ether");
+		MATERIAL.add("fir");
+		MATERIAL.add("green_enchanted");
+		MATERIAL.add("holly");
+		MATERIAL.add("jacaranda");
+		MATERIAL.add("lament");
+		MATERIAL.add("mahogany");
+		MATERIAL.add("mangrove");
+		MATERIAL.add("maple");
+		MATERIAL.add("nightshade");
+		MATERIAL.add("palm");
+		MATERIAL.add("pine");
+		MATERIAL.add("rainbow_eucalyptus");
+		MATERIAL.add("redwood");
+		MATERIAL.add("skyris");
+		MATERIAL.add("willow");
+		MATERIAL.add("witch_hazel");
+		MATERIAL.add("zelkova");
+		MATERIAL.add("bulbis");
+		MATERIAL.add("imparius");
+		MATERIAL.add("sythian");
+	}
+
+	
 	public static void bygWildUp(List<String> MATERIAL, boolean isStem)
 	{
 		if(!isStem)
@@ -253,34 +286,16 @@ public class ModsList
 		MAT_WOOD.add("empyreal");
 	}
 	
-	public static void bopLang(List<String> MATERIAL)
+	@Deprecated
+	public static void bopLang(List<String> MAJ_MAT, boolean cherryMc)
 	{
-		MATERIAL.add("Cherry");
-		MATERIAL.add("Dead");
-		MATERIAL.add("Fir");
-		MATERIAL.add("Hellbark");
-		MATERIAL.add("Jacaranda");
-		MATERIAL.add("Magic");
-		MATERIAL.add("Mahogany");
-		MATERIAL.add("Palm");
-		MATERIAL.add("Redwood");
-		MATERIAL.add("Umbran");
-		MATERIAL.add("Willow");
+		English.BOP.bopLang(MAJ_MAT, cherryMc);
 	}
 	
+	@Deprecated
 	public static void bop1204Lang(List<String> MAJ_MAT)
 	{
-		MAJ_MAT.add("Dead");
-		MAJ_MAT.add("Fir");
-		MAJ_MAT.add("Hellbark");
-		MAJ_MAT.add("Jacaranda");
-		MAJ_MAT.add("Magic");
-		MAJ_MAT.add("Mahogany");
-		MAJ_MAT.add("Palm");
-		MAJ_MAT.add("Redwood");
-		MAJ_MAT.add("Umbran");
-		MAJ_MAT.add("Willow");
-		MAJ_MAT.add("Empyreal");
+		English.BOP.bop1204Lang(MAJ_MAT);
 	}
 	
 	public static void shroomed(List<String> MAT_WOOD)

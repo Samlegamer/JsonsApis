@@ -64,4 +64,10 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void TagsWood(String LOCATION, String Modid, List<String> MAT_WOOD) {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -5,13 +5,13 @@ import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.code.roofs.MRTabBuild;
-import fr.samlegamer.api.code.roofs.RoofsCodeGeneratorForge;
+import fr.samlegamer.api.code.furnitures.FurnituresCodeGeneratorFabric;
+import fr.samlegamer.api.code.furnitures.FurnituresCodeGeneratorForge;
+import fr.samlegamer.api.code.furnitures.FurnituresTabBuild;
 import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.roofs.RoofsTagGenerator;
-import fr.samlegamer.api.lang.RoofsLangGenerator;
+import fr.samlegamer.api.datagen.furnitures.FurnituresTagGenerator;
+import fr.samlegamer.api.lang.FurnituresLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
-import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.ModsList;
@@ -27,31 +27,34 @@ public class Main
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
-	public static final String CompatModid = Compatibilities.BYG_ROOFS_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
-	public static final String ClassBlockRegistry = "MRBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
+	public static final String CompatModid = Compatibilities.BYG_FURNITURE_MODID; //The modid of compat, Please no insert ":"
+	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID; //For recipes (ex: bop:cherry_log)
+	public static final String ClassBlockRegistry = "MFurniBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
 	{
-		boolean isStem = Boolean.TRUE;
-		ModsList.byg120(MAT_WOOD, isStem);
-		McwAPI.RoofsGenFolder(LOCATION);
+		boolean Stem = Boolean.TRUE;
+		ModsList.bygWildUp(MAT_WOOD, Stem);
+		McwAPI.FurnituresGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
-		//chargebyIModFile(new McwModsRessources("mcwroofs", ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), false);
-		MRTabBuild tab = new MRTabBuild();
-		genCustom(new McwModsRessources("mcwroofs", ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), isStem);
-		recipeAndLoot(new McwDataGen("mcwroofs"), isStem);
+		FurnituresTabBuild tab = new FurnituresTabBuild();
+		genCustom(new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, "1.20"));
+		recipeAndLoot(new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, "1.20"), Stem);
 		MAT_WOOD.clear();
-		ModsList.byg120(MAT_WOOD);
-		English.BYG.byg120Lang(MAJ_MAT);
+		ModsList.bygWildUp(MAT_WOOD);
+		English.BYG.bygLangWildUp(MAJ_MAT);
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		chargeLangEnglish(new RoofsLangGenerator());
-		tag(new RoofsTagGenerator());
-		chargeCodeJavaForge(new RoofsCodeGeneratorForge(), true, true);
-		MAJ_MAT.clear();
-		French.BYG.byg120Lang(MAJ_MAT);
-		chargeLangFrench(new RoofsLangGenerator());
+		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		chargeLangEnglish(new FurnituresLangGenerator());
+		tag(new FurnituresTagGenerator());
+		chargeCodeJavaForge(new FurnituresCodeGeneratorForge(), true, false);
+		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);
+		
+		
+		//MAJ_MAT.clear();
+		//French.BYG.byg120Lang(MAJ_MAT);
+		//chargeLangFrench(new RoofsLangGenerator());
 		
 		/*MBTagsGenerator Bdata = new MBTagsGenerator();
 		Bdata.TagsWood(LOCATION, CompatModid, MAT_WOOD);*/
@@ -67,18 +70,6 @@ public class Main
 		//gen.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		//gen.FencesDataGen(LOCATION, CompatModid, MAT_WOOD);
 
-		/* Test */
-		/*McwAPI.DataGenFolder(LOCATION);
-		
-		//McwFencesRecipeOld1204 fences = new McwFencesRecipeOld1204();
-		//fences.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, "cherry", false);
-		ModsList.bop1204(MAT_WOOD);
-		MFTagsGenerator gen = new MFTagsGenerator();
-		gen.FencesDataGen(LOCATION, CompatModid, MAT_WOOD);
-		//chargebyIModFile(new McwFences());
-		//chargebyIModFileData(new McwFencesData("1.21"));
-		//MacawsFences.InitFolders(LOCATION);
-		
 		//MAT_WOOD.add("mushroom");
 		//MAJ_MAT.add("Mushroom");
 		/*ModsList.ModdingLegacyWoods(MAT_WOOD);
@@ -249,12 +240,7 @@ public class Main
 	private static void tag(IModFiles.ITagData t)
 	{
 		t.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
-	}
-	
-	public static void recipeAndLoot(IModFiles.IData f)
-	{
-		f.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
-		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+		t.TagsWood(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
 	public static void recipeAndLoot(IModFiles.IData f, boolean isStem)
@@ -262,6 +248,12 @@ public class Main
 		f.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		f.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+	
+
+	public static void recipeAndLoot(IModFiles.IData f)
+	{
+		recipeAndLoot(f, false);
 	}
 	
 	private static void genCustom(McwModsRessources client)
@@ -281,7 +273,7 @@ public class Main
 	/*
 	 * Create a blockstates and models block/item
 	 */
-	public static void chargebyIModFile(IModFiles.IClient f, boolean isStem)
+	public static void genClient(IModFiles.IClient f, boolean isStem)
 	{
 		f.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		f.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
@@ -305,5 +297,11 @@ public class Main
 	{
 		forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		forge.registerBlockLog(LOCATION, MAT_WOOD, supNetherUpdate, TrailsandTales);
+	}
+	
+	public static void chargeCodeJavaFabric(IModFiles.IProgram.JavaFabric fabric, boolean supNetherUpdate, boolean TrailsandTales)
+	{
+		fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		fabric.registerBlockLog(LOCATION, MAT_WOOD, supNetherUpdate, TrailsandTales);
 	}
 }

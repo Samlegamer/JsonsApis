@@ -29,9 +29,10 @@ public class MFCodeGenFabric
 					buffer.write("public static final Block "+i+"_wired_fence = new WiredFence(AbstractBlock.Settings.of(Material.WOOD).strength(1.5F, 2.5F).sound(BlockSoundGroup.WOOD));\r\n");
 					buffer.write("public static final Block "+i+"_highley_gate = new FenceGateBlock(AbstractBlock.Settings.of(Material.WOOD).nonOpaque().strength(1.5F, 2.5F).sound(BlockSoundGroup.WOOD));\r\n");
 					buffer.write("public static final Block "+i+"_pyramid_gate = new FenceGateBlock(AbstractBlock.Settings.of(Material.WOOD).nonOpaque().strength(1.5F, 2.5F).sound(BlockSoundGroup.WOOD));\r\n");
+					buffer.write("public static final Block "+i+"_hedge = new FenceHitbox(AbstractBlock.Settings.of(Material.WOOD).nonOpaque().strength(1.5F, 2.5F).sound(BlockSoundGroup.WOOD));\r\n");
 				}
 				
-				buffer.newLine();//nonOpaque BlockSoundGroup
+				buffer.newLine();//Blocks.OAK_LEAVES hedge
 
 				for(String i : mat)
 				{
@@ -46,6 +47,8 @@ public class MFCodeGenFabric
 					buffer.write("add(\""+i+"_highley_gate\", "+i+"_highley_gate);");
 					buffer.newLine();
 					buffer.write("add(\""+i+"_pyramid_gate\", "+i+"_pyramid_gate);");
+					buffer.newLine();
+					buffer.write("add(\""+i+"_hedge\", "+i+"_hedge);");
 					buffer.newLine();
 				}
 				
@@ -71,6 +74,8 @@ public class MFCodeGenFabric
 					buffer.newLine();
 					buffer.write(""+classBlock+"."+i+"_pyramid_gate, ");
 					buffer.newLine();
+					buffer.write(""+classBlock+"."+i+"_hedge, ");
+					buffer.newLine();
 				}
 				
 				buffer.newLine();
@@ -93,12 +98,14 @@ public class MFCodeGenFabric
 					buffer.newLine();
 					buffer.write("					content.add("+classBlock+"."+i+"_pyramid_gate);");
 					buffer.newLine();
+					buffer.write("					content.add("+classBlock+"."+i+"_hedge);");
+					buffer.newLine();
 				}
 				
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{

@@ -11,8 +11,8 @@ public class McwAPI
 	public enum ClassicFolderTypes
 	{
 		TAGS_BLOCK_MINEABLE("data"+File.separator+"tags"+File.separator+"block"+File.separator+"mineable"+File.separator),
-		TAGS_BLOCK("data"+File.separator+"tags"+File.separator+"block"+File.separator),
-		TAGS_ITEM("data"+File.separator+"tags"+File.separator+"item"+File.separator),
+		TAGS_BLOCK("data"+File.separator+"tags"+File.separator+"blocks"+File.separator),
+		TAGS_ITEM("data"+File.separator+"tags"+File.separator+"items"+File.separator),
 		RECIPE("data"+File.separator+"recipes"+File.separator), 
 		ADVANCEMENT_RECIPE("data"+File.separator+"advancements"+File.separator+"recipes"+File.separator), 
 		LOOT_TABLES("data"+File.separator+"loot_tables"+File.separator+"blocks"+File.separator),
@@ -82,7 +82,13 @@ public class McwAPI
 	private static List<String> mcw_furnitures_block_model()
 	{
 		List<String> result = new ArrayList<String>();
-
+		result.add("cabinet"+File.separator);
+		result.add("chair"+File.separator);
+		result.add("counter"+File.separator);
+		result.add("desk"+File.separator);
+		result.add("drawer"+File.separator);
+		result.add("table"+File.separator);
+		result.add("wardrobe"+File.separator);
 		return result;
 	}
 	
@@ -106,150 +112,106 @@ public class McwAPI
 		}
 	}
 	
+	/*
+	 * A message for file generated
+	 */
 	public static void message(File file)
 	{
 		System.out.println("File : "+file.getName()+" has generated !"); 
 	}
 	
+	/*
+	 * Simplified Method
+	 */
+	private static void registerFolder(String location, String path)
+	{
+		File folderBase = new File(location + path);
+		
+		if(!folderBase.exists())
+		{
+			folderBase.mkdir();
+		}
+	}
+	
+	/*
+	 * Base Server root Folder
+	 */
 	public static void DataGenFolder(String location)
 	{
-		File folderData = new File(location + "data/");
-		File folderAvancement = new File(location + "data/advancements/");
-		File folderAvancementRecipe = new File(location + "data/advancements/recipes");
-		File folderRecipes = new File(location + "data/recipes/");
-		File folderLoot_Tables = new File(location + "data/loot_tables/");
-		File folderBlocks = new File(location + "data/loot_tables/blocks/");
-		File folderTags = new File(location + "data/tags/");
-		File folderTagsBlock = new File(location + "data/tags/block/");
-		File folderTagsBlockMineable = new File(location + "data/tags/block/mineable/");
-		File folderTagsItem = new File(location + "data/tags/item/");
-
-		if(!folderData.exists() || !folderRecipes.exists() || !folderLoot_Tables.exists() || !folderBlocks.exists() || 
-		!folderTags.exists() || !folderTagsBlock.exists() || !folderTagsBlockMineable.exists() || !folderTagsItem.exists() || !folderAvancement.exists() || !folderAvancementRecipe.exists())
-		{
-			folderData.mkdir();
-			folderRecipes.mkdir();
-			folderLoot_Tables.mkdir();
-			folderTags.mkdir();
-			folderBlocks.mkdir();
-			folderTagsBlock.mkdir();
-			folderTagsBlockMineable.mkdir();
-			folderTagsItem.mkdir();
-			folderAvancement.mkdir();
-			folderAvancementRecipe.mkdir();
-		}
+		registerFolder(location, "data/");
+		registerFolder(location, "data/advancements/");
+		registerFolder(location, "data/advancements/recipes");
+		registerFolder(location, "data/recipes/");
+		registerFolder(location, "data/loot_tables/");
+		registerFolder(location, "data/loot_tables/blocks/");
+		registerFolder(location, "data/tags/");
+		registerFolder(location, "data/tags/blocks/");
+		registerFolder(location, "data/tags/block/mineable/");
+		registerFolder(location, "data/tags/items/");
+	}
+	
+	/*
+	 * Base Client root Folder
+	 */
+	private static void baseFolder(String location)
+	{
+		registerFolder(location, "blockstates/");
+		registerFolder(location, "models/");
+		registerFolder(location, "models/block/");
+		registerFolder(location, "models/item/");
 	}
 	
 	public static void BridgesGenFolder(String location)
 	{
-		File folderBlockstates = new File(location + "blockstates/");
-		File folderModels = new File(location + "models/");
-		File folderBlock = new File(location + "models/block/");
-		File folderBridge = new File(location + "models/block/bridge/");
-		File folderBridgeWood = new File(location + "models/block/bridge/bridge_wood/");
-		File folderBridgeStone = new File(location + "models/block/bridge/bridge_stone/");
-		File folderBridgerail = new File(location + "models/block/bridge/rail/");
-		File folderBridgeRope = new File(location + "models/block/bridge/rope/");
-		File folderItem = new File(location + "models/item/");
-		File folderStair = new File(location + "models/block/stair/");
-		File folderStairWood = new File(location + "models/block/stair/wood/");
-		File folderStairRope = new File(location + "models/block/stair/rope/");
-		File folderStairStone = new File(location + "models/block/stair/stone/");
-		File foldersupport_pier = new File(location + "models/block/support_pier/");
-		
-		if(!folderBlockstates.exists() || !folderModels.exists() || !folderBlock.exists() || !folderBridge.exists()
-		|| !folderBridgeWood.exists() || !folderItem.exists() || !folderBridgeStone.exists() || !folderBridgeRope.exists()
-		|| !folderStair.exists() || !folderStairWood.exists() || !folderStairRope.exists() || !folderStairStone.exists()
-		|| !foldersupport_pier.exists() || !folderBridgerail.exists())
-		{
-			folderBlockstates.mkdir();
-			folderModels.mkdir();
-			folderBlock.mkdir();
-			folderBridge.mkdir();
-			folderBridgeWood.mkdir();
-			folderItem.mkdir();
-			folderBridgeStone.mkdir();
-			folderBridgeRope.mkdir();
-			folderBridgerail.mkdir();
-			folderStair.mkdir();
-			folderStairWood.mkdir();
-			folderStairRope.mkdir();
-			folderStairStone.mkdir();
-			foldersupport_pier.mkdir();
-		}
+		baseFolder(location);
+		registerFolder(location, "models/block/bridge/");
+		registerFolder(location, "models/block/bridge/bridge_wood/");
+		registerFolder(location, "models/block/bridge/bridge_stone/");
+		registerFolder(location, "models/block/bridge/rail/");
+		registerFolder(location, "models/block/bridge/rope/");
+		registerFolder(location, "models/block/stair/");
+		registerFolder(location, "models/block/stair/wood/");
+		registerFolder(location, "models/block/stair/rope/");
+		registerFolder(location, "models/block/stair/stone/");
+		registerFolder(location, "models/block/support_pier/");
 	}
 	
 	public static void FencesGenFolder(String location)
 	{
-		File folderBlockstates = new File(location + "blockstates/");
-		File folderModels = new File(location + "models/");
-		File folderBlock = new File(location + "models/block/");
-		File folderItem = new File(location + "models/item/");
-		File folderhighley_gate = new File(location + "models/block/highley_gate/");
-		File folderhorse = new File(location + "models/block/horse/");
-		File folderinventory = new File(location + "models/block/inventory/");
-		File foldermodern_wall = new File(location + "models/block/modern_wall/");
-		File folderpicket = new File(location + "models/block/picket/");
-		File folderstockade = new File(location + "models/block/stockade/");
-		File folderwired = new File(location + "models/block/wired/");
-		File folderpyramid_gate = new File(location + "models/block/pyramid_gate/");
-
-		if(!folderBlockstates.exists() || !folderModels.exists() || !folderBlock.exists()
-		|| !folderItem.exists() || !folderhighley_gate.exists() 
-		|| !folderhorse.exists() || !folderinventory.exists() || !foldermodern_wall.exists()
-		|| !folderpicket.exists() || !folderstockade.exists() || !folderwired.exists() || !folderpyramid_gate.exists())
-		{
-			folderBlockstates.mkdir();
-			folderModels.mkdir();
-			folderBlock.mkdir();
-			folderItem.mkdir();
-			folderhighley_gate.mkdir();
-			folderhorse.mkdir();
-			folderinventory.mkdir();
-			foldermodern_wall.mkdir();
-			folderpicket.mkdir();
-			folderstockade.mkdir();
-			folderwired.mkdir();
-			folderpyramid_gate.mkdir();
-		}
+		baseFolder(location);
+		registerFolder(location, "models/block/highley_gate/");
+		registerFolder(location, "models/block/horse/");
+		registerFolder(location, "models/block/inventory/");
+		registerFolder(location, "models/block/modern_wall/");
+		registerFolder(location, "models/block/picket/");
+		registerFolder(location, "models/block/stockade/");
+		registerFolder(location, "models/block/wired/");
+		registerFolder(location, "models/block/pyramid_gate/");
+		registerFolder(location, "models/block/hedge/");
 	}
 
 	public static void RoofsGenFolder(String location)
 	{
-		//Base
-		File folderBlockstates = new File(location + "blockstates/");
-		File folderModels = new File(location + "models/");
-		File folderBlock = new File(location + "models/block/");
-		File folderItem = new File(location + "models/item/");
-		
-		//models/block/
-		File folderAttic = new File(location + "models/block/attic/");
-		File folderAwning = new File(location + "models/block/awning/");
-		File foldermiddle_end = new File(location + "models/block/middle_end/");
-		File folderGutter = new File(location + "models/block/gutter/");
-		File folderLower = new File(location + "models/block/lower/");
-		File folderRoof = new File(location + "models/block/roof/");
-		File folderSteep = new File(location + "models/block/steep/");
-		File folderTop = new File(location + "models/block/top/");
-
-		if(!folderBlockstates.exists() || !folderModels.exists() || !folderBlock.exists() || !folderItem.exists() 
-		|| !folderAttic.exists() || !folderAwning.exists()
-		|| !foldermiddle_end.exists() || !folderGutter.exists() || !folderLower.exists() || !folderRoof.exists()
-		|| !folderSteep.exists() || !folderTop.exists())
-		{
-			folderBlockstates.mkdir();
-			folderModels.mkdir();
-			folderBlock.mkdir();
-			folderItem.mkdir();
-			folderAttic.mkdir();
-			folderAwning.mkdir();
-			foldermiddle_end.mkdir();
-			folderGutter.mkdir();
-			folderLower.mkdir();
-			folderRoof.mkdir();
-			folderSteep.mkdir();
-			folderTop.mkdir();
-		}
+		baseFolder(location);
+		registerFolder(location, "models/block/attic/");
+		registerFolder(location, "models/block/awning/");
+		registerFolder(location, "models/block/middle_end/");
+		registerFolder(location, "models/block/gutter/");
+		registerFolder(location, "models/block/lower/");
+		registerFolder(location, "models/block/roof/");
+		registerFolder(location, "models/block/steep/");
+		registerFolder(location, "models/block/top/");
 	}
 
+	public static void FurnituresGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/cabinet/");
+		registerFolder(location, "models/block/chair/");
+		registerFolder(location, "models/block/counter/");
+		registerFolder(location, "models/block/desk/");
+		registerFolder(location, "models/block/drawer/");
+		registerFolder(location, "models/block/table/");
+		registerFolder(location, "models/block/wardrobe/");
+	}
 }

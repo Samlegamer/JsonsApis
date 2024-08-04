@@ -59,7 +59,7 @@ public class MFTagsGenerator implements IModFiles.ITagData
 		}
 	}
 
-	public void FencesDataGen(String LOCATION, String CompatModid, List<String> MAT_WOOD)
+	public void TagsWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{		
 		File blk = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fences.json");
 		File blk2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fence_gates.json");

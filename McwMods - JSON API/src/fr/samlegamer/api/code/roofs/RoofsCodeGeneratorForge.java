@@ -13,7 +13,7 @@ public class RoofsCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 {	
 	public void InitRendersLog(String Location, List<String> Material, String ClassMod)
 	{
-		File file = new File(Location + "RenderTypeRoofsWood.txt");
+		File file = new File(Location + "Render Type Blocks [Forge-Macaws-Roofs].txt");
 
 		if(!file.exists())
 		{
@@ -68,7 +68,7 @@ public class RoofsCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 	
 	public void registerBlockLog(String Location, List<String> Material, boolean supNetherUpdate, boolean TrailsandTales)
 	{
-		File file = new File(Location + "BlocksRoofsLog.txt");
+		File file = new File(Location + "Registries Blocks  [Forge-Macaws-Roofs].txt");
 
 		if(!file.exists())
 		{

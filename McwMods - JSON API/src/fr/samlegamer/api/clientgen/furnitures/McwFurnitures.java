@@ -7,8 +7,10 @@ import java.io.IOException;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class McwFurnitures
 {//+ nameMaterial + (isStemTexture ? "_stem" : "_log") +
+	@Deprecated
 	public static void InitFolders(String location)
 	{
 		File folderBlockstates = new File(location + "blockstates/");
@@ -2153,7 +2155,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2178,7 +2180,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2251,7 +2253,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2276,7 +2278,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2327,7 +2329,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2352,7 +2354,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2405,7 +2407,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2430,7 +2432,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2486,7 +2488,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2511,7 +2513,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2562,7 +2564,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2587,7 +2589,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2643,7 +2645,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2668,7 +2670,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2719,7 +2721,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2744,7 +2746,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -2795,7 +2797,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2820,7 +2822,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2876,7 +2878,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2901,7 +2903,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2951,7 +2953,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -2976,7 +2978,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3026,7 +3028,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3051,7 +3053,7 @@ public class McwFurnitures
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 			}
 			catch (IOException e)
 			{
@@ -3106,7 +3108,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3131,7 +3133,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3182,7 +3184,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3207,7 +3209,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3258,7 +3260,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3283,7 +3285,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3333,7 +3335,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3358,7 +3360,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3408,7 +3410,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3433,7 +3435,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3483,7 +3485,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3508,7 +3510,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3582,7 +3584,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3607,7 +3609,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3671,7 +3673,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3696,7 +3698,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3730,7 +3732,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3755,7 +3757,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3830,7 +3832,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3855,7 +3857,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3905,7 +3907,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3930,7 +3932,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{
@@ -3994,7 +3996,7 @@ public class McwFurnitures
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + location);
+					System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + location);
 				}
 				catch (IOException e)
 				{

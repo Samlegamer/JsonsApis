@@ -4,6 +4,38 @@ import java.util.List;
 
 public class English
 {
+	public static class BOP
+	{
+		public static void bopLang(List<String> MAJ_MAT, boolean cherryMC)
+		{
+			if(!cherryMC) { MAJ_MAT.add("Cherry"); }
+			MAJ_MAT.add("Dead");
+			MAJ_MAT.add("Fir");
+			MAJ_MAT.add("Hellbark");
+			MAJ_MAT.add("Jacaranda");
+			MAJ_MAT.add("Magic");
+			MAJ_MAT.add("Mahogany");
+			MAJ_MAT.add("Palm");
+			MAJ_MAT.add("Redwood");
+			MAJ_MAT.add("Umbran");
+			MAJ_MAT.add("Willow");
+		}
+		
+		public static void bop1204Lang(List<String> MAJ_MAT)
+		{
+			MAJ_MAT.add("Dead");
+			MAJ_MAT.add("Fir");
+			MAJ_MAT.add("Hellbark");
+			MAJ_MAT.add("Jacaranda");
+			MAJ_MAT.add("Magic");
+			MAJ_MAT.add("Mahogany");
+			MAJ_MAT.add("Palm");
+			MAJ_MAT.add("Redwood");
+			MAJ_MAT.add("Umbran");
+			MAJ_MAT.add("Willow");
+			MAJ_MAT.add("Empyreal");
+		}
+	}
 	public static class BYG
 	{
 		public static void byg120Lang(List<String> MATERIAL)

@@ -6,8 +6,10 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
+@Deprecated
 public class MBTagGenerator
 {
+	@Deprecated
 	public static void AxeDataGen(String LOCATION, String Modid, List<String> Mat)
 	{		
 		File file = new File(LOCATION + "MineableAxeData.json");
@@ -44,7 +46,7 @@ public class MBTagGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + LOCATION);
 			}
 			catch (IOException e)
 			{
@@ -83,7 +85,7 @@ public class MBTagGenerator
 				buffer.close();
 				writer.close();
 				file.createNewFile();
-				System.out.println("Le fichier " + file + " Vient d'être générer à l'emplacement : " + LOCATION);
+				System.out.println("Le fichier " + file + " Vient d'ï¿½tre gï¿½nï¿½rer ï¿½ l'emplacement : " + LOCATION);
 			}
 			catch (IOException e)
 			{

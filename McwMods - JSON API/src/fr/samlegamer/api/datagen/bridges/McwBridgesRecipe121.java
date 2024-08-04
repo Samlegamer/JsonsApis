@@ -5,6 +5,7 @@ import java.io.File;
 import fr.samlegamer.utils.APIWriter;
 import fr.samlegamer.utils.IModFiles;
 
+@Deprecated
 public class McwBridgesRecipe121
 {
 	public static void init(String LOCATION)

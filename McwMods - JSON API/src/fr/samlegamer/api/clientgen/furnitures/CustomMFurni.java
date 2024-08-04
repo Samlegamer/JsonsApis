@@ -4,36 +4,36 @@ import java.io.File;
 
 import fr.samlegamer.utils.APIWriter;
 
+@Deprecated
 public class CustomMFurni
 {
+	@Deprecated
 	public static void InitFolders(String location)
 	{
 		File folderBlockstates = new File(location + "blockstates/");
 		File folderModels = new File(location + "models/");
 		File folderBlock = new File(location + "models/block/");
 		File folderItem = new File(location + "models/item/");
+		File cabinet = new File(location + "models/block/cabinet/");
 		File chair = new File(location + "models/block/chair/");
 		File counter = new File(location + "models/block/counter/");
 		File desk = new File(location + "models/block/desk/");
 		File drawer = new File(location + "models/block/drawer/");
-		File gui = new File(location + "models/block/gui/");
 		File table = new File(location + "models/block/table/");
 		File wardrobe = new File(location + "models/block/wardrobe/");
 
-		if(!folderBlockstates.exists() || !folderModels.exists() || !folderBlock.exists()
-		|| !folderItem.exists() || !chair.exists() 
-		|| !counter.exists() || !desk.exists() || !drawer.exists()
-		|| !gui.exists() || !table.exists() || !wardrobe.exists())
+		if(!folderBlockstates.exists() || !folderModels.exists() || !folderBlock.exists() || !folderItem.exists() || !cabinet.exists() 
+		|| !chair.exists() || !counter.exists() || !desk.exists() || !drawer.exists() || !table.exists() || !wardrobe.exists())
 		{
 			folderBlockstates.mkdir();
 			folderModels.mkdir();
 			folderBlock.mkdir();
 			folderItem.mkdir();
+			cabinet.mkdir();
 			chair.mkdir();
 			counter.mkdir();
 			desk.mkdir();
 			drawer.mkdir();
-			gui.mkdir();
 			table.mkdir();
 			wardrobe.mkdir();
 		}
