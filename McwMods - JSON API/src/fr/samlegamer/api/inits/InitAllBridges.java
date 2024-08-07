@@ -4,7 +4,6 @@ import java.util.List;
 
 import fr.samlegamer.api.clientgen.bridges.MBWarden;
 import fr.samlegamer.api.datagen.bridges.MBRecipesGenerator;
-import fr.samlegamer.api.lang.MBLangGenerator;
 
 @Deprecated
 public class InitAllBridges
@@ -13,8 +12,6 @@ public class InitAllBridges
 	{
 		MBWarden.init(LOCATION);
 		MBRecipesGenerator.init(LOCATION);
-		MBLangGenerator lang = new MBLangGenerator();
-		lang.initAllWoodEnglish(CompatModid, MATERIAL, MAJ_MAT);
 		
 		for(String i : MATERIAL)
 		{

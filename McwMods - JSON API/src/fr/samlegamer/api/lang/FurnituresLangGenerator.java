@@ -139,13 +139,13 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 					//3.3.0 Update
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_kitchen_cabinet\":\""+MAJ_MAT.get(nbm)+" Kitchen Cabinet\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\""+MAJ_MAT.get(nbm)+"  Double Kitchen\",");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\""+MAJ_MAT.get(nbm)+" Double Kitchen\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\""+MAJ_MAT.get(nbm)+" Glass Kitchen Cabinet\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Kitchen Cabinet\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+"  Double Kitchen\",");
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Double Kitchen\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Glass Kitchen Cabinet\",");
 					buffer.newLine();
@@ -167,14 +167,164 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 	}
 
 	@Override
-	public void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
-		// TODO Auto-generated method stub
+	public void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {}
+
+	@Override
+	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
+	{		
+		File file = new File(Main.LOCATION + "Fr_Fr_Wood_Furnitures.json");
 		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+			
+				buffer.write("{");
+				buffer.newLine();
+				
+				for(int nbm = 0;nbm < MAT_WOOD.size(); nbm++)
+				{
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_wardrobe\":\"Armoire en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\"Armoire moderne en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_wardrobe\":\"Armoire double en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf\":\"Bibliothèque en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf_cupboard\":\"Armoire à livres en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_drawer\":\"Tiroir en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_drawer\":\"Tiroir double en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_bookshelf_drawer\":\"Tiroir de bibliothèque en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_lower_bookshelf_drawer\":\"Tiroir inférieur de bibliothèque en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_large_drawer\":\"Grand tiroir en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_lower_triple_drawer\":\"Tiroir inférieur triple en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_triple_drawer\":\"Tiroir triple en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_desk\":\"Bureau en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_covered_desk\":\"Bureau couvert en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_desk\":\"Bureau moderne en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_table\":\"Table en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_end_table\":\"Table d'appoint en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_coffee_table\":\"Table basse en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_glass_table\":\"Table de verre en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_chair\":\"Chaise en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_chair\":\"Chaise moderne en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_striped_chair\":\"Chaise striée en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_stool_chair\":\"Tabouret en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_counter\":\"Comptoir en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_drawer_counter\":\"Comptoir à tiroirs en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_drawer_counter\":\"Comptoir à double tiroir en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_cupboard_counter\":\"Armoire de comptoir en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Armoire de cuisine double en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+" vitré\",");
+					buffer.newLine();
+
+					
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_wardrobe\":\"Armoire en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\"Armoire moderne en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_wardrobe\":\"Armoire double en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_bookshelf\":\"Bibliothèque en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_bookshelf_cupboard\":\"Armoire à livres en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_drawer\":\"Tiroir en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_drawer\":\"Tiroir double en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_bookshelf_drawer\":\"Tiroir de bibliothèque en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_lower_bookshelf_drawer\":\"Tiroir inférieur de bibliothèque en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_large_drawer\":\"Grand tiroir en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_lower_triple_drawer\":\"Tiroir inférieur triple en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_triple_drawer\":\"Tiroir triple en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_desk\":\"Bureau en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_covered_desk\":\"Bureau couvert en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_modern_desk\":\"Bureau moderne en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_table\":\"Table en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_end_table\":\"Table d'appoint en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_coffee_table\":\"Table basse en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_table\":\"Table de verre en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_chair\":\"Chaise en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_modern_chair\":\"Chaise moderne en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_striped_chair\":\"Chaise striée en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_stool_chair\":\"Tabouret en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_counter\":\"Comptoir en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_drawer_counter\":\"Comptoir à tiroirs en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_drawer_counter\":\"Comptoir à double tiroir en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_cupboard_counter\":\"Armoire de comptoir en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Armoire de cuisine double en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+" écorcée vitré\",");
+					buffer.newLine();
+				}
+				
+				buffer.write("//Finish");
+				buffer.newLine();
+				buffer.write("}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
 	}
 
 	@Override
-	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {}
 }

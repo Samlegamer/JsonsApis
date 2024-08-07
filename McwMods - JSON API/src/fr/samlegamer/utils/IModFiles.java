@@ -60,6 +60,7 @@ public interface IModFiles
 	{
 		void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
 		void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
-		void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);
+		void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT);
+		void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT);
 	}
 }

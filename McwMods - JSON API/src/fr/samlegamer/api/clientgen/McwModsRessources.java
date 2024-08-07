@@ -18,7 +18,7 @@ import fr.samlegamer.utils.IModFiles;
 /*
  * Derived to McwBridges
  * For future update use this class
- * version 0.0.1
+ * version 1.0.0
  */
 public class McwModsRessources implements IModFiles.IClient
 {

@@ -10,7 +10,7 @@ import fr.samlegamer.Main;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
-public class MFLangGenerator implements IModFiles.ILang
+public class FencesLangGenerator implements IModFiles.ILang
 {
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
@@ -66,6 +66,12 @@ public class MFLangGenerator implements IModFiles.ILang
 
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {
 		// TODO Auto-generated method stub
 		
 	}

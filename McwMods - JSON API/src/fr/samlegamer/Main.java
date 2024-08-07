@@ -3,18 +3,11 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.code.furnitures.FurnituresCodeGeneratorFabric;
-import fr.samlegamer.api.code.furnitures.FurnituresCodeGeneratorForge;
-import fr.samlegamer.api.code.furnitures.FurnituresTabBuild;
-import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
-import fr.samlegamer.api.lang.mod.English;
+import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
-import fr.samlegamer.utils.ModsList;
 
 public class Main
 {	
@@ -27,31 +20,36 @@ public class Main
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
-	public static final String CompatModid = Compatibilities.BYG_FURNITURE_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID; //For recipes (ex: bop:cherry_log)
-	public static final String ClassBlockRegistry = "MFurniBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
+	public static final String CompatModid = Compatibilities.MCW_FURNITURES_MODID; //The modid of compat, Please no insert ":"
+	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
+	public static final String ClassBlockRegistry = "MBBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
 	{
-		boolean Stem = Boolean.TRUE;
-		ModsList.bygWildUp(MAT_WOOD, Stem);
-		McwAPI.FurnituresGenFolder(LOCATION);
+		/*
+		boolean Stem = Boolean.FALSE;
+		ModsList.byg120(MAT_WOOD, Stem);
+		McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		FurnituresTabBuild tab = new FurnituresTabBuild();
-		genCustom(new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, "1.20"));
-		recipeAndLoot(new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, "1.20"), Stem);
+		genCustom(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
+		recipeAndLoot(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"), Stem);
 		MAT_WOOD.clear();
-		ModsList.bygWildUp(MAT_WOOD);
-		English.BYG.bygLangWildUp(MAJ_MAT);
+		ModsList.byg120(MAT_WOOD);
+		English.BYG.byg120Lang(MAJ_MAT);
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		chargeLangEnglish(new FurnituresLangGenerator());
 		tag(new FurnituresTagGenerator());
 		chargeCodeJavaForge(new FurnituresCodeGeneratorForge(), true, false);
-		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);
-		
-		
+		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);*/
+		French.Minecraft.mcWood(MAT_WOOD, MAJ_MAT);
+		chargeLangFrench(new FurnituresLangGenerator());
+		//MAJ_MAT.clear();
+		/*French.Minecraft.mcRock(MAT_ROCK, MAJ_MAT);
+		BridgesLangGenerator lang = new BridgesLangGenerator();
+		lang.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_MAT);*/
 		//MAJ_MAT.clear();
 		//French.BYG.byg120Lang(MAJ_MAT);
 		//chargeLangFrench(new RoofsLangGenerator());
@@ -288,9 +286,13 @@ public class Main
 		f.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_MAT);
 	}
 	
+	/*
+	 * Create a lang File (fr_fr)
+	 */
 	public static void chargeLangFrench(IModFiles.ILang f)
 	{
 		f.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_MAT);
+		//f.initAllStoneFrench(CompatModid, MAT_WOOD, MAJ_MAT);
 	}
 	
 	public static void chargeCodeJavaForge(IModFiles.IProgram.JavaForge forge, boolean supNetherUpdate, boolean TrailsandTales)

@@ -142,4 +142,10 @@ public class RoofsLangGenerator implements IModFiles.ILang
 		}
 	}
 
+	@Override
+	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
