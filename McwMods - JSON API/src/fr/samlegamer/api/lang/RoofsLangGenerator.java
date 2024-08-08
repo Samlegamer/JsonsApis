@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import fr.samlegamer.Main;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
@@ -14,7 +14,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 {
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(Main.LOCATION + "En_Us_Wood_Roofs.json");
+		File file = new File(McwMain.LOCATION + "En_Us_Wood_Roofs.json");
 		
 		if(!file.exists())
 		{
@@ -82,7 +82,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 	
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(Main.LOCATION + "FR_fr_Wood_Roofs.json");
+		File file = new File(McwMain.LOCATION + "FR_fr_Wood_Roofs.json");
 		
 		if(!file.exists())
 		{

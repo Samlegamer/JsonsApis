@@ -1,19 +1,22 @@
 package fr.samlegamer;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import fr.samlegamer.netherupdate.SpartanWeaponry;
-import fr.samlegamer.utils.JsonGenerator;
 
-@JsonGenerator(name = "Spartan Weaponry - JSON API", version = "alpha-0.0.1")
-public class Main
+/*
+ * Version 2.0
+ */
+public class SpartanMain
 {
 	public static final ArrayList<String> MATERIAL = new ArrayList<>();
 	public static final ArrayList<String> MATLANG = new ArrayList<>();
 	
 	public static final String modid = "heartofspartan";
-	public static final String location = "C://Users/Samle/OneDrive/Images/Captures d��cran/models/";
-	
+	public static final String location = System.getProperty("user.dir")+File.separator+"genRessourcesSpartan"+File.separator;;
+	public static final String READER = System.getProperty("user.dir")+File.separator+"spartanweaponry"+File.separator;;
+
 	public static void main(String[] jvm)
 	{
 		registerMaterial();
@@ -31,6 +34,11 @@ public class Main
 	{
 		MATLANG.add("Azurium");
 		MATLANG.add("Milathium");
+	}
+	
+	public static void message(File file)
+	{
+		System.out.println("File : "+file.getName()+" has generated !"); 
 	}
 	
 	public static void initModels(ArrayList<String> list)

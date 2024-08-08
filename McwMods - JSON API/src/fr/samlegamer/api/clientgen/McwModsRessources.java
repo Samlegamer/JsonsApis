@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import fr.samlegamer.Main;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
@@ -68,7 +68,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -114,7 +114,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // D�terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
-			                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
+			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -162,7 +162,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // D�terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
-			                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
+			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -210,7 +210,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // D�terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
-			                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
+			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -254,7 +254,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), newFileName);
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -296,7 +296,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);

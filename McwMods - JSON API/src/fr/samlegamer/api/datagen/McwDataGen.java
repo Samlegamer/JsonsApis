@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import fr.samlegamer.Main;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
@@ -61,7 +61,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -107,7 +107,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+"data"+s+"recipes"+s, newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -150,7 +150,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -192,7 +192,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+"data"+s+"recipes"+s, newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
@@ -234,7 +234,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
-	                    Path newFilePath = Paths.get(Main.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);

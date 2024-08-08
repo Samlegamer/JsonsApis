@@ -6,7 +6,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-import fr.samlegamer.Main;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
@@ -14,7 +14,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 {
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(Main.LOCATION + "En_Us_Wood_Furnitures.json");
+		File file = new File(McwMain.LOCATION + "En_Us_Wood_Furnitures.json");
 		
 		if(!file.exists())
 		{
@@ -172,7 +172,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
-		File file = new File(Main.LOCATION + "Fr_Fr_Wood_Furnitures.json");
+		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Furnitures.json");
 		
 		if(!file.exists())
 		{
