@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.api.clientgen.McwModsRessources;
+import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
@@ -15,12 +16,13 @@ public class Main
 	public static final List<String> FLOOR = new ArrayList<String>();	// !ONLY FOR STONE! this is floor texture in the bridge
 	public static final List<String> MAT_WOOD = new ArrayList<String>();
 	public static final List<String> MAT_ROCK = new ArrayList<String>();
-	public static final List<String> MAJ_MAT = new ArrayList<String>();
+	public static final List<String> MAJ_WOOD = new ArrayList<String>();
+	public static final List<String> MAJ_ROCK = new ArrayList<String>();
 	public static final List<String> LocationFormodidPlus = new ArrayList<String>();
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
-	public static final String CompatModid = Compatibilities.MCW_FURNITURES_MODID; //The modid of compat, Please no insert ":"
+	public static final String CompatModid = Compatibilities.MCW_FENCES_MODID; //The modid of compat, Please no insert ":"
 	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MBBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
@@ -44,8 +46,9 @@ public class Main
 		tag(new FurnituresTagGenerator());
 		chargeCodeJavaForge(new FurnituresCodeGeneratorForge(), true, false);
 		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);*/
-		French.Minecraft.mcWood(MAT_WOOD, MAJ_MAT);
-		chargeLangFrench(new FurnituresLangGenerator());
+		French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
+		French.Minecraft.mcRockFences(MAT_ROCK, MAJ_ROCK);
+		chargeLangFrench(new FencesLangGenerator());
 		//MAJ_MAT.clear();
 		/*French.Minecraft.mcRock(MAT_ROCK, MAJ_MAT);
 		BridgesLangGenerator lang = new BridgesLangGenerator();
@@ -283,7 +286,8 @@ public class Main
 	 */
 	public static void chargeLangEnglish(IModFiles.ILang f)
 	{
-		f.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_MAT);
+		f.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
+		f.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 	}
 	
 	/*
@@ -291,8 +295,8 @@ public class Main
 	 */
 	public static void chargeLangFrench(IModFiles.ILang f)
 	{
-		f.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_MAT);
-		//f.initAllStoneFrench(CompatModid, MAT_WOOD, MAJ_MAT);
+		f.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		f.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
 	}
 	
 	public static void chargeCodeJavaForge(IModFiles.IProgram.JavaForge forge, boolean supNetherUpdate, boolean TrailsandTales)
