@@ -1,20 +1,26 @@
 package fr.samlegamer.utils;
 
 import java.util.List;
-
-import fr.samlegamer.api.code.bridges.MBTabBuild;
-import fr.samlegamer.api.inits.InitAllBridges;
+import fr.samlegamer.api.code.bridges.BridgesTabBuild;
 
 public class UtilsModsList
 {
 	public static class Abnormals implements IUtils
 	{
+		/* Missing data */
+		private IModFiles.IClient client;
+		
+		public Abnormals(IModFiles.IClient c)
+		{
+			this.client=c;
+		}
+		
 		@Override
 		public void eventAcceptTab(String LOCATION, List<String> MAT_WOOD, List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String ClassMod)
 		{
 			ModsList.abnormalsWood(MAT_WOOD);
 			ModsList.abnormalsRock(MAT_ROCK, WALL, FLOOR);
-			MBTabBuild mb = new MBTabBuild();
+			BridgesTabBuild mb = new BridgesTabBuild();
 			mb.builderToAddWood(LOCATION, MAT_WOOD, ClassMod);
 			mb.builderToAddStone(LOCATION, MAT_ROCK, ClassMod);
 		}
@@ -31,30 +37,41 @@ public class UtilsModsList
 			MAT_WOOD.add("rosewood");
 			MAT_WOOD.add("yucca");
 			txtLocMod = "atmospheric:block";
-			InitAllBridges.WardenAllWood(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_WOOD, MAJ_MAT, false);
+			client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+
 			MAT_WOOD.clear();
 
 			MAT_WOOD.add("maple");
 			txtLocMod = "autumnity:block";
-			InitAllBridges.WardenAllWood(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_WOOD, MAJ_MAT, false);
+			client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 			MAT_WOOD.clear();
 
 			MAT_WOOD.add("cherry");
 			MAT_WOOD.add("wisteria");
 			MAT_WOOD.add("willow");
 			txtLocMod = "environmental:block";
-			InitAllBridges.WardenAllWood(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_WOOD, MAJ_MAT, false);
+			client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 			MAT_WOOD.clear();
 
 			MAT_WOOD.add("driftwood");
 			MAT_WOOD.add("river");
 			txtLocMod = "upgrade_aquatic:block";
-			InitAllBridges.WardenAllWood(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_WOOD, MAJ_MAT, false);
+			client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 			MAT_WOOD.clear();
 
 			MAT_WOOD.add("poise");
 			txtLocMod = "endergetic:block";
-			InitAllBridges.WardenAllWood(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_WOOD, MAJ_MAT, true);
+			client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, true);
+			client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 			MAT_WOOD.clear();
 		}
 
@@ -70,7 +87,9 @@ public class UtilsModsList
 			FLOOR.add("honeycomb_block");
 			FLOOR.add("honeycomb_bricks");
 			txtLocMod = "buzzier_bees:block";
-			InitAllBridges.WardenAllRock(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_ROCK, WALL, FLOOR);
+			client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
+			client.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
+			client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 			MAT_ROCK.clear();
 			WALL.clear();
 			FLOOR.clear();
@@ -82,7 +101,9 @@ public class UtilsModsList
 			FLOOR.add("arid_sand");
 			FLOOR.add("red_arid_sand");
 			txtLocMod = "atmospheric:block";
-			InitAllBridges.WardenAllRock(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_ROCK, WALL, FLOOR);
+			client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
+			client.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
+			client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 			MAT_ROCK.clear();
 			WALL.clear();
 			FLOOR.clear();
@@ -94,7 +115,9 @@ public class UtilsModsList
 			FLOOR.add("snail_shell_block_stripes");
 			FLOOR.add("snail_shell_bricks");
 			txtLocMod = "autumnity:block";
-			InitAllBridges.WardenAllRock(LOCATION, CompatModid, txtLocMod, ModidExtended, MAT_ROCK, WALL, FLOOR);
+			client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
+			client.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
+			client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 			MAT_ROCK.clear();
 			WALL.clear();
 			FLOOR.clear();

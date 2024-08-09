@@ -6,6 +6,81 @@ public class French
 {
 	public static class BYG
 	{
+		public static void bygLang(List<String> MATERIAL)
+		{
+				MATERIAL.add("tremble");
+				MATERIAL.add("baobab");
+				MATERIAL.add("bleue enchantée");
+				MATERIAL.add("cerisier");
+				MATERIAL.add("cycas");
+				MATERIAL.add("cyprès");
+				MATERIAL.add("ébène");
+				MATERIAL.add("ether");
+				MATERIAL.add("sapin");
+				MATERIAL.add("vert enchanté");
+				MATERIAL.add("houx");
+				MATERIAL.add("jacaranda");
+				MATERIAL.add("lamente");
+				MATERIAL.add("acajou");
+				MATERIAL.add("mangrove");
+				MATERIAL.add("érable");
+				MATERIAL.add("belladone");
+				MATERIAL.add("palmier");
+				MATERIAL.add("pin");
+				MATERIAL.add("eucalyptus arc-en-ciel");
+				MATERIAL.add("séquoia");
+				MATERIAL.add("skyris");
+				MATERIAL.add("saule");
+				MATERIAL.add("hamamélis");
+				MATERIAL.add("zelkova");
+				MATERIAL.add("bulbe");
+				MATERIAL.add("imparius");
+				MATERIAL.add("scythe");
+		}
+
+		public static void bygLangWildUp(List<String> MATERIAL)
+		{
+			MATERIAL.add("tremble");
+			MATERIAL.add("baobab");
+			MATERIAL.add("bleue enchantée");
+			MATERIAL.add("cerisier");
+			MATERIAL.add("cycas");
+			MATERIAL.add("cyprès");
+			MATERIAL.add("ébène");
+			MATERIAL.add("ether");
+			MATERIAL.add("sapin");
+			MATERIAL.add("vert enchanté");
+			MATERIAL.add("houx");
+			MATERIAL.add("jacaranda");
+			MATERIAL.add("lamente");
+			MATERIAL.add("acajou");
+			MATERIAL.add("mangrove");
+			MATERIAL.add("érable");
+			MATERIAL.add("belladone");
+			MATERIAL.add("palmier");
+			MATERIAL.add("pin");
+			MATERIAL.add("eucalyptus arc-en-ciel");
+			MATERIAL.add("séquoia");
+			MATERIAL.add("skyris");
+			MATERIAL.add("saule");
+			MATERIAL.add("hamamélis");
+			MATERIAL.add("zelkova");
+			MATERIAL.add("bulbe");
+			MATERIAL.add("imparius");
+			MATERIAL.add("scythe");
+		}
+		
+		public static void bygRockLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("roche cryptique");
+			MAJ_ROCK.add("briques de dacite");
+			MAJ_ROCK.add("travertine polie");
+			MAJ_ROCK.add("roche pourpre");
+			MAJ_ROCK.add("briques de roche rouge");
+			MAJ_ROCK.add("briques de soria");
+			MAJ_ROCK.add("briques de stéatite");
+		}
+		
 		public static void byg120Lang(List<String> MAJ_MAT)
 		{
 			MAJ_MAT.add("tremble");

@@ -6,15 +6,15 @@ import fr.samlegamer.api.lang.mod.English;
 
 public class ModsList
 {
-	public static void bygRock(List<String> MATERIAL, List<String> WALL, List<String> FLOOR)
+	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		MATERIAL.add("cryptic_stone");
-		MATERIAL.add("dacite_bricks");
-		MATERIAL.add("polished_travertine");
-		MATERIAL.add("purpur_stone");
-		MATERIAL.add("red_rock_bricks");
-		MATERIAL.add("scoria_stone_bricks");
-		MATERIAL.add("soapstone_bricks");
+		MAT_ROCK.add("cryptic_stone");
+		MAT_ROCK.add("dacite_bricks");
+		MAT_ROCK.add("polished_travertine");
+		MAT_ROCK.add("purpur_stone");
+		MAT_ROCK.add("red_rock_bricks");
+		MAT_ROCK.add("scoria_stone_bricks");
+		MAT_ROCK.add("soapstone_bricks");
 		
 		WALL.add("cryptic_stone");
 		WALL.add("dacite_bricks");
@@ -206,12 +206,6 @@ public class ModsList
 		MATERIAL.add("florus");
 	}
 
-	@Deprecated
-	public static void byg120Lang(List<String> MATERIAL)
-	{
-		English.BYG.byg120Lang(MATERIAL);
-	}
-	
 	public static void bygWildUp(List<String> MATERIAL)
 	{
 			MATERIAL.add("aspen");
@@ -244,18 +238,6 @@ public class ModsList
 			MATERIAL.add("sythian");
 	}
 
-	@Deprecated
-	public static void bygLang(List<String> MATERIAL)
-	{
-		English.BYG.bygLang(MATERIAL);
-	}
-	
-	@Deprecated
-	public static void bygLangWildUp(List<String> MATERIAL)
-	{
-		English.BYG.bygLangWildUp(MATERIAL);
-	}
-	
 	public static void bop(List<String> MAT_WOOD, boolean cherryMC)
 	{
 		if(!cherryMC) { MAT_WOOD.add("cherry"); }
@@ -284,18 +266,6 @@ public class ModsList
 		MAT_WOOD.add("umbran");
 		MAT_WOOD.add("willow");
 		MAT_WOOD.add("empyreal");
-	}
-	
-	@Deprecated
-	public static void bopLang(List<String> MAJ_MAT, boolean cherryMc)
-	{
-		English.BOP.bopLang(MAJ_MAT, cherryMc);
-	}
-	
-	@Deprecated
-	public static void bop1204Lang(List<String> MAJ_MAT)
-	{
-		English.BOP.bop1204Lang(MAJ_MAT);
 	}
 	
 	public static void shroomed(List<String> MAT_WOOD)

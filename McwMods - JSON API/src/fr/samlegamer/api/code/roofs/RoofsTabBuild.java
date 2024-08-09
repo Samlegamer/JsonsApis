@@ -106,4 +106,10 @@ public class RoofsTabBuild implements IModFiles.IProgram.TabBuild
 		}
 	}
 
+	@Override
+	public void fabricStone(String LOCATION, List<String> MAT_ROCK, String ClassBR) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

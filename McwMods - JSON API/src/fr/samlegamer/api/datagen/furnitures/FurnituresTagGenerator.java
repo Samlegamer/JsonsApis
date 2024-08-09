@@ -232,4 +232,10 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 		addTagWood(LOCATION, Modid, MAT_WOOD, "wadrobe");
 	}
 
+	@Override
+	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -3,11 +3,18 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.lang.FencesLangGenerator;
+import fr.samlegamer.api.code.bridges.BridgesCodeGeneratorForge;
+import fr.samlegamer.api.code.bridges.BridgesTabBuild;
+import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
+import fr.samlegamer.api.lang.BridgesLangGenerator;
+import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
+import fr.samlegamer.utils.ModsList;
 
 public class McwMain
 {	
@@ -21,33 +28,62 @@ public class McwMain
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
-	public static final String CompatModid = Compatibilities.MCW_FENCES_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
+	public static final String CompatModid = Compatibilities.BYG_BRIDGES_MODID; //The modid of compat, Please no insert ":"
+	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MBBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
 	{
-		/*
+		McwAPI.BridgesGenFolder(LOCATION);
+		McwAPI.DataGenFolder(LOCATION);
+
 		boolean Stem = Boolean.FALSE;
+		ModsList.byg(MAT_WOOD, Stem);
+		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
+
+		genClientWood(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
+		recipeAndLootWood(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"), Stem);
+		
+		genClientStone(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE, "1.20"));
+		recipeAndLootStone(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"));
+		tagStone(new BridgesTagsGenerator());
+		MAT_WOOD.clear();
+		ModsList.bygAssets(MAT_WOOD);
+		
+		chargeCodeJavaForge(new BridgesCodeGeneratorForge(), false, false, true);
+		tagWood(new BridgesTagsGenerator());
+		tabBuildForge(new BridgesTabBuild(), true);
+		//tabBuildFabric(new BridgesTabBuild(), true);
+		English.BYG.bygLang(MAJ_WOOD);
+		English.BYG.bygRockLang(MAJ_ROCK);
+		chargeLangEnglish(new BridgesLangGenerator());
+		MAJ_WOOD.clear();
+		MAJ_ROCK.clear();
+		French.BYG.bygLang(MAJ_WOOD);
+		French.BYG.bygRockLang(MAJ_ROCK);
+		chargeLangFrench(new BridgesLangGenerator());
+		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
-		FurnituresTabBuild tab = new FurnituresTabBuild();
+		BridgesTabBuild tab = new BridgesTabBuild();
 		genCustom(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
 		recipeAndLoot(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"), Stem);
 		MAT_WOOD.clear();
 		ModsList.byg120(MAT_WOOD);
-		English.BYG.byg120Lang(MAJ_MAT);
+		English.BYG.byg120Lang(MAJ_WOOD);
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		chargeLangEnglish(new FurnituresLangGenerator());
+		chargeLangEnglish(new BridgesLangGenerator());
 		tag(new FurnituresTagGenerator());
 		chargeCodeJavaForge(new FurnituresCodeGeneratorForge(), true, false);
-		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);*/
-		French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
+		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);
+		
+		chargeLangFrench(new BridgesLangGenerator());*/
+		/*French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
 		French.Minecraft.mcRockFences(MAT_ROCK, MAJ_ROCK);
-		chargeLangFrench(new FencesLangGenerator());
+		chargeLangFrench(new FencesLangGenerator());*/
 		//MAJ_MAT.clear();
 		/*French.Minecraft.mcRock(MAT_ROCK, MAJ_MAT);
 		BridgesLangGenerator lang = new BridgesLangGenerator();
@@ -237,47 +273,82 @@ public class McwMain
 		//MRCodeGenFabric.init(LOCATION, MAT_WOOD, ClassMod);
 	}
 	
-	private static void tag(IModFiles.ITagData t)
+	public static void tabBuildForge(IModFiles.IProgram.TabBuild tab, boolean stone)
+	{
+		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		if(stone) {
+			tab.builderToAddStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+		}
+	}
+	
+	public static void tabBuildFabric(IModFiles.IProgram.TabBuild tab, boolean stone)
+	{
+		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		if(stone) {
+			tab.fabricStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+		}
+	}
+	
+	public static void tagWood(IModFiles.ITagData t)
 	{
 		t.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		t.TagsWood(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
-	public static void recipeAndLoot(IModFiles.IData f, boolean isStem)
+	public static void tagStone(IModFiles.ITagData t)
+	{
+		t.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
+		t.TagsRock(LOCATION, CompatModid, MAT_ROCK);
+	}
+	
+	public static void recipeAndLootWood(IModFiles.IData f, boolean isStem)
 	{
 		f.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		f.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
-
-	public static void recipeAndLoot(IModFiles.IData f)
+	public static void recipeAndLootStone(IModFiles.IData f)
 	{
-		recipeAndLoot(f, false);
+		f.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		f.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		f.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
+	}
+
+	public static void recipeAndLootWood(IModFiles.IData f)
+	{
+		recipeAndLootWood(f, false);
 	}
 	
-	private static void genCustom(McwModsRessources client)
+	public static void genCustom(McwModsRessources client)
 	{
 		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-		client.createModelItem(LOCATION, CompatModid, MAT_WOOD);
+		client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
 	}
 	
 	private static void genCustom(McwModsRessources client, boolean isStem)
 	{
 		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-		client.createModelItem(LOCATION, CompatModid, MAT_WOOD);
+		client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", isStem ? "stem" : "log", isStem ? "stripped_stem" : "stripped_log");
 	}
 
 	/*
 	 * Create a blockstates and models block/item
 	 */
-	public static void genClient(IModFiles.IClient f, boolean isStem)
+	public static void genClientWood(IModFiles.IClient f, boolean isStem)
 	{
 		f.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		f.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
-		f.createModelItem(LOCATION, CompatModid, MAT_WOOD);
+		f.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+	}
+	
+	public static void genClientStone(IModFiles.IClient f)
+	{
+		f.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
+		f.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
+		f.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
 	/*
@@ -298,15 +369,23 @@ public class McwMain
 		f.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
 	}
 	
-	public static void chargeCodeJavaForge(IModFiles.IProgram.JavaForge forge, boolean supNetherUpdate, boolean TrailsandTales)
+	public static void chargeCodeJavaForge(IModFiles.IProgram.JavaForge forge, boolean supNetherUpdate, boolean TrailsandTales, boolean stone)
 	{
 		forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		forge.registerBlockLog(LOCATION, MAT_WOOD, supNetherUpdate, TrailsandTales);
+		if(stone) {
+			forge.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+			forge.registerBlockStone(LOCATION, MAT_ROCK, supNetherUpdate, TrailsandTales);
+		}
 	}
 	
-	public static void chargeCodeJavaFabric(IModFiles.IProgram.JavaFabric fabric, boolean supNetherUpdate, boolean TrailsandTales)
+	public static void chargeCodeJavaFabric(IModFiles.IProgram.JavaFabric fabric, boolean supNetherUpdate, boolean TrailsandTales, boolean stone)
 	{
 		fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		fabric.registerBlockLog(LOCATION, MAT_WOOD, supNetherUpdate, TrailsandTales);
+		if(stone) {
+			fabric.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+			fabric.registerBlockStone(LOCATION, MAT_ROCK, supNetherUpdate, TrailsandTales);
+		}
 	}
 }

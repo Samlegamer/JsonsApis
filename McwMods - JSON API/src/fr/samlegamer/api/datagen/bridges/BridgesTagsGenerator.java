@@ -10,7 +10,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.IModFiles;
 
-public class MBTagsGenerator implements IModFiles.ITagData
+public class BridgesTagsGenerator implements IModFiles.ITagData
 {
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{		

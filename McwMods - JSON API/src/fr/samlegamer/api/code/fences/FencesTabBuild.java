@@ -9,7 +9,7 @@ import java.util.List;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
-public class MFTabBuild implements IModFiles.IProgram.TabBuild
+public class FencesTabBuild implements IModFiles.IProgram.TabBuild
 {
 	public void builderToAddWood(String LOCATION, List<String> MAT_WOOD, String ClassBlockRegistry)
 	{
@@ -60,6 +60,12 @@ public class MFTabBuild implements IModFiles.IProgram.TabBuild
 
 	@Override
 	public void fabricWood(String location, List<String> MAT_WOOD, String ClassBR) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void fabricStone(String LOCATION, List<String> MAT_ROCK, String ClassBR) {
 		// TODO Auto-generated method stub
 		
 	}

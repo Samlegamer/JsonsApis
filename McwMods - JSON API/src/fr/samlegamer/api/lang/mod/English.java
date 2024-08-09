@@ -91,7 +91,7 @@ public class English
 				MATERIAL.add("Redwood");
 				MATERIAL.add("Skyris");
 				MATERIAL.add("Willow");
-				MATERIAL.add("Witch_hazel");
+				MATERIAL.add("Witch Hazel");
 				MATERIAL.add("Zelkova");
 				MATERIAL.add("Bulbis");
 				MATERIAL.add("Imparius");
@@ -123,11 +123,22 @@ public class English
 				MATERIAL.add("Redwood");
 				MATERIAL.add("Skyris");
 				MATERIAL.add("Willow");
-				MATERIAL.add("Witch_hazel");
+				MATERIAL.add("Witch Hazel");
 				MATERIAL.add("Zelkova");
 				MATERIAL.add("Bulbis");
 				MATERIAL.add("Imparius");
 				MATERIAL.add("Sythian");
+		}
+		
+		public static void bygRockLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("Cryptic Stone");
+			MAJ_ROCK.add("Dacite Bricks");
+			MAJ_ROCK.add("Polished Travertine");
+			MAJ_ROCK.add("Purpur Stone");
+			MAJ_ROCK.add("Red Rock Bricks");
+			MAJ_ROCK.add("Soria Stone Bricks");
+			MAJ_ROCK.add("Soapstone Bricks");
 		}
 	}
 }

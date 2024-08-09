@@ -10,7 +10,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.IModFiles;
 
-public class MFTagsGenerator implements IModFiles.ITagData
+public class FencesTagsGenerator implements IModFiles.ITagData
 {
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{		
@@ -178,6 +178,12 @@ public class MFTagsGenerator implements IModFiles.ITagData
 
 	@Override
 	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK) {
 		// TODO Auto-generated method stub
 		
 	}

@@ -76,7 +76,48 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
+	@Override
+	public void AdvancementsStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK)
+	{
+		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath());
+		
+		for(String i : MAT_ROCK)
+		{
+	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
+	        try (Stream<Path> files = Files.list(directory)) {
+	            List<Path> acaciaFiles = files
+	                    .filter(file -> file.getFileName().toString().contains("sandstone"))
+	                    .collect(Collectors.toList());
 	
+	            for (Path file : acaciaFiles) {
+	            	try {
+	                    // Lire tout le contenu du fichier
+	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+	
+	                    // Remplacer "acacia" par "cherry" dans le contenu
+	                    List<String> modifiedLines = lines.stream()
+	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
+	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
+	                            .collect(Collectors.toList());
+	
+	                    // D�terminer le nouveau nom de fichier
+	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
+	
+	                    // �crire le contenu modifi� dans un nouveau fichier
+	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
+	                    McwAPI.message(newFilePath.toFile());
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		}
+	}
+
 	@Override
 	public void RecipesLogAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood)
 	{
@@ -185,7 +226,6 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // Remplacer "acacia" par "cherry" dans le contenu
 	                    List<String> modifiedLines = lines.stream()
-	                            .map(line -> line.replace("minecraft:sandstone_log", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .collect(Collectors.toList());
@@ -227,8 +267,6 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // Remplacer "acacia" par "cherry" dans le contenu
 	                    List<String> modifiedLines = lines.stream()
-	                            //.map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
-	                            //.map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .collect(Collectors.toList());
 	

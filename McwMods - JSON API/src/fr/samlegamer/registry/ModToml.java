@@ -6,6 +6,7 @@ import fr.samlegamer.utils.APIWriter;
 
 public class ModToml
 {
+	@SuppressWarnings("deprecation")
 	public static void build(String location, String modid, String ModName, String version, String versionMC, 
 	String picture, String desc, String WebURL, String Author)
 	{

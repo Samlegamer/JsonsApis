@@ -321,4 +321,19 @@ public class FurnituresCodeGeneratorFabric implements IModFiles.IProgram.JavaFab
 			}
 		}
 	}
+
+
+	@Override
+	public void registerBlockStone(String Location, List<String> Material, boolean supNetherUpdate,
+			boolean TrailsandTales) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void InitRendersStone(String Location, List<String> Material, String classBlock) {
+		// TODO Auto-generated method stub
+		
+	}
 }
