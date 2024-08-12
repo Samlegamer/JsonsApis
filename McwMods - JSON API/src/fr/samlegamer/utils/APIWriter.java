@@ -7,7 +7,7 @@ import java.io.IOException;
 
 import fr.samlegamer.McwAPI;
 
-@Deprecated
+@Deprecated(forRemoval = true, since = "2025")
 public class APIWriter
 {
 	@Deprecated

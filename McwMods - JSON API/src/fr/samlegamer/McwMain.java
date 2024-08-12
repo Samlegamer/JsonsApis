@@ -16,6 +16,8 @@ import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.ModsList;
+import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.preset.bridges.BridgesAbnormals;
 
 public class McwMain
 {	
@@ -36,7 +38,13 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		McwAPI.BridgesGenFolder(LOCATION);
+		preset(new BridgesAbnormals());
+		
+		
+		
+		
+		
+		/*McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
 		boolean Stem = Boolean.TRUE;
@@ -65,7 +73,7 @@ public class McwMain
 		MAJ_ROCK.clear();
 		French.BYG.byg120Lang(MAJ_WOOD);
 		French.BYG.bygRockLang120(MAJ_ROCK);
-		chargeLangFrench(new BridgesLangGenerator());
+		chargeLangFrench(new BridgesLangGenerator());*/
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);
@@ -274,6 +282,11 @@ public class McwMain
 		//MBTagGenerator.AxeDataGen(LOCATION, CompatModid, MAT_WOOD);
 		//MBCodeGenFabric.init(LOCATION, CompatModid, MAT_WOOD, ClassMod);
 		//MRCodeGenFabric.init(LOCATION, MAT_WOOD, ClassMod);
+	}
+	
+	public static void preset(Presetting preset)
+	{
+		preset.init(LOCATION);
 	}
 	
 	public static void tabBuildForge(IModFiles.IProgram.TabBuild tab, boolean stone)

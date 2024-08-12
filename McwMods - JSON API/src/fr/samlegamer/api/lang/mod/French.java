@@ -1,9 +1,41 @@
 package fr.samlegamer.api.lang.mod;
 
 import java.util.List;
+import fr.samlegamer.utils.Uncomplete;
 
 public class French
 {
+	@Uncomplete(percent = 5, missing = "french lang missing")
+	public static class Abnormals
+	{
+		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("Aspen");
+			MAJ_WOOD.add("Grimwood");
+			MAJ_WOOD.add("Kousa");
+			MAJ_WOOD.add("Morado");
+			MAJ_WOOD.add("Rosewood");
+			MAJ_WOOD.add("Yucca");
+			MAJ_WOOD.add("érable");
+			MAJ_WOOD.add("Cherry");
+			MAJ_WOOD.add("glycine");
+			MAJ_WOOD.add("Willow");
+			MAJ_WOOD.add("Driftwood");
+			MAJ_WOOD.add("River");
+			MAJ_WOOD.add("Poise");
+		}
+
+		public static void abnormalsRockLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("Honeycomb Bricks");
+			MAJ_ROCK.add("Honeycomb Tiles");
+			MAJ_ROCK.add("Red Arid Sandstone");
+			MAJ_ROCK.add("Arid Sandstone");
+			MAJ_ROCK.add("Snail Shell Bricks");
+			MAJ_ROCK.add("Snail Shell Tiles");
+		}
+	}
+	
 	public static class BYG
 	{
 		public static void bygLang(List<String> MATERIAL)

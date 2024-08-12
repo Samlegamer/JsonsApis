@@ -1,5 +1,6 @@
 package fr.samlegamer.utils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModsList
@@ -31,6 +32,14 @@ public class ModsList
 		FLOOR.add("soapstone");
 	}
 	
+	public static void bygRock(List<String> MAT_ROCK)
+	{
+		List<String> WALL = new ArrayList<String>();
+		List<String> FLOOR = new ArrayList<String>();
+		bygRock(MAT_ROCK, WALL, FLOOR);
+	}
+
+	
 	public static void bygRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		MAT_ROCK.add("dacite_bricks");
@@ -61,43 +70,50 @@ public class ModsList
 		FLOOR.add("windswept_sand");
 	}
 	
-	public static void byg(List<String> MATERIAL, boolean isStem)
+	public static void byg(List<String> MAT_WOOD, boolean isStem)
 	{
 		if(!isStem)
 		{
-			MATERIAL.add("aspen");
-			MATERIAL.add("baobab");
-			MATERIAL.add("blue_enchanted");
-			MATERIAL.add("cherry");
-			MATERIAL.add("cika");
-			MATERIAL.add("cypress");
-			MATERIAL.add("ebony");
-			MATERIAL.add("ether");
-			MATERIAL.add("fir");
-			MATERIAL.add("green_enchanted");
-			MATERIAL.add("holly");
-			MATERIAL.add("jacaranda");
-			MATERIAL.add("lament");
-			MATERIAL.add("mahogany");
-			MATERIAL.add("mangrove");
-			MATERIAL.add("maple");
-			MATERIAL.add("nightshade");
-			MATERIAL.add("palm");
-			MATERIAL.add("pine");
-			MATERIAL.add("rainbow_eucalyptus");
-			MATERIAL.add("redwood");
-			MATERIAL.add("skyris");
-			MATERIAL.add("willow");
-			MATERIAL.add("witch_hazel");
-			MATERIAL.add("zelkova");
+			MAT_WOOD.add("aspen");
+			MAT_WOOD.add("baobab");
+			MAT_WOOD.add("blue_enchanted");
+			MAT_WOOD.add("cherry");
+			MAT_WOOD.add("cika");
+			MAT_WOOD.add("cypress");
+			MAT_WOOD.add("ebony");
+			MAT_WOOD.add("ether");
+			MAT_WOOD.add("fir");
+			MAT_WOOD.add("green_enchanted");
+			MAT_WOOD.add("holly");
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("lament");
+			MAT_WOOD.add("mahogany");
+			MAT_WOOD.add("mangrove");
+			MAT_WOOD.add("maple");
+			MAT_WOOD.add("nightshade");
+			MAT_WOOD.add("palm");
+			MAT_WOOD.add("pine");
+			MAT_WOOD.add("rainbow_eucalyptus");
+			MAT_WOOD.add("redwood");
+			MAT_WOOD.add("skyris");
+			MAT_WOOD.add("willow");
+			MAT_WOOD.add("witch_hazel");
+			MAT_WOOD.add("zelkova");
 		}
 		
 		if(isStem)
 		{
-			MATERIAL.add("bulbis");
-			MATERIAL.add("imparius");
-			MATERIAL.add("sythian");
+			MAT_WOOD.add("bulbis");
+			MAT_WOOD.add("imparius");
+			MAT_WOOD.add("sythian");
 		}
+	}
+	
+	public static void bygRock120(List<String> MAT_ROCK)
+	{
+		List<String> WALL = new ArrayList<String>();
+		List<String> FLOOR = new ArrayList<String>();
+		bygRock(MAT_ROCK, WALL, FLOOR);
 	}
 	
 	public static void bygAssets(List<String> MATERIAL)
@@ -343,6 +359,13 @@ public class ModsList
 		WALL.add("snail_shell_tiles");
 		FLOOR.add("snail_shell_block_stripes");
 		FLOOR.add("snail_shell_bricks");
+	}
+	
+	public static void abnormalsRock(List<String> MAT_ROCK)
+	{
+		List<String> WALL = new ArrayList<String>();
+		List<String> FLOOR = new ArrayList<String>();
+		abnormalsRock(MAT_ROCK, WALL, FLOOR);
 	}
 
 	public static void betterlandsWoods(List<String> MAT_WOOD)
