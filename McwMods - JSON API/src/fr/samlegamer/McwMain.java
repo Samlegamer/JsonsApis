@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
+import fr.samlegamer.api.code.bridges.BridgesCodeGeneratorFabric;
 import fr.samlegamer.api.code.bridges.BridgesCodeGeneratorForge;
 import fr.samlegamer.api.code.bridges.BridgesTabBuild;
 import fr.samlegamer.api.datagen.McwDataGen;
@@ -29,8 +30,8 @@ public class McwMain
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
 	public static final String CompatModid = Compatibilities.BYG_BRIDGES_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID; //For recipes (ex: bop:cherry_log)
+	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MBBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
@@ -38,30 +39,32 @@ public class McwMain
 		McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		boolean Stem = Boolean.FALSE;
-		ModsList.byg(MAT_WOOD, Stem);
+		boolean Stem = Boolean.TRUE;
+		ModsList.byg120(MAT_WOOD, Stem);
 		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
-
-		genClientWood(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
+		
+		genCustom(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
 		recipeAndLootWood(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"), Stem);
 		
 		genClientStone(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE, "1.20"));
 		recipeAndLootStone(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"));
 		tagStone(new BridgesTagsGenerator());
 		MAT_WOOD.clear();
-		ModsList.bygAssets(MAT_WOOD);
+		ModsList.byg120(MAT_WOOD);
 		
-		chargeCodeJavaForge(new BridgesCodeGeneratorForge(), false, false, true);
+		chargeCodeJavaForge(new BridgesCodeGeneratorForge(), true, true, true);
+		chargeCodeJavaFabric(new BridgesCodeGeneratorFabric(), true, true, true);
+
 		tagWood(new BridgesTagsGenerator());
 		tabBuildForge(new BridgesTabBuild(), true);
-		//tabBuildFabric(new BridgesTabBuild(), true);
-		English.BYG.bygLang(MAJ_WOOD);
-		English.BYG.bygRockLang(MAJ_ROCK);
+		tabBuildFabric(new BridgesTabBuild(), true);
+		English.BYG.byg120Lang(MAJ_WOOD);
+		English.BYG.bygRockLang120(MAJ_ROCK);
 		chargeLangEnglish(new BridgesLangGenerator());
 		MAJ_WOOD.clear();
 		MAJ_ROCK.clear();
-		French.BYG.bygLang(MAJ_WOOD);
-		French.BYG.bygRockLang(MAJ_ROCK);
+		French.BYG.byg120Lang(MAJ_WOOD);
+		French.BYG.bygRockLang120(MAJ_ROCK);
 		chargeLangFrench(new BridgesLangGenerator());
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);

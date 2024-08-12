@@ -31,17 +31,11 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				for(String i : MAT_WOOD)
 				{
 					buffer.write("    \""+Modid+":"+i+"_log_bridge_middle\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":rope_"+i+"_bridge\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_bridge_pier\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_log_bridge_stair\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_rope_bridge_stair\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_rail_bridge\",\r\n"+ "");
-					buffer.newLine();
 				}
 				
 				buffer.write("  ]\r\n" + "}");
@@ -76,11 +70,9 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				for(String i : MAT_ROCK)
 				{
 					buffer.write("    \""+Modid+":"+i+"_bridge\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_bridge_pier\",\r\n"+ "");
-					buffer.newLine();
 					buffer.write("    \""+Modid+":"+i+"_bridge_stair\",\r\n"+ "");
-					buffer.newLine();
+					buffer.write("    \""+Modid+":balustrade_"+i+"_bridge\",\r\n"+ "");
 				}
 				
 				buffer.write("  ]\r\n" + "}");
@@ -336,6 +328,8 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				for(String i : MAT_ROCK)
 				{
 					buffer.write("\""+Modid+":"+i+"_bridge\",");
+					buffer.newLine();
+					buffer.write("\""+Modid+":balustrade_"+i+"_bridge\",");
 					buffer.newLine();
 				}
 				

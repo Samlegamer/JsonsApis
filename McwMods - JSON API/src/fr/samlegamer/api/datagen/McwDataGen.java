@@ -14,6 +14,9 @@ import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
+/*
+ * Gen Recipes Loot Tables and Advancements
+ */
 public class McwDataGen implements IModFiles.IData
 {
 	private static final String s = File.separator;
@@ -86,7 +89,7 @@ public class McwDataGen implements IModFiles.IData
 	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains("sandstone"))
+	                    .filter(file -> file.getFileName().toString().startsWith("sandstone") | file.getFileName().toString().startsWith("balustrade_sandstone"))
 	                    .collect(Collectors.toList());
 	
 	            for (Path file : acaciaFiles) {
@@ -99,6 +102,7 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier
@@ -216,7 +220,7 @@ public class McwDataGen implements IModFiles.IData
 	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains("sandstone"))
+	                    .filter(file -> file.getFileName().toString().startsWith("sandstone") | file.getFileName().toString().startsWith("balustrade_sandstone"))
 	                    .collect(Collectors.toList());
 	
 	            for (Path file : acaciaFiles) {
@@ -228,6 +232,7 @@ public class McwDataGen implements IModFiles.IData
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier
@@ -257,7 +262,7 @@ public class McwDataGen implements IModFiles.IData
 	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains("sandstone"))
+	                    .filter(file -> file.getFileName().toString().startsWith("sandstone") | file.getFileName().toString().startsWith("balustrade_sandstone"))
 	                    .collect(Collectors.toList());
 	
 	            for (Path file : acaciaFiles) {
@@ -268,6 +273,7 @@ public class McwDataGen implements IModFiles.IData
 	                    // Remplacer "acacia" par "cherry" dans le contenu
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier

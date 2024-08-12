@@ -140,5 +140,17 @@ public class English
 			MAJ_ROCK.add("Soria Stone Bricks");
 			MAJ_ROCK.add("Soapstone Bricks");
 		}
+		
+		public static void bygRockLang120(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("Dacite Bricks");
+			MAJ_ROCK.add("Red Rock Bricks");
+			MAJ_ROCK.add("Pink Sandstone");
+			MAJ_ROCK.add("White Sandstone");
+			MAJ_ROCK.add("Blue Sandstone");
+			MAJ_ROCK.add("Purple Sandstone");
+			MAJ_ROCK.add("Black Sandstone");
+			MAJ_ROCK.add("Windswept Sandstone");
+		}
 	}
 }

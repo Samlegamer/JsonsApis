@@ -66,11 +66,9 @@ public class BridgesTabBuild implements IModFiles.IProgram.TabBuild
 				for(String i : MAT_ROCK)
 				{
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_bridge.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_bridge_pier.get());\r\n"+ "");
-					buffer.newLine();
 					buffer.write("event.accept("+ClassBlockRegistry+"."+i+"_bridge_stair.get());\r\n"+ "");
-					buffer.newLine();
+					buffer.write("event.accept("+ClassBlockRegistry+".balustrade_"+i+"_bridge.get());\r\n"+ "");
 				}
 				
 				buffer.newLine();
@@ -160,6 +158,8 @@ public class BridgesTabBuild implements IModFiles.IProgram.TabBuild
 					buffer.write("content.add("+ClassBlockRegistry+"."+i+"_bridge_pier);");
 					buffer.newLine();
 					buffer.write("content.add("+ClassBlockRegistry+"."+i+"_bridge_stair);");
+					buffer.newLine();
+					buffer.write("content.add("+ClassBlockRegistry+".balustrade_"+i+"_bridge);");
 					buffer.newLine();
 				}
 				

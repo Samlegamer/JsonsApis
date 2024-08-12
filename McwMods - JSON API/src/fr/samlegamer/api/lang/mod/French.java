@@ -81,6 +81,18 @@ public class French
 			MAJ_ROCK.add("briques de stéatite");
 		}
 		
+		public static void bygRockLang120(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("briques de dacite");
+			MAJ_ROCK.add("briques de roche rouge");
+			MAJ_ROCK.add("grès rose");
+			MAJ_ROCK.add("grès blanc");
+			MAJ_ROCK.add("grès bleu");
+			MAJ_ROCK.add("grès violet");
+			MAJ_ROCK.add("grès noir");
+			MAJ_ROCK.add("en grès balayé");
+		}
+		
 		public static void byg120Lang(List<String> MAJ_MAT)
 		{
 			MAJ_MAT.add("tremble");

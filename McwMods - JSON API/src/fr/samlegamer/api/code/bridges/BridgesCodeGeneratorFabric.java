@@ -79,17 +79,11 @@ public class BridgesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 				for(String i : Material)
 				{
 					buffer.write("public static final Block "+i+"_log_bridge_middle = new Log_Bridge(WOOD);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block rope_"+i+"_bridge = new Bridge_Block_Rope(WOOD);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_bridge_pier = new Bridge_Support(WOOD);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_log_bridge_stair = new Bridge_Stairs(WOOD);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_rope_bridge_stair = new Bridge_Stairs(WOOD);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_rail_bridge = new Rail_Bridge(RAILS);\r\n");
-					buffer.newLine();
 				}
 				
 				buffer.newLine();
@@ -145,13 +139,9 @@ public class BridgesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 				for(String i : Material)
 				{
 					buffer.write("public static final Block "+i+"_bridge = new Bridge_Block(STONE);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_bridge_pier = new Bridge_Support(STONE);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block "+i+"_bridge_stair = new Bridge_Stairs(STONE);\r\n");
-					buffer.newLine();
 					buffer.write("public static final Block balustrade_"+i+"_bridge = new Bridge_Block(STONE);\r\n");
-					buffer.newLine();
 				}
 				
 				buffer.newLine();

@@ -2,8 +2,6 @@ package fr.samlegamer.utils;
 
 import java.util.List;
 
-import fr.samlegamer.api.lang.mod.English;
-
 public class ModsList
 {
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
@@ -31,6 +29,36 @@ public class ModsList
 		FLOOR.add("red_rock");
 		FLOOR.add("scoria_stone");
 		FLOOR.add("soapstone");
+	}
+	
+	public static void bygRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		MAT_ROCK.add("dacite_bricks");
+		MAT_ROCK.add("red_rock_bricks");
+		MAT_ROCK.add("pink_sandstone");
+		MAT_ROCK.add("white_sandstone");
+		MAT_ROCK.add("blue_sandstone");
+		MAT_ROCK.add("purple_sandstone");
+		MAT_ROCK.add("black_sandstone");
+		MAT_ROCK.add("windswept_sandstone");
+
+		WALL.add("dacite_bricks");
+		WALL.add("red_rock_bricks");
+		WALL.add("pink_sandstone");
+		WALL.add("white_sandstone");
+		WALL.add("blue_sandstone");
+		WALL.add("purple_sandstone");
+		WALL.add("black_sandstone");
+		WALL.add("windswept_sandstone");
+		
+		FLOOR.add("dacite");
+		FLOOR.add("red_rock");
+		FLOOR.add("pink_sand");
+		FLOOR.add("white_sand");
+		FLOOR.add("blue_sand");
+		FLOOR.add("purple_sand");
+		FLOOR.add("black_sand");
+		FLOOR.add("windswept_sand");
 	}
 	
 	public static void byg(List<String> MATERIAL, boolean isStem)

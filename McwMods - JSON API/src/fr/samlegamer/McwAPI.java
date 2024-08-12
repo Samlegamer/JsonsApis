@@ -64,6 +64,7 @@ public class McwAPI
 		result.add("bridge"+File.separator+"bridge_stone"+File.separator);
 		result.add("stair"+File.separator+"stone"+File.separator);
 		result.add("support_pier"+File.separator);
+		result.add("bridge"+File.separator+"balustrade"+File.separator);//Added
 		return result;
 	}
 	
@@ -167,6 +168,7 @@ public class McwAPI
 		registerFolder(location, "models/block/bridge/");
 		registerFolder(location, "models/block/bridge/bridge_wood/");
 		registerFolder(location, "models/block/bridge/bridge_stone/");
+		registerFolder(location, "models/block/bridge/balustrade/"); //added
 		registerFolder(location, "models/block/bridge/rail/");
 		registerFolder(location, "models/block/bridge/rope/");
 		registerFolder(location, "models/block/stair/");
