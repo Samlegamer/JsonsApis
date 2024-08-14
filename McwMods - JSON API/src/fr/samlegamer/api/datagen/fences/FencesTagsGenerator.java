@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -12,6 +13,19 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesTagsGenerator implements IModFiles.ITagData
 {
+	private boolean stone;
+	private List<String> MAT_ROCK;
+	
+	public FencesTagsGenerator(boolean s, List<String> rock)
+	{
+		this.stone = s;
+		this.MAT_ROCK=rock;
+	}
+	
+	public FencesTagsGenerator() {
+		this(false, new ArrayList<String>());
+	}
+	
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{		
 		File file = new File(LOCATION + "MineableAxeData(Macaw's Fences).json");
@@ -64,7 +78,88 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 		File blk = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fences.json");
 		File blk2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fence_gates.json");
 		File itm = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_ITEM.getPath() + "fences.json");
+		File itm4 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_ITEM.getPath() + "walls.json");
+		File blk4 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "walls.json");
 
+		if(!itm4.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(itm4);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"replace\": false,\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_WOOD)
+				{
+					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
+					buffer.newLine();
+				}
+				
+				if(stone) {
+					for(String i : MAT_ROCK)
+					{
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
+						buffer.newLine();
+					}
+				}
+
+				buffer.write("\"\"");
+				buffer.newLine();
+				buffer.write("  ]\r\n" + "}");
+				buffer.close();
+				writer.close();
+				itm4.createNewFile();
+				McwAPI.message(itm4);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
+
+		if(!blk4.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(blk4);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"replace\": false,\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_WOOD)
+				{
+					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
+					buffer.newLine();
+				}
+				
+				if(stone) {
+					for(String i : MAT_ROCK)
+					{
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
+						buffer.newLine();
+					}
+				}
+
+				buffer.write("\"\"");
+				buffer.newLine();
+				buffer.write("  ]\r\n" + "}");
+				buffer.close();
+				writer.close();
+				blk4.createNewFile();
+				McwAPI.message(blk4);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
 		if(!blk.exists())
 		{
 			try
@@ -87,8 +182,23 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_wired_fence\",");
 					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
+					buffer.newLine();
 				}
 				
+				if(stone) {
+					for(String i : MAT_ROCK)
+					{
+						buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
+						buffer.newLine();
+						buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
+						buffer.newLine();
+						buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
+						buffer.newLine();
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
+						buffer.newLine();
+					}
+				}
 				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
@@ -123,6 +233,14 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 				}
 				
+				if(stone) {
+					for(String i : MAT_ROCK)
+					{
+						buffer.write("\""+CompatModid+":"+i+"_railing_gate\",");
+						buffer.newLine();
+					}
+				}
+
 				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
@@ -161,6 +279,18 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 				}
 				
+				if(stone) {
+					for(String i : MAT_ROCK)
+					{
+						buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
+						buffer.newLine();
+						buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
+						buffer.newLine();
+						buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
+						buffer.newLine();
+					}
+				}
+				
 				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
@@ -177,14 +307,133 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	}
 
 	@Override
-	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK) {
-		// TODO Auto-generated method stub
+	public void PickaxeDataGen(String LOCATION, String CompatModid, List<String> MAT_ROCK)
+	{		
+		File file = new File(LOCATION + "MineablePickaxeData(Macaw's Fences).json");
+		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"replace\": false,\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_ROCK)
+				{	
+					buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_railing_gate\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
+					buffer.newLine();
+				}
+				
+				buffer.write("\"\"");
+				buffer.newLine();
+				buffer.write("  ]\r\n" + "}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
+	}
+
+	@Override
+	public void TagsRock(String LOCATION, String CompatModid, List<String> MAT_ROCK)
+	{		
 		
 	}
 
 	@Override
-	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK) {
-		// TODO Auto-generated method stub
+	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
+	{
+		File file = new File(LOCATION + "MineableHoeData(Macaw's Fences).json");
 		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"replace\": false,\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_WOOD)
+				{
+					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
+					buffer.newLine();
+				}
+				
+				buffer.write("\"\"");
+				buffer.newLine();
+				buffer.write("  ]\r\n" + "}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
 	}
+	
+	public void HedgesAdd(String LOCATION, String CompatModid, List<String> MAT_WOOD)
+	{		
+		File file = new File(LOCATION + "In Minecraft tags");
+		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("Copy to :");
+				buffer.newLine();
+				buffer.write("blocks/fences");
+				buffer.newLine();
+				buffer.write("blocks/walls");
+				buffer.newLine();
+				buffer.write("blocks/mineable/hoe");
+				buffer.newLine();
+				buffer.write("items/walls");
+				buffer.newLine();
+				
+				for(String i : MAT_WOOD)
+				{
+					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
+					buffer.newLine();
+				}
+				
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
+	}
+
 }

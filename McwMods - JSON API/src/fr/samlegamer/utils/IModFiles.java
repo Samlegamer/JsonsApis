@@ -20,6 +20,7 @@ public interface IModFiles
 	public static interface ITagData
 	{
 		void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD);
+		void HoeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD);
 		void PickaxeDataGen(String LOCATION, String CompatModid, List<String> MAT_ROCK);
 		void TagsWood(String LOCATION, String Modid, List<String> MAT_WOOD);
 		void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK);

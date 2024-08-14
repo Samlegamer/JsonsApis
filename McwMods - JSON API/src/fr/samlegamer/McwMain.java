@@ -3,21 +3,21 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.code.bridges.BridgesCodeGeneratorFabric;
-import fr.samlegamer.api.code.bridges.BridgesCodeGeneratorForge;
-import fr.samlegamer.api.code.bridges.BridgesTabBuild;
+import fr.samlegamer.api.code.fences.FencesCodeGeneratorFabric;
+import fr.samlegamer.api.code.fences.FencesCodeGeneratorForge;
+import fr.samlegamer.api.code.fences.FencesTabBuild;
 import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.lang.BridgesLangGenerator;
+import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
+import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.bridges.BridgesAbnormals;
 
 public class McwMain
 {	
@@ -31,49 +31,90 @@ public class McwMain
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	
-	public static final String CompatModid = Compatibilities.BYG_BRIDGES_MODID; //The modid of compat, Please no insert ":"
+	public static final String CompatModid = Compatibilities.BYG_FENCES_MODID; //The modid of compat, Please no insert ":"
 	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
-	public static final String ClassBlockRegistry = "MBBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
+	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
 	{
-		preset(new BridgesAbnormals());
-		
-		
-		
-		
-		
-		/*McwAPI.BridgesGenFolder(LOCATION);
+		//preset(new BridgesAbnormals());
+		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		boolean Stem = Boolean.TRUE;
+		McwModsRessources mcw = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
+		McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
+		MAT_WOOD.add("blue_spruce");
+		MAT_WOOD.add("orange_spruce");
+		MAT_WOOD.add("red_spruce");
+		MAT_WOOD.add("yellow_spruce");
+
+		MAT_WOOD.add("brown_birch");
+		MAT_WOOD.add("orange_birch");
+		MAT_WOOD.add("red_birch");
+		MAT_WOOD.add("yellow_birch");
+		
+		MAT_WOOD.add("brown_oak");
+		MAT_WOOD.add("orange_oak");
+		MAT_WOOD.add("red_oak");
+
+		MAT_WOOD.add("white_sakura");
+		MAT_WOOD.add("yellow_sakura");
+		MAT_WOOD.add("red_maple");
+		MAT_WOOD.add("araucaria");
+		MAT_WOOD.add("blooming_witch_hazel");
+		MAT_WOOD.add("flowering_indigo_jacaranda");
+		MAT_WOOD.add("flowering_ironwood");
+		MAT_WOOD.add("flowering_jacaranda");
+		MAT_WOOD.add("flowering_nightshade");
+		MAT_WOOD.add("flowering_orchard");
+		MAT_WOOD.add("flowering_palo_verde");
+		MAT_WOOD.add("flowering_skyris");
+		MAT_WOOD.add("flowering_yucca");
+		
+		mcw.createWoodBlockstateswithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
+		mcw.createWoodModelsBlockswithResearch(LOCATION, CompatModid, MAT_WOOD, false, "acacia_wall");
+		mcw.createWoodModelItemwithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
+		
+		data.AdvancementsLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, "acacia_hedge");
+		data.LootTableLogAllwithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
+		data.RecipesLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, "acacia_hedge");
+		
+		var forge = new FencesCodeGeneratorForge();
+		var fabric = new FencesCodeGeneratorForge();
+		var tag = new FencesTagsGenerator();
+
+		fabric.registerBlockLogHedges(LOCATION, MAT_WOOD, true, true);
+		fabric.InitRendersLogHedges(LOCATION, MAT_WOOD, ClassBlockRegistry);
+		forge.registerBlockLogHedges(LOCATION, MAT_WOOD, true, true);
+		tag.HedgesAdd(LOCATION, CompatModid, MAT_WOOD);
+		/*boolean Stem = Boolean.TRUE;
 		ModsList.byg120(MAT_WOOD, Stem);
-		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
+		ModsList.bygRock120(MAT_ROCK, WALL, FLOOR);
 		
-		genCustom(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), Stem);
-		recipeAndLootWood(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"), Stem);
+		genCustom(new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD, "1.20"), Stem);
+		recipeAndLootWood(new McwDataGen(Compatibilities.MCW_FENCES_MODID, "1.20"), Stem);
 		
-		genClientStone(new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE, "1.20"));
-		recipeAndLootStone(new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.20"));
-		tagStone(new BridgesTagsGenerator());
+		genClientStone(new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE, "1.20"));
+		recipeAndLootStone(new McwDataGen(Compatibilities.MCW_FENCES_MODID, "1.20"));
+		tagStone(new FencesTagsGenerator());
 		MAT_WOOD.clear();
 		ModsList.byg120(MAT_WOOD);
 		
-		chargeCodeJavaForge(new BridgesCodeGeneratorForge(), true, true, true);
-		chargeCodeJavaFabric(new BridgesCodeGeneratorFabric(), true, true, true);
+		chargeCodeJavaForge(new FencesCodeGeneratorForge(), true, true, true);
+		chargeCodeJavaFabric(new FencesCodeGeneratorFabric(), true, true, true);
 
-		tagWood(new BridgesTagsGenerator());
-		tabBuildForge(new BridgesTabBuild(), true);
-		tabBuildFabric(new BridgesTabBuild(), true);
+		tagWood(new FencesTagsGenerator(true, MAT_ROCK));
+		tabBuildForge(new FencesTabBuild(), true);
+		tabBuildFabric(new FencesTabBuild(), true);
 		English.BYG.byg120Lang(MAJ_WOOD);
 		English.BYG.bygRockLang120(MAJ_ROCK);
-		chargeLangEnglish(new BridgesLangGenerator());
+		chargeLangEnglish(new FencesLangGenerator());
 		MAJ_WOOD.clear();
 		MAJ_ROCK.clear();
 		French.BYG.byg120Lang(MAJ_WOOD);
 		French.BYG.bygRockLang120(MAJ_ROCK);
-		chargeLangFrench(new BridgesLangGenerator());*/
+		chargeLangFrench(new FencesLangGenerator());*/
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);
@@ -309,6 +350,7 @@ public class McwMain
 	{
 		t.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		t.TagsWood(LOCATION, CompatModid, MAT_WOOD);
+		t.HoeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
 	public static void tagStone(IModFiles.ITagData t)

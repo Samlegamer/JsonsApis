@@ -377,4 +377,10 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 		}
 	}
 
+	@Override
+	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

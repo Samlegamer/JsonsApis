@@ -31,13 +31,12 @@ public class McwAPI
 		}
 	}
 	
-	private static List<String> mcw_fences_block_model()
+	private static List<String> mcw_fences_block_model_wood()
 	{
 		List<String> result = new ArrayList<String>();
 		result.add("highley_gate"+File.separator);
 		result.add("horse"+File.separator);
 		result.add("inventory"+File.separator);
-		result.add("modern_wall"+File.separator);
 		result.add("picket"+File.separator);
 		result.add("stockade"+File.separator);
 		result.add("wired"+File.separator);
@@ -45,6 +44,19 @@ public class McwAPI
 		result.add("hedges"+File.separator);
 		return result;
 	}
+	
+	private static List<String> mcw_fences_block_model_stone()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("grass_topped"+File.separator);
+		result.add("modern_wall"+File.separator);
+		result.add("inventory"+File.separator);
+		result.add("pillar"+File.separator);
+		result.add("railing_gate"+File.separator);
+		result.add("railing_wall"+File.separator);
+		return result;
+	}
+
 	
 	private static List<String> mcw_bridges_block_model_wood()
 	{
@@ -97,7 +109,8 @@ public class McwAPI
 	{
 		MCW_BRIDGES_BLOCK_MODEL_WOOD(mcw_bridges_block_model_wood()),
 		MCW_BRIDGES_BLOCK_MODEL_STONE(mcw_bridges_block_model_stone()),
-		MCW_FENCES_BLOCK_MODEL(mcw_fences_block_model()),
+		MCW_FENCES_BLOCK_MODEL_WOOD(mcw_fences_block_model_wood()),
+		MCW_FENCES_BLOCK_MODEL_STONE(mcw_fences_block_model_stone()),
 		MCW_ROOFS_BLOCK_MODEL_WOOD(mcw_roofs_block_modelwood()),
 		MCW_FURNITURES_BLOCK_MODEL(mcw_furnitures_block_model());
 		
@@ -189,7 +202,12 @@ public class McwAPI
 		registerFolder(location, "models/block/stockade/");
 		registerFolder(location, "models/block/wired/");
 		registerFolder(location, "models/block/pyramid_gate/");
-		registerFolder(location, "models/block/hedge/");
+		registerFolder(location, "models/block/hedges/");
+		
+		registerFolder(location, "models/block/grass_topped/");
+		registerFolder(location, "models/block/pillar/");
+		registerFolder(location, "models/block/railing_gate/");
+		registerFolder(location, "models/block/railing_wall/");
 	}
 
 	public static void RoofsGenFolder(String location)

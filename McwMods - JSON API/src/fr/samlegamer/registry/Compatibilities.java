@@ -21,7 +21,10 @@ public class Compatibilities
 	public static final String MODDINGLEGACY_BRIDGES_MODID = "mcwbridgesmoddinglegacy";
 	public static final String SAJEVIUS_BRIDGES_MODID = "mcwbridgessajevius";
 
-	
+	public static final String BOP_FENCES_MODID = "mcwfencesbop";
+	public static final String BYG_FENCES_MODID = "mcwfencesbyg";
+	public static final String BYG_FENCES_MODID_FABRIC = "z_mcwfencesbyg";
+
 	public static final String BOP_FURNITURES_MODID = "mcwfurnituresbop";
 	public static final String BYG_FURNITURES_MODID = "mcwfurnituresbyg";
 

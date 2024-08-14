@@ -18,9 +18,9 @@ import fr.samlegamer.utils.*;
 public class BridgesAbnormals implements Presetting
 {
 	/*Instance*/
-	private static final IModFiles.IClient client_wood = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
-	private static final IModFiles.IClient client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
-	private static final IModFiles.IData data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
+	private static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
+	private static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
+	private static final McwDataGen data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
 	
 	@Override
 	public void init(String LOCATION)
@@ -49,9 +49,9 @@ public class BridgesAbnormals implements Presetting
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		MAT_WOOD.clear();
 
 		MAT_WOOD.add("maple");
@@ -60,9 +60,9 @@ public class BridgesAbnormals implements Presetting
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		MAT_WOOD.clear();
 
 		MAT_WOOD.add("cherry");
@@ -73,9 +73,9 @@ public class BridgesAbnormals implements Presetting
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		MAT_WOOD.clear();
 
 		MAT_WOOD.add("driftwood");
@@ -85,9 +85,9 @@ public class BridgesAbnormals implements Presetting
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		MAT_WOOD.clear();
 
 		MAT_WOOD.add("poise");
@@ -96,9 +96,9 @@ public class BridgesAbnormals implements Presetting
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, true);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Client");
 
@@ -114,9 +114,9 @@ public class BridgesAbnormals implements Presetting
 		client_stone.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		client_stone.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();
@@ -132,9 +132,9 @@ public class BridgesAbnormals implements Presetting
 		client_stone.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		client_stone.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();
@@ -150,9 +150,9 @@ public class BridgesAbnormals implements Presetting
 		client_stone.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		client_stone.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();
@@ -174,9 +174,9 @@ public class BridgesAbnormals implements Presetting
 		tag.TagsRock(LOCATION, CompatModid, MAT_ROCK);
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		tab.builderToAddStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-		forge.registerBlockLog(LOCATION, MAT_WOOD, false, false);
+		forge.registerBlockLogIsCharged(LOCATION, MAT_WOOD, ModidOfBaseMod, false, false);
 		forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		forge.registerBlockStone(LOCATION, MAT_ROCK, false, false);
+		forge.registerBlockStoneIsCharged(LOCATION, MAT_ROCK, ModidOfBaseMod, false, false);
 		forge.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
 		lang.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
