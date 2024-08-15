@@ -1,16 +1,18 @@
 package fr.samlegamer.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class ModsList
 {
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		List<String> mat = List.of("cryptic_stone", "dacite_bricks", "polished_travertine", "purpur_stone", "red_rock_bricks", "scoria_stone_bricks", "soapstone_bricks");
-		MAT_ROCK = mat;
-		WALL = mat;
-		FLOOR = List.of("cryptic_stone", "dacite", "travertine", "purpur_stone", "red_rock", "scoria_stone", "soapstone");
+		Collection<String> mat = List.of("cryptic_stone", "dacite_bricks", "polished_travertine", "purpur_stone", "red_rock_bricks", "scoria_stone_bricks", "soapstone_bricks");
+		MAT_ROCK.addAll(mat);
+		WALL.addAll(mat);
+		Collection<String> fl = List.of("cryptic_stone", "dacite", "travertine", "purpur_stone", "red_rock", "scoria_stone", "soapstone");
+		FLOOR.addAll(fl);
 	}
 	
 	public static void bygRock(List<String> MAT_ROCK)
@@ -20,33 +22,49 @@ public class ModsList
 
 	public static void bygRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		List<String> mat = List.of("dacite_bricks", "red_rock_bricks", "pink_sandstone", "white_sandstone", "blue_sandstone", "purple_sandstone", "black_sandstone", "windswept_sandstone");
-		MAT_ROCK = mat;
-		WALL = mat;
-		FLOOR = List.of("dacite", "red_rock", "pink_sand", "white_sand", "blue_sand", "purple_sand", "black_sand", "windswept_sand");
+		Collection<String> mat = List.of("dacite_bricks", "red_rock_bricks", "pink_sandstone", "white_sandstone", "blue_sandstone", "purple_sandstone", "black_sandstone", "windswept_sandstone");
+		MAT_ROCK.addAll(mat);
+		WALL.addAll(mat);
+		Collection<String> fl = List.of("dacite", "red_rock", "pink_sand", "white_sand", "blue_sand", "purple_sand", "black_sand", "windswept_sand");
+		FLOOR.addAll(fl);
 	}
 	
 	public static void bygLeaves120(List<String> LEAVES, boolean Specialfolder)
 	{
+		Collection<String> c;
 		if(!Specialfolder)
 		{	/*For Folder like aspen/leaves*/
-			LEAVES = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
+			c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
 			"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova");
+			LEAVES.addAll(c);
 		}
 		else
 		{
-			LEAVES = List.of("blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", 
+			c = List.of("blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", 
 			"red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", "flowering_ironwood", "flowering_jacaranda",
 			"flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
+			LEAVES.addAll(c);
 		}
 	}
 
 	public static void bygLeaves120(List<String> LEAVES)
 	{
-		LEAVES = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
+		Collection<String> c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
 		"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova", "blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", 
 		"red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", "flowering_ironwood", "flowering_jacaranda",
 		"flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
+		LEAVES.addAll(c);
+	}
+	
+	public static void bygLeavesWildUp(List<String> LEAVES)
+	{
+		Collection<String> c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
+		"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova", 
+		
+		"blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", 
+		"red_birch", "yellow_birch", "brown_oak", "orange_oak", "red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", 
+		"flowering_ironwood", "flowering_jacaranda", "flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
+		LEAVES.addAll(c);
 	}
 	
 	public static void byg(List<String> MAT_WOOD, boolean isStem)

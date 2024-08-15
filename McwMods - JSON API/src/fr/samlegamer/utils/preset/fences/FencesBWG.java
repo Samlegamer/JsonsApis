@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
-import fr.samlegamer.McwMain;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.code.fences.*;
 import fr.samlegamer.api.datagen.McwDataGen;
@@ -35,7 +34,14 @@ public class FencesBWG implements Presetting
 	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
 	protected static final List<String> LEAVES = new ArrayList<String>();
 	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
-
+	protected boolean fbric;
+	protected final String CompatModid = fbric ? Compatibilities.BYG_FENCES_MODID_FABRIC : Compatibilities.BYG_FENCES_MODID;
+	
+	public FencesBWG(boolean isFabric)
+	{
+		this.fbric = isFabric;
+	}
+	
 	protected void genHedges(String LOCATION, String CompatModid, List<String> LEAVES, String TextureLocationFormodid, String ModidOfBaseMod, boolean normalFolder)
 	{
 		client_wood.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
@@ -77,7 +83,6 @@ public class FencesBWG implements Presetting
 	{
 		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
-		String CompatModid = Compatibilities.BYG_FENCES_MODID;
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID_120;
@@ -110,14 +115,20 @@ public class FencesBWG implements Presetting
 		ModsList.bygLeaves120(LEAVES);
 		FencesCodeGeneratorForge forge = new FencesCodeGeneratorForge(LEAVES);
 		FencesCodeGeneratorFabric fabric = new FencesCodeGeneratorFabric(LEAVES);
-		forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		forge.registerBlockLog(LOCATION, MAT_WOOD, true, true);
-		forge.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-		forge.registerBlockStone(LOCATION, MAT_ROCK, true, true);
-		fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		fabric.registerBlockLog(LOCATION, MAT_WOOD, true, true);
-		fabric.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-		fabric.registerBlockStone(LOCATION, MAT_ROCK, true, true);
+		if(fbric)
+		{
+			fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
+			fabric.registerBlockLog(LOCATION, MAT_WOOD, true, true);
+			fabric.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+			fabric.registerBlockStone(LOCATION, MAT_ROCK, true, true);
+		}
+		else
+		{
+			forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
+			forge.registerBlockLog(LOCATION, MAT_WOOD, true, true);
+			forge.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+			forge.registerBlockStone(LOCATION, MAT_ROCK, true, true);
+		}
 		System.out.println("Done Generate Code Wood/Hedge/Stone");
 
 		System.out.println("Start Generate Tags");
@@ -130,17 +141,27 @@ public class FencesBWG implements Presetting
 
 		System.out.println("Start Generate AddTabs");
 		FencesTabBuild tab = new FencesTabBuild(LEAVES);
-		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		tab.builderToAddStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
-		tab.fabricStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+		FencesTabBuild tab2 = new FencesTabBuild(LEAVES);
+		if(fbric)
+		{
+			tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+			tab.fabricStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+		}
+		else
+		{
+			tab2.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
+			tab2.builderToAddStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
+		}
 		System.out.println("Done Generate AddTabs");
 
 		System.out.println("Start Generate English Files");
 		English.BYG.bygLeaves120Lang(LEAVES_LANG);
 		English.BYG.byg120Lang(MAJ_WOOD);
 		English.BYG.bygRockLang120(MAJ_ROCK);
-		McwMain.chargeLangEnglish(new FencesLangGenerator(LEAVES, LEAVES_LANG));
+		
+		FencesLangGenerator english = new FencesLangGenerator(LEAVES, LEAVES_LANG);
+		english.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
+		english.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 		System.out.println("Done Generate English Files");
 
 		System.out.println("Start Generate French Files");
@@ -148,7 +169,9 @@ public class FencesBWG implements Presetting
 		French.BYG.bygLeaves120Lang(LEAVES_LANG);
 		French.BYG.byg120Lang(MAJ_WOOD);
 		French.BYG.bygRockLang120(MAJ_ROCK);
-		McwMain.chargeLangFrench(new FencesLangGenerator(LEAVES, LEAVES_LANG));
+		FencesLangGenerator french = new FencesLangGenerator(LEAVES, LEAVES_LANG);
+		french.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		french.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
 		System.out.println("Done Generate French Files");
 		System.out.println("Finish Registries");
 	}

@@ -117,9 +117,7 @@ public class BridgesAbnormals implements Presetting
 		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		MAT_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
+		McwAPI.clears(MAT_ROCK, WALL, FLOOR);
 		
 		MAT_ROCK.add("red_arid_sandstone");
 		MAT_ROCK.add("arid_sandstone");
@@ -135,9 +133,8 @@ public class BridgesAbnormals implements Presetting
 		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		MAT_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
+		McwAPI.clears(MAT_ROCK, WALL, FLOOR);
+
 
 		MAT_ROCK.add("snail_shell_bricks");
 		MAT_ROCK.add("snail_shell_tiles");
@@ -153,9 +150,7 @@ public class BridgesAbnormals implements Presetting
 		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		MAT_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
+		McwAPI.clears(MAT_ROCK, WALL, FLOOR);
 		System.out.println("Done Stone Client");
 
 		System.out.println("Start Data/Tags/Lang/ForgeCode");

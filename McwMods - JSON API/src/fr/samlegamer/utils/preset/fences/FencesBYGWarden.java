@@ -22,8 +22,11 @@ public class FencesBYGWarden extends FencesBWG
 	/*
 	 * NOT FINISHED
 	 */
-	
-	
+	public FencesBYGWarden(boolean isFabric)
+	{
+		super(isFabric);
+	}
+
 	@Override
 	public void init(String LOCATION)
 	{
