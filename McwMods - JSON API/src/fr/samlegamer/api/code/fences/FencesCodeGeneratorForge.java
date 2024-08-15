@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -11,6 +12,18 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 {
+	private List<String> LEAVES;
+
+	public FencesCodeGeneratorForge(List<String> leaves)
+	{
+		this.LEAVES=leaves;
+	}
+	
+	public FencesCodeGeneratorForge()
+	{
+		this(new ArrayList<String>());
+	}
+	
 	public void InitRendersLog(String Location, List<String> Material, String ClassMod)
 	{
 		File file = new File(Location + "Render Type Blocks [Forge-Macaws-Fences].txt");
@@ -36,10 +49,13 @@ public class FencesCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 					buffer.newLine();
 					buffer.write("ItemBlockRenderTypes.setRenderLayer("+ClassMod+"."+i+"_pyramid_gate.get(), RenderType.cutout());");
 					buffer.newLine();
+				}
+				
+				for(String i : LEAVES)
+				{
 					buffer.write("ItemBlockRenderTypes.setRenderLayer("+ClassMod+"."+i+"_hedge.get(), RenderType.cutout());");
 					buffer.newLine();
 				}
-				
 				buffer.close();
 				writer.close();
 				file.createNewFile();
@@ -83,10 +99,13 @@ public class FencesCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 					buffer.newLine();
 					buffer.write("public static final RegistryObject<Block> "+i+"_pyramid_gate = createBlock(\""+i+"_pyramid_gate\", () -> new FenceGateBlock(WOOD));");
 					buffer.newLine();
+				}
+
+				for(String i : LEAVES)
+				{
 					buffer.write("public static final RegistryObject<Block> "+i+"_hedge = createBlock(\""+i+"_hedge\", () -> new FenceHitbox(HEDGES));");
 					buffer.newLine();
 				}
-				
 				
 				buffer.close();
 				writer.close();
@@ -181,69 +200,4 @@ public class FencesCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 		}
 	
 	}
-
-	/*For BYG/BWG*/
-	public void InitRendersLogHedges(String Location, List<String> Material, String ClassMod)
-	{
-		File file = new File(Location + "Render Type Blocks (Hedges) [Forge-Macaws-Fences].txt");
-
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				for(String i : Material)
-				{
-					buffer.write("ItemBlockRenderTypes.setRenderLayer("+ClassMod+"."+i+"_hedge.get(), RenderType.cutout());");
-					buffer.newLine();
-				}
-				
-				buffer.close();
-				writer.close();
-				file.createNewFile();
-				McwAPI.message(file);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void registerBlockLogHedges(String Location, List<String> Material, boolean supNetherUpdate, boolean TrailsandTales)
-	{
-		File file = new File(Location + "Registries Blocks (Hedges) [Forge-Macaws-Fences].txt");
-
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				String nether = (supNetherUpdate ? "BlockBehaviour" : "AbstractBlock");
-				String trails = (TrailsandTales ? "ofFullCopy" : "copy");
-				buffer.write("private static final "+nether+".Properties HEDGES = "+nether+".Properties."+trails+"(Blocks.OAK_LEAVES);");
-				buffer.newLine();
-				
-				for(String i : Material)
-				{
-					buffer.write("public static final RegistryObject<Block> "+i+"_hedge = createBlock(\""+i+"_hedge\", () -> new FenceHitbox(HEDGES));");
-					buffer.newLine();
-				}
-				
-				
-				buffer.close();
-				writer.close();
-				file.createNewFile();
-				McwAPI.message(file);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
 }

@@ -7,67 +7,46 @@ public class ModsList
 {
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		MAT_ROCK.add("cryptic_stone");
-		MAT_ROCK.add("dacite_bricks");
-		MAT_ROCK.add("polished_travertine");
-		MAT_ROCK.add("purpur_stone");
-		MAT_ROCK.add("red_rock_bricks");
-		MAT_ROCK.add("scoria_stone_bricks");
-		MAT_ROCK.add("soapstone_bricks");
-		
-		WALL.add("cryptic_stone");
-		WALL.add("dacite_bricks");
-		WALL.add("polished_travertine");
-		WALL.add("purpur_stone");
-		WALL.add("red_rock_bricks");
-		WALL.add("scoria_stone_bricks");
-		WALL.add("soapstone_bricks");
-		
-		FLOOR.add("cryptic_stone");
-		FLOOR.add("dacite");
-		FLOOR.add("travertine");
-		FLOOR.add("purpur_stone");
-		FLOOR.add("red_rock");
-		FLOOR.add("scoria_stone");
-		FLOOR.add("soapstone");
+		List<String> mat = List.of("cryptic_stone", "dacite_bricks", "polished_travertine", "purpur_stone", "red_rock_bricks", "scoria_stone_bricks", "soapstone_bricks");
+		MAT_ROCK = mat;
+		WALL = mat;
+		FLOOR = List.of("cryptic_stone", "dacite", "travertine", "purpur_stone", "red_rock", "scoria_stone", "soapstone");
 	}
 	
 	public static void bygRock(List<String> MAT_ROCK)
 	{
-		List<String> WALL = new ArrayList<String>();
-		List<String> FLOOR = new ArrayList<String>();
-		bygRock(MAT_ROCK, WALL, FLOOR);
+		bygRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
 	}
 
-	
 	public static void bygRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		MAT_ROCK.add("dacite_bricks");
-		MAT_ROCK.add("red_rock_bricks");
-		MAT_ROCK.add("pink_sandstone");
-		MAT_ROCK.add("white_sandstone");
-		MAT_ROCK.add("blue_sandstone");
-		MAT_ROCK.add("purple_sandstone");
-		MAT_ROCK.add("black_sandstone");
-		MAT_ROCK.add("windswept_sandstone");
+		List<String> mat = List.of("dacite_bricks", "red_rock_bricks", "pink_sandstone", "white_sandstone", "blue_sandstone", "purple_sandstone", "black_sandstone", "windswept_sandstone");
+		MAT_ROCK = mat;
+		WALL = mat;
+		FLOOR = List.of("dacite", "red_rock", "pink_sand", "white_sand", "blue_sand", "purple_sand", "black_sand", "windswept_sand");
+	}
+	
+	public static void bygLeaves120(List<String> LEAVES, boolean Specialfolder)
+	{
+		if(!Specialfolder)
+		{	/*For Folder like aspen/leaves*/
+			LEAVES = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
+			"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova");
+		}
+		else
+		{
+			LEAVES = List.of("blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", 
+			"red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", "flowering_ironwood", "flowering_jacaranda",
+			"flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
+		}
+	}
 
-		WALL.add("dacite_bricks");
-		WALL.add("red_rock_bricks");
-		WALL.add("pink_sandstone");
-		WALL.add("white_sandstone");
-		WALL.add("blue_sandstone");
-		WALL.add("purple_sandstone");
-		WALL.add("black_sandstone");
-		WALL.add("windswept_sandstone");
-		
-		FLOOR.add("dacite");
-		FLOOR.add("red_rock");
-		FLOOR.add("pink_sand");
-		FLOOR.add("white_sand");
-		FLOOR.add("blue_sand");
-		FLOOR.add("purple_sand");
-		FLOOR.add("black_sand");
-		FLOOR.add("windswept_sand");
+	public static void bygLeaves120(List<String> LEAVES)
+	{
+		LEAVES = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
+		"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova", "blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", 
+		"red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", "flowering_ironwood", "flowering_jacaranda",
+		"flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
 	}
 	
 	public static void byg(List<String> MAT_WOOD, boolean isStem)
@@ -100,14 +79,14 @@ public class ModsList
 			MAT_WOOD.add("witch_hazel");
 			MAT_WOOD.add("zelkova");
 		}
-		
-		if(isStem)
+		else
 		{
 			MAT_WOOD.add("bulbis");
 			MAT_WOOD.add("imparius");
 			MAT_WOOD.add("sythian");
 		}
 	}
+	
 	
 	public static void bygRock120(List<String> MAT_ROCK)
 	{
@@ -363,15 +342,14 @@ public class ModsList
 	
 	public static void abnormalsRock(List<String> MAT_ROCK)
 	{
-		List<String> WALL = new ArrayList<String>();
-		List<String> FLOOR = new ArrayList<String>();
-		abnormalsRock(MAT_ROCK, WALL, FLOOR);
+		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
 	}
 
 	public static void betterlandsWoods(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("juniper");
 	}
+	
 	
 	public static void betterlandsRocks(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{

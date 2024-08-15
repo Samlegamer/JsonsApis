@@ -8,29 +8,12 @@ public class English
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
 		{
-			MAJ_WOOD.add("Aspen");
-			MAJ_WOOD.add("Grimwood");
-			MAJ_WOOD.add("Kousa");
-			MAJ_WOOD.add("Morado");
-			MAJ_WOOD.add("Rosewood");
-			MAJ_WOOD.add("Yucca");
-			MAJ_WOOD.add("Maple");
-			MAJ_WOOD.add("Cherry");
-			MAJ_WOOD.add("Wisteria");
-			MAJ_WOOD.add("Willow");
-			MAJ_WOOD.add("Driftwood");
-			MAJ_WOOD.add("River");
-			MAJ_WOOD.add("Poise");
+			MAJ_WOOD = List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Cherry", "Wisteria", "Willow", "Driftwood", "River", "Poise");
 		}
 
 		public static void abnormalsRockLang(List<String> MAJ_ROCK)
 		{
-			MAJ_ROCK.add("Honeycomb Bricks");
-			MAJ_ROCK.add("Honeycomb Tiles");
-			MAJ_ROCK.add("Red Arid Sandstone");
-			MAJ_ROCK.add("Arid Sandstone");
-			MAJ_ROCK.add("Snail Shell Bricks");
-			MAJ_ROCK.add("Snail Shell Tiles");
+			MAJ_ROCK = List.of("Honeycomb Bricks", "Honeycomb Tiles", "Red Arid Sandstone", "Arid Sandstone", "Snail Shell Bricks", "Snail Shell Tiles");
 		}
 	}
 	
@@ -68,6 +51,60 @@ public class English
 	}
 	public static class BYG
 	{
+		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
+		{
+			LEAVES_LANG.add("Aspen");
+			LEAVES_LANG.add("Baobab");
+			LEAVES_LANG.add("Blue Enchanted");
+			LEAVES_LANG.add("Cika");
+			LEAVES_LANG.add("Cypress");
+			LEAVES_LANG.add("Ebony");
+			LEAVES_LANG.add("Fir");
+			LEAVES_LANG.add("Green Enchanted");
+			LEAVES_LANG.add("Holly");
+			LEAVES_LANG.add("Ironwood");
+			LEAVES_LANG.add("Jacaranda");
+			LEAVES_LANG.add("Mahogany");
+			LEAVES_LANG.add("Maple");
+			LEAVES_LANG.add("Palm");
+			LEAVES_LANG.add("Pine");
+			LEAVES_LANG.add("Rainbow Eucalyptus");
+			LEAVES_LANG.add("Redwood");
+			LEAVES_LANG.add("Skyris");
+			LEAVES_LANG.add("White Mangrove");
+			LEAVES_LANG.add("Willow");
+			LEAVES_LANG.add("Witch Hazel");
+			LEAVES_LANG.add("Zelkova");
+
+			
+			LEAVES_LANG.add("Blue Spruce");
+			LEAVES_LANG.add("Orange Spruce");
+			LEAVES_LANG.add("Red Spruce");
+			LEAVES_LANG.add("Yellow Spruce");
+
+			LEAVES_LANG.add("Brown Birch");
+			LEAVES_LANG.add("Orange Birch");
+			LEAVES_LANG.add("Red Birch");
+			LEAVES_LANG.add("Yellow Birch");
+			
+			LEAVES_LANG.add("Brown Oak");
+			LEAVES_LANG.add("Orange Oak");
+			LEAVES_LANG.add("Red Oak");
+
+			LEAVES_LANG.add("White Sakura");
+			LEAVES_LANG.add("Yellow Sakura");
+			LEAVES_LANG.add("Red Maple");
+			LEAVES_LANG.add("Araucaria");
+			LEAVES_LANG.add("Blooming Witch Hazel");
+			LEAVES_LANG.add("Flowering Indigo Jacaranda");
+			LEAVES_LANG.add("Flowering Ironwood");
+			LEAVES_LANG.add("Flowering Jacaranda");
+			LEAVES_LANG.add("Flowering Orchard");
+			LEAVES_LANG.add("Flowering Palo Verde");
+			LEAVES_LANG.add("Flowering Skyris");
+			LEAVES_LANG.add("Flowering Yucca");
+		}
+		
 		public static void byg120Lang(List<String> MATERIAL)
 		{
 			MATERIAL.add("Aspen");

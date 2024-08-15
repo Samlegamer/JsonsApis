@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -11,7 +12,19 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 {
-	public void InitRendersLog(String Location, List<String> Material, String ClassMod)
+	private List<String> LEAVES;
+
+	public FencesCodeGeneratorFabric(List<String> leaves)
+	{
+		this.LEAVES=leaves;
+	}
+	
+	public FencesCodeGeneratorFabric()
+	{
+		this(new ArrayList<String>());
+	}
+	
+	public void InitRendersLog(String Location, List<String> MAT_WOOD, String ClassMod)
 	{
 		File file = new File(Location + "Render Type Blocks [Fabric-Macaws-Fences].txt");
 
@@ -25,8 +38,13 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 				buffer.write("BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),");
 				buffer.newLine();
 
-				for(String i : Material)
+				for(String i : MAT_WOOD)
 				{
+					if(!i.equals(MAT_WOOD.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write(""+ClassMod+"."+i+"_picket_fence, ");
 					buffer.newLine();
 					buffer.write(""+ClassMod+"."+i+"_stockade_fence, ");
@@ -37,12 +55,24 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 					buffer.newLine();
 					buffer.write(""+ClassMod+"."+i+"_highley_gate, ");
 					buffer.newLine();
-					buffer.write(""+ClassMod+"."+i+"_pyramid_gate, ");
-					buffer.newLine();
-					buffer.write(""+ClassMod+"."+i+"_hedge, ");
-					buffer.newLine();
+					buffer.write(""+ClassMod+"."+i+"_pyramid_gate ");
+					if(i.equals(MAT_WOOD.get(MAT_WOOD.size()-1)) && !LEAVES.isEmpty())
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 
+				for(String i : LEAVES)
+				{
+					if(!i.equals(LEAVES.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+					buffer.write(""+ClassMod+"."+i+"_hedge ");
+				}
+				buffer.write(");");
 				
 				buffer.close();
 				writer.close();
@@ -80,10 +110,15 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 					buffer.write("public static final Block "+i+"_wired_fence = new WiredFence(WOOD);\r\n");
 					buffer.write("public static final Block "+i+"_highley_gate = new FenceGateBlock(WOOD);\r\n");
 					buffer.write("public static final Block "+i+"_pyramid_gate = new FenceGateBlock(WOOD);\r\n");
+				}
+				
+				for(String i : LEAVES)
+				{
 					buffer.write("public static final Block "+i+"_hedge = new FenceHitbox(HEDGES);\r\n");
 				}
 				
-				buffer.newLine();//Blocks.OAK_LEAVES hedge
+				buffer.newLine();
+				buffer.write("//FOR REGISTRIES");
 
 				for(String i : Material)
 				{
@@ -102,7 +137,6 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 					buffer.write("add(\""+i+"_hedge\", "+i+"_hedge);");
 					buffer.newLine();
 				}
-
 				
 				buffer.close();
 				writer.close();
@@ -175,7 +209,7 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 	}
 
 	@Override
-	public void InitRendersStone(String Location, List<String> Material, String ClassMod)
+	public void InitRendersStone(String Location, List<String> MAT_ROCK, String ClassMod)
 	{
 		File file = new File(Location + "Render Type Blocks - Stone [Fabric-Macaws-Fences].txt");
 
@@ -189,8 +223,13 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 				buffer.write("BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),");
 				buffer.newLine();
 
-				for(String i : Material)
+				for(String i : MAT_ROCK)
 				{
+					if(!i.equals(MAT_ROCK.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write(""+ClassMod+".modern_"+i+"_wall, ");
 					buffer.newLine();
 					buffer.write(""+ClassMod+".railing_"+i+"_wall, ");
@@ -199,10 +238,9 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 					buffer.newLine();
 					buffer.write(""+ClassMod+"."+i+"_pillar_wall, ");
 					buffer.newLine();
-					buffer.write(""+ClassMod+"."+i+"_grass_topped_wall, ");
-					buffer.newLine();
+					buffer.write(""+ClassMod+"."+i+"_grass_topped_wall ");
 				}
-
+				buffer.write(");");
 				
 				buffer.close();
 				writer.close();
@@ -216,79 +254,4 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 		}
 	
 	}
-
-	/*For BYG/BWG*/
-	public void InitRendersLogHedges(String Location, List<String> Material, String ClassMod)
-	{
-		File file = new File(Location + "Render Type Blocks (Hedges) [Fabric-Macaws-Fences].txt");
-
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("BlockRenderLayerMap.INSTANCE.putBlocks(RenderLayer.getCutout(),");
-				buffer.newLine();
-
-				for(String i : Material)
-				{
-					buffer.write(""+ClassMod+"."+i+"_hedge, ");
-					buffer.newLine();
-				}
-
-				
-				buffer.close();
-				writer.close();
-				file.createNewFile();
-				McwAPI.message(file);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
-	public void registerBlockLogHedges(String Location, List<String> Material, boolean supNetherUpdate, boolean TrailsandTales)
-	{
-		File file = new File(Location + "Registries Blocks (Hedges) [Fabric-Macaws-Fences].txt");
-
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				String ofOrCreate = (TrailsandTales ? "create" : "of");
-				buffer.write("private static final AbstractBlock.Settings HEDGES = AbstractBlock.Properties."+ofOrCreate+"(Blocks.OAK_LEAVES);");
-				buffer.newLine();
-
-				for(String i : Material)
-				{
-					buffer.write("public static final Block "+i+"_hedge = new FenceHitbox(HEDGES);\r\n");
-				}
-				
-				buffer.newLine();//Blocks.OAK_LEAVES hedge
-
-				for(String i : Material)
-				{
-					buffer.write("add(\""+i+"_hedge\", "+i+"_hedge);");
-					buffer.newLine();
-				}
-
-				
-				buffer.close();
-				writer.close();
-				file.createNewFile();
-				McwAPI.message(file);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}
-		}
-	}
-
 }

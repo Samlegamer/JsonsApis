@@ -38,68 +38,119 @@ public class French
 	
 	public static class BYG
 	{
-		public static void bygLang(List<String> MATERIAL)
+		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
 		{
-				MATERIAL.add("tremble");
-				MATERIAL.add("baobab");
-				MATERIAL.add("bleue enchantée");
-				MATERIAL.add("cerisier");
-				MATERIAL.add("cycas");
-				MATERIAL.add("cyprès");
-				MATERIAL.add("ébène");
-				MATERIAL.add("ether");
-				MATERIAL.add("sapin");
-				MATERIAL.add("vert enchanté");
-				MATERIAL.add("houx");
-				MATERIAL.add("jacaranda");
-				MATERIAL.add("lamente");
-				MATERIAL.add("acajou");
-				MATERIAL.add("mangrove");
-				MATERIAL.add("érable");
-				MATERIAL.add("belladone");
-				MATERIAL.add("palmier");
-				MATERIAL.add("pin");
-				MATERIAL.add("eucalyptus arc-en-ciel");
-				MATERIAL.add("séquoia");
-				MATERIAL.add("skyris");
-				MATERIAL.add("saule");
-				MATERIAL.add("hamamélis");
-				MATERIAL.add("zelkova");
-				MATERIAL.add("bulbe");
-				MATERIAL.add("imparius");
-				MATERIAL.add("scythe");
+			LEAVES_LANG.add("tremble");
+			LEAVES_LANG.add("baobab");
+			LEAVES_LANG.add("platamana azure");
+			LEAVES_LANG.add("cika");
+			LEAVES_LANG.add("cyprès");
+			LEAVES_LANG.add("ébène");
+			LEAVES_LANG.add("douglas");
+			LEAVES_LANG.add("platamana viridis");
+			LEAVES_LANG.add("houx");
+			LEAVES_LANG.add("boidfer");
+			LEAVES_LANG.add("jacaranda");
+			LEAVES_LANG.add("acajou riche");
+			LEAVES_LANG.add("érable");
+			LEAVES_LANG.add("palmier");
+			LEAVES_LANG.add("pin");
+			LEAVES_LANG.add("eucalyptus arc-en-ciel");
+			LEAVES_LANG.add("séquoia");
+			LEAVES_LANG.add("célestis");
+			LEAVES_LANG.add("emanglier blanc");
+			LEAVES_LANG.add("saule");
+			LEAVES_LANG.add("hamamélis");
+			LEAVES_LANG.add("zelkova");
+
+			LEAVES_LANG.add("sapin bleu");
+			LEAVES_LANG.add("sapin orange");
+			LEAVES_LANG.add("sapin rouge");
+			LEAVES_LANG.add("sapin jaune");
+			LEAVES_LANG.add("bouleau marron");
+			LEAVES_LANG.add("bouleau orange");
+			LEAVES_LANG.add("bouleau rouge");
+			LEAVES_LANG.add("bouleau jaune");
+			LEAVES_LANG.add("chêne marron");
+			LEAVES_LANG.add("chêne orange");
+			LEAVES_LANG.add("chêne rouge");
+			LEAVES_LANG.add("sakura blanc");
+			LEAVES_LANG.add("sakura jaune");
+			LEAVES_LANG.add("érable rouge");
+			LEAVES_LANG.add("araucaria");
+			LEAVES_LANG.add("hamamélis florissantes");
+			LEAVES_LANG.add("jacaranda indigo florissantes");
+			LEAVES_LANG.add("boidfer florissantes");
+			LEAVES_LANG.add("jacaranda florissantes");
+			LEAVES_LANG.add("verger florissantes");
+			LEAVES_LANG.add("palo verde florissantes");
+			LEAVES_LANG.add("célestis florissantes");
+			LEAVES_LANG.add("yucca florissantes");
 		}
 
-		public static void bygLangWildUp(List<String> MATERIAL)
+		
+		public static void bygLang(List<String> MAJ_WOOD)
 		{
-			MATERIAL.add("tremble");
-			MATERIAL.add("baobab");
-			MATERIAL.add("bleue enchantée");
-			MATERIAL.add("cerisier");
-			MATERIAL.add("cycas");
-			MATERIAL.add("cyprès");
-			MATERIAL.add("ébène");
-			MATERIAL.add("ether");
-			MATERIAL.add("sapin");
-			MATERIAL.add("vert enchanté");
-			MATERIAL.add("houx");
-			MATERIAL.add("jacaranda");
-			MATERIAL.add("lamente");
-			MATERIAL.add("acajou");
-			MATERIAL.add("mangrove");
-			MATERIAL.add("érable");
-			MATERIAL.add("belladone");
-			MATERIAL.add("palmier");
-			MATERIAL.add("pin");
-			MATERIAL.add("eucalyptus arc-en-ciel");
-			MATERIAL.add("séquoia");
-			MATERIAL.add("skyris");
-			MATERIAL.add("saule");
-			MATERIAL.add("hamamélis");
-			MATERIAL.add("zelkova");
-			MATERIAL.add("bulbe");
-			MATERIAL.add("imparius");
-			MATERIAL.add("scythe");
+				MAJ_WOOD.add("tremble");
+				MAJ_WOOD.add("baobab");
+				MAJ_WOOD.add("bleue enchantée");
+				MAJ_WOOD.add("cerisier");
+				MAJ_WOOD.add("cycas");
+				MAJ_WOOD.add("cyprès");
+				MAJ_WOOD.add("ébène");
+				MAJ_WOOD.add("ether");
+				MAJ_WOOD.add("sapin");
+				MAJ_WOOD.add("vert enchanté");
+				MAJ_WOOD.add("houx");
+				MAJ_WOOD.add("jacaranda");
+				MAJ_WOOD.add("lamente");
+				MAJ_WOOD.add("acajou");
+				MAJ_WOOD.add("mangrove");
+				MAJ_WOOD.add("érable");
+				MAJ_WOOD.add("belladone");
+				MAJ_WOOD.add("palmier");
+				MAJ_WOOD.add("pin");
+				MAJ_WOOD.add("eucalyptus arc-en-ciel");
+				MAJ_WOOD.add("séquoia");
+				MAJ_WOOD.add("skyris");
+				MAJ_WOOD.add("saule");
+				MAJ_WOOD.add("hamamélis");
+				MAJ_WOOD.add("zelkova");
+				MAJ_WOOD.add("bulbe");
+				MAJ_WOOD.add("imparius");
+				MAJ_WOOD.add("scythe");
+		}
+
+		public static void bygLangWildUp(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("tremble");
+			MAJ_WOOD.add("baobab");
+			MAJ_WOOD.add("bleue enchantée");
+			MAJ_WOOD.add("cerisier");
+			MAJ_WOOD.add("cycas");
+			MAJ_WOOD.add("cyprès");
+			MAJ_WOOD.add("ébène");
+			MAJ_WOOD.add("ether");
+			MAJ_WOOD.add("sapin");
+			MAJ_WOOD.add("vert enchanté");
+			MAJ_WOOD.add("houx");
+			MAJ_WOOD.add("jacaranda");
+			MAJ_WOOD.add("lamente");
+			MAJ_WOOD.add("acajou");
+			MAJ_WOOD.add("mangrove");
+			MAJ_WOOD.add("érable");
+			MAJ_WOOD.add("belladone");
+			MAJ_WOOD.add("palmier");
+			MAJ_WOOD.add("pin");
+			MAJ_WOOD.add("eucalyptus arc-en-ciel");
+			MAJ_WOOD.add("séquoia");
+			MAJ_WOOD.add("skyris");
+			MAJ_WOOD.add("saule");
+			MAJ_WOOD.add("hamamélis");
+			MAJ_WOOD.add("zelkova");
+			MAJ_WOOD.add("bulbe");
+			MAJ_WOOD.add("imparius");
+			MAJ_WOOD.add("scythe");
 		}
 		
 		public static void bygRockLang(List<String> MAJ_ROCK)

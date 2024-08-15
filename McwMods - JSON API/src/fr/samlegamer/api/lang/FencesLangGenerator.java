@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.samlegamer.McwMain;
@@ -12,6 +13,21 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesLangGenerator implements IModFiles.ILang
 {
+	private List<String> LEAVES;
+	private List<String> LEAVES_LANG;
+
+	public FencesLangGenerator(List<String> leaves, List<String> lang)
+	{
+		this.LEAVES=leaves;
+		this.LEAVES_LANG=lang;
+	}
+	
+	public FencesLangGenerator()
+	{
+		this(new ArrayList<String>(), new ArrayList<String>());
+	}
+
+
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{		
 		File file = new File(McwMain.LOCATION + "En_Us_Wood_Fences.json");
@@ -40,8 +56,15 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\""+MAJ_MAT.get(nbm)+" Pyramid Gate\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_hedge\":\""+MAJ_MAT.get(nbm)+" Hedge\",");
-					buffer.newLine();
+				}
+				
+				if(!LEAVES.isEmpty())
+				{
+					for(int nbm = 0; nbm<LEAVES.size();nbm++)
+					{
+						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\""+LEAVES_LANG.get(nbm)+" Hedge\",");
+						buffer.newLine();
+					}
 				}
 				
 				buffer.write("//Finish");
@@ -132,8 +155,15 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\"Portillon pyramidal en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_hedge\":\"Haie de "+MAJ_MAT.get(nbm)+"\",");
-					buffer.newLine();
+				}
+				
+				if(!LEAVES.isEmpty())
+				{
+					for(int nbm = 0; nbm<LEAVES.size();nbm++)
+					{
+						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\"Haie de "+LEAVES_LANG.get(nbm)+"\",");
+						buffer.newLine();
+					}
 				}
 				
 				buffer.write("//Finish");

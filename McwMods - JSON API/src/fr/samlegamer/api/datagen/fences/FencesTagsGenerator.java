@@ -15,11 +15,24 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 {
 	private boolean stone;
 	private List<String> MAT_ROCK;
-	
+	private List<String> LEAVES;
+
 	public FencesTagsGenerator(boolean s, List<String> rock)
 	{
 		this.stone = s;
 		this.MAT_ROCK=rock;
+	}
+	
+	public FencesTagsGenerator(boolean s, List<String> rock, List<String> leaves)
+	{
+		this(s, rock);
+		this.LEAVES=leaves;
+	}
+	
+	public FencesTagsGenerator(List<String> leaves)
+	{
+		this();
+		this.LEAVES=leaves;
 	}
 	
 	public FencesTagsGenerator() {
@@ -44,6 +57,11 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					if(!i.equals(MAT_WOOD.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write("\""+CompatModid+":"+i+"_picket_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_stockade_fence\",");
@@ -54,11 +72,9 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_highley_gate\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\",");
-					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\"");
 				}
 				
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -93,21 +109,33 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 						+ "  \"values\": [");
 				buffer.newLine();
 				
-				for(String i : MAT_WOOD)
+				for(String i : LEAVES)
 				{
-					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
-					buffer.newLine();
+					if(!i.equals(LEAVES.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
+					if(i.equals(LEAVES.get(LEAVES.size()-1)) && stone)
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 				
 				if(stone) {
 					for(String i : MAT_ROCK)
 					{
-						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
-						buffer.newLine();
+						if(!i.equals(MAT_ROCK.get(0)))
+						{
+							buffer.write(",");
+							buffer.newLine();
+						}
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\"");
 					}
 				}
 
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -133,21 +161,33 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 						+ "  \"values\": [");
 				buffer.newLine();
 				
-				for(String i : MAT_WOOD)
+				for(String i : LEAVES)
 				{
-					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
-					buffer.newLine();
+					if(!i.equals(LEAVES.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
+					if(i.equals(LEAVES.get(LEAVES.size()-1)) && stone)
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 				
 				if(stone) {
 					for(String i : MAT_ROCK)
 					{
-						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
-						buffer.newLine();
+						if(!i.equals(MAT_ROCK.get(0)))
+						{
+							buffer.write(",");
+							buffer.newLine();
+						}
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\"");
 					}
 				}
 
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -174,32 +214,57 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					if(!i.equals(MAT_WOOD.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write("\""+CompatModid+":"+i+"_picket_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_stockade_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_horse_fence\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_wired_fence\",");
-					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
-					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_wired_fence\"");
+					if(i.equals(MAT_WOOD.get(MAT_WOOD.size()-1)) && !LEAVES.isEmpty())
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+				}
+				
+				for(String i : LEAVES)
+				{
+					if(!i.equals(LEAVES.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
+					if(i.equals(LEAVES.get(LEAVES.size()-1)) && stone)
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 				
 				if(stone) {
 					for(String i : MAT_ROCK)
 					{
+						if(!i.equals(MAT_ROCK.get(0)))
+						{
+							buffer.write(",");
+							buffer.newLine();
+						}
 						buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
 						buffer.newLine();
 						buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
 						buffer.newLine();
 						buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
 						buffer.newLine();
-						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
-						buffer.newLine();
+						buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\"");
 					}
 				}
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -227,21 +292,33 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					if(!i.equals(MAT_WOOD.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write("\""+CompatModid+":"+i+"_highley_gate\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\",");
-					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\"");
+					if(i.equals(MAT_WOOD.get(MAT_WOOD.size()-1)) && stone)
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 				
 				if(stone) {
 					for(String i : MAT_ROCK)
 					{
-						buffer.write("\""+CompatModid+":"+i+"_railing_gate\",");
-						buffer.newLine();
+						if(!i.equals(MAT_ROCK.get(0)))
+						{
+							buffer.write(",");
+							buffer.newLine();
+						}
+						buffer.write("\""+CompatModid+":"+i+"_railing_gate\"");
 					}
 				}
 
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -269,29 +346,41 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					if(!i.equals(MAT_WOOD.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write("\""+CompatModid+":"+i+"_picket_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_stockade_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_horse_fence\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_wired_fence\",");
-					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_wired_fence\"");
+					if(i.equals(MAT_WOOD.get(MAT_WOOD.size()-1)) && stone)
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 				}
 				
 				if(stone) {
 					for(String i : MAT_ROCK)
 					{
+						if(!i.equals(MAT_ROCK.get(0)))
+						{
+							buffer.write(",");
+							buffer.newLine();
+						}
 						buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
 						buffer.newLine();
 						buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
 						buffer.newLine();
-						buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
-						buffer.newLine();
+						buffer.write("\""+CompatModid+":railing_"+i+"_wall\"");
 					}
 				}
 				
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -325,6 +414,11 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{	
+					if(!i.equals(MAT_ROCK.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
 					buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
@@ -333,11 +427,9 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_pillar_wall\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\",");
-					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_grass_topped_wall\"");
 				}
 				
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -354,12 +446,12 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 
 	@Override
 	public void TagsRock(String LOCATION, String CompatModid, List<String> MAT_ROCK)
-	{		
-		
+	{
+		System.out.println("The Tags of Fence is on the TagWood use API Tag with constructor !");
 	}
 
 	@Override
-	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
+	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> LEAVES)
 	{
 		File file = new File(LOCATION + "MineableHoeData(Macaw's Fences).json");
 		
@@ -375,13 +467,16 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 						+ "  \"values\": [");
 				buffer.newLine();
 				
-				for(String i : MAT_WOOD)
+				for(String i : LEAVES)
 				{
-					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
-					buffer.newLine();
+					if(!i.equals(LEAVES.get(0)))
+					{
+						buffer.write(",");
+						buffer.newLine();
+					}
+					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
 				}
 				
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -395,45 +490,4 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 			}	
 		}
 	}
-	
-	public void HedgesAdd(String LOCATION, String CompatModid, List<String> MAT_WOOD)
-	{		
-		File file = new File(LOCATION + "In Minecraft tags");
-		
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("Copy to :");
-				buffer.newLine();
-				buffer.write("blocks/fences");
-				buffer.newLine();
-				buffer.write("blocks/walls");
-				buffer.newLine();
-				buffer.write("blocks/mineable/hoe");
-				buffer.newLine();
-				buffer.write("items/walls");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					buffer.write("\""+CompatModid+":"+i+"_hedge\",");
-					buffer.newLine();
-				}
-				
-				buffer.close();
-				writer.close();
-				file.createNewFile();
-				McwAPI.message(file);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-	}
-
 }

@@ -234,4 +234,12 @@ public class McwAPI
 		registerFolder(location, "models/block/table/");
 		registerFolder(location, "models/block/wardrobe/");
 	}
+	
+	public static void clears(List<?>... list)
+	{
+		for(List<?> l : list)
+		{
+			l.clear();
+		}
+	}
 }

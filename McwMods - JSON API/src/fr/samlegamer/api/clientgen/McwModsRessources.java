@@ -334,15 +334,15 @@ public class McwModsRessources implements IModFiles.IClient
 			            for (Path file : acaciaFiles) {
 			            	try {
 					            final int a = nbm;
-			                    // Lire tout le contenu du fichier
 					            boolean isSandStoneCustom = WALL.get(a).contains("sandstone");
 					            String top = isSandStoneCustom ? WALL.get(a)+"_top" : WALL.get(a);
+			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    // Remplacer "acacia" par "cherry" dans le contenu
 			                    List<String> modifiedLines = lines.stream()
+			                            .map(line -> line.replace("minecraft:block/sandstone_top", TextureLocationFormodid+"/"+top))
 			                            .map(line -> line.replace("minecraft:block/sandstone", TextureLocationFormodid+"/"+WALL.get(a)))
 			                            .map(line -> line.replace("minecraft:block/sand", TextureLocationFormodid+"/"+FLOOR.get(a)))
-			                            .map(line -> line.replace("minecraft:block/sandstone_top", TextureLocationFormodid+"/"+top))
 			                            .collect(Collectors.toList());
 			                    String newFileName = file.getFileName().toString().replace("sandstone", MAT_ROCK.get(a));
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);

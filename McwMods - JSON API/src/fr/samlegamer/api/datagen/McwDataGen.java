@@ -1,6 +1,8 @@
 package fr.samlegamer.api.datagen;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -562,46 +564,56 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
-	public void AdvancementsLogAllwithResearch(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String research)
+	public void AdvancementsLeavesHedges(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> LEAVES)
 	{
-		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath());
-		
-		for(String i : MAT_WOOD)
+		for(String i : LEAVES)
 		{
-	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
-	        try (Stream<Path> files = Files.list(directory)) {
-	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains(research))
-	                    .collect(Collectors.toList());
-	
-	            for (Path file : acaciaFiles) {
-	            	try {
-	                    // Lire tout le contenu du fichier
-	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-	
-	                    // Remplacer "acacia" par "cherry" dans le contenu
-	                    List<String> modifiedLines = lines.stream()
-	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
-	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
-	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
-	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+i))
-	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
-	                            .collect(Collectors.toList());
-	
-	                    // D�terminer le nouveau nom de fichier
-	                    String newFileName = file.getFileName().toString().replace("acacia", i);
-	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
-	
-	                    // �crire le contenu modifi� dans un nouveau fichier
-	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
-	                } catch (IOException e) {
-	                    e.printStackTrace();
-	                }
-	            }
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
+			File file = new File(LOCATION + "data"+s+"advancements"+s+"recipes"+s + i +"_hedge.json");
+			
+			if(!file.exists())
+			{
+				try
+				{
+					FileWriter writer = new FileWriter(file);
+					BufferedWriter buffer = new BufferedWriter(writer);
+					
+					buffer.write("{\r\n"
+							+ "  \"parent\": \"minecraft:recipes/root\",\r\n"
+							+ "  \"rewards\": {\r\n"
+							+ "    \"recipes\": [\r\n"
+							+ "	\""+CompatModid+":"+i+"_hedge\"\r\n"
+							+ "    ]\r\n"
+							+ "  },\r\n"
+							+ "  \"criteria\": {\r\n"
+							+ "    \"has_birch\": {\r\n"
+							+ "      \"trigger\": \"minecraft:inventory_changed\",\r\n"
+							+ "      \"conditions\": {\r\n"
+							+ "        \"items\": [\r\n"
+							+ "          {\r\n"
+							+ "            \"item\": \""+ModidOfBaseMod+":"+i+"_leaves\"\r\n"
+							+ "          }\r\n"
+							+ "        ]\r\n"
+							+ "      }\r\n"
+							+ "    }\r\n"
+							+ "  },\r\n"
+							+ "  \"requirements\": [\r\n"
+							+ "    [\r\n"
+							+ "      \"has_birch\"\r\n"
+							+ "    ]\r\n"
+							+ "  ]\r\n"
+							+ "}");
+					buffer.newLine();
+					
+					buffer.close();
+					writer.close();
+					file.createNewFile();
+					McwAPI.message(file);
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 
