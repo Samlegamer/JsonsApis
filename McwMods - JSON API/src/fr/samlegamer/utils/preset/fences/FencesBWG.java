@@ -35,7 +35,6 @@ public class FencesBWG implements Presetting
 	protected static final List<String> LEAVES = new ArrayList<String>();
 	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
 	protected boolean fbric;
-	protected final String CompatModid = fbric ? Compatibilities.BYG_FENCES_MODID_FABRIC : Compatibilities.BYG_FENCES_MODID;
 	
 	public FencesBWG(boolean isFabric)
 	{
@@ -86,7 +85,7 @@ public class FencesBWG implements Presetting
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID_120;
-		
+		String CompatModid = fbric ? Compatibilities.BYG_FENCES_MODID_FABRIC : Compatibilities.BYG_FENCES_MODID;
 		System.out.println("Start Wood Data/Client");
 		ModsList.byg120(MAT_WOOD, false);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
