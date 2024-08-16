@@ -96,10 +96,9 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 			{
 				FileWriter writer = new FileWriter(file);
 				BufferedWriter buffer = new BufferedWriter(writer);
-				String ofOrCreate = (TrailsandTales ? "create" : "of");
-				buffer.write("private static final AbstractBlock.Settings WOOD = AbstractBlock.Properties."+ofOrCreate+"(Blocks.OAK_PLANKS);");
+				buffer.write("private static final AbstractBlock.Settings WOOD = AbstractBlock.Settings.copy(Blocks.OAK_PLANKS);");
 				buffer.newLine();
-				buffer.write("private static final AbstractBlock.Settings HEDGES = AbstractBlock.Properties."+ofOrCreate+"(Blocks.OAK_LEAVES);");
+				buffer.write("private static final AbstractBlock.Settings HEDGES = AbstractBlock.Settings.copy(Blocks.OAK_LEAVES);");
 				buffer.newLine();
 
 				for(String i : Material)
@@ -119,7 +118,8 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 				
 				buffer.newLine();
 				buffer.write("//FOR REGISTRIES");
-
+				buffer.newLine();
+				
 				for(String i : Material)
 				{
 					buffer.write("add(\""+i+"_picket_fence\", "+i+"_picket_fence);");
@@ -134,6 +134,10 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 					buffer.newLine();
 					buffer.write("add(\""+i+"_pyramid_gate\", "+i+"_pyramid_gate);");
 					buffer.newLine();
+				}
+				
+				for(String i : LEAVES)
+				{
 					buffer.write("add(\""+i+"_hedge\", "+i+"_hedge);");
 					buffer.newLine();
 				}
