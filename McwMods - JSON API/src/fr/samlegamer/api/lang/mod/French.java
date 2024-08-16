@@ -1,5 +1,6 @@
 package fr.samlegamer.api.lang.mod;
 
+import java.util.Collection;
 import java.util.List;
 import fr.samlegamer.utils.Uncomplete;
 
@@ -38,6 +39,16 @@ public class French
 	
 	public static class BYG
 	{
+		public static void bygLeavesWildUpLang(List<String> LEAVES_LANG)
+		{
+			Collection<String> c = List.of("tremble","baobab","bleue enchantée","cycas","cyprès","ébène", "ether", "sapin","vert enchanté","houx", "jacaranda", "lamente","acajou",
+			"érable","palmier","pin","eucalyptus arc-en-ciel","séquoia","skyris","mangrove","saule","hamamélis","zelkova", 
+			"sapin bleu", "sapin orange", "sapin rouge", "sapin jaune", "bouleau marron", "bouleau orange", 
+			"bouleau rouge", "bouleau jaune", "chêne marron", "chêne orange", "chêne rouge", "cerisier blanc", "cerisier rose", "araucaria", "hamamélis florissantes", 
+			"jacaranda indigo florissantes", "jacaranda florissantes", "verger fleuri", "palo verde florissantes", "palo verde");
+			LEAVES_LANG.addAll(c);
+		}
+		
 		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
 		{
 			LEAVES_LANG.add("tremble");
@@ -88,7 +99,6 @@ public class French
 			LEAVES_LANG.add("yucca florissantes");
 		}
 
-		
 		public static void bygLang(List<String> MAJ_WOOD)
 		{
 				MAJ_WOOD.add("tremble");

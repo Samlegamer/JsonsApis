@@ -1,5 +1,6 @@
 package fr.samlegamer.api.lang.mod;
 
+import java.util.Collection;
 import java.util.List;
 
 public class English
@@ -51,6 +52,16 @@ public class English
 	}
 	public static class BYG
 	{
+		public static void bygLeavesWildUpLang(List<String> LEAVES_LANG)
+		{
+			Collection<String> c = List.of("Aspen","Baobab","Blue Enchanted","Cika","Cypress","Ebony", "Ether", "Fir","Green Enchanted","Holly", "Jacaranda", "Lament","Mahogany","Maple","Palm"
+			,"Pine","Rainbow Eucalyptus","Redwood","Skyris","White Mangrove","Willow","Witch Hazel","Zelkova", 
+			"Blue Spruce", "Orange Spruce", "Red Spruce", "Yellow Spruce", "Brown Birch", "Orange Birch", 
+			"Red Birch", "Yellow Birch", "Brown Oak", "Orange Oak", "Red Oak", "White Cherry", "Pink Cherry", "Araucaria", "Blooming Witch Hazel", "Flowering Indigo Jacaranda", 
+			"Flowering Jacaranda", "Flowering Orchard", "Flowering Palo Verde", "Palo Verde");
+			LEAVES_LANG.addAll(c);
+		}
+		
 		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
 		{
 			LEAVES_LANG.add("Aspen");

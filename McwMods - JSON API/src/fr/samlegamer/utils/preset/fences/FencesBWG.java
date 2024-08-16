@@ -41,6 +41,11 @@ public class FencesBWG implements Presetting
 		this.fbric = isFabric;
 	}
 	
+	protected void clearAll()
+	{
+		McwAPI.clears(MAT_WOOD, MAT_ROCK, WALL, FLOOR, MAJ_WOOD, MAJ_ROCK, LEAVES, LEAVES_LANG);
+	}
+	
 	protected void genHedges(String LOCATION, String CompatModid, List<String> LEAVES, String TextureLocationFormodid, String ModidOfBaseMod, boolean normalFolder)
 	{
 		client_wood.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
@@ -80,6 +85,7 @@ public class FencesBWG implements Presetting
 	@Override
 	public void init(String LOCATION)
 	{
+		clearAll();
 		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";

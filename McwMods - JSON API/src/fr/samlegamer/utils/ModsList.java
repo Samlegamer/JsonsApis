@@ -6,6 +6,8 @@ import java.util.List;
 
 public class ModsList
 {
+	private static final Collection<String> BOP_WOODS = List.of("dead", "fir", "hellbark", "jacaranda", "magic", "mahogany", "palm", "redwood", "umbran", "willow");
+
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		Collection<String> mat = List.of("cryptic_stone", "dacite_bricks", "polished_travertine", "purpur_stone", "red_rock_bricks", "scoria_stone_bricks", "soapstone_bricks");
@@ -56,15 +58,27 @@ public class ModsList
 		LEAVES.addAll(c);
 	}
 	
+	public static void bygLeavesWildUp(List<String> LEAVES, boolean Specialfolder)
+	{
+		Collection<String> c;
+		if(!Specialfolder)
+		{	/*For Folder like aspen/leaves*/
+			c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony", "ether", "fir","green_enchanted","holly", "jacaranda", "lament","mahogany","maple",
+			"palm","pine","rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova");
+		}
+		else
+		{
+			c = List.of("blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", 
+			"red_birch", "yellow_birch", "brown_oak", "orange_oak", "red_oak", "white_cherry", "pink_cherry", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", 
+			"flowering_jacaranda", "flowering_orchard", "flowering_palo_verde", "palo_verde");
+		}
+		LEAVES.addAll(c);
+	}
+	
 	public static void bygLeavesWildUp(List<String> LEAVES)
 	{
-		Collection<String> c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony","fir","green_enchanted","holly","ironwood","jacaranda","mahogany","maple","palm","pine",
-		"rainbow_eucalyptus","redwood","skyris","white_mangrove","willow","witch_hazel","zelkova", 
-		
-		"blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", "orange_birch", 
-		"red_birch", "yellow_birch", "brown_oak", "orange_oak", "red_oak", "white_sakura", "yellow_sakura", "red_maple", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", 
-		"flowering_ironwood", "flowering_jacaranda", "flowering_orchard", "flowering_palo_verde", "flowering_skyris", "flowering_yucca");
-		LEAVES.addAll(c);
+		bygLeavesWildUp(LEAVES, false);
+		bygLeavesWildUp(LEAVES, true);
 	}
 	
 	public static void byg(List<String> MAT_WOOD, boolean isStem)
@@ -115,34 +129,8 @@ public class ModsList
 	
 	public static void bygAssets(List<String> MATERIAL)
 	{
-		MATERIAL.add("aspen");
-		MATERIAL.add("baobab");
-		MATERIAL.add("blue_enchanted");
-		MATERIAL.add("cherry");
-		MATERIAL.add("cika");
-		MATERIAL.add("cypress");
-		MATERIAL.add("ebony");
-		MATERIAL.add("ether");
-		MATERIAL.add("fir");
-		MATERIAL.add("green_enchanted");
-		MATERIAL.add("holly");
-		MATERIAL.add("jacaranda");
-		MATERIAL.add("lament");
-		MATERIAL.add("mahogany");
-		MATERIAL.add("mangrove");
-		MATERIAL.add("maple");
-		MATERIAL.add("nightshade");
-		MATERIAL.add("palm");
-		MATERIAL.add("pine");
-		MATERIAL.add("rainbow_eucalyptus");
-		MATERIAL.add("redwood");
-		MATERIAL.add("skyris");
-		MATERIAL.add("willow");
-		MATERIAL.add("witch_hazel");
-		MATERIAL.add("zelkova");
-		MATERIAL.add("bulbis");
-		MATERIAL.add("imparius");
-		MATERIAL.add("sythian");
+		byg(MATERIAL, false);
+		byg(MATERIAL, true);
 	}
 
 	
@@ -221,91 +209,25 @@ public class ModsList
 	
 	public static void byg120(List<String> MATERIAL)
 	{
-		MATERIAL.add("aspen");
-		MATERIAL.add("baobab");
-		MATERIAL.add("blue_enchanted");
-		MATERIAL.add("cika");
-		MATERIAL.add("cypress");
-		MATERIAL.add("ebony");
-		MATERIAL.add("fir");
-		MATERIAL.add("green_enchanted");
-		MATERIAL.add("holly");
-		MATERIAL.add("ironwood");
-		MATERIAL.add("jacaranda");
-		MATERIAL.add("mahogany");
-		MATERIAL.add("maple");
-		MATERIAL.add("palm");
-		MATERIAL.add("pine");
-		MATERIAL.add("rainbow_eucalyptus");
-		MATERIAL.add("redwood");
-		MATERIAL.add("sakura");
-		MATERIAL.add("skyris");
-		MATERIAL.add("white_mangrove");
-		MATERIAL.add("willow");
-		MATERIAL.add("witch_hazel");
-		MATERIAL.add("zelkova");
-		MATERIAL.add("florus");
+		byg120(MATERIAL, false);
+		byg120(MATERIAL, true);
 	}
 
 	public static void bygWildUp(List<String> MATERIAL)
 	{
-			MATERIAL.add("aspen");
-			MATERIAL.add("baobab");
-			MATERIAL.add("blue_enchanted");
-			MATERIAL.add("cherry");
-			MATERIAL.add("cika");
-			MATERIAL.add("cypress");
-			MATERIAL.add("ebony");
-			MATERIAL.add("ether");
-			MATERIAL.add("fir");
-			MATERIAL.add("green_enchanted");
-			MATERIAL.add("holly");
-			MATERIAL.add("jacaranda");
-			MATERIAL.add("lament");
-			MATERIAL.add("mahogany");
-			MATERIAL.add("white_mangrove");
-			MATERIAL.add("maple");
-			MATERIAL.add("nightshade");
-			MATERIAL.add("palm");
-			MATERIAL.add("pine");
-			MATERIAL.add("rainbow_eucalyptus");
-			MATERIAL.add("redwood");
-			MATERIAL.add("skyris");
-			MATERIAL.add("willow");
-			MATERIAL.add("witch_hazel");
-			MATERIAL.add("zelkova");
-			MATERIAL.add("bulbis");
-			MATERIAL.add("imparius");
-			MATERIAL.add("sythian");
+		bygWildUp(MATERIAL, false);
+		bygWildUp(MATERIAL, true);
 	}
 
 	public static void bop(List<String> MAT_WOOD, boolean cherryMC)
 	{
 		if(!cherryMC) { MAT_WOOD.add("cherry"); }
-		MAT_WOOD.add("dead");
-		MAT_WOOD.add("fir");
-		MAT_WOOD.add("hellbark");
-		MAT_WOOD.add("jacaranda");
-		MAT_WOOD.add("magic");
-		MAT_WOOD.add("mahogany");
-		MAT_WOOD.add("palm");
-		MAT_WOOD.add("redwood");
-		MAT_WOOD.add("umbran");
-		MAT_WOOD.add("willow");
+		MAT_WOOD.addAll(BOP_WOODS);
 	}
 	
 	public static void bop1204(List<String> MAT_WOOD)
 	{
-		MAT_WOOD.add("dead");
-		MAT_WOOD.add("fir");
-		MAT_WOOD.add("hellbark");
-		MAT_WOOD.add("jacaranda");
-		MAT_WOOD.add("magic");
-		MAT_WOOD.add("mahogany");
-		MAT_WOOD.add("palm");
-		MAT_WOOD.add("redwood");
-		MAT_WOOD.add("umbran");
-		MAT_WOOD.add("willow");
+		MAT_WOOD.addAll(BOP_WOODS);
 		MAT_WOOD.add("empyreal");
 	}
 	
@@ -425,20 +347,8 @@ public class ModsList
 	
 	public static void ModdingLegacyWoods(List<String> MAT_WOOD)
 	{
-		MAT_WOOD.add("bsky_bluebright");
-		MAT_WOOD.add("bsky_cherry");
-		MAT_WOOD.add("bsky_crystallized");
-		MAT_WOOD.add("bsky_dusk");
-		MAT_WOOD.add("bsky_frostbright");
-		MAT_WOOD.add("bsky_lunar");
-		MAT_WOOD.add("bsky_maple");
-		MAT_WOOD.add("bsky_starlit");
-		MAT_WOOD.add("pwood_magic");
-		MAT_WOOD.add("pwood_maple");
-		MAT_WOOD.add("pwood_purple_heart");
-		MAT_WOOD.add("pwood_silverbell");
-		MAT_WOOD.add("pwood_tiger");
-		MAT_WOOD.add("pwood_willow");
+		BlueSkiesBsky(MAT_WOOD);
+		PremiumWoodPwood(MAT_WOOD);
 	}
 	
 	public static void AuroraWoods(List<String> MAT_WOOD)

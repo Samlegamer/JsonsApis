@@ -3,12 +3,11 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.fences.FencesBWG;
+import fr.samlegamer.utils.preset.fences.FencesBYGWarden;
 
 public class McwMain
 {	
@@ -30,8 +29,8 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new FencesBWG(true));
-
+		preset(new FencesBYGWarden(false));
+		
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);
