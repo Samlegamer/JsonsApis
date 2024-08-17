@@ -50,6 +50,7 @@ public class English
 			MAJ_MAT.add("Empyreal");
 		}
 	}
+	
 	public static class BYG
 	{
 		public static void bygLeavesWildUpLang(List<String> LEAVES_LANG)

@@ -7,11 +7,9 @@ import java.io.IOException;
 
 import fr.samlegamer.McwAPI;
 
-@Deprecated(forRemoval = true, since = "2025")
 public class APIWriter
 {
-	@Deprecated
-	public static void write(@Deprecated String location, File fileIn, String write)
+	public static void write(File fileIn, String write)
 	{
 		if(!fileIn.exists())
 		{

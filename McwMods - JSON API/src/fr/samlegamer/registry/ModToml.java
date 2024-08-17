@@ -6,7 +6,6 @@ import fr.samlegamer.utils.APIWriter;
 
 public class ModToml
 {
-	@SuppressWarnings("deprecation")
 	public static void build(String location, String modid, String ModName, String version, String versionMC, 
 	String picture, String desc, String WebURL, String Author)
 	{
@@ -43,7 +42,7 @@ public class ModToml
 			break;
 		}
 		
-		APIWriter.write(location, file, "modLoader=\"javafml\"\r\n"
+		APIWriter.write(file, "modLoader=\"javafml\"\r\n"
 				+ "loaderVersion=\"["+idForForge+",)\"\r\n"
 				+ "license=\"All rights reserved\"\r\n"
 				+ "\r\n"

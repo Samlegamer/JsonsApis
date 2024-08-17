@@ -37,6 +37,39 @@ public class French
 		}
 	}
 	
+	public static class BOP
+	{
+		public static void bopLang(List<String> MAJ_MAT, boolean cherryMC)
+		{
+			if(!cherryMC) { MAJ_MAT.add("cerisier"); }
+			MAJ_MAT.add("bois mort");
+			MAJ_MAT.add("pin");
+			MAJ_MAT.add("écorce de l'enfer");
+			MAJ_MAT.add("jacaranda");
+			MAJ_MAT.add("bois magique");
+			MAJ_MAT.add("acajou d'amérique");
+			MAJ_MAT.add("palmier");
+			MAJ_MAT.add("séquoia");
+			MAJ_MAT.add("bois de l'ombre");
+			MAJ_MAT.add("saule");
+		}
+		
+		public static void bop1204Lang(List<String> MAJ_MAT)
+		{
+			MAJ_MAT.add("bois mort");
+			MAJ_MAT.add("pin");
+			MAJ_MAT.add("écorce de l'enfer");
+			MAJ_MAT.add("jacaranda");
+			MAJ_MAT.add("bois magique");
+			MAJ_MAT.add("acajou d'amérique");
+			MAJ_MAT.add("palmier");
+			MAJ_MAT.add("séquoia");
+			MAJ_MAT.add("bois de l'ombre");
+			MAJ_MAT.add("saule");
+			MAJ_MAT.add("bois empyréen");
+		}
+	}
+	
 	public static class BYG
 	{
 		public static void bygLeavesWildUpLang(List<String> LEAVES_LANG)

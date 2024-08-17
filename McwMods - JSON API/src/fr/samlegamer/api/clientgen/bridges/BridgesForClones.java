@@ -10,7 +10,7 @@ import fr.samlegamer.utils.APIWriter;
  * then use this to add prefix in the file like "bop_"/"byg_" ex: bop_cherry_bridge byg_cherry_bridge
  */
 public class BridgesForClones
-{
+{/*
 	public static class BridgeLog
 	{
 		public static void createModelBlockCustom(String location, String prefix, String TextureLocationFormodid, String nameMaterial, String nameOfTexturesPlanks, String nameOfTexturesLogs)
@@ -20,7 +20,7 @@ public class BridgesForClones
 			File bridge_middle = new File(location + "/models/block/bridge/bridge_wood/" + prefix + nameMaterial + "_middle" + ".json");
 			File bridge_side = new File(location + "/models/block/bridge/bridge_wood/" + prefix + nameMaterial + "_side" + ".json");
 
-		APIWriter.write(location, bridge_base, "{\r\n"
+		APIWriter.write(bridge_base, "{\r\n"
 				+ "	\"parent\": \"mcwbridges:block/bridge/bridge_wood/parent/base\",\r\n"
 				+ "	\"textures\": {\r\n"
 				+ "		\"1\": \""+TextureLocationFormodid+"/"+nameOfTexturesLogs+"\",\r\n"
@@ -30,7 +30,7 @@ public class BridgesForClones
 				+ "}\r\n"
 				+ "");
 				
-		APIWriter.write(location, bridge_corner, "	{\r\n"
+		APIWriter.write(bridge_corner, "	{\r\n"
 				+ "	\"parent\": \"mcwbridges:block/bridge/bridge_wood/parent/corner\",\r\n"
 				+ "	\"textures\": {\r\n"
 				+ "		\"5\": \""+TextureLocationFormodid+"/"+ nameOfTexturesPlanks +"\",\r\n"
@@ -40,7 +40,7 @@ public class BridgesForClones
 				+ "}\r\n"
 				+ "");
 		
-		APIWriter.write(location, bridge_middle, "	{\r\n"
+		APIWriter.write(bridge_middle, "	{\r\n"
 				+ "	\"parent\": \"mcwbridges:block/bridge/bridge_wood/parent/middle\",\r\n"
 				+ "	\"textures\": {\r\n"
 				+ "		\"5\": \""+TextureLocationFormodid+"/"+ nameOfTexturesPlanks +"\",\r\n"
@@ -50,7 +50,7 @@ public class BridgesForClones
 				+ "}\r\n"
 				+ "");
 		
-		APIWriter.write(location, bridge_side, "	{\r\n"
+		APIWriter.write(bridge_side, "	{\r\n"
 				+ "	\"parent\": \"mcwbridges:block/bridge/bridge_wood/parent/side\",\r\n"
 				+ "	\"textures\": {\r\n"
 				+ "		\"5\": \""+TextureLocationFormodid+"/"+ nameOfTexturesPlanks +"\",\r\n"
@@ -376,5 +376,5 @@ public class BridgesForClones
 					+ "}\r\n"
 					+ "");
 		}
-	}
+	}*/
 }
