@@ -4,13 +4,10 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.code.furnitures.FurnituresBlockEntityModifier;
-import fr.samlegamer.api.lang.FurnituresLangGenerator;
-import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
-import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.preset.fences.FencesBYGWarden;
 
 public class McwMain
 {	
@@ -32,12 +29,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		ModsList.bop1204(MAT_WOOD);
-		French.BOP.bop1204Lang(MAJ_WOOD);
-		FurnituresLangGenerator l = new FurnituresLangGenerator();
-		l.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
-		FurnituresBlockEntityModifier f = new FurnituresBlockEntityModifier();
-		f.forge(LOCATION, MAT_WOOD, "MFurniBOPBlocksRegistry");
+		preset(new FencesBYGWarden(false));
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);

@@ -88,7 +88,6 @@ public class McwDataGen implements IModFiles.IData
 		
 		for(String i : MAT_ROCK)
 		{
-	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
 	                    .filter(file -> file.getFileName().toString().startsWith("sandstone") | file.getFileName().toString().startsWith("balustrade_sandstone")
@@ -97,22 +96,26 @@ public class McwDataGen implements IModFiles.IData
 	
 	            for (Path file : acaciaFiles) {
 	            	try {
-	                    // Lire tout le contenu du fichier
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	
-	                    // Remplacer "acacia" par "cherry" dans le contenu
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
+	                            .map(line -> line.replace("minecraft:sand", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":modern_sandstone", CompatModid+":modern_"+i))
+	                            .map(line -> line.replace(MOD_ID+":railing_sandstone", CompatModid+":railing_"+i))
+	                            .map(line -> line.replace("\"mcwfences:modern_red_sandstone_wall\",", ""))
+	                            .map(line -> line.replace("\"mcwfences:railing_red_sandstone_wall\",", ""))
+	                            .map(line -> line.replace("\"mcwfences:red_sandstone_railing_gate\",", ""))
+	                            .map(line -> line.replace("\"mcwfences:red_sandstone_pillar_wall\",", ""))
+	                            .map(line -> line.replace("\"mcwfences:red_sandstone_grass_topped_wall\",", ""))
 	                            .collect(Collectors.toList());
-	
-	                    // D�terminer le nouveau nom de fichier
+	                    
 	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
 	
-	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath.toFile());
 	                } catch (IOException e) {
@@ -237,6 +240,9 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
+	                            .map(line -> line.replace("minecraft:sand", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":modern_sandstone", CompatModid+":modern_"+i))
+	                            .map(line -> line.replace(MOD_ID+":railing_sandstone", CompatModid+":railing_"+i))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier
@@ -279,6 +285,9 @@ public class McwDataGen implements IModFiles.IData
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
+	                            .map(line -> line.replace("minecraft:sand", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":modern_sandstone", CompatModid+":modern_"+i))
+	                            .map(line -> line.replace(MOD_ID+":railing_sandstone", CompatModid+":railing_"+i))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier

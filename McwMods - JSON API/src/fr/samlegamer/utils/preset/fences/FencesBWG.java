@@ -22,9 +22,9 @@ import fr.samlegamer.utils.*;
 public class FencesBWG implements Presetting
 {
 	/*Instance*/
-	private static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
-	private static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE);
-	private static final McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
+	protected static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
+	protected static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE);
+	protected static final McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
 	
 	protected static final List<String> MAT_WOOD = new ArrayList<String>();
 	protected static final List<String> MAT_ROCK = new ArrayList<String>();

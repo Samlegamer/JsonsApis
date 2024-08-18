@@ -1,5 +1,7 @@
 package fr.samlegamer.utils.preset.fences;
 
+import java.util.List;
+
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.api.code.fences.FencesCodeGeneratorFabric;
 import fr.samlegamer.api.code.fences.FencesCodeGeneratorForge;
@@ -21,6 +23,16 @@ public class FencesBYGWarden extends FencesBWG
 	/*
 	 * NOT FINISHED
 	 */
+	protected void genWoodBYG(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
+	{
+		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+		client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+
 	public FencesBYGWarden(boolean isFabric)
 	{
 		super(isFabric);
