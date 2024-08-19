@@ -22,6 +22,21 @@ public class ModsList
 		bygRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
 	}
 
+	
+	public static void bygRockFenceable(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		Collection<String> mat = List.of("soapstone", "travertine", "dacite", "red_rock", "scoria_stone");
+		Collection<String> wall = List.of("polished_soapstone", "polished_travertine", "dacite_bricks", "red_rock_bricks", "scoria_stone_bricks");
+		MAT_ROCK.addAll(mat);
+		WALL.addAll(wall);
+		FLOOR.addAll(mat);
+	}
+	
+	public static void bygRockFenceable(List<String> MAT_ROCK)
+	{
+		bygRockFenceable(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
+	}
+	
 	public static void bygRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		Collection<String> mat = List.of("dacite_bricks", "red_rock_bricks", "pink_sandstone", "white_sandstone", "blue_sandstone", "purple_sandstone", "black_sandstone", "windswept_sandstone");

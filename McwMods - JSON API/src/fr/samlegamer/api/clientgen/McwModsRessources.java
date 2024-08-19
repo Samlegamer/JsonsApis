@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import fr.samlegamer.McwMain;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
@@ -336,12 +337,13 @@ public class McwModsRessources implements IModFiles.IClient
 					            final int a = nbm;
 					            boolean isSandStoneCustom = WALL.get(a).contains("sandstone");
 					            String top = isSandStoneCustom ? WALL.get(a)+"_top" : WALL.get(a);
+					            String walltext = MOD_ID.equals(Compatibilities.MCW_FENCES_MODID) ? FLOOR.get(a) : WALL.get(a);
 			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    // Remplacer "acacia" par "cherry" dans le contenu
 			                    List<String> modifiedLines = lines.stream()
 			                            .map(line -> line.replace("minecraft:block/sandstone_top", TextureLocationFormodid+"/"+top))
-			                            .map(line -> line.replace("minecraft:block/sandstone", TextureLocationFormodid+"/"+WALL.get(a)))
+			                            .map(line -> line.replace("minecraft:block/sandstone", TextureLocationFormodid+"/"+walltext))
 			                            .map(line -> line.replace("minecraft:block/sand", TextureLocationFormodid+"/"+FLOOR.get(a)))
 			                            .collect(Collectors.toList());
 			                    String newFileName = file.getFileName().toString().replace("sandstone", MAT_ROCK.get(a));

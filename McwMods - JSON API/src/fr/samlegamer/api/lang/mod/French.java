@@ -207,6 +207,12 @@ public class French
 			MAJ_ROCK.add("briques de stéatite");
 		}
 		
+		public static void bygRockFenceableLang(List<String> MAJ_ROCK)
+		{
+			Collection<String> mat = List.of("stéatite", "travertine", "dacite", "roche rouge", "roche de soria");
+			MAJ_ROCK.addAll(mat);
+		}
+		
 		public static void bygRockLang120(List<String> MAJ_ROCK)
 		{
 			MAJ_ROCK.add("briques de dacite");

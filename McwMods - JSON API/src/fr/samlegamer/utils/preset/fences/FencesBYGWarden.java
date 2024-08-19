@@ -58,7 +58,7 @@ public class FencesBYGWarden extends FencesBWG
 		System.out.println("Done Wood Data/Client");
 
 		System.out.println("Start Stone Data/Client");
-		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
+		ModsList.bygRockFenceable(MAT_ROCK, WALL, FLOOR);
 		genStoneBYG(LOCATION, CompatModid, MAT_ROCK, WALL, FLOOR, TextureLocationFormodid, ModidOfBaseMod);
 		System.out.println("Done Stone Data/Client");
 
@@ -79,16 +79,16 @@ public class FencesBYGWarden extends FencesBWG
 		if(fbric)
 		{
 			fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
-			fabric.registerBlockLog(LOCATION, MAT_WOOD, true, true);
+			fabric.registerBlockLog(LOCATION, MAT_WOOD, true, false);
 			fabric.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-			fabric.registerBlockStone(LOCATION, MAT_ROCK, true, true);
+			fabric.registerBlockStone(LOCATION, MAT_ROCK, true, false);
 		}
 		else
 		{
 			forge.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);
-			forge.registerBlockLog(LOCATION, MAT_WOOD, true, true);
+			forge.registerBlockLog(LOCATION, MAT_WOOD, true, false);
 			forge.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
-			forge.registerBlockStone(LOCATION, MAT_ROCK, true, true);
+			forge.registerBlockStone(LOCATION, MAT_ROCK, true, false);
 		}
 		System.out.println("Done Generate Code Wood/Hedge/Stone");
 
@@ -118,7 +118,7 @@ public class FencesBYGWarden extends FencesBWG
 		System.out.println("Start Generate English Files");
 		English.BYG.bygLeavesWildUpLang(LEAVES_LANG);
 		English.BYG.bygLangWildUp(MAJ_WOOD);
-		English.BYG.bygRockLang(MAJ_ROCK);
+		English.BYG.bygRockFenceableLang(MAJ_ROCK);
 		
 		FencesLangGenerator english = new FencesLangGenerator(LEAVES, LEAVES_LANG);
 		english.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
@@ -129,7 +129,7 @@ public class FencesBYGWarden extends FencesBWG
 		McwAPI.clears(MAJ_WOOD, MAJ_ROCK, LEAVES_LANG);
 		French.BYG.bygLeavesWildUpLang(LEAVES_LANG);
 		French.BYG.bygLangWildUp(MAJ_WOOD);
-		French.BYG.bygRockLang(MAJ_ROCK);
+		French.BYG.bygRockFenceableLang(MAJ_ROCK);
 		FencesLangGenerator french = new FencesLangGenerator(LEAVES, LEAVES_LANG);
 		french.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 		french.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);

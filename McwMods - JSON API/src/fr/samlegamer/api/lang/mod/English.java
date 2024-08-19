@@ -209,6 +209,12 @@ public class English
 				MATERIAL.add("Sythian");
 		}
 		
+		public static void bygRockFenceableLang(List<String> MAJ_ROCK)
+		{
+			Collection<String> mat = List.of("Soapstone", "Travertine", "Dacite", "Red Rock", "Scoria Stone");
+			MAJ_ROCK.addAll(mat);
+		}
+		
 		public static void bygRockLang(List<String> MAJ_ROCK)
 		{
 			MAJ_ROCK.add("Cryptic Stone");
@@ -216,9 +222,10 @@ public class English
 			MAJ_ROCK.add("Polished Travertine");
 			MAJ_ROCK.add("Purpur Stone");
 			MAJ_ROCK.add("Red Rock Bricks");
-			MAJ_ROCK.add("Soria Stone Bricks");
+			MAJ_ROCK.add("Scoria Stone Bricks");
 			MAJ_ROCK.add("Soapstone Bricks");
 		}
+
 		
 		public static void bygRockLang120(List<String> MAJ_ROCK)
 		{
