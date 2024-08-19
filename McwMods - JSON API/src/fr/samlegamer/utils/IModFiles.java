@@ -14,6 +14,7 @@ public interface IModFiles
 		void RecipesLogAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood);
 		void LootTableLogAll(String LOCATION, String CompatModid, List<String> MAT_WOOD);
 		void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK);
+		void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK, List<String> FLOOR);
 		void LootTableStoneAll(String LOCATION, String CompatModid, List<String> MAT_ROCK);
 	}
 	

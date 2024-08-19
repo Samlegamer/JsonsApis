@@ -244,6 +244,8 @@ public class ModsList
 	{
 		MAT_WOOD.addAll(BOP_WOODS);
 		MAT_WOOD.add("empyreal");
+		MAT_WOOD.add("maple");
+		MAT_WOOD.add("pine");
 	}
 	
 	public static void shroomed(List<String> MAT_WOOD)

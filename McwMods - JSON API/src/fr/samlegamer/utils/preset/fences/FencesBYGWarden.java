@@ -20,9 +20,6 @@ import fr.samlegamer.utils.ModsList;
  */
 public class FencesBYGWarden extends FencesBWG
 {
-	/*
-	 * NOT FINISHED
-	 */
 	protected void genWoodBYG(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
 	{
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -31,6 +28,16 @@ public class FencesBYGWarden extends FencesBWG
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+	
+	protected void genStoneBYG(String LOCATION, String CompatModid, List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String TextureLocationFormodid, String ModidOfBaseMod)
+	{
+		client_stone.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
+		client_stone.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
+		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
+		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL);
+		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 
 	public FencesBYGWarden(boolean isFabric)

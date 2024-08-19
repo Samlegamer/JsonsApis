@@ -78,7 +78,7 @@ public class FencesBWG implements Presetting
 		client_stone.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	

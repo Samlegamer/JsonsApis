@@ -67,6 +67,8 @@ public class French
 			MAJ_MAT.add("bois de l'ombre");
 			MAJ_MAT.add("saule");
 			MAJ_MAT.add("bois empyréen");
+			MAJ_MAT.add("érable");
+			MAJ_MAT.add("pinvert");
 		}
 	}
 	

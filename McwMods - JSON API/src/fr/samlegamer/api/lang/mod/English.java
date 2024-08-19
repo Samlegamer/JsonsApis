@@ -48,6 +48,8 @@ public class English
 			MAJ_MAT.add("Umbran");
 			MAJ_MAT.add("Willow");
 			MAJ_MAT.add("Empyreal");
+			MAJ_MAT.add("Maple");
+			MAJ_MAT.add("Pine");
 		}
 	}
 	

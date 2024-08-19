@@ -8,6 +8,7 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -217,11 +218,11 @@ public class McwDataGen implements IModFiles.IData
 	}
 
 	@Override
-	public void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK)
+	public void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK, List<String> FLOOR)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
 		
-		for(String i : MAT_ROCK)
+		for(int nbm = 0;nbm<MAT_ROCK.size();nbm++)
 		{
 	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
@@ -232,22 +233,22 @@ public class McwDataGen implements IModFiles.IData
 	
 	            for (Path file : acaciaFiles) {
 	            	try {
-	                    // Lire tout le contenu du fichier
+			            final int i = nbm;
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-	
-	                    // Remplacer "acacia" par "cherry" dans le contenu
+	                    boolean isSandstone = MAT_ROCK.get(i).contains("sandstone");
+	                    String smoothSandstone = isSandstone ? "smooth_"+MAT_ROCK.get(i) : FLOOR.get(i);
 	                    List<String> modifiedLines = lines.stream()
-	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
-	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
-	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
-	                            .map(line -> line.replace("minecraft:sand", ModidOfBaseMod+":"+i))
-	                            .map(line -> line.replace(MOD_ID+":modern_sandstone", CompatModid+":modern_"+i))
-	                            .map(line -> line.replace(MOD_ID+":railing_sandstone", CompatModid+":railing_"+i))
-	                            .map(line -> line.replace("minecraft:smooth_sandstone", "minecraft:smooth_stone"))
+	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace("minecraft:sand", ModidOfBaseMod+":"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace(MOD_ID+":modern_sandstone", CompatModid+":modern_"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace(MOD_ID+":railing_sandstone", CompatModid+":railing_"+MAT_ROCK.get(i)))
+	                            .map(line -> line.replace("minecraft:smooth_sandstone", ModidOfBaseMod+":"+smoothSandstone))
 	                            .collect(Collectors.toList());
 	
 	                    // D�terminer le nouveau nom de fichier
-	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
+	                    String newFileName = file.getFileName().toString().replace("sandstone", MAT_ROCK.get(i));
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
@@ -261,6 +262,12 @@ public class McwDataGen implements IModFiles.IData
 	            e.printStackTrace();
 	        }
 		}
+	}
+	
+	@Override
+	public void RecipesStoneAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK)
+	{
+		RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, new ArrayList<String>());
 	}
 
 	@Override
