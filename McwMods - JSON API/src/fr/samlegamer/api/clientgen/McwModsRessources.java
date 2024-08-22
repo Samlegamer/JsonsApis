@@ -51,7 +51,8 @@ public class McwModsRessources implements IModFiles.IClient
 			// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains("acacia"))
+	                    .filter(file -> file.getFileName().toString().contains("acacia") && 
+	                    !file.getFileName().toString().contains("hedge"))
 	                    .collect(Collectors.toList());
 
 	            for (Path file : acaciaFiles) {
@@ -99,7 +100,8 @@ public class McwModsRessources implements IModFiles.IClient
 					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 			        try (Stream<Path> files = Files.list(directory)) {
 			            List<Path> acaciaFiles = files
-			                    .filter(file -> file.getFileName().toString().contains("acacia"))
+			                    .filter(file -> file.getFileName().toString().contains("acacia") && 
+			    	                    !file.getFileName().toString().contains("acacia_wall"))
 			                    .collect(Collectors.toList());
 		
 			            for (Path file : acaciaFiles) {
@@ -150,7 +152,8 @@ public class McwModsRessources implements IModFiles.IClient
 					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 			        try (Stream<Path> files = Files.list(directory)) {
 			            List<Path> acaciaFiles = files
-			                    .filter(file -> file.getFileName().toString().contains("acacia"))
+			                    .filter(file -> file.getFileName().toString().contains("acacia") && 
+			    	                    !file.getFileName().toString().contains("acacia_wall"))
 			                    .collect(Collectors.toList());
 		
 			            for (Path file : acaciaFiles) {
@@ -200,7 +203,8 @@ public class McwModsRessources implements IModFiles.IClient
 					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 			        try (Stream<Path> files = Files.list(directory)) {
 			            List<Path> acaciaFiles = files
-			                    .filter(file -> file.getFileName().toString().contains("acacia"))
+			                    .filter(file -> file.getFileName().toString().contains("acacia") && 
+			    	                    !file.getFileName().toString().contains("acacia_wall"))
 			                    .collect(Collectors.toList());
 		
 			            for (Path file : acaciaFiles) {
@@ -244,7 +248,8 @@ public class McwModsRessources implements IModFiles.IClient
 			// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
-	                    .filter(file -> file.getFileName().toString().contains("acacia"))
+	                    .filter(file -> file.getFileName().toString().contains("acacia") && 
+	    	                    !file.getFileName().toString().contains("hedge"))
 	                    .collect(Collectors.toList());
 
 	            for (Path file : acaciaFiles) {

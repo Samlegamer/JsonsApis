@@ -65,6 +65,16 @@ public class English
 			LEAVES_LANG.addAll(c);
 		}
 		
+		public static void bygLeavesLang(List<String> LEAVES_LANG)
+		{
+			Collection<String> c = List.of("Aspen","Baobab","Blue Enchanted","Cika","Cypress","Ebony", "Ether", "Fir","Green Enchanted","Holly", "Jacaranda", "Lament","Mahogany","Maple","Palm"
+			,"Pine","Rainbow Eucalyptus","Redwood","Skyris","Mangrove","Willow","Witch Hazel","Zelkova", 
+			"Blue Spruce", "Orange Spruce", "Red Spruce", "Yellow Spruce", "Brown Birch", "Orange Birch", 
+			"Red Birch", "Yellow Birch", "Brown Oak", "Orange Oak", "Red Oak", "White Cherry", "Pink Cherry", "Araucaria", "Blooming Witch Hazel", "Flowering Indigo Jacaranda", 
+			"Flowering Jacaranda", "Flowering Orchard", "Flowering Palo Verde", "Palo Verde");
+			LEAVES_LANG.addAll(c);
+		}
+
 		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
 		{
 			LEAVES_LANG.add("Aspen");

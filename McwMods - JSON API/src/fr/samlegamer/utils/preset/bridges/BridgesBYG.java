@@ -76,7 +76,7 @@ public class BridgesBYG implements Presetting
 		FLOOR.clear();
 		System.out.println("Done Stone Client");
 		System.out.println("Start Data/Tags/Lang/ForgeCode");
-		ModsList.bygAssets(MAT_WOOD);
+		ModsList.byg(MAT_WOOD);
 		ModsList.bygRock(MAT_ROCK);
 		English.BYG.bygLang(MAJ_WOOD);
 		English.BYG.bygRockLang(MAJ_ROCK);

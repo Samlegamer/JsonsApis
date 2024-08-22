@@ -96,6 +96,15 @@ public class ModsList
 		bygLeavesWildUp(LEAVES, true);
 	}
 	
+	public static void bygLeaves(List<String> LEAVES)
+	{
+		Collection<String> c = List.of("aspen","baobab","blue_enchanted","cika","cypress","ebony", "ether", "fir","green_enchanted","holly", "jacaranda", "lament","mahogany","maple",
+		"palm","pine","rainbow_eucalyptus","redwood","skyris","mangrove","willow","witch_hazel","zelkova", "blue_spruce", "orange_spruce", "red_spruce", "yellow_spruce", "brown_birch", 
+		"orange_birch", "red_birch", "yellow_birch", "brown_oak", "orange_oak", "red_oak", "white_cherry", "pink_cherry", "araucaria", "blooming_witch_hazel", "flowering_indigo_jacaranda", 
+		"flowering_jacaranda", "flowering_orchard", "flowering_palo_verde", "palo_verde");
+		LEAVES.addAll(c);
+	}
+		
 	public static void byg(List<String> MAT_WOOD, boolean isStem)
 	{
 		if(!isStem)
@@ -142,12 +151,17 @@ public class ModsList
 		bygRock(MAT_ROCK, WALL, FLOOR);
 	}
 	
+	@Deprecated
 	public static void bygAssets(List<String> MATERIAL)
+	{
+		byg(MATERIAL);
+	}
+
+	public static void byg(List<String> MATERIAL)
 	{
 		byg(MATERIAL, false);
 		byg(MATERIAL, true);
 	}
-
 	
 	public static void bygWildUp(List<String> MATERIAL, boolean isStem)
 	{
@@ -246,6 +260,19 @@ public class ModsList
 		MAT_WOOD.add("empyreal");
 		MAT_WOOD.add("maple");
 		MAT_WOOD.add("pine");
+	}
+	
+	public static void bopLeaves1204(List<String> LEAVES)
+	{
+		bop1204(LEAVES);
+		for(int i = 0; i<LEAVES.size()-1;i++)
+		{
+			if(LEAVES.get(i).equals("maple"))
+			{
+				LEAVES.remove(i);
+			}
+		}
+		LEAVES.addAll(List.of("orange_maple", "red_maple", "yellow_maple", "cypress", "snowblossom", "flowering_oak", "rainbow_birch", "origin"));
 	}
 	
 	public static void shroomed(List<String> MAT_WOOD)

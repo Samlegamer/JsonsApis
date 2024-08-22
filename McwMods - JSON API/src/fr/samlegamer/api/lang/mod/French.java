@@ -84,6 +84,11 @@ public class French
 			LEAVES_LANG.addAll(c);
 		}
 		
+		public static void bygLeavesLang(List<String> LEAVES_LANG)
+		{
+			bygLeavesWildUpLang(LEAVES_LANG);
+		}
+		
 		public static void bygLeaves120Lang(List<String> LEAVES_LANG)
 		{
 			LEAVES_LANG.add("tremble");
