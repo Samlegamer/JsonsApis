@@ -20,36 +20,28 @@ public class English
 	
 	public static class BOP
 	{
+		private static final Collection<String> BOP_WOODS = List.of("Dead", "Fir", "Hellbark", "Jacaranda", "Magic", "Mahogany", "Palm", "Redwood", "Umbran", "Willow");
+
 		public static void bopLang(List<String> MAJ_MAT, boolean cherryMC)
 		{
 			if(!cherryMC) { MAJ_MAT.add("Cherry"); }
-			MAJ_MAT.add("Dead");
-			MAJ_MAT.add("Fir");
-			MAJ_MAT.add("Hellbark");
-			MAJ_MAT.add("Jacaranda");
-			MAJ_MAT.add("Magic");
-			MAJ_MAT.add("Mahogany");
-			MAJ_MAT.add("Palm");
-			MAJ_MAT.add("Redwood");
-			MAJ_MAT.add("Umbran");
-			MAJ_MAT.add("Willow");
+			MAJ_MAT.addAll(BOP_WOODS);
 		}
 		
 		public static void bop1204Lang(List<String> MAJ_MAT)
 		{
-			MAJ_MAT.add("Dead");
-			MAJ_MAT.add("Fir");
-			MAJ_MAT.add("Hellbark");
-			MAJ_MAT.add("Jacaranda");
-			MAJ_MAT.add("Magic");
-			MAJ_MAT.add("Mahogany");
-			MAJ_MAT.add("Palm");
-			MAJ_MAT.add("Redwood");
-			MAJ_MAT.add("Umbran");
-			MAJ_MAT.add("Willow");
+			MAJ_MAT.addAll(BOP_WOODS);
 			MAJ_MAT.add("Empyreal");
 			MAJ_MAT.add("Maple");
 			MAJ_MAT.add("Pine");
+		}
+		
+		public static void bopLeaves1204Lang(List<String> LEAVES)
+		{
+			LEAVES.addAll(BOP_WOODS);
+			LEAVES.add("Empyreal");
+			LEAVES.add("Pine");
+			LEAVES.addAll(List.of("Orange Maple", "Red Maple", "Yellow Maple", "Cypress", "Snowblossom", "Flowering Oak", "Rainbow Birch", "Origin"));
 		}
 	}
 	

@@ -264,14 +264,9 @@ public class ModsList
 	
 	public static void bopLeaves1204(List<String> LEAVES)
 	{
-		bop1204(LEAVES);
-		for(int i = 0; i<LEAVES.size()-1;i++)
-		{
-			if(LEAVES.get(i).equals("maple"))
-			{
-				LEAVES.remove(i);
-			}
-		}
+		LEAVES.addAll(BOP_WOODS);
+		LEAVES.add("empyreal");
+		LEAVES.add("pine");
 		LEAVES.addAll(List.of("orange_maple", "red_maple", "yellow_maple", "cypress", "snowblossom", "flowering_oak", "rainbow_birch", "origin"));
 	}
 	

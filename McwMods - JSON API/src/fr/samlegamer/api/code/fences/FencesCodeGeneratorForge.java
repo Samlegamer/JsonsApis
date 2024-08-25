@@ -78,11 +78,10 @@ public class FencesCodeGeneratorForge implements IModFiles.IProgram.JavaForge
 			{
 				FileWriter writer = new FileWriter(file);
 				BufferedWriter buffer = new BufferedWriter(writer);
-				String nether = (supNetherUpdate ? "BlockBehaviour" : "AbstractBlock");
 				String trails = (TrailsandTales ? "ofFullCopy" : "copy");
-				buffer.write("private static final "+nether+".Properties WOOD = "+nether+".Properties."+trails+"(Blocks.OAK_PLANKS);");
+				buffer.write("private static final AbstractBlock.Settings WOOD = AbstractBlock.Settings."+trails+"(Blocks.OAK_PLANKS);");
 				buffer.newLine();
-				buffer.write("private static final "+nether+".Properties HEDGES = "+nether+".Properties."+trails+"(Blocks.OAK_LEAVES);");
+				buffer.write("private static final AbstractBlock.Settings HEDGES = AbstractBlock.Settings."+trails+"(Blocks.OAK_LEAVES);");
 				buffer.newLine();
 				
 				for(String i : Material)

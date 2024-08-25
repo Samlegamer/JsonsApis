@@ -7,7 +7,7 @@ import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.fences.FencesBYG;
+import fr.samlegamer.utils.preset.fences.FencesBOP1204;
 
 public class McwMain
 {	
@@ -29,7 +29,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new FencesBYG());
+		preset(new FencesBOP1204());
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);

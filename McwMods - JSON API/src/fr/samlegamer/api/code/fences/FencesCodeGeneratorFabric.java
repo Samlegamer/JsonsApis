@@ -165,9 +165,8 @@ public class FencesCodeGeneratorFabric implements IModFiles.IProgram.JavaFabric
 			{
 				FileWriter writer = new FileWriter(file);
 				BufferedWriter buffer = new BufferedWriter(writer);
-				String nether = (supNetherUpdate ? "BlockBehaviour" : "AbstractBlock");
 				String trails = (TrailsandTales ? "ofFullCopy" : "copy");
-				buffer.write("private static final "+nether+".Properties STONE = "+nether+".Properties."+trails+"(Blocks.SANDSTONE);");
+				buffer.write("private static final AbstractBlock.Settings STONE = AbstractBlock.Settings."+trails+"(Blocks.SANDSTONE);");
 				buffer.newLine();
 				
 				for(String i : Material)
