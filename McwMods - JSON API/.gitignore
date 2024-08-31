@@ -21,6 +21,7 @@ build
 eclipse
 run
 mcwmods
+ressourcepack
 
 # Files from Forge MDK
 forge*changelog.txt

@@ -1,6 +1,8 @@
 package fr.samlegamer;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +19,7 @@ public class McwAPI
 		ADVANCEMENT_RECIPE("data"+File.separator+"advancements"+File.separator+"recipes"+File.separator), 
 		LOOT_TABLES("data"+File.separator+"loot_tables"+File.separator+"blocks"+File.separator),
 		BLOCKSTATES("blockstates"+File.separator),
+		LANG("blockstates"+File.separator),
 		MODELS("models"+File.separator),
 		MODEL_BLOCK("models"+File.separator+"block"+File.separator),
 		MODEL_ITEM("models"+File.separator+"item"+File.separator);
@@ -105,6 +108,28 @@ public class McwAPI
 		return result;
 	}
 	
+	private static List<String> mcw_trapdoors_block_model()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("bamboo"+File.separator);
+		result.add("barn"+File.separator);
+		result.add("barred"+File.separator);
+		result.add("barrel"+File.separator);
+		result.add("beach"+File.separator);
+		result.add("blossom"+File.separator);
+		result.add("classic"+File.separator);
+		result.add("cottage"+File.separator);
+		result.add("four_panel"+File.separator);
+		result.add("glass"+File.separator);
+		result.add("mystic"+File.separator);
+		result.add("paper"+File.separator);
+		result.add("ranch"+File.separator);
+		result.add("rp_bark"+File.separator);
+		result.add("swamp"+File.separator);
+		result.add("tropical"+File.separator);
+		return result;
+	}
+	
 	public enum ClientFolderTypes
 	{
 		MCW_BRIDGES_BLOCK_MODEL_WOOD(mcw_bridges_block_model_wood()),
@@ -112,6 +137,7 @@ public class McwAPI
 		MCW_FENCES_BLOCK_MODEL_WOOD(mcw_fences_block_model_wood()),
 		MCW_FENCES_BLOCK_MODEL_STONE(mcw_fences_block_model_stone()),
 		MCW_ROOFS_BLOCK_MODEL_WOOD(mcw_roofs_block_modelwood()),
+		MCW_TRAPDOORS_BLOCK_MODEL_WOOD(mcw_trapdoors_block_model()),
 		MCW_FURNITURES_BLOCK_MODEL(mcw_furnitures_block_model());
 		
 		private List<String> path;
@@ -170,6 +196,7 @@ public class McwAPI
 	private static void baseFolder(String location)
 	{
 		registerFolder(location, "blockstates/");
+		registerFolder(location, "lang/");
 		registerFolder(location, "models/");
 		registerFolder(location, "models/block/");
 		registerFolder(location, "models/item/");
@@ -235,6 +262,44 @@ public class McwAPI
 		registerFolder(location, "models/block/wardrobe/");
 	}
 	
+	public static void TrapdoorsGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/bamboo/");
+		registerFolder(location, "models/block/barn/");
+		registerFolder(location, "models/block/barred/");
+		registerFolder(location, "models/block/barrel/");
+		registerFolder(location, "models/block/beach/");
+		registerFolder(location, "models/block/blossom/");
+		registerFolder(location, "models/block/classic/");
+		registerFolder(location, "models/block/cottage/");
+		registerFolder(location, "models/block/four_panel/");
+		registerFolder(location, "models/block/glass/");
+		registerFolder(location, "models/block/mystic/");
+		registerFolder(location, "models/block/paper/");
+		registerFolder(location, "models/block/ranch/");
+		registerFolder(location, "models/block/rp_bark/");
+		registerFolder(location, "models/block/swamp/");
+		registerFolder(location, "models/block/tropical/");
+		
+		/*Textures Folders*/
+		registerFolder(location, "textures/block/");
+		registerFolder(location, "textures/block/bamboo/");
+		registerFolder(location, "textures/block/barn/");
+		registerFolder(location, "textures/block/barred/");
+		registerFolder(location, "textures/block/barrel/");
+		registerFolder(location, "textures/block/beach/");
+		registerFolder(location, "textures/block/blossom/");
+		registerFolder(location, "textures/block/classic/");
+		registerFolder(location, "textures/block/cottage/");
+		registerFolder(location, "textures/block/four_panel/");
+		registerFolder(location, "textures/block/glass/");
+		registerFolder(location, "textures/block/mystic/");
+		registerFolder(location, "textures/block/paper/");
+		registerFolder(location, "textures/block/swamp/");
+		registerFolder(location, "textures/block/tropical/");
+	}
+
 	public static void clears(List<?>... list)
 	{
 		for(List<?> l : list)
@@ -242,4 +307,29 @@ public class McwAPI
 			l.clear();
 		}
 	}
+	
+	@Deprecated
+	public static void verifTag(BufferedWriter buffer, String i, List<String> MAT_WOOD) throws IOException
+	{
+		verifJson(buffer, i, MAT_WOOD);
+	}
+	
+	public static void verifJson(BufferedWriter buffer, String i, List<String> MAT_WOOD) throws IOException
+	{
+		if(!i.equals(MAT_WOOD.get(0)))
+		{
+			buffer.write(",");
+			buffer.newLine();
+		}
+	}
+	
+	public static void verifJsonLang(BufferedWriter buffer, int nbr) throws IOException
+	{
+		if(nbr != 0)
+		{
+			buffer.write(",");
+			buffer.newLine();
+		}
+	}
+
 }

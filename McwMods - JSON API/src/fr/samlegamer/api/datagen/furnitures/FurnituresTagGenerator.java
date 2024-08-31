@@ -30,6 +30,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					McwAPI.verifTag(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_wardrobe\","+ "");
 					buffer.write("\""+CompatModid+":"+i+"_modern_wardrobe\","+ "");
 					buffer.write("\""+CompatModid+":"+i+"_double_wardrobe\","+ "");
@@ -88,10 +89,9 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 					buffer.write("\""+CompatModid+":"+i+"_glass_kitchen_cabinet\","+ "");
 					buffer.write("\""+CompatModid+":stripped_"+i+"_kitchen_cabinet\","+ "");
 					buffer.write("\""+CompatModid+":stripped_"+i+"_double_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_kitchen_cabinet\","+ "");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_kitchen_cabinet\""+ "");
 				}
 				
-				buffer.write("\"\"");
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
@@ -108,8 +108,6 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 
 	@Override
 	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
@@ -129,10 +127,10 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					McwAPI.verifTag(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_"+objName+"\",");
 					buffer.newLine();
-					buffer.write("\""+Modid+":stripped_"+i+"_"+objName+"\",");
-					buffer.newLine();
+					buffer.write("\""+Modid+":stripped_"+i+"_"+objName+"\"");
 				}
 				
 				buffer.write("  ]\r\n"
@@ -167,6 +165,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
+					McwAPI.verifTag(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_kitchen_cabinet"+"\",");
 					buffer.newLine();
 					buffer.write("\""+Modid+":stripped_"+i+"_kitchen_cabinet"+"\",");
@@ -177,8 +176,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 					buffer.newLine();
 					buffer.write("\""+Modid+":"+i+"_glass_kitchen_cabinet"+"\",");
 					buffer.newLine();
-					buffer.write("\""+Modid+":stripped_"+i+"_glass_kitchen_cabinet"+"\",");
-					buffer.newLine();
+					buffer.write("\""+Modid+":stripped_"+i+"_glass_kitchen_cabinet"+"\"");
 				}
 				
 				buffer.write("  ]\r\n"
@@ -200,6 +198,43 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 	{
 		addTagWood(LOCATION, Modid, MAT_WOOD, FileName, FileName);
 	}
+	
+	private void wadobe(String LOCATION, String Modid, List<String> MAT_WOOD)
+	{
+		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "wadrobe.json");
+		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_WOOD)
+				{
+					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					buffer.write("\""+Modid+":"+i+"_wardrobe"+"\"");
+				}
+				
+				buffer.write("  ]\r\n"
+						+ "}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
+
+	}
+
 	
 	public void TagsWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
@@ -229,19 +264,15 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 		addTagWood(LOCATION, Modid, MAT_WOOD, "striped_chair");
 		addTagWood(LOCATION, Modid, MAT_WOOD, "table");
 		addTagWood(LOCATION, Modid, MAT_WOOD, "triple_drawer");
-		addTagWood(LOCATION, Modid, MAT_WOOD, "wadrobe");
+		wadobe(LOCATION, Modid, MAT_WOOD);
 	}
 
 	@Override
 	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

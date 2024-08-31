@@ -36,7 +36,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	}
 	
 	public FencesTagsGenerator() {
-		this(false, new ArrayList<String>());
+		this(false, new ArrayList<String>(), new ArrayList<String>());
 	}
 	
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
@@ -57,11 +57,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					if(!i.equals(MAT_WOOD.get(0)))
-					{
-						buffer.write(",");
-						buffer.newLine();
-					}
+					McwAPI.verifTag(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_picket_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_stockade_fence\",");
@@ -413,12 +409,8 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				
 				for(String i : MAT_ROCK)
-				{	
-					if(!i.equals(MAT_ROCK.get(0)))
-					{
-						buffer.write(",");
-						buffer.newLine();
-					}
+				{
+					McwAPI.verifTag(buffer, i, MAT_ROCK);
 					buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
@@ -455,7 +447,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	{
 		File file = new File(LOCATION + "MineableHoeData(Macaw's Fences).json");
 		
-		if(!file.exists())
+		if(!file.exists() && !LEAVES.isEmpty())
 		{
 			try
 			{
@@ -469,11 +461,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : LEAVES)
 				{
-					if(!i.equals(LEAVES.get(0)))
-					{
-						buffer.write(",");
-						buffer.newLine();
-					}
+					McwAPI.verifTag(buffer, i, LEAVES);
 					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
 				}
 				

@@ -28,6 +28,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0;nbm < MAT_WOOD.size(); nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_wardrobe\":\""+MAJ_MAT.get(nbm)+" Wardrobe\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\""+MAJ_MAT.get(nbm)+" Modern Wardrobe\",");
@@ -186,6 +187,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0;nbm < MAT_WOOD.size(); nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_wardrobe\":\"Armoire en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\"Armoire moderne en "+MAJ_MAT.get(nbm)+"\",");
@@ -306,8 +308,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Armoire de cuisine double en "+MAJ_MAT.get(nbm)+" écorcée\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+" écorcée vitré\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Armoire de cuisine en "+MAJ_MAT.get(nbm)+" écorcée vitré\"");
 				}
 				
 				buffer.write("//Finish");

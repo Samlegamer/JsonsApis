@@ -6,6 +6,16 @@ import fr.samlegamer.utils.Uncomplete;
 
 public class French
 {
+	public static class Quark
+	{
+		public static void quarkRockLang(List<String> MAJ_ROCK)
+		{
+			Collection<String> mat = List.of("brique d'Andesite poli", "Basalt Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "brique de granite poli", "Jasper Bricks", 
+			"Limestone Bricks", "Magma Bricks", "Marble Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Slate Bricks", "Soul Sandstone Bricks");
+			MAJ_ROCK.addAll(mat);
+		}
+	}
+	
 	@Uncomplete(percent = 5, missing = "french lang missing")
 	public static class Abnormals
 	{
@@ -61,6 +71,13 @@ public class French
 			LEAVES.add("bois empyréen");
 			LEAVES.add("pinvert");
 			LEAVES.addAll(List.of("érable orange", "érable rouge", "érable jaune", "cyprès", "cerisier blanc", "chêne fleuri", "bouleau multicolore", "vallée retro"));
+		}
+		
+		public static void bopLeavesLang(List<String> LEAVES, boolean cherryMC)
+		{
+			if(!cherryMC) { LEAVES.add("cerisier rose"); }
+			LEAVES.addAll(BOP_WOODS);
+			LEAVES.addAll(List.of("érable", "feuilles d'Automne orange", "feuilles d'Automne jaune", "cerisier blanc", "chêne fleuri", "bouleau multicolore", "vallée retro"));
 		}
 	}
 	

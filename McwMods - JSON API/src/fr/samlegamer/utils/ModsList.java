@@ -8,6 +8,21 @@ public class ModsList
 {
 	private static final Collection<String> BOP_WOODS = List.of("dead", "fir", "hellbark", "jacaranda", "magic", "mahogany", "palm", "redwood", "umbran", "willow");
 
+	//Quark Mat
+	public static void quarkRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		Collection<String> mat = List.of("andesite_bricks", "basalt_bricks", "biotite_bricks", "diorite_bricks", "elder_prismarine_bricks", "granite_bricks", "jasper_bricks", "limestone_bricks", "magma_bricks", "marble_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "slate_bricks", "soul_sandstone_bricks");
+		MAT_ROCK.addAll(mat);
+		WALL.addAll(mat);
+		Collection<String> flo = List.of("andesite", "basalt", "biotite_block", "diorite", "elder_prismarine", "granite", "jasper", "limestone", "magma_block", "marble", "permafrost", "red_sandstone", "sandstone", "slate", "soul_sandstone");
+		FLOOR.addAll(flo);
+	}
+		
+	public static void quarkLeaves(List<String> LEAVES)
+	{
+		LEAVES.addAll(List.of("blue_blossom", "lavender_blossom", "orange_blossom", "pink_blossom", "red_blossom", "yellow_blossom"));
+	}
+	
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		Collection<String> mat = List.of("cryptic_stone", "dacite_bricks", "polished_travertine", "purpur_stone", "red_rock_bricks", "scoria_stone_bricks", "soapstone_bricks");
@@ -270,6 +285,13 @@ public class ModsList
 		LEAVES.addAll(List.of("orange_maple", "red_maple", "yellow_maple", "cypress", "snowblossom", "flowering_oak", "rainbow_birch", "origin"));
 	}
 	
+	public static void bopLeaves(List<String> LEAVES, boolean cherryMC)
+	{
+		if(!cherryMC) { LEAVES.add("pink_cherry"); }
+		LEAVES.addAll(BOP_WOODS);
+		LEAVES.addAll(List.of("maple", "orange_autumn", "yellow_autumn", cherryMC ? "snowblossom" : "white_cherry", "flowering_oak", "rainbow_birch", "origin"));
+	}
+
 	public static void shroomed(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("blue_hard_mushroom");

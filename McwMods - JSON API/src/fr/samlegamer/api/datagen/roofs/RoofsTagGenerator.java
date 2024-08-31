@@ -14,7 +14,7 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 	@Override
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> Mat)
 	{		
-		File file = new File(LOCATION + "MineableAxeData.json");
+		File file = new File(LOCATION + "MineableAxeData (Roofs).json");
 		
 		if(!file.exists())
 		{
@@ -30,6 +30,7 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 				
 				for(String i : Mat)
 				{
+					McwAPI.verifTag(buffer, i, Mat);
 					buffer.write("    \""+Modid+":"+i+"_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_attic_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_top_roof\",\r\n"+ "");
@@ -43,7 +44,7 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 					buffer.write("    \""+Modid+":"+i+"_planks_lower_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_planks_steep_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_planks_upper_lower_roof\",\r\n"+ "");
-					buffer.write("    \""+Modid+":"+i+"_planks_upper_steep_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_planks_upper_steep_roof\""+ "");
 				}
 				
 				buffer.write("  ]\r\n" + "}");
@@ -60,9 +61,45 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 	}
 
 	@Override
-	public void PickaxeDataGen(String LOCATION, String CompatModid, List<String> MAT_ROCK) {
-		// TODO Auto-generated method stub
+	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK)
+	{
+		File file = new File(LOCATION + "MineablePickaxeData (Roofs).json");
 		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{\r\n"
+						+ "  \"replace\": false,\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+				
+				for(String i : MAT_ROCK)
+				{
+					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					buffer.write("    \""+Modid+":"+i+"_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_attic_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_top_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_lower_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_steep_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_upper_lower_roof\",\r\n"+ "");
+					buffer.write("    \""+Modid+":"+i+"_upper_steep_roof\""+ "");
+				}
+				
+				buffer.write("  ]\r\n" + "}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}	
+		}
 	}
 
 	@Override

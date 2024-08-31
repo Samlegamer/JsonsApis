@@ -3,11 +3,17 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
+import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
+import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
+import fr.samlegamer.api.lang.mod.English;
+import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
+import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.fences.FencesBOP1204;
 
 public class McwMain
 {	
@@ -21,15 +27,114 @@ public class McwMain
 	public static final List<String> LEAVES_LANG = new ArrayList<String>();
 
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
-	
-	public static final String CompatModid = Compatibilities.BYG_FENCES_MODID; //The modid of compat, Please no insert ":"
-	public static final String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
-	public static final String ModidOfBaseMod = Compatibilities.BYG_MODID_120; //For recipes (ex: bop:cherry_log)
+	public static final String RP = System.getProperty("user.dir")+File.separator+"ressourcepack"+File.separator;// Local Path
+
+	public static final String CompatModid = "mcwbiomesoplenty"; //The modid of compat, Please no insert ":"
+	public static final String TextureLocationFormodid = Compatibilities.BOP_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
+	public static final String ModidOfBaseMod = Compatibilities.BOP_MODID; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
 	
 	public static void main(String[] args)
 	{
-		preset(new FencesBOP1204());
+		//preset(new MacadonQuark());
+		//McwAPI.FencesGenFolder(LOCATION);
+		//McwAPI.BridgesGenFolder(LOCATION);
+		//McwAPI.RoofsGenFolder(LOCATION);
+		//McwAPI.FurnituresGenFolder(LOCATION);
+		McwAPI.DataGenFolder(LOCATION);
+		McwAPI.TrapdoorsGenFolder(LOCATION);
+		/*
+		McwAPI.FencesGenFolder(RP);
+		McwAPI.BridgesGenFolder(RP);
+		McwAPI.RoofsGenFolder(RP);
+		McwAPI.FurnituresGenFolder(RP);
+		McwAPI.DataGenFolder(RP);*/
+
+		
+		
+		/*ModidCharged = Compatibilities.MCW_BRIDGES_MODID;
+		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
+		genClientWood(new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, "1.20"), false);
+		
+		ModidCharged = Compatibilities.MCW_FENCES_MODID;
+		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
+		genClientWood(new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD, "1.20"), false);
+		McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
+		McwDataGen data = new McwDataGen(ModidCharged);
+		
+		ModidCharged = Compatibilities.MCW_ROOFS_MODID;
+		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
+		genClientWood(new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD, "1.20"), false);
+*/
+		/*ModidCharged = Compatibilities.MCW_FURNITURES_MODID;
+		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
+		genClientWood(new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, "1.20"), false);*/
+		
+		ModsList.bop(MAT_WOOD, false);
+		//ModsList.bopLeaves(LEAVES, false);
+		String ModidCharged = "";
+		ModidCharged = Compatibilities.MCW_TRAPDOORS_MODID;
+		/*McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD, "1.20");
+		client_wood.setTrapdoorsModid(CompatModid);
+		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
+		genClientWood(client_wood, false);*/
+		
+		/*English.BOP.bopLang(MAJ_WOOD, false);
+
+		chargeLangEnglish(new TrapdoorsLangGenerator());
+		tagWood(new TrapdoorsTagsGenerator());
+		
+		MAJ_WOOD.clear();*/
+		French.BOP.bopLang(MAJ_WOOD, false);
+		chargeLangFrench(new TrapdoorsLangGenerator());
+		//McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD, "1.20");
+		//McwDataGen data = new McwDataGen(ModidCharged, "1.20");
+		
+		/*client_wood.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		client_wood.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
+		client_wood.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+		data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		data.RecipesLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge");*/
+		/*RessourcePackMissing.generateBlockstate(LOCATION + ClassicFolderTypes.BLOCKSTATES.getPath(), RP + ClassicFolderTypes.BLOCKSTATES.getPath());
+		//RessourcePackMissing.generateModelsBlock(ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, RP + ClassicFolderTypes.BLOCKSTATES);
+
+		RessourcePackMissing.generateModelsBlock(LOCATION + ClassicFolderTypes.MODEL_BLOCK.getPath(), RP + ClassicFolderTypes.MODEL_BLOCK.getPath(), ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL.getPathList(), ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL.getPathList());
+
+		RessourcePackMissing.generateModelsItem(LOCATION + ClassicFolderTypes.MODEL_ITEM.getPath(), RP + ClassicFolderTypes.MODEL_ITEM.getPath());*/
+		/*client_wood.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		client_wood.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
+		client_wood.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+		data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
+		data.RecipesLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge");
+
+		tagWood(new FurnituresTagGenerator());
+		tagWood(new RoofsTagGenerator());
+		tagWood(new BridgesTagsGenerator());
+		tagWood(new FencesTagsGenerator(LEAVES));
+		
+		English.BOP.bopLang(MAJ_WOOD, false);
+		English.BOP.bopLeavesLang(LEAVES_LANG, false);
+
+		chargeLangEnglish(new FurnituresLangGenerator());
+		chargeLangEnglish(new FencesLangGenerator(LEAVES, LEAVES_LANG));
+		chargeLangEnglish(new BridgesLangGenerator());
+		chargeLangEnglish(new RoofsLangGenerator());
+		
+		MAJ_WOOD.clear();
+		LEAVES_LANG.clear();
+		French.BOP.bopLang(MAJ_WOOD, false);
+		French.BOP.bopLeavesLang(LEAVES_LANG, false);
+
+		chargeLangFrench(new FurnituresLangGenerator());
+		chargeLangFrench(new FencesLangGenerator(LEAVES, LEAVES_LANG));
+		chargeLangFrench(new BridgesLangGenerator());
+		chargeLangFrench(new RoofsLangGenerator());*/
+		
+		
+		
+		
 		/*
 		ModsList.byg120(MAT_WOOD, Stem);
 		McwAPI.BridgesGenFolder(LOCATION);
@@ -43,7 +148,7 @@ public class McwMain
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		tab.fabricWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		chargeLangEnglish(new BridgesLangGenerator());
-		tag(new FurnituresTagGenerator());
+		
 		chargeCodeJavaForge(new FurnituresCodeGeneratorForge(), true, false);
 		chargeCodeJavaFabric(new FurnituresCodeGeneratorFabric(), true, false);
 		
@@ -280,6 +385,14 @@ public class McwMain
 		f.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
+	
+	public static void recipeAndLootWoodCharged(McwDataGen f, boolean isStem, String ModidCharged)
+	{
+		f.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		f.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, ModidCharged);
+		f.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+
 	
 	public static void recipeAndLootStone(IModFiles.IData f)
 	{

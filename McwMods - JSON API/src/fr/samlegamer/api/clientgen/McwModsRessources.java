@@ -27,6 +27,7 @@ public class McwModsRessources implements IModFiles.IClient
 	private String MOD_ID;
 	private String VERSION;
 	private McwAPI.ClientFolderTypes fold;
+	private String trapdoorsModid;
 	
 	public McwModsRessources(String modidData, McwAPI.ClientFolderTypes f)
 	{
@@ -40,6 +41,11 @@ public class McwModsRessources implements IModFiles.IClient
 		this.VERSION = otherVersion;
 		this.MOD_ID = modidData;
 		this.fold=f;
+	}
+	
+
+	public void setTrapdoorsModid(String trapdoorsModid) {
+		this.trapdoorsModid = trapdoorsModid;
 	}
 	
 	public void createWoodBlockstates(String LOCATION, String CompatModid, List<String> MAT_WOOD)
@@ -115,6 +121,8 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
+			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+trapdoorsModid+":block"))
+			                            .map(line -> line.replace("acacia", i))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -166,6 +174,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
+			                            .map(line -> line.replace("mcwtrpdoors", trapdoorsModid))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -217,6 +226,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLogs))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesPlanks))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"/leaves"))
+			                            .map(line -> line.replace("mcwtrpdoors", trapdoorsModid))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -342,6 +352,7 @@ public class McwModsRessources implements IModFiles.IClient
 					            final int a = nbm;
 					            boolean isSandStoneCustom = WALL.get(a).contains("sandstone");
 					            String top = isSandStoneCustom ? WALL.get(a)+"_top" : WALL.get(a);
+					            String top1 = isSandStoneCustom ? FLOOR.get(a)+"_top" : FLOOR.get(a);
 					            String walltext = MOD_ID.equals(Compatibilities.MCW_FENCES_MODID) ? FLOOR.get(a) : WALL.get(a);
 			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
@@ -349,7 +360,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    List<String> modifiedLines = lines.stream()
 			                            .map(line -> line.replace("minecraft:block/sandstone_top", TextureLocationFormodid+"/"+top))
 			                            .map(line -> line.replace("minecraft:block/sandstone", TextureLocationFormodid+"/"+walltext))
-			                            .map(line -> line.replace("minecraft:block/sand", TextureLocationFormodid+"/"+FLOOR.get(a)))
+			                            .map(line -> line.replace("minecraft:block/sand", TextureLocationFormodid+"/"+top1))
 			                            .collect(Collectors.toList());
 			                    String newFileName = file.getFileName().toString().replace("sandstone", MAT_ROCK.get(a));
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
@@ -580,5 +591,4 @@ public class McwModsRessources implements IModFiles.IClient
 	        }
 		}
 	}
-
 }

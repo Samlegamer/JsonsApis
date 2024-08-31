@@ -5,6 +5,21 @@ import java.util.List;
 
 public class English
 {
+	public static class Quark
+	{
+		public static void quarkRockLang(List<String> MAJ_ROCK)
+		{
+			Collection<String> mat = List.of("Andesite Bricks", "Basalt Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "Granite Bricks", "Jasper Bricks", 
+			"Limestone Bricks", "Magma Bricks", "Marble Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Slate Bricks", "Soul Sandstone Bricks");
+			MAJ_ROCK.addAll(mat);
+		}
+		
+		public static void quarkLeaves(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("Blue Blossom", "Lavender Blossom", "Orange Blossom", "Pink Blossom", "Red Blossom", "Yellow Blossom"));
+		}
+	}
+	
 	public static class Abnormals
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
@@ -42,6 +57,13 @@ public class English
 			LEAVES.add("Empyreal");
 			LEAVES.add("Pine");
 			LEAVES.addAll(List.of("Orange Maple", "Red Maple", "Yellow Maple", "Cypress", "Snowblossom", "Flowering Oak", "Rainbow Birch", "Origin"));
+		}
+		
+		public static void bopLeavesLang(List<String> LEAVES, boolean cherryMC)
+		{
+			if(!cherryMC) { LEAVES.add("Pink Cherry"); }
+			LEAVES.addAll(BOP_WOODS);
+			LEAVES.addAll(List.of("Maple", "Orange Autumn", "Yellow Autumn", cherryMC ? "Snowblossom" : "White Cherry", "Flowering Oak", "Rainbow Birch", "Origin"));
 		}
 	}
 	
