@@ -31,7 +31,7 @@ public class TrapdoorsTagsGenerator implements ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_barn_trapdoor\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barred_trapdoor\",");
@@ -104,10 +104,8 @@ public class TrapdoorsTagsGenerator implements ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_"+objName+"\",");
-					buffer.newLine();
-					buffer.write("\""+Modid+":stripped_"+i+"_"+objName+"\"");
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
+					buffer.write("\""+Modid+":"+i+objName+"\"");
 				}
 				
 				buffer.write("  ]\r\n"
@@ -161,7 +159,7 @@ public class TrapdoorsTagsGenerator implements ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_barn_trapdoor\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barred_trapdoor\",");
@@ -223,7 +221,7 @@ public class TrapdoorsTagsGenerator implements ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_barn_trapdoor\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barred_trapdoor\",");

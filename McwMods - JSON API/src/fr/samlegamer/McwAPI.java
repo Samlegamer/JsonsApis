@@ -130,6 +130,51 @@ public class McwAPI
 		return result;
 	}
 	
+	private static List<String> mcw_paths_block_model()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("wooden"+File.separator);
+		return result;
+	}
+	
+	private static List<String> mcw_doors_block_model()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("bamboo"+File.separator);
+		result.add("bark"+File.separator);
+		result.add("barn"+File.separator);
+		result.add("beach"+File.separator);
+		result.add("classic"+File.separator);
+		result.add("cottage"+File.separator);
+		result.add("four_panel"+File.separator);
+		result.add("glass"+File.separator);
+		result.add("japanese"+File.separator);
+		result.add("modern"+File.separator);
+		result.add("mystic"+File.separator);
+		result.add("nether"+File.separator);
+		result.add("paper"+File.separator);
+		result.add("stable"+File.separator);
+		result.add("stable_head"+File.separator);
+		result.add("swamp"+File.separator);
+		result.add("tropical"+File.separator);
+		result.add("waffle"+File.separator);
+		result.add("western"+File.separator);
+		return result;
+	}
+	
+	private static List<String> mcw_windows_block_model()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("blinds"+File.separator);
+		result.add("curtain_rod"+File.separator);
+		result.add("parapet"+File.separator);
+		result.add("resizeable"+File.separator);
+		result.add("shutter"+File.separator);
+		result.add("window"+File.separator);
+		result.add("window_barred"+File.separator);
+		return result;
+	}
+	
 	public enum ClientFolderTypes
 	{
 		MCW_BRIDGES_BLOCK_MODEL_WOOD(mcw_bridges_block_model_wood()),
@@ -138,6 +183,9 @@ public class McwAPI
 		MCW_FENCES_BLOCK_MODEL_STONE(mcw_fences_block_model_stone()),
 		MCW_ROOFS_BLOCK_MODEL_WOOD(mcw_roofs_block_modelwood()),
 		MCW_TRAPDOORS_BLOCK_MODEL_WOOD(mcw_trapdoors_block_model()),
+		MCW_DOORS_BLOCK_MODEL_WOOD(mcw_doors_block_model()),
+		MCW_WINDOWS_BLOCK_MODEL_WOOD(mcw_windows_block_model()),
+		MCW_PATHS_BLOCK_MODEL_WOOD(mcw_paths_block_model()),
 		MCW_FURNITURES_BLOCK_MODEL(mcw_furnitures_block_model());
 		
 		private List<String> path;
@@ -250,6 +298,12 @@ public class McwAPI
 		registerFolder(location, "models/block/top/");
 	}
 
+	public static void PathsGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/wooden/");
+	}
+	
 	public static void FurnituresGenFolder(String location)
 	{
 		baseFolder(location);
@@ -262,6 +316,42 @@ public class McwAPI
 		registerFolder(location, "models/block/wardrobe/");
 	}
 	
+	public static void DoorsGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/bamboo/");
+		registerFolder(location, "models/block/bark/");
+		registerFolder(location, "models/block/barn/");
+		registerFolder(location, "models/block/beach/");
+		registerFolder(location, "models/block/classic/");
+		registerFolder(location, "models/block/cottage/");
+		registerFolder(location, "models/block/four_panel/");
+		registerFolder(location, "models/block/glass/");
+		registerFolder(location, "models/block/japanese/");
+		registerFolder(location, "models/block/modern/");
+		registerFolder(location, "models/block/mystic/");
+		registerFolder(location, "models/block/nether/");
+		registerFolder(location, "models/block/paper/");
+		registerFolder(location, "models/block/stable/");
+		registerFolder(location, "models/block/stable_head/");
+		registerFolder(location, "models/block/swamp/");
+		registerFolder(location, "models/block/tropical/");
+		registerFolder(location, "models/block/waffle/");
+		registerFolder(location, "models/block/western/");
+	}
+	
+	public static void WindowsGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/blinds/");
+		registerFolder(location, "models/block/curtain_rod/");
+		registerFolder(location, "models/block/parapet/");
+		registerFolder(location, "models/block/resizeable/");
+		registerFolder(location, "models/block/shutter/");
+		registerFolder(location, "models/block/window/");
+		registerFolder(location, "models/block/window_barred/");
+	}
+		
 	public static void TrapdoorsGenFolder(String location)
 	{
 		baseFolder(location);

@@ -5,10 +5,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
-import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Uncomplete;
 
 @Uncomplete(missing = "Unworked", percent = 5)
@@ -43,7 +41,7 @@ public class McwLang
 				
 				for(int nbm = 0;nbm < MAT_WOOD.size(); nbm++)
 				{
-					McwAPI.verifTag(buffer, MAT_WOOD.get(nbm), MAT_WOOD);
+					McwAPI.verifJson(buffer, MAT_WOOD.get(nbm), MAT_WOOD);
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_wardrobe\":\""+MAJ_MAT.get(nbm)+" Wardrobe\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_modern_wardrobe\":\""+MAJ_MAT.get(nbm)+" Modern Wardrobe\",");

@@ -27,7 +27,7 @@ public class McwModsRessources implements IModFiles.IClient
 	private String MOD_ID;
 	private String VERSION;
 	private McwAPI.ClientFolderTypes fold;
-	private String trapdoorsModid;
+	private String Modid;
 	
 	public McwModsRessources(String modidData, McwAPI.ClientFolderTypes f)
 	{
@@ -44,8 +44,8 @@ public class McwModsRessources implements IModFiles.IClient
 	}
 	
 
-	public void setTrapdoorsModid(String trapdoorsModid) {
-		this.trapdoorsModid = trapdoorsModid;
+	public void setModid(String Modid) {
+		this.Modid = Modid;
 	}
 	
 	public void createWoodBlockstates(String LOCATION, String CompatModid, List<String> MAT_WOOD)
@@ -70,8 +70,10 @@ public class McwModsRessources implements IModFiles.IClient
 	                    List<String> modifiedLines = lines.stream()
 	                            //.map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+MAT_WOOD.get(0) + (isStemWood ? "_stem" : "_log")))
 	                           // .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+MAT_WOOD.get(0)))
+	                            .map(line -> line.replace("mcwwindows:block/parent/resizeable/mid_m", "CHANGEDWINDOW_mid_m"))
 	                            .map(line -> line.replace(MOD_ID, CompatModid))
 	                            .map(line -> line.replace("acacia", i))
+	                            .map(line -> line.replace("CHANGEDWINDOW_mid_m", "mcwwindows:block/parent/resizeable/mid_m"))
 	                            .collect(Collectors.toList());
 
 	                    // D�terminer le nouveau nom de fichier
@@ -116,15 +118,25 @@ public class McwModsRessources implements IModFiles.IClient
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    // Remplacer "acacia" par "cherry" dans le contenu
 			                    List<String> modifiedLines = lines.stream()
+			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
+			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+(isStemWood ? "_stem" : "_log")))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
-			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+trapdoorsModid+":block"))
+			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
 			                            .map(line -> line.replace("acacia", i))
+			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
 			                            .collect(Collectors.toList());
-		
+			                    
 			                    // D�terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
@@ -174,7 +186,8 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
-			                            .map(line -> line.replace("mcwtrpdoors", trapdoorsModid))
+			                            .map(line -> line.replace("mcwtrpdoors", Modid))
+			                            .map(line -> line.replace("mcwdoors", Modid))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -226,7 +239,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLogs))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesPlanks))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"/leaves"))
-			                            .map(line -> line.replace("mcwtrpdoors", trapdoorsModid))
+			                            .map(line -> line.replace("mcwtrpdoors", Modid))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -259,7 +272,8 @@ public class McwModsRessources implements IModFiles.IClient
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
 	                    .filter(file -> file.getFileName().toString().contains("acacia") && 
-	    	                    !file.getFileName().toString().contains("hedge"))
+	    	                    !file.getFileName().toString().contains("hedge")
+	                    && !file.getFileName().toString().contains("print"))
 	                    .collect(Collectors.toList());
 
 	            for (Path file : acaciaFiles) {

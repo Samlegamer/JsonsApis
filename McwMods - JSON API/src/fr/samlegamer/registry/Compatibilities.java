@@ -33,5 +33,7 @@ public class Compatibilities
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";
 	public static final String MCW_FENCES_MODID = "mcwfences";
 	public static final String MCW_TRAPDOORS_MODID = "mcwtrpdoors";
-
+	public static final String MCW_PATHS_MODID = "mcwpaths";
+	public static final String MCW_DOORS_MODID = "mcwdoors";
+	public static final String MCW_WINDOWS_MODID = "mcwwindows";
 }

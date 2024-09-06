@@ -6,10 +6,9 @@ import java.util.List;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
+import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.lang.WindowsLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
-import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.ModsList;
@@ -42,7 +41,8 @@ public class McwMain
 		//McwAPI.RoofsGenFolder(LOCATION);
 		//McwAPI.FurnituresGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
-		McwAPI.TrapdoorsGenFolder(LOCATION);
+		McwAPI.WindowsGenFolder(LOCATION);
+		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		/*
 		McwAPI.FencesGenFolder(RP);
 		McwAPI.BridgesGenFolder(RP);
@@ -73,20 +73,19 @@ public class McwMain
 		ModsList.bop(MAT_WOOD, false);
 		//ModsList.bopLeaves(LEAVES, false);
 		String ModidCharged = "";
-		ModidCharged = Compatibilities.MCW_TRAPDOORS_MODID;
-		/*McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD, "1.20");
-		client_wood.setTrapdoorsModid(CompatModid);
+		ModidCharged = Compatibilities.MCW_WINDOWS_MODID;
+		McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD, "1.20");
+		client_wood.setModid(CompatModid);
 		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
-		genClientWood(client_wood, false);*/
+		genClientWood(client_wood, false);
 		
-		/*English.BOP.bopLang(MAJ_WOOD, false);
-
-		chargeLangEnglish(new TrapdoorsLangGenerator());
-		tagWood(new TrapdoorsTagsGenerator());
-		
-		MAJ_WOOD.clear();*/
+		English.BOP.bopLang(MAJ_WOOD, false);
+		chargeLangEnglish(new WindowsLangGenerator());
+		tagWood(new WindowsTagsGenerator());
+	
+		/*MAJ_WOOD.clear();
 		French.BOP.bopLang(MAJ_WOOD, false);
-		chargeLangFrench(new TrapdoorsLangGenerator());
+		chargeLangFrench(new PathsLangGenerator());*/
 		//McwModsRessources client_wood = new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD, "1.20");
 		//McwDataGen data = new McwDataGen(ModidCharged, "1.20");
 		
