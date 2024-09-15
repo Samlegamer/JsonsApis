@@ -3,16 +3,12 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
-import fr.samlegamer.api.lang.WindowsLangGenerator;
-import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
-import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.preset.bridges.BridgesAbnormals;
 
 public class McwMain
 {	
@@ -35,14 +31,15 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
+		McwAPI.DataGenFolder(LOCATION);
 		//preset(new MacadonQuark());
 		//McwAPI.FencesGenFolder(LOCATION);
-		//McwAPI.BridgesGenFolder(LOCATION);
+		McwAPI.BridgesGenFolder(LOCATION);
 		//McwAPI.RoofsGenFolder(LOCATION);
 		//McwAPI.FurnituresGenFolder(LOCATION);
-		McwAPI.DataGenFolder(LOCATION);
-		McwAPI.WindowsGenFolder(LOCATION);
+		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
+		preset(new BridgesAbnormals());
 		/*
 		McwAPI.FencesGenFolder(RP);
 		McwAPI.BridgesGenFolder(RP);
@@ -70,7 +67,7 @@ public class McwMain
 		recipeAndLootWoodCharged(new McwDataGen(ModidCharged, "1.20"), false, ModidCharged);
 		genClientWood(new McwModsRessources(ModidCharged, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, "1.20"), false);*/
 		
-		ModsList.bop(MAT_WOOD, false);
+		/*ModsList.bop(MAT_WOOD, false);
 		//ModsList.bopLeaves(LEAVES, false);
 		String ModidCharged = "";
 		ModidCharged = Compatibilities.MCW_WINDOWS_MODID;
@@ -81,7 +78,7 @@ public class McwMain
 		
 		English.BOP.bopLang(MAJ_WOOD, false);
 		chargeLangEnglish(new WindowsLangGenerator());
-		tagWood(new WindowsTagsGenerator());
+		tagWood(new WindowsTagsGenerator());*/
 	
 		/*MAJ_WOOD.clear();
 		French.BOP.bopLang(MAJ_WOOD, false);

@@ -24,12 +24,12 @@ public class English
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
 		{
-			MAJ_WOOD = List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Cherry", "Wisteria", "Willow", "Driftwood", "River", "Poise");
+			MAJ_WOOD.addAll(List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Cherry", "Wisteria", "Willow", "Driftwood", "River", "Poise"));
 		}
 
 		public static void abnormalsRockLang(List<String> MAJ_ROCK)
 		{
-			MAJ_ROCK = List.of("Honeycomb Bricks", "Honeycomb Tiles", "Red Arid Sandstone", "Arid Sandstone", "Snail Shell Bricks", "Snail Shell Tiles");
+			MAJ_ROCK.addAll(List.of("Honeycomb Bricks", "Honeycomb Tiles", "Red Arid Sandstone", "Arid Sandstone", "Snail Shell Bricks", "Snail Shell Tiles"));
 		}
 	}
 	

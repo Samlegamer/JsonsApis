@@ -459,50 +459,61 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
-	/*
-	 .map(line -> line.replace("\"count\": 1\r\n"+ "    }", "\"count\": 1\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 2\r\n"+ "    }", "\"count\": 2\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 3\r\n"+ "    }", "\"count\": 3\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 4\r\n"+ "    }", "\"count\": 4\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 5\r\n"+ "    }", "\"count\": 5\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 6\r\n"+ "    }", "\"count\": 6\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	 */
+	public void RecipesLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2)
+	{
+		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
+		
+		for(String i : MAT_WOOD)
+		{
+	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
+	        try (Stream<Path> files = Files.list(directory)) {
+	            List<Path> acaciaFiles = files
+	                    .filter(file -> file.getFileName().toString().contains("acacia"))
+	                    .collect(Collectors.toList());
+	
+	            for (Path file : acaciaFiles) {
+	            	try {
+	                    // Lire tout le contenu du fichier
+	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+	
+	                    // Remplacer "acacia" par "cherry" dans le contenu
+	                    List<String> modifiedLines = lines.stream()
+	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
+	                            .map(line -> line.replace("minecraft:stripped_acacia_log", ModidOfBaseMod+":stripped_"+i + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
+	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
+	                            .collect(Collectors.toList());
+	
+	                    String modLoadedCondition = "\"conditions\": [\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+	                    		+ "    },\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+	                    		+ "    }\r\n"
+	                    		+ "  ],";
+	                     modifiedLines.add(1, modLoadedCondition);
+	                    // D�terminer le nouveau nom de fichier
+	                    String newFileName = file.getFileName().toString().replace("acacia", i);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
+	
+	                    // �crire le contenu modifi� dans un nouveau fichier
+	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
+	                    McwAPI.message(newFilePath.toFile());
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		}
+	}
+	
 	public void RecipesLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
@@ -590,7 +601,7 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
-	public void RecipesStoneAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK)
+	public void RecipesStoneAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_ROCK, String ModidCharged1, String ModidCharged2)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
 		
@@ -613,50 +624,19 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace("minecraft:sandstone", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":sandstone", CompatModid+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":balustrade_sandstone", CompatModid+":balustrade_"+i))
-	                            .map(line -> line.replace("\"count\": 1\r\n"+ "    }", "\"count\": 1\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 2\r\n"+ "    }", "\"count\": 2\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 3\r\n"+ "    }", "\"count\": 3\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 4\r\n"+ "    }", "\"count\": 4\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 5\r\n"+ "    }", "\"count\": 5\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
-	                            .map(line -> line.replace("\"count\": 6\r\n"+ "    }", "\"count\": 6\r\n"+ "    },\r\n"
-	                            		+ "    \"conditions\": [\r\n"
-	                            		+ "    {\r\n"
-	                            		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                            		+ "      \"modid\": \""+ModidOfBaseMod+"\"\r\n"
-	                            		+ "    }\r\n"
-	                            		+ "  ]"))
 	                            .collect(Collectors.toList());
 	
+	                    String modLoadedCondition = "\"conditions\": [\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+	                    		+ "    },\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+	                    		+ "    }\r\n"
+	                    		+ "  ],";
+	                    modifiedLines.add(1, modLoadedCondition);
 	                    // D�terminer le nouveau nom de fichier
 	                    String newFileName = file.getFileName().toString().replace("sandstone", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
