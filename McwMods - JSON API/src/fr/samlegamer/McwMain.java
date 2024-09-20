@@ -8,7 +8,7 @@ import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.bridges.BridgesAbnormals;
+import fr.samlegamer.utils.preset.Abnormals;
 
 public class McwMain
 {	
@@ -33,13 +33,13 @@ public class McwMain
 	{
 		McwAPI.DataGenFolder(LOCATION);
 		//preset(new MacadonQuark());
-		//McwAPI.FencesGenFolder(LOCATION);
-		McwAPI.BridgesGenFolder(LOCATION);
-		//McwAPI.RoofsGenFolder(LOCATION);
-		//McwAPI.FurnituresGenFolder(LOCATION);
+		McwAPI.FencesGenFolder(LOCATION);
+		//McwAPI.BridgesGenFolder(LOCATION);
+		McwAPI.RoofsGenFolder(LOCATION);
+		McwAPI.FurnituresGenFolder(LOCATION);
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
-		preset(new BridgesAbnormals());
+		preset(new Abnormals(false, true, true, true));
 		/*
 		McwAPI.FencesGenFolder(RP);
 		McwAPI.BridgesGenFolder(RP);

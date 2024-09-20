@@ -1,8 +1,5 @@
 package fr.samlegamer.api.datagen.bridges;
 
-import java.io.File;
-import fr.samlegamer.utils.APIWriter;
-
 public class CustomizerRecipesMB
 {/*
 	public static class BridgeLog

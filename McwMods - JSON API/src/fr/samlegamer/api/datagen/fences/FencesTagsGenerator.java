@@ -57,7 +57,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_picket_fence\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_stockade_fence\",");
@@ -410,7 +410,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("\""+CompatModid+":modern_"+i+"_wall\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":railing_"+i+"_wall\",");
@@ -461,7 +461,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : LEAVES)
 				{
-					McwAPI.verifTag(buffer, i, LEAVES);
+					McwAPI.verifJson(buffer, i, LEAVES);
 					buffer.write("\""+CompatModid+":"+i+"_hedge\"");
 				}
 				

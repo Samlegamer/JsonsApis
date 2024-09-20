@@ -31,6 +31,12 @@ public class English
 		{
 			MAJ_ROCK.addAll(List.of("Honeycomb Bricks", "Honeycomb Tiles", "Red Arid Sandstone", "Arid Sandstone", "Snail Shell Bricks", "Snail Shell Tiles"));
 		}
+		
+		public static void abnormalsLeavesLang(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("Aspen", "Grimwood","Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Red Maple", "Yellow Maple", "Orange Maple", "Cherry", 
+			"Blue Wisteria", "Pink Wisteria", "White Wisteria", "Purple Wisteria", "Willow", "River"));
+		}
 	}
 	
 	public static class BOP

@@ -148,8 +148,7 @@ public class FurnituresLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_double_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Double Kitchen\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Glass Kitchen Cabinet\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_glass_kitchen_cabinet\":\"Stripped "+MAJ_MAT.get(nbm)+" Glass Kitchen Cabinet\"");
 				}
 				
 				buffer.write("//Finish");

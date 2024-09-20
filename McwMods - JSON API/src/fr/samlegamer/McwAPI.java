@@ -397,13 +397,7 @@ public class McwAPI
 			l.clear();
 		}
 	}
-	
-	@Deprecated
-	public static void verifTag(BufferedWriter buffer, String i, List<String> MAT_WOOD) throws IOException
-	{
-		verifJson(buffer, i, MAT_WOOD);
-	}
-	
+		
 	public static void verifJson(BufferedWriter buffer, String i, List<String> MAT_WOOD) throws IOException
 	{
 		if(!i.equals(MAT_WOOD.get(0)))

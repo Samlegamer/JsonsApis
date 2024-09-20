@@ -9,7 +9,7 @@ import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagGenerator;
+import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.lang.BridgesLangGenerator;
 import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.RoofsLangGenerator;
@@ -98,7 +98,7 @@ public class MacadonQuark implements Presetting
 		RoofsLangGenerator lang3 = new RoofsLangGenerator();
 		lang3.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 
-		RoofsTagGenerator tag = new RoofsTagGenerator();
+		RoofsTagsGenerator tag = new RoofsTagsGenerator();
 		tag.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
 		
 		BridgesTagsGenerator tag2 = new BridgesTagsGenerator();

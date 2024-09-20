@@ -30,7 +30,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("    \""+Modid+":"+i+"_log_bridge_middle\",\r\n"+ "");
 					buffer.write("    \""+Modid+":rope_"+i+"_bridge\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_bridge_pier\",\r\n"+ "");
@@ -70,7 +70,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("    \""+Modid+":"+i+"_bridge\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_bridge_pier\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_bridge_stair\",\r\n"+ "");
@@ -112,7 +112,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_bridge_pier\"");
 				}
 				
@@ -142,7 +142,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_rope_bridge_stair\"");
 				}
 				
@@ -172,7 +172,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":rope_"+i+"_bridge\"");
 				}
 				
@@ -202,7 +202,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_rail_bridge\"");
 				}
 				
@@ -232,7 +232,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_log_bridge_stair\"");
 				}
 				
@@ -262,7 +262,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_log_bridge_middle\"");
 				}
 				
@@ -299,7 +299,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("\""+Modid+":"+i+"_bridge_stair\"");
 				}
 				
@@ -329,7 +329,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("\""+Modid+":"+i+"_bridge\",");
 					buffer.newLine();
 					buffer.write("\""+Modid+":balustrade_"+i+"_bridge\"");
@@ -361,7 +361,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("\""+Modid+":"+i+"_bridge_pier\"");
 				}
 				

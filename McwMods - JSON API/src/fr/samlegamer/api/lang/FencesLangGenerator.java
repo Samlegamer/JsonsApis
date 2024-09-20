@@ -44,6 +44,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0; nbm<MAT_WOOD.size();nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_picket_fence\":\""+MAJ_MAT.get(nbm)+" Picket Fence\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_stockade_fence\":\""+MAJ_MAT.get(nbm)+" Stockade Fence\",");
@@ -54,16 +55,15 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_highley_gate\":\""+MAJ_MAT.get(nbm)+" Highley Gate\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\""+MAJ_MAT.get(nbm)+" Pyramid Gate\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\""+MAJ_MAT.get(nbm)+" Pyramid Gate\"");
 				}
 				
 				if(!LEAVES.isEmpty())
 				{
 					for(int nbm = 0; nbm<LEAVES.size();nbm++)
 					{
-						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\""+LEAVES_LANG.get(nbm)+" Hedge\",");
-						buffer.newLine();
+						McwAPI.verifJsonLang(buffer, nbm);
+						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\""+LEAVES_LANG.get(nbm)+" Hedge\"");
 					}
 				}
 				
@@ -99,6 +99,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0; nbm<MAT_WOOD.size();nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+".modern_"+MAT_WOOD.get(nbm)+"_wall\": \"Modern "+MAJ_MAT.get(nbm)+" Wall\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".railing_"+MAT_WOOD.get(nbm)+"_wall\": \"Railing "+MAJ_MAT.get(nbm)+" Wall\",");
@@ -107,8 +108,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pillar_wall\": \""+MAJ_MAT.get(nbm)+" Pillar Wall\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_grass_topped_wall\": \""+MAJ_MAT.get(nbm)+" Grass Topped Wall\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_grass_topped_wall\": \""+MAJ_MAT.get(nbm)+" Grass Topped Wall\"");
 				}
 				
 				buffer.write("//Finish");
@@ -143,6 +143,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0; nbm<MAT_WOOD.size();nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_picket_fence\":\"Clôture à piquets en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_stockade_fence\":\"Clôture à palissade en "+MAJ_MAT.get(nbm)+"\",");
@@ -153,16 +154,17 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_highley_gate\":\"Grand portillon en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\"Portillon pyramidal en "+MAJ_MAT.get(nbm)+"\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pyramid_gate\":\"Portillon pyramidal en "+MAJ_MAT.get(nbm)+"\"");
 				}
 				
 				if(!LEAVES.isEmpty())
 				{
+					buffer.write(",");
+					buffer.newLine();
 					for(int nbm = 0; nbm<LEAVES.size();nbm++)
 					{
-						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\"Haie de "+LEAVES_LANG.get(nbm)+"\",");
-						buffer.newLine();
+						McwAPI.verifJsonLang(buffer, nbm);
+						buffer.write("\"block."+CompatModid+"."+LEAVES.get(nbm)+"_hedge\":\"Haie de "+LEAVES_LANG.get(nbm)+"\"");
 					}
 				}
 				
@@ -199,6 +201,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 				
 				for(int nbm = 0; nbm<MAT_ROCK.size();nbm++)
 				{
+					McwAPI.verifJsonLang(buffer, nbm);
 					buffer.write("\"block."+CompatModid+".modern_"+MAT_ROCK.get(nbm)+"_wall\": \"Mur moderne en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".railing_"+MAT_ROCK.get(nbm)+"_wall\": \"Balustrade mur en "+MAJ_MAT.get(nbm)+"\",");
@@ -207,8 +210,7 @@ public class FencesLangGenerator implements IModFiles.ILang
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_pillar_wall\": \"Mur de piliers en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
-					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_grass_topped_wall\": \"Mur en "+MAJ_MAT.get(nbm)+" surmonté d'herbe\",");
-					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_grass_topped_wall\": \"Mur en "+MAJ_MAT.get(nbm)+" surmonté d'herbe\"");
 				}
 				
 				buffer.write("//Finish");

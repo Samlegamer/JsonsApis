@@ -16,7 +16,7 @@ public class French
 		}
 	}
 	
-	@Uncomplete(percent = 5, missing = "french lang missing")
+	@Uncomplete(percent = 50, missing = "french lang loading...")
 	public static class Abnormals
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
@@ -28,20 +28,20 @@ public class French
 			MAJ_WOOD.add("Rosewood");
 			MAJ_WOOD.add("Yucca");
 			MAJ_WOOD.add("érable");
-			MAJ_WOOD.add("Cherry");
+			MAJ_WOOD.add("cerisier");
 			MAJ_WOOD.add("glycine");
-			MAJ_WOOD.add("Willow");
-			MAJ_WOOD.add("Driftwood");
-			MAJ_WOOD.add("River");
-			MAJ_WOOD.add("Poise");
+			MAJ_WOOD.add("saule");
+			MAJ_WOOD.add("bois flotté");
+			MAJ_WOOD.add("rivière");
+			MAJ_WOOD.add("lévita");
 		}
 
 		public static void abnormalsRockLang(List<String> MAJ_ROCK)
 		{
-			MAJ_ROCK.add("Honeycomb Bricks");
-			MAJ_ROCK.add("Honeycomb Tiles");
-			MAJ_ROCK.add("Red Arid Sandstone");
-			MAJ_ROCK.add("Arid Sandstone");
+			MAJ_ROCK.add("rayon de miel taillée");
+			MAJ_ROCK.add("rayon de miel carrelée");
+			MAJ_ROCK.add("grès aride rouge");
+			MAJ_ROCK.add("grès aride");
 			MAJ_ROCK.add("Snail Shell Bricks");
 			MAJ_ROCK.add("Snail Shell Tiles");
 		}

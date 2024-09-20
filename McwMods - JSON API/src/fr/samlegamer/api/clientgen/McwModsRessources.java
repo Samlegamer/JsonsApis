@@ -27,7 +27,7 @@ public class McwModsRessources implements IModFiles.IClient
 	private String MOD_ID;
 	private String VERSION;
 	private McwAPI.ClientFolderTypes fold;
-	private String Modid;
+	private String Modid = "defaultmc";
 	
 	public McwModsRessources(String modidData, McwAPI.ClientFolderTypes f)
 	{
@@ -528,6 +528,51 @@ public class McwModsRessources implements IModFiles.IClient
 		}
 	}
 
+	public void createWoodModelsBlockswithResearchCustom(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, boolean isStemWood, String research, String customTextureLeaves)
+	{
+		List<Path> directories = new ArrayList<Path>();
+		
+		for(String str : this.fold.getPathList())
+		{
+			directories.add(Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str));
+			
+			for(Path directory : directories)
+			{
+				for(String i : MAT_WOOD)
+				{
+			        try (Stream<Path> files = Files.list(directory)) {
+			            List<Path> acaciaFiles = files
+			                    .filter(file -> file.getFileName().toString().contains(research))
+			                    .collect(Collectors.toList());
+		
+			            for (Path file : acaciaFiles) {
+			            	try {
+			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+			                    List<String> modifiedLines = lines.stream()
+			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
+			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+(isStemWood ? "_stem" : "_log")))
+			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
+			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
+			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+customTextureLeaves))
+			                            .collect(Collectors.toList());
+		
+			                    String newFileName = file.getFileName().toString().replace("acacia", i);
+			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
+		
+			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
+			                    McwAPI.message(newFilePath.toFile());
+			                } catch (IOException e) {
+			                    e.printStackTrace();
+			                }
+			            }
+			        } catch (IOException e) {
+			            e.printStackTrace();
+			        }
+				}
+			}
+			directories.clear();
+		}
+	}
 
 	public void createWoodCustomModelsBlocksBYGSettingwithResearch(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, String nameOfTexturesPlanks, String nameOfTexturesLogs, String nameOfTexturesStripped, String nameOfTexturesLeaves, String research)
 	{

@@ -166,12 +166,6 @@ public class ModsList
 		bygRock(MAT_ROCK, WALL, FLOOR);
 	}
 	
-	@Deprecated
-	public static void bygAssets(List<String> MATERIAL)
-	{
-		byg(MATERIAL);
-	}
-
 	public static void byg(List<String> MATERIAL)
 	{
 		byg(MATERIAL, false);
@@ -344,6 +338,27 @@ public class ModsList
 	public static void abnormalsRock(List<String> MAT_ROCK)
 	{
 		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
+	}
+	
+	public static void abnormalsLeaves(List<String> LEAVES)
+	{
+		LEAVES.add("aspen");
+		LEAVES.add("grimwood");
+		LEAVES.add("kousa");
+		LEAVES.add("morado");
+		LEAVES.add("rosewood");
+		LEAVES.add("yucca");
+		LEAVES.add("maple");
+		LEAVES.add("red_maple");
+		LEAVES.add("yellow_maple");
+		LEAVES.add("orange_maple");
+		LEAVES.add("cherry");
+		LEAVES.add("blue_wisteria");
+		LEAVES.add("pink_wisteria");
+		LEAVES.add("white_wisteria");
+		LEAVES.add("purple_wisteria");
+		LEAVES.add("willow");
+		LEAVES.add("river");
 	}
 
 	public static void betterlandsWoods(List<String> MAT_WOOD)

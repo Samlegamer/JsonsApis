@@ -9,7 +9,7 @@ import java.util.List;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
-public class RoofsTagGenerator implements IModFiles.ITagData
+public class RoofsTagsGenerator implements IModFiles.ITagData
 {
 	@Override
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> Mat)
@@ -30,7 +30,7 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 				
 				for(String i : Mat)
 				{
-					McwAPI.verifTag(buffer, i, Mat);
+					McwAPI.verifJson(buffer, i, Mat);
 					buffer.write("    \""+Modid+":"+i+"_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_attic_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_top_roof\",\r\n"+ "");
@@ -79,7 +79,7 @@ public class RoofsTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_ROCK)
 				{
-					McwAPI.verifTag(buffer, i, MAT_ROCK);
+					McwAPI.verifJson(buffer, i, MAT_ROCK);
 					buffer.write("    \""+Modid+":"+i+"_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_attic_roof\",\r\n"+ "");
 					buffer.write("    \""+Modid+":"+i+"_top_roof\",\r\n"+ "");

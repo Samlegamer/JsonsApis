@@ -10,7 +10,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.IModFiles;
 
-public class FurnituresTagGenerator implements IModFiles.ITagData
+public class FurnituresTagsGenerator implements IModFiles.ITagData
 {
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{		
@@ -30,7 +30,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+CompatModid+":"+i+"_wardrobe\","+ "");
 					buffer.write("\""+CompatModid+":"+i+"_modern_wardrobe\","+ "");
 					buffer.write("\""+CompatModid+":"+i+"_double_wardrobe\","+ "");
@@ -127,7 +127,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_"+objName+"\",");
 					buffer.newLine();
 					buffer.write("\""+Modid+":stripped_"+i+"_"+objName+"\"");
@@ -165,7 +165,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_kitchen_cabinet"+"\",");
 					buffer.newLine();
 					buffer.write("\""+Modid+":stripped_"+i+"_kitchen_cabinet"+"\",");
@@ -216,7 +216,7 @@ public class FurnituresTagGenerator implements IModFiles.ITagData
 				
 				for(String i : MAT_WOOD)
 				{
-					McwAPI.verifTag(buffer, i, MAT_WOOD);
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
 					buffer.write("\""+Modid+":"+i+"_wardrobe"+"\"");
 				}
 				
