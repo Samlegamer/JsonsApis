@@ -37,7 +37,7 @@ public class FencesBYG extends FencesBYGWarden
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID;
-		String CompatModid = Compatibilities.BYG_FENCES_MODID;
+		String CompatModid = "mcwbyg";
 		System.out.println("Start Wood Data/Client");
 		ModsList.byg(MAT_WOOD, false);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
