@@ -432,27 +432,23 @@ public class ModsList
 		MAT_WOOD.add("cypress");
 		MAT_WOOD.add("brown_mushroom");
 		MAT_WOOD.add("red_mushroom");
-		MAT_WOOD.add("jacaranda"); //abundance
+		MAT_WOOD.add("jacaranda");
+		MAT_WOOD.add("redbud");
 	}
 	
-	public static void AuroraWoodsLang(List<String> MAT_WOOD)
+	public static void AuroraLeaves(List<String> MAT_WOOD)
 	{
-		MAT_WOOD.add("Cypress");
-		MAT_WOOD.add("Brown Mushroom");
-		MAT_WOOD.add("Red Mushroom");
-		MAT_WOOD.add("Jacaranda"); //abundance
+		MAT_WOOD.add("cypress");
+		MAT_WOOD.add("jacaranda");
+		MAT_WOOD.add("redbud");
 	}
 	
 	public static void AuroraWoods1201(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("cypress");
 		MAT_WOOD.add("mushroom");
-	}
-	
-	public static void AuroraWoods1201Lang(List<String> MAT_WOOD)
-	{
-		MAT_WOOD.add("Cypress");
-		MAT_WOOD.add("Mushroom");
+		MAT_WOOD.add("jacaranda");
+		MAT_WOOD.add("redbud");
 	}
 	
 	public static void BlueSkiesBsky(List<String> MAT_WOOD)

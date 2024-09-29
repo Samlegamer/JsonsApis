@@ -70,7 +70,6 @@ public class BYG implements Presetting
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 
-
 	@Override
 	public void init(String LOCATION)
 	{

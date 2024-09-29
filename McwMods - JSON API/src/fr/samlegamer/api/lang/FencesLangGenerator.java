@@ -60,6 +60,8 @@ public class FencesLangGenerator implements IModFiles.ILang
 				
 				if(!LEAVES.isEmpty())
 				{
+					buffer.write(",");
+					buffer.newLine();
 					for(int nbm = 0; nbm<LEAVES.size();nbm++)
 					{
 						McwAPI.verifJsonLang(buffer, nbm);

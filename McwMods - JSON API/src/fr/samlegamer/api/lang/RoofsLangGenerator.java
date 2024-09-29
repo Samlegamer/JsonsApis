@@ -59,7 +59,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_planks_upper_steep_roof\":\""+MAJ_MAT.get(nbm)+" Planks Steep Top Roof\"");
 				}
 				
-				buffer.write("\"\"//Finish");
+				buffer.write("//Finish");
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
@@ -107,7 +107,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_upper_steep_roof\":\""+MAJ_MAT.get(nbm)+" Steep Top Roof\"");
 				}
 				
-				buffer.write("\"\"//Finish");
+				buffer.write("//Finish");
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
@@ -169,7 +169,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_planks_upper_steep_roof\":\"Faîte de toit raide en planche de "+MAJ_MAT.get(nbm)+"\"");
 				}
 
-				buffer.write("\"\"//Finish");
+				buffer.write("//Finish");
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
@@ -219,7 +219,7 @@ public class RoofsLangGenerator implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_upper_steep_roof\":\"Faîte de toit raide en "+MAJ_MAT.get(nbm)+"\"");
 				}
 
-				buffer.write("\"\"//Finish");
+				buffer.write("//Finish");
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();

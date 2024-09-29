@@ -6,6 +6,33 @@ import fr.samlegamer.utils.Uncomplete;
 
 public class French
 {
+	public static class Aurora
+	{
+		public static void AuroraWoodsLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("cyprès");
+			MAT_WOOD.add("champignon brun");
+			MAT_WOOD.add("champignon rouge");
+			MAT_WOOD.add("jacaranda"); 
+			MAT_WOOD.add("gainier rouge");
+		}		
+
+		public static void AuroraLeavesLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("cyprès");
+			MAT_WOOD.add("jacaranda"); 
+			MAT_WOOD.add("gainier rouge");
+		}
+
+		public static void AuroraWoods1201Lang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("cyprès");
+			MAT_WOOD.add("champignon");
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("gainier rouge");
+		}
+	}
+	
 	public static class Quark
 	{
 		public static void quarkRockLang(List<String> MAJ_ROCK)
@@ -16,17 +43,17 @@ public class French
 		}
 	}
 	
-	@Uncomplete(percent = 50, missing = "french lang loading...")
+	@Uncomplete(percent = 80, missing = "french lang loading...")
 	public static class Abnormals
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
 		{
-			MAJ_WOOD.add("Aspen");
-			MAJ_WOOD.add("Grimwood");
-			MAJ_WOOD.add("Kousa");
-			MAJ_WOOD.add("Morado");
-			MAJ_WOOD.add("Rosewood");
-			MAJ_WOOD.add("Yucca");
+			MAJ_WOOD.add("tremble");
+			MAJ_WOOD.add("sombrepin");
+			MAJ_WOOD.add("cornouiller");
+			MAJ_WOOD.add("morado");
+			MAJ_WOOD.add("pallisandre");
+			MAJ_WOOD.add("yucca");
 			MAJ_WOOD.add("érable");
 			MAJ_WOOD.add("cerisier");
 			MAJ_WOOD.add("glycine");

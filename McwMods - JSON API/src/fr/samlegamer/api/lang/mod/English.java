@@ -5,6 +5,34 @@ import java.util.List;
 
 public class English
 {
+	public static class Aurora
+	{
+		public static void AuroraWoodsLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("Cypress");
+			MAT_WOOD.add("Brown Mushroom");
+			MAT_WOOD.add("Red Mushroom");
+			MAT_WOOD.add("Jacaranda"); 
+			MAT_WOOD.add("Redbud");
+			//abundance 
+		}
+		
+		public static void AuroraLeavesLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("Cypress");
+			MAT_WOOD.add("Jacaranda"); 
+			MAT_WOOD.add("Redbud");
+		}
+
+		public static void AuroraWoods1201Lang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("Cypress");
+			MAT_WOOD.add("Mushroom");
+			MAT_WOOD.add("Jacaranda");
+			MAT_WOOD.add("Redbud");
+		}
+	}
+	
 	public static class Quark
 	{
 		public static void quarkRockLang(List<String> MAJ_ROCK)

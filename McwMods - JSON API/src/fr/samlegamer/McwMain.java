@@ -8,7 +8,7 @@ import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BYG;
+import fr.samlegamer.utils.preset.Aurora;
 
 public class McwMain
 {	
@@ -31,9 +31,9 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		McwAPI.DataGenFolder(LOCATION);
+		//McwAPI.DataGenFolder(LOCATION);
 		//preset(new MacadonQuark());
-		McwAPI.FencesGenFolder(LOCATION);
+		//McwAPI.FencesGenFolder(LOCATION);
 		//McwAPI.BridgesGenFolder(LOCATION);
 		//McwAPI.RoofsGenFolder(LOCATION);
 		//McwAPI.FurnituresGenFolder(LOCATION);
@@ -41,7 +41,7 @@ public class McwMain
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		//preset(new Abnormals(false, true, true, true));
 		
-		preset(new BYG());
+		preset(new Aurora(true, true, true, true));
 		/*
 		McwAPI.FencesGenFolder(RP);
 		McwAPI.BridgesGenFolder(RP);
