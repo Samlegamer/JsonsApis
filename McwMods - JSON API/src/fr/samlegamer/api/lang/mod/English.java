@@ -5,6 +5,43 @@ import java.util.List;
 
 public class English
 {
+	public static class Sajevius
+	{
+		public static void ShroomedLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("Blue Hard Mushroom");
+			MAJ_WOOD.add("Hard Mushroom");
+			MAJ_WOOD.add("Orange Hard Mushroom");
+			MAJ_WOOD.add("Purple Hard Mushroom");
+		}
+
+		public static void betterlandsWoodsLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("Juniper");
+		}
+		
+		
+		public static void betterlandsRocksLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("Black Terracotta Bricks");
+			MAJ_ROCK.add("Blue Terracotta Bricks");
+			MAJ_ROCK.add("Brown Terracotta Bricks");
+			MAJ_ROCK.add("Claystone Bricks");
+			MAJ_ROCK.add("Cyan Terracotta Bricks");
+			MAJ_ROCK.add("Gray Terracotta Bricks");
+			MAJ_ROCK.add("Green Terracotta Bricks");
+			MAJ_ROCK.add("Light Blue Terracotta Bricks");
+			MAJ_ROCK.add("Light Gray Terracotta Bricks");
+			MAJ_ROCK.add("Lime Terracotta Bricks");
+			MAJ_ROCK.add("Magenta Terracotta Bricks");
+			MAJ_ROCK.add("Orange Terracotta Bricks");
+			MAJ_ROCK.add("Red Terracotta Bricks");
+			MAJ_ROCK.add("Terracotta Bricks");
+			MAJ_ROCK.add("White Terracotta Bricks");
+			MAJ_ROCK.add("Yellow Terracotta Bricks");
+		}
+	}
+	
 	public static class Aurora
 	{
 		public static void AuroraWoodsLang(List<String> MAT_WOOD)

@@ -8,7 +8,7 @@ import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.Aurora;
+import fr.samlegamer.utils.preset.Sajevius;
 
 public class McwMain
 {	
@@ -39,9 +39,41 @@ public class McwMain
 		//McwAPI.FurnituresGenFolder(LOCATION);
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
-		//preset(new Abnormals(false, true, true, true));
 		
-		preset(new Aurora(true, true, true, true));
+		preset(new Sajevius());
+		//preset(new Abnormals(false, true, true, true));
+		/*MAT_WOOD.add("pale_oak");
+		MAJ_WOOD.add("chêne pâle");
+		BridgesLangGenerator langB = new BridgesLangGenerator();
+		FurnituresLangGenerator langFurni = new FurnituresLangGenerator();
+		FencesLangGenerator fence = new FencesLangGenerator(MAT_WOOD, MAJ_WOOD);
+		RoofsLangGenerator roofs = new RoofsLangGenerator();
+		TrapdoorsLangGenerator trapdoor = new TrapdoorsLangGenerator();
+		DoorsLangGenerator door = new DoorsLangGenerator();
+		PathsLangGenerator path = new PathsLangGenerator();
+		WindowsLangGenerator window = new WindowsLangGenerator();
+		langB.initAllWoodFrench(Compatibilities.MCW_BRIDGES_MODID, MAT_WOOD, MAJ_WOOD);
+		langFurni.initAllWoodFrench(Compatibilities.MCW_FURNITURES_MODID, MAT_WOOD, MAJ_WOOD);
+		roofs.initAllWoodFrench(Compatibilities.MCW_ROOFS_MODID, MAT_WOOD, MAJ_WOOD);
+		fence.initAllWoodFrench(Compatibilities.MCW_FENCES_MODID, MAT_WOOD, MAJ_WOOD);
+		trapdoor.initAllWoodFrench(Compatibilities.MCW_TRAPDOORS_MODID, MAT_WOOD, MAJ_WOOD);
+		door.initAllWoodFrench(Compatibilities.MCW_DOORS_MODID, MAT_WOOD, MAJ_WOOD);
+		path.initAllWoodFrench(Compatibilities.MCW_PATHS_MODID, MAT_WOOD, MAJ_WOOD);
+		window.initAllWoodFrench(Compatibilities.MCW_WINDOWS_MODID, MAT_WOOD, MAJ_WOOD);
+		
+		MAJ_WOOD.clear();
+		MAJ_WOOD.add("Pale Oak");
+
+		langB.initAllWoodEnglish(Compatibilities.MCW_BRIDGES_MODID, MAT_WOOD, MAJ_WOOD);
+		langFurni.initAllWoodEnglish(Compatibilities.MCW_FURNITURES_MODID, MAT_WOOD, MAJ_WOOD);
+		roofs.initAllWoodEnglish(Compatibilities.MCW_ROOFS_MODID, MAT_WOOD, MAJ_WOOD);
+		fence.initAllWoodEnglish(Compatibilities.MCW_FENCES_MODID, MAT_WOOD, MAJ_WOOD);
+		trapdoor.initAllWoodEnglish(Compatibilities.MCW_TRAPDOORS_MODID, MAT_WOOD, MAJ_WOOD);
+		door.initAllWoodEnglish(Compatibilities.MCW_DOORS_MODID, MAT_WOOD, MAJ_WOOD);
+		path.initAllWoodEnglish(Compatibilities.MCW_PATHS_MODID, MAT_WOOD, MAJ_WOOD);
+		window.initAllWoodEnglish(Compatibilities.MCW_WINDOWS_MODID, MAT_WOOD, MAJ_WOOD);*/
+
+		//preset(new Aurora(true, true, true, true));
 		/*
 		McwAPI.FencesGenFolder(RP);
 		McwAPI.BridgesGenFolder(RP);

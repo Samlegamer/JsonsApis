@@ -311,6 +311,7 @@ public class French
 			MAT.add("warped");
 			MAT.add("mangrove");
 			MAT.add("cherry");
+			MAT.add("pale_oak");
 			
 			MAJ_MAT.add("chêne");
 			MAJ_MAT.add("bouleau");
@@ -322,6 +323,7 @@ public class French
 			MAJ_MAT.add("biscornue");
 			MAJ_MAT.add("palétuvier");
 			MAJ_MAT.add("cerisier");
+			MAJ_MAT.add("chêne pale");
 		}
 		
 		//Used by Mcw Bridges
