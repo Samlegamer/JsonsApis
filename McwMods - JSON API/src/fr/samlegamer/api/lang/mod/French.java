@@ -2,10 +2,33 @@ package fr.samlegamer.api.lang.mod;
 
 import java.util.Collection;
 import java.util.List;
-import fr.samlegamer.utils.Uncomplete;
 
 public class French
 {
+	public static class ModdingLegacy
+	{
+		public static void PremiumWoodLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("magique");
+			MAJ_WOOD.add("érable");
+			MAJ_WOOD.add("misère pourpre");
+			MAJ_WOOD.add("halesier");
+			MAJ_WOOD.add("automne");
+			MAJ_WOOD.add("saule");
+		}
+
+		public static void BlueSkiesLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("bleu brillant");
+			MAT_WOOD.add("cerisier");
+			MAT_WOOD.add("crépuscule");
+			MAT_WOOD.add("gel brillant");
+			MAT_WOOD.add("lunaire");
+			MAT_WOOD.add("érable");
+			MAT_WOOD.add("étoilée");
+		}
+	}
+	
 	public static class Aurora
 	{
 		public static void AuroraWoodsLang(List<String> MAT_WOOD)
@@ -43,7 +66,6 @@ public class French
 		}
 	}
 	
-	@Uncomplete(percent = 80, missing = "french lang loading...")
 	public static class Abnormals
 	{
 		public static void abnormalsWoodLang(List<String> MAJ_WOOD)
@@ -69,8 +91,14 @@ public class French
 			MAJ_ROCK.add("rayon de miel carrelée");
 			MAJ_ROCK.add("grès aride rouge");
 			MAJ_ROCK.add("grès aride");
-			MAJ_ROCK.add("Snail Shell Bricks");
-			MAJ_ROCK.add("Snail Shell Tiles");
+			MAJ_ROCK.add("briques de coquille d'escargot");
+			MAJ_ROCK.add("coquille d'escargot carrelée");
+		}
+		
+		public static void abnormalsLeavesLang(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("tremble", "sombrepin","cornouiller", "morado", "pallisandre", "yucca", "érable", "érable rouges", "érable jaunes", "érable oranges", "cerisier", 
+			"glycine bleu", "glycine rose", "glycine blanc", "glycine violet", "saule", "rivière"));
 		}
 	}
 	

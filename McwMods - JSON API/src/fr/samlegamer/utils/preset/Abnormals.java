@@ -15,6 +15,7 @@ import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
 import fr.samlegamer.api.lang.RoofsLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
+import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
 
@@ -594,6 +595,25 @@ public class Abnormals implements Presetting
 		lang_fences.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 		lang_furnitures.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_furnitures.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
+		
+		MAJ_WOOD.clear();
+		MAJ_ROCK.clear();
+		MAJ_LEAVES.clear();
+		French.Abnormals.abnormalsWoodLang(MAJ_WOOD);
+		French.Abnormals.abnormalsRockLang(MAJ_ROCK);
+		French.Abnormals.abnormalsLeavesLang(MAJ_LEAVES);
+		lang_bridges.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_bridges.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		lang_roofs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_roofs.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		lang_fences.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_fences.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		lang_furnitures.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_furnitures.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		MAJ_WOOD.clear();
+		MAJ_ROCK.clear();
+		MAJ_LEAVES.clear();
+
 		System.out.println("Done Data/Tags/Lang/ForgeCode");
 		System.out.println("Finish Abnormals Registries");
 	}

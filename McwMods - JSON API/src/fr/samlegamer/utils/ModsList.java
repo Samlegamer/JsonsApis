@@ -455,12 +455,22 @@ public class ModsList
 	{
 		MAT_WOOD.add("bsky_bluebright");
 		MAT_WOOD.add("bsky_cherry");
-		MAT_WOOD.add("bsky_crystallized");
 		MAT_WOOD.add("bsky_dusk");
 		MAT_WOOD.add("bsky_frostbright");
 		MAT_WOOD.add("bsky_lunar");
 		MAT_WOOD.add("bsky_maple");
 		MAT_WOOD.add("bsky_starlit");
+	}
+	
+	public static void BlueSkiesTextures(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.add("bluebright");
+		MAT_WOOD.add("cherry");
+		MAT_WOOD.add("dusk");
+		MAT_WOOD.add("frostbright");
+		MAT_WOOD.add("lunar");
+		MAT_WOOD.add("maple");
+		MAT_WOOD.add("starlit");
 	}
 	
 	public static void PremiumWoodPwood(List<String> MAT_WOOD)
@@ -471,5 +481,15 @@ public class ModsList
 		MAT_WOOD.add("pwood_silverbell");
 		MAT_WOOD.add("pwood_tiger");
 		MAT_WOOD.add("pwood_willow");
+	}
+	
+	public static void PremiumWoodPwoodTextures(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.add("magic");
+		MAT_WOOD.add("maple");
+		MAT_WOOD.add("purple_heart");
+		MAT_WOOD.add("silverbell");
+		MAT_WOOD.add("tiger");
+		MAT_WOOD.add("willow");
 	}
 }

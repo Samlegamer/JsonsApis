@@ -8,7 +8,7 @@ import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.Sajevius;
+import fr.samlegamer.utils.preset.ModdingLegacy;
 
 public class McwMain
 {	
@@ -40,7 +40,7 @@ public class McwMain
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		
-		preset(new Sajevius());
+		preset(new ModdingLegacy());
 		//preset(new Abnormals(false, true, true, true));
 		/*MAT_WOOD.add("pale_oak");
 		MAJ_WOOD.add("chêne pâle");

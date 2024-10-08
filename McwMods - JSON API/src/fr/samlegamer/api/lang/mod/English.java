@@ -5,6 +5,30 @@ import java.util.List;
 
 public class English
 {
+	public static class ModdingLegacy
+	{
+		public static void PremiumWoodLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("Magic");
+			MAJ_WOOD.add("Maple");
+			MAJ_WOOD.add("Purple Heart");
+			MAJ_WOOD.add("Silverbell");
+			MAJ_WOOD.add("Tiger");
+			MAJ_WOOD.add("Willow");
+		}
+
+		public static void BlueSkiesLang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("Bluebright");
+			MAT_WOOD.add("Cherry");
+			MAT_WOOD.add("Dusk");
+			MAT_WOOD.add("Frostbright");
+			MAT_WOOD.add("Lunar");
+			MAT_WOOD.add("Maple");
+			MAT_WOOD.add("Starlit");
+		}
+	}
+	
 	public static class Sajevius
 	{
 		public static void ShroomedLang(List<String> MAJ_WOOD)
