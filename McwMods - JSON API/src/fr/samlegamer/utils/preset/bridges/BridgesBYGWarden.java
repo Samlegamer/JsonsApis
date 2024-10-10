@@ -27,7 +27,7 @@ public class BridgesBYGWarden implements Presetting
 	/*Instance*/
 	private static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
 	private static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
-	private static final IModFiles.IData data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
+	private static final McwDataGen data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
 	
 	@Override
 	public void init(String LOCATION)
@@ -69,7 +69,7 @@ public class BridgesBYGWarden implements Presetting
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();

@@ -9,6 +9,9 @@ import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.preset.ModdingLegacy;
+import fr.samlegamer.utils.preset.bridges.BridgesBWG;
+import fr.samlegamer.utils.preset.bridges.BridgesBYG;
+import fr.samlegamer.utils.preset.bridges.BridgesBYGWarden;
 
 public class McwMain
 {	

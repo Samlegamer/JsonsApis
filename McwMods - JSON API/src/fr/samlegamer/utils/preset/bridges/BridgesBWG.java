@@ -69,7 +69,7 @@ public class BridgesBWG implements Presetting
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();

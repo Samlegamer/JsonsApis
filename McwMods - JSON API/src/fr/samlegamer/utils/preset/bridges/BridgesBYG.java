@@ -41,7 +41,7 @@ public class BridgesBYG implements Presetting
 		List<String> FLOOR = new ArrayList<String>();
 		List<String> MAJ_WOOD = new ArrayList<String>();
 		List<String> MAJ_ROCK = new ArrayList<String>();
-		String CompatModid = "mcwbyg";
+		String CompatModid = "macawsbridgesbyg";
 		String ClassBlockRegistry = "MBBYGBlocksRegistry";
 		System.out.println("Start Wood Client");
 		String txtLocMod = Compatibilities.BYG_TEXTURES;

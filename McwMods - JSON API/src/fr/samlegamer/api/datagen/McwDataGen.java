@@ -287,6 +287,7 @@ public class McwDataGen implements IModFiles.IData
 	                    List<String> modifiedLines = lines.stream()
 	                            //.map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
 	                            //.map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
 	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+i))
 	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
 	                            .collect(Collectors.toList());
