@@ -11,10 +11,12 @@ import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
 import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
 import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
+import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.lang.BridgesLangGenerator;
 import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
 import fr.samlegamer.api.lang.RoofsLangGenerator;
+import fr.samlegamer.api.lang.StairsLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
@@ -39,9 +41,13 @@ public class ModdingLegacy implements Presetting
 	private static final McwModsRessources client_wood_furnitures = new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL);
 	private static final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID);
 
+	private static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
+	private static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
+
 	@Override
 	public void init(String LOCATION)
 	{
+		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.FurnituresGenFolder(LOCATION);
 		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.RoofsGenFolder(LOCATION);
@@ -92,6 +98,13 @@ public class ModdingLegacy implements Presetting
 		data_furnitures.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 		data_furnitures.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
 		
+		client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
+		client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
+		client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
+		data_stairs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+		data_stairs.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
+		data_stairs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+
 		client_wood_fences.createWoodBlockstateswithResearch(LOCATION, CompatModid, PREFIX_LEAVES, "acacia_hedge");
 		client_wood_fences.createWoodModelsBlockswithResearchPrefixed(LOCATION, txtLocMod+"/leaves", LEAVES, PREFIX_LEAVES, Boolean.FALSE, "acacia_wall");
 		client_wood_fences.createWoodModelItemwithResearch(LOCATION, CompatModid, PREFIX_LEAVES, "acacia_hedge");
@@ -238,6 +251,12 @@ public class ModdingLegacy implements Presetting
 		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
 		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		furni_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		
+		StairsTagsGenerator stairs_tags = new StairsTagsGenerator();
+		StairsLangGenerator stairs_lang = new StairsLangGenerator();
+		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		stairs_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
 		MAJ_LEAVES.clear();
 		PREFIX_LEAVES.clear();
 		PREFIX_WOOD.clear();
@@ -276,6 +295,8 @@ public class ModdingLegacy implements Presetting
 		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
 		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		furni_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		
+		stairs_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
 	}
 	
 	public void genPwoodWood(String LOCATION, String CompatModid, String txtLocMod, List<String> MAT_WOOD, List<String> PREFIX_WOOD, List<String> LEAVES, List<String> PREFIX_LEAVES, String ModidOfBaseMod, String folderWood)
@@ -315,5 +336,11 @@ public class ModdingLegacy implements Presetting
 		data_fences.LootTableLogAllwithResearchPrefixed(LOCATION, CompatModid, LEAVES, PREFIX_LEAVES, "acacia_hedge");
 		data_fences.RecipesLogAllwithResearchIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, PREFIX_LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 
+		client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
+		client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/"+folderWood, MAT_WOOD, PREFIX_WOOD, false);
+		client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
+		data_stairs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+		data_stairs.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
+		data_stairs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
 	}
 }

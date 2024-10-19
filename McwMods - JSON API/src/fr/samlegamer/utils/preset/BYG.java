@@ -73,9 +73,9 @@ public class BYG implements Presetting
 	@Override
 	public void init(String LOCATION)
 	{
-		BridgesBYG bridges = new BridgesBYG();
+		BridgesBYG bridges = new BridgesBYG(true);
 		bridges.init(LOCATION);
-		FencesBYG fences = new FencesBYG();
+		FencesBYG fences = new FencesBYG(true);
 		fences.init(LOCATION);
 		
 		McwAPI.RoofsGenFolder(LOCATION);

@@ -29,6 +29,13 @@ public class BridgesBYG implements Presetting
 	private static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
 	private static final McwDataGen data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
 	
+	private boolean isMcwFinal;
+	
+	public BridgesBYG(boolean isMcwFinal)
+	{
+		this.isMcwFinal = isMcwFinal;
+	}
+	
 	@Override
 	public void init(String LOCATION)
 	{
@@ -41,7 +48,7 @@ public class BridgesBYG implements Presetting
 		List<String> FLOOR = new ArrayList<String>();
 		List<String> MAJ_WOOD = new ArrayList<String>();
 		List<String> MAJ_ROCK = new ArrayList<String>();
-		String CompatModid = "macawsbridgesbyg";
+		String CompatModid = isMcwFinal ? "mcwbyg" : "macawsbridgesbyg";
 		String ClassBlockRegistry = "MBBYGBlocksRegistry";
 		System.out.println("Start Wood Client");
 		String txtLocMod = Compatibilities.BYG_TEXTURES;

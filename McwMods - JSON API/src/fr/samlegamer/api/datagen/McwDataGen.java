@@ -614,12 +614,14 @@ public class McwDataGen implements IModFiles.IData
 	            for (Path file : acaciaFiles) {
 	            	try {
 			            final int a = i;
+			            boolean isPremiumWoodPrefix = PREFIX_WOOD.get(a).contains("pwood_");
+			            String strip = isPremiumWoodPrefix ? MAT_WOOD.get(a) + "_stripped_log" : "stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log");
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log")))
 	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+MAT_WOOD.get(a)))
-	                            .map(line -> line.replace("minecraft:stripped_acacia_log", ModidOfBaseMod+":stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace("minecraft:stripped_acacia_log", ModidOfBaseMod+":"+strip))
 	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+PREFIX_WOOD.get(a)))
 	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+PREFIX_WOOD.get(a)))
 	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+PREFIX_WOOD.get(a)))

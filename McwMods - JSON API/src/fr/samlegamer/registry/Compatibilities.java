@@ -36,4 +36,5 @@ public class Compatibilities
 	public static final String MCW_PATHS_MODID = "mcwpaths";
 	public static final String MCW_DOORS_MODID = "mcwdoors";
 	public static final String MCW_WINDOWS_MODID = "mcwwindows";
+	public static final String MCW_STAIRS_MODID = "mcwstairs";
 }

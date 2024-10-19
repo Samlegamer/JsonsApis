@@ -354,6 +354,55 @@ public class French
 			MAJ_MAT.add("chêne pale");
 		}
 		
+		public static void mcRockStairs(List<String> MAT_ROCK, List<String> MAJ_MAT)
+		{
+			MAT_ROCK.add("brick");
+			MAT_ROCK.add("stone_brick");
+			MAT_ROCK.add("mossy_stone_brick");
+			MAT_ROCK.add("sandstone");
+			MAT_ROCK.add("red_sandstone");
+			MAT_ROCK.add("deepslate_brick");
+			MAT_ROCK.add("cobbled_deepslate");
+			MAT_ROCK.add("mud_brick");
+			MAT_ROCK.add("blackstone");
+
+			MAT_ROCK.add("glass");
+			MAT_ROCK.add("quartz");
+
+			MAT_ROCK.add("cobblestone");
+			MAT_ROCK.add("mossy_cobblestone");
+			MAT_ROCK.add("andesite");
+			MAT_ROCK.add("granite");
+			MAT_ROCK.add("diorite");
+			MAT_ROCK.add("prismarine");
+			MAT_ROCK.add("nether_bricks");
+			MAT_ROCK.add("red_nether_brick");
+			MAT_ROCK.add("end_stone_bricks");
+			
+			MAJ_MAT.add("briques");
+			MAJ_MAT.add("pierre taillée");
+			MAJ_MAT.add("pierre taillée moussue");
+			MAJ_MAT.add("grès");
+			MAJ_MAT.add("grès rouge");
+			MAJ_MAT.add("ardoise des abîmes taillée");
+			MAJ_MAT.add("pierres des abîmes");
+			MAJ_MAT.add("briques de terre crue");
+			MAJ_MAT.add("roche noire");
+			
+			MAJ_MAT.add("verre");
+			MAJ_MAT.add("quartz");
+
+			MAJ_MAT.add("pierre");
+			MAJ_MAT.add("pierre moussue");
+			MAJ_MAT.add("andésite");
+			MAJ_MAT.add("granite");
+			MAJ_MAT.add("diorite");
+			MAJ_MAT.add("prismarine");
+			MAJ_MAT.add("briques du nether");
+			MAJ_MAT.add("briques du nether rouges");
+			MAJ_MAT.add("briques de l'End");
+		}
+		
 		//Used by Mcw Bridges
 		public static void mcRockBridges(List<String> MAT_ROCK, List<String> MAJ_MAT)
 		{

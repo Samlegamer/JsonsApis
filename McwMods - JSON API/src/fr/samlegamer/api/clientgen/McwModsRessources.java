@@ -179,13 +179,19 @@ public class McwModsRessources implements IModFiles.IClient
 			            for (Path file : acaciaFiles) {
 			            	try {
 					            final int a = i;
-
+					            boolean isBlueSkiesPrefix = PREFIX_WOOD.get(a).contains("bsky_");
+					            boolean isPremiumWoodPrefix = PREFIX_WOOD.get(a).contains("pwood_");
+					            
+					            String log = isBlueSkiesPrefix ? MAT_WOOD.get(a)+"_log_side" : MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+					            String strip = isBlueSkiesPrefix ? "stripped_"+MAT_WOOD.get(a)+"_log_side" : "stripped_"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    List<String> modifiedLines = lines.stream()
 			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_louvered_shutter"))
 			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")))
+			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+(isPremiumWoodPrefix ? MAT_WOOD.get(a)+"_stripped_log" : strip)))
+			                            .map(line -> line.replace("minecraft:block/acacia_log_top", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")+"_top"))
+			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+log))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_leaves"))

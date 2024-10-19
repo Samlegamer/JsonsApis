@@ -22,10 +22,13 @@ public class FencesBYG extends FencesBYGWarden
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
 	
-	public FencesBYG()
+	private boolean isMcwFinal;
+	
+	public FencesBYG(boolean isMcwFinal)
 	{
 		/*Fabric is only for 1.19+*/
 		super(false);
+		this.isMcwFinal = isMcwFinal;
 	}
 	
 	@Override
@@ -37,7 +40,7 @@ public class FencesBYG extends FencesBYGWarden
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID;
-		String CompatModid = "mcwbyg";
+		String CompatModid = isMcwFinal ? "mcwbyg" : "mcwfencesbyg";
 		System.out.println("Start Wood Data/Client");
 		ModsList.byg(MAT_WOOD, false);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);

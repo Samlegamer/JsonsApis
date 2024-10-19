@@ -175,6 +175,16 @@ public class McwAPI
 		return result;
 	}
 	
+	private static List<String> mcw_stairs_block_model()
+	{
+		List<String> result = new ArrayList<String>();
+		result.add("balcony"+File.separator);
+		result.add("platform"+File.separator);
+		result.add("railing"+File.separator);
+		result.add("stairs"+File.separator);
+		return result;
+	}
+
 	public enum ClientFolderTypes
 	{
 		MCW_BRIDGES_BLOCK_MODEL_WOOD(mcw_bridges_block_model_wood()),
@@ -185,6 +195,7 @@ public class McwAPI
 		MCW_TRAPDOORS_BLOCK_MODEL_WOOD(mcw_trapdoors_block_model()),
 		MCW_DOORS_BLOCK_MODEL_WOOD(mcw_doors_block_model()),
 		MCW_WINDOWS_BLOCK_MODEL_WOOD(mcw_windows_block_model()),
+		MCW_STAIRS_BLOCK_MODEL_WOOD(mcw_stairs_block_model()),
 		MCW_PATHS_BLOCK_MODEL_WOOD(mcw_paths_block_model()),
 		MCW_FURNITURES_BLOCK_MODEL(mcw_furnitures_block_model());
 		
@@ -390,6 +401,15 @@ public class McwAPI
 		registerFolder(location, "textures/block/tropical/");
 	}
 
+	public static void StairsGenFolder(String location)
+	{
+		baseFolder(location);
+		registerFolder(location, "models/block/balcony/");
+		registerFolder(location, "models/block/platform/");
+		registerFolder(location, "models/block/railing/");
+		registerFolder(location, "models/block/stairs/");
+	}
+	
 	public static void clears(List<?>... list)
 	{
 		for(List<?> l : list)

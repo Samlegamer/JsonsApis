@@ -3,15 +3,16 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
+import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.preset.BOP;
 import fr.samlegamer.utils.preset.ModdingLegacy;
-import fr.samlegamer.utils.preset.bridges.BridgesBWG;
-import fr.samlegamer.utils.preset.bridges.BridgesBYG;
-import fr.samlegamer.utils.preset.bridges.BridgesBYGWarden;
 
 public class McwMain
 {	
@@ -27,10 +28,10 @@ public class McwMain
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	public static final String RP = System.getProperty("user.dir")+File.separator+"ressourcepack"+File.separator;// Local Path
 
-	public static final String CompatModid = "mcwbiomesoplenty"; //The modid of compat, Please no insert ":"
+	/*public static final String CompatModid = "mcwbiomesoplenty"; //The modid of compat, Please no insert ":"
 	public static final String TextureLocationFormodid = Compatibilities.BOP_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BOP_MODID; //For recipes (ex: bop:cherry_log)
-	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)
+	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)*/
 	
 	public static void main(String[] args)
 	{
@@ -43,6 +44,7 @@ public class McwMain
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		
+		//preset(new BOP());
 		preset(new ModdingLegacy());
 		//preset(new Abnormals(false, true, true, true));
 		/*MAT_WOOD.add("pale_oak");
@@ -383,7 +385,7 @@ public class McwMain
 		preset.init(LOCATION);
 	}
 	
-	public static void tabBuildForge(IModFiles.IProgram.TabBuild tab, boolean stone)
+	/*public static void tabBuildForge(IModFiles.IProgram.TabBuild tab, boolean stone)
 	{
 		tab.builderToAddWood(LOCATION, MAT_WOOD, ClassBlockRegistry);
 		if(stone) {
@@ -453,9 +455,6 @@ public class McwMain
 		client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", isStem ? "stem" : "log", isStem ? "stripped_stem" : "stripped_log");
 	}
 
-	/*
-	 * Create a blockstates and models block/item
-	 */
 	public static void genClientWood(IModFiles.IClient f, boolean isStem)
 	{
 		f.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -470,18 +469,12 @@ public class McwMain
 		f.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
-	/*
-	 * Create a lang File (en_us)
-	 */
 	public static void chargeLangEnglish(IModFiles.ILang f)
 	{
 		f.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		f.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 	}
 	
-	/*
-	 * Create a lang File (fr_fr)
-	 */
 	public static void chargeLangFrench(IModFiles.ILang f)
 	{
 		f.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
@@ -506,5 +499,5 @@ public class McwMain
 			fabric.InitRendersStone(LOCATION, MAT_ROCK, ClassBlockRegistry);
 			fabric.registerBlockStone(LOCATION, MAT_ROCK, supNetherUpdate, TrailsandTales);
 		}
-	}
+	}*/
 }
