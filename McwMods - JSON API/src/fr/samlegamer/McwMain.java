@@ -3,16 +3,8 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.samlegamer.McwAPI.ClientFolderTypes;
-import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.registry.Compatibilities;
-import fr.samlegamer.utils.IModFiles;
-import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.preset.BOP;
-import fr.samlegamer.utils.preset.ModdingLegacy;
 
 public class McwMain
 {	
@@ -44,8 +36,8 @@ public class McwMain
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		
-		//preset(new BOP());
-		preset(new ModdingLegacy());
+		preset(new BOP());
+		//preset(new ModdingLegacy());
 		//preset(new Abnormals(false, true, true, true));
 		/*MAT_WOOD.add("pale_oak");
 		MAJ_WOOD.add("chêne pâle");

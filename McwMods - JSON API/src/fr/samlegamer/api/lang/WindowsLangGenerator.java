@@ -80,7 +80,69 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
-	{}
+	{
+		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Windows.json");
+		
+		if(!file.exists())
+		{
+			try
+			{
+				FileWriter writer = new FileWriter(file);
+				BufferedWriter buffer = new BufferedWriter(writer);
+				
+				buffer.write("{");
+				buffer.newLine();
+
+				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
+				{
+					McwAPI.verifJsonLang(buffer, nbm);
+					//buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_planks_path\": \""+MAJ_MAT.get(nbm)+" Planks Path\"");
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window\":\"Fenêtre redimensionnable en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window\":\"Fenêtre redimensionnable en planches de "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window2\":\"Fenêtre rectangulaire en "+MAJ_MAT.get(nbm)+"\",\r\n"
+							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window2\":\"Fenêtre rectangulaire en planches de "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window\":\"Fenêtre redimensionnable en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n"
+							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window2\":\"Fenêtre rectangulaire en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n");
+					
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_four_window\":\"Fenêtre à quatre panneaux en "+MAJ_MAT.get(nbm)+"\",\r\n"
+							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_four_window\":\"Fenêtre à quatre panneaux en planches de "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_four_window\":\"Fenêtre à quatre panneaux en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_log_parapet\":\"Parapet en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_parapet\":\"Parapet en planches de "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_blinds\":\"Stores en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_shutter\":\"Volet en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_louvered_shutter\":\"Volet persienné en "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pane_window\":\"Fenêtre à panneaux en "+MAJ_MAT.get(nbm)+"\",\r\n"
+							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_pane_window\":\"Fenêtre à panneaux en "+MAJ_MAT.get(nbm)+" écorcée\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_pane_window\":\"Fenêtre à panneaux en planches de "+MAJ_MAT.get(nbm)+"\",");
+					buffer.newLine();
+					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_curtain_rod\": \"Tringle à rideau en "+MAJ_MAT.get(nbm)+"\"");
+				}
+				
+				buffer.newLine();
+				buffer.write("}");
+				buffer.close();
+				writer.close();
+				file.createNewFile();
+				McwAPI.message(file);
+			}
+			catch (IOException e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
 
 	@Override
 	public void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {
