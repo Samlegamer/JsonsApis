@@ -403,6 +403,19 @@ public class French
 			MAJ_MAT.add("briques de l'End");
 		}
 		
+		//Used by Mcw Windows
+		public static void mcRockWindows(List<String> MAT_ROCK, List<String> MAJ_MAT)
+		{
+			MAT_ROCK.add("andesite");
+			MAT_ROCK.add("granite");
+			MAT_ROCK.add("diorite");
+
+			
+			MAJ_MAT.add("andésite");
+			MAJ_MAT.add("granite");
+			MAJ_MAT.add("diorite");
+
+		}
 		//Used by Mcw Bridges
 		public static void mcRockBridges(List<String> MAT_ROCK, List<String> MAJ_MAT)
 		{

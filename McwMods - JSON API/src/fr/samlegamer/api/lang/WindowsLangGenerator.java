@@ -96,7 +96,6 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
 				{
 					McwAPI.verifJsonLang(buffer, nbm);
-					//buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_planks_path\": \""+MAJ_MAT.get(nbm)+" Planks Path\"");
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window\":\"Fenêtre redimensionnable en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window\":\"Fenêtre redimensionnable en planches de "+MAJ_MAT.get(nbm)+"\",");
@@ -145,7 +144,7 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 	}
 
 	@Override
-	public void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {
+	public void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT){
 	}
 
 	@Override

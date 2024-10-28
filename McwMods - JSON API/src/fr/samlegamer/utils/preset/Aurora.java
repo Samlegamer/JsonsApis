@@ -11,10 +11,12 @@ import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
 import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
 import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
+import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.lang.BridgesLangGenerator;
 import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
 import fr.samlegamer.api.lang.RoofsLangGenerator;
+import fr.samlegamer.api.lang.StairsLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
@@ -35,21 +37,27 @@ public class Aurora implements Presetting
 	private static final McwModsRessources client_wood_fences = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
 	private static final McwDataGen data_fences = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
 	
-	/*Instance Roofs*/
+	/*Instance Furniture*/
 	private static final McwModsRessources client_wood_furnitures = new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL);
 	private static final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID);
 	
+	/*Instance Stairs*/
+	private static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
+	private static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
+
 	private boolean activeBridges;
 	private boolean activeRoofs;
 	private boolean activeFences;
 	private boolean activeFurnitures;
-	
-	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures)
+	private boolean activeStairs;
+
+	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs)
 	{
 		this.activeBridges=activeBridges;
 		this.activeRoofs=activeRoofs;
 		this.activeFences=activeFences;
 		this.activeFurnitures=activeFurnitures;
+		this.activeStairs=activeStairs;
 	}
 	
 	@Override
@@ -59,6 +67,7 @@ public class Aurora implements Presetting
 		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.BridgesGenFolder(LOCATION);
+		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
 		List<String> MAT_WOOD = new ArrayList<String>();
@@ -252,7 +261,46 @@ public class Aurora implements Presetting
 			System.out.println("Done Wood Client");
 		}
 
-		
+		/*Stairs*/
+		if(activeStairs)
+		{
+			System.out.println("Start Wood Client");
+			MAT_WOOD.add("cypress");
+			txtLocMod = "bayou_blues:block";
+			ModidOfBaseMod = "bayou_blues";
+			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client_wood_stairs.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			MAT_WOOD.clear();
+	
+			MAT_WOOD.add("brown_mushroom");
+			MAT_WOOD.add("red_mushroom");
+			txtLocMod = "enhanced_mushrooms:block";
+			ModidOfBaseMod = "enhanced_mushrooms";
+			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client_wood_stairs.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, true);
+			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
+			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			MAT_WOOD.clear();
+	
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("redbud");
+			txtLocMod = "abundance:block";
+			ModidOfBaseMod = "abundance";
+			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+			client_wood_stairs.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
+			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			MAT_WOOD.clear();
+			System.out.println("Done Wood Client");
+		}
 		System.out.println("Start Data/Tags/Lang/ForgeCode");
 		ModsList.AuroraWoods(MAT_WOOD);
 		ModsList.AuroraLeaves(LEAVES);
@@ -262,11 +310,13 @@ public class Aurora implements Presetting
 		RoofsTagsGenerator tag_roofs = new RoofsTagsGenerator();
 		FencesTagsGenerator tag_fences = new FencesTagsGenerator(LEAVES);
 		FurnituresTagsGenerator tag_furnitures = new FurnituresTagsGenerator();
+		StairsTagsGenerator tag_stairs = new StairsTagsGenerator();
 
 		BridgesLangGenerator lang_bridges = new BridgesLangGenerator();
 		RoofsLangGenerator lang_roofs = new RoofsLangGenerator();
 		FencesLangGenerator lang_fences = new FencesLangGenerator(LEAVES, MAJ_LEAVES);
 		FurnituresLangGenerator lang_furnitures = new FurnituresLangGenerator();
+		StairsLangGenerator lang_stairs = new StairsLangGenerator();
 
 		tag_bridges.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		tag_bridges.TagsWood(LOCATION, CompatModid, MAT_WOOD);
@@ -277,11 +327,14 @@ public class Aurora implements Presetting
 		tag_fences.TagsWood(LOCATION, CompatModid, MAT_WOOD);
 		tag_furnitures.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		tag_furnitures.TagsWood(LOCATION, CompatModid, MAT_WOOD);
+		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
+		tag_stairs.TagsWood(LOCATION, CompatModid, MAT_WOOD);
 
 		lang_bridges.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_roofs.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_fences.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_furnitures.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_stairs.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
 		MAJ_WOOD.clear();
 		MAJ_LEAVES.clear();
 		
@@ -291,6 +344,7 @@ public class Aurora implements Presetting
 		lang_roofs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_fences.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_furnitures.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		lang_stairs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 
 		System.out.println("Done Data/Tags/Lang");
 		System.out.println("Finish Aurora Registries");

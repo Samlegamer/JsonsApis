@@ -3,8 +3,17 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+
+import fr.samlegamer.McwAPI.ClientFolderTypes;
+import fr.samlegamer.api.clientgen.McwModsRessources;
+import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
+import fr.samlegamer.api.lang.StairsLangGenerator;
+import fr.samlegamer.api.lang.mod.English;
+import fr.samlegamer.api.lang.mod.French;
+import fr.samlegamer.registry.Compatibilities;
+import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BOP;
 
 public class McwMain
 {	
@@ -24,9 +33,53 @@ public class McwMain
 	public static final String TextureLocationFormodid = Compatibilities.BOP_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BOP_MODID; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)*/
-	
+	protected static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
+	protected static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
+
+	protected static void genWoodBYGStairs(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
+	{
+		client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+		client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+		client_wood_stairs.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
+		data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, Compatibilities.MCW_STAIRS_MODID);
+		data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+	}
+
 	public static void main(String[] args)
 	{
+		McwAPI.RoofsGenFolder(LOCATION);
+		McwAPI.DataGenFolder(LOCATION);
+		McwAPI.FurnituresGenFolder(LOCATION);
+		McwAPI.StairsGenFolder(LOCATION);
+
+		//String ClassBlockRegistry = "MFBYGBlocksRegistry";
+		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES;
+		String ModidOfBaseMod = Compatibilities.BYG_MODID;
+		String CompatModid = "mcwbyg";
+		System.out.println("Start Wood Data/Client");
+		ModsList.byg(MAT_WOOD, false);
+		genWoodBYGStairs(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
+		MAT_WOOD.clear();
+		ModsList.byg(MAT_WOOD, true);
+		genWoodBYGStairs(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, true);
+		MAT_WOOD.clear();
+		ModsList.byg(MAT_WOOD);
+
+		System.out.println("Done Wood Data/Client");
+		StairsTagsGenerator tag_stairs = new StairsTagsGenerator();
+		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
+		tag_stairs.TagsWood(LOCATION, CompatModid, MAT_WOOD);
+		StairsLangGenerator english_stairs = new StairsLangGenerator();
+		English.BYG.bygLang(MAJ_WOOD);
+
+		english_stairs.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
+		MAJ_WOOD.clear();
+		French.BYG.bygLang(MAJ_WOOD);
+		StairsLangGenerator french_stairs = new StairsLangGenerator();
+
+		french_stairs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+
 		//McwAPI.DataGenFolder(LOCATION);
 		//preset(new MacadonQuark());
 		//McwAPI.FencesGenFolder(LOCATION);
@@ -36,7 +89,8 @@ public class McwMain
 		//McwAPI.WindowsGenFolder(LOCATION);
 		//McwAPI.TrapdoorsGenFolder(LOCATION);
 		
-		preset(new BOP());
+		//preset(new Abnormals(false, false, false, false, true));
+		//preset(new BOP());
 		//preset(new ModdingLegacy());
 		//preset(new Abnormals(false, true, true, true));
 		/*MAT_WOOD.add("pale_oak");
