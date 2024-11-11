@@ -148,6 +148,7 @@ public class BYG implements Presetting
 		tags_fences.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
 		tags_furni.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		tags_furni.TagsWood(LOCATION, CompatModid, MAT_WOOD);
+		tags_roof.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
 		tags_roof.TagsWood(LOCATION, CompatModid, MAT_WOOD);
 		tags_roof.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
 		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);

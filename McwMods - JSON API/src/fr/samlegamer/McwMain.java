@@ -14,6 +14,11 @@ import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.preset.Abnormals;
+import fr.samlegamer.utils.preset.Aurora;
+import fr.samlegamer.utils.preset.BOP;
+import fr.samlegamer.utils.preset.BYG;
+import fr.samlegamer.utils.preset.ModdingLegacy;
 
 public class McwMain
 {	
@@ -48,7 +53,8 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		McwAPI.RoofsGenFolder(LOCATION);
+		preset(new BYG());
+		/*McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		McwAPI.FurnituresGenFolder(LOCATION);
 		McwAPI.StairsGenFolder(LOCATION);
@@ -78,7 +84,7 @@ public class McwMain
 		French.BYG.bygLang(MAJ_WOOD);
 		StairsLangGenerator french_stairs = new StairsLangGenerator();
 
-		french_stairs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
+		french_stairs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);*/
 
 		//McwAPI.DataGenFolder(LOCATION);
 		//preset(new MacadonQuark());

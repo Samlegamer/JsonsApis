@@ -70,6 +70,7 @@ public class McwModsRessources implements IModFiles.IClient
 	                    List<String> modifiedLines = lines.stream()
 	                            //.map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+MAT_WOOD.get(0) + (isStemWood ? "_stem" : "_log")))
 	                           // .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+MAT_WOOD.get(0)))
+	                    		
 	                            .map(line -> line.replace("mcwwindows:block/parent/resizeable/mid_m", "CHANGEDWINDOW_mid_m"))
 	                            .map(line -> line.replace(MOD_ID, CompatModid))
 	                            .map(line -> line.replace("acacia", i))

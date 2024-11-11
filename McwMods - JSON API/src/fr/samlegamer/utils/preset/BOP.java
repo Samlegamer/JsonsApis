@@ -11,6 +11,7 @@ import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
 import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
+import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
 import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
@@ -34,9 +35,6 @@ import fr.samlegamer.utils.Presetting;
 
 public class BOP implements Presetting
 {
-	protected static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
-	protected static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
-
 	protected static final List<String> MAT_WOOD = new ArrayList<String>();
 	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
 	public static final List<String> LEAVES = new ArrayList<String>();
@@ -100,6 +98,11 @@ public class BOP implements Presetting
 				new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD), 
 				new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
 		
+		System.out.println("Paths...");
+		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_PATHS_MODID, 
+				new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD), 
+				new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+
 		System.out.println("Tags...");
 		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
 		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
@@ -109,7 +112,8 @@ public class BOP implements Presetting
 		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
 		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		
+		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
+
 		English.BOP.bopLang(MAJ_WOOD, false);
 		English.BOP.bopLeaves1204Lang(LEAVES_LANG);
 
