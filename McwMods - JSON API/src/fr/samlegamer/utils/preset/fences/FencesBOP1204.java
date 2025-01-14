@@ -78,20 +78,20 @@ public class FencesBOP1204 implements Presetting
 		String ModidOfBaseMod = Compatibilities.BOP_MODID;
 		String CompatModid = Compatibilities.BOP_FENCES_MODID;
 		System.out.println("Start Wood Data/Client");
-		ModsList.bop1204(MAT_WOOD);
+		ModsList.bop1201(MAT_WOOD);
 		genWoodBOP(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Data/Client");
 
 		System.out.println("Start Leaves Hedges Data/Client");
-		ModsList.bopLeaves1204(LEAVES);
+		ModsList.bopLeaves1201(LEAVES);
 		genHedges(LOCATION, CompatModid, LEAVES, TextureLocationFormodid, ModidOfBaseMod);
 		LEAVES.clear();
 		System.out.println("Done Leaves Hedges Data/Client");
 
 		System.out.println("Start Generate Code Wood/Hedge");
-		ModsList.bop1204(MAT_WOOD);
-		ModsList.bopLeaves1204(LEAVES);
+		ModsList.bop1201(MAT_WOOD);
+		ModsList.bopLeaves1201(LEAVES);
 		FencesCodeGeneratorForge forge = new FencesCodeGeneratorForge(LEAVES);
 		FencesCodeGeneratorFabric fabric = new FencesCodeGeneratorFabric(LEAVES);
 		fabric.InitRendersLog(LOCATION, MAT_WOOD, ClassBlockRegistry);

@@ -263,7 +263,7 @@ public class ModsList
 		MAT_WOOD.addAll(BOP_WOODS);
 	}
 	
-	public static void bop1204(List<String> MAT_WOOD)
+	public static void bop1201(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.addAll(BOP_WOODS);
 		MAT_WOOD.add("empyreal");
@@ -271,7 +271,7 @@ public class ModsList
 		MAT_WOOD.add("pine");
 	}
 	
-	public static void bopLeaves1204(List<String> LEAVES)
+	public static void bopLeaves1201(List<String> LEAVES)
 	{
 		LEAVES.addAll(BOP_WOODS);
 		LEAVES.add("empyreal");

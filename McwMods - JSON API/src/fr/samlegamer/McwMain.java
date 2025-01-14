@@ -3,22 +3,12 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.lang.StairsLangGenerator;
-import fr.samlegamer.api.lang.mod.English;
-import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
-import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.Abnormals;
-import fr.samlegamer.utils.preset.Aurora;
-import fr.samlegamer.utils.preset.BOP;
-import fr.samlegamer.utils.preset.BYG;
-import fr.samlegamer.utils.preset.ModdingLegacy;
+import fr.samlegamer.utils.preset.BYGWarden;
 
 public class McwMain
 {	
@@ -53,7 +43,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new BYG());
+		preset(new BYGWarden());
 		/*McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		McwAPI.FurnituresGenFolder(LOCATION);

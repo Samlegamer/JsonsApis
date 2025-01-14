@@ -27,7 +27,6 @@ public class FencesBYG extends FencesBYGWarden
 	public FencesBYG(boolean isMcwFinal)
 	{
 		/*Fabric is only for 1.19+*/
-		super(false);
 		this.isMcwFinal = isMcwFinal;
 	}
 	

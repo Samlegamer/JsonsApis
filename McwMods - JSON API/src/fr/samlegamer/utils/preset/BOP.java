@@ -39,7 +39,19 @@ public class BOP implements Presetting
 	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
 	public static final List<String> LEAVES = new ArrayList<String>();
 	public static final List<String> LEAVES_LANG = new ArrayList<String>();
-
+	private boolean b;
+	private String versioning = "1.20";
+	
+	public BOP(boolean is1201)
+	{
+		this.b = is1201;
+	}
+	
+	public BOP(boolean is1201, String version)
+	{
+		this.b = is1201;
+		this.versioning = version;
+	}
 	@Override
 	public void init(String LOCATION)
 	{
@@ -54,8 +66,16 @@ public class BOP implements Presetting
 		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		ModsList.bop(MAT_WOOD, false);
-		ModsList.bopLeaves(LEAVES, false);
+		if(this.b)
+		{
+			ModsList.bop1201(MAT_WOOD);
+			ModsList.bopLeaves1201(LEAVES);
+		}
+		else
+		{
+			ModsList.bop(MAT_WOOD, false);
+			ModsList.bopLeaves(LEAVES, false);
+		}
 
 		String TextureLocationFormodid = Compatibilities.BOP_TEXTURES;
 		String ModidOfBaseMod = Compatibilities.BOP_MODID;
@@ -63,45 +83,45 @@ public class BOP implements Presetting
 
 		System.out.println("Bridges...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, 
-				new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
+				new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, this.versioning));
 		System.out.println("Roofs...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+				new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_ROOFS_MODID, this.versioning));
 		System.out.println("Fences...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_FENCES_MODID, 
-				new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_FENCES_MODID));
+				new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_FENCES_MODID, this.versioning));
 		System.out.println("Furnitures...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_FURNITURES_MODID, 
-				new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL), 
-				new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
+				new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, this.versioning));
 		System.out.println("Doors...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_DOORS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_DOORS_MODID));
+				new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_DOORS_MODID, this.versioning));
 		System.out.println("Paths...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_PATHS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+				new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_PATHS_MODID, this.versioning));
 		System.out.println("Stairs...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_STAIRS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
+				new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_STAIRS_MODID, this.versioning));
 		System.out.println("Trapdoors...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_TRAPDOORS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
+				new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID, this.versioning));
 		System.out.println("Windows...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_WINDOWS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
+				new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_WINDOWS_MODID, this.versioning));
 		
 		System.out.println("Paths...");
 		genRessources(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_PATHS_MODID, 
-				new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD), 
-				new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+				new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD, this.versioning), 
+				new McwDataGen(Compatibilities.MCW_PATHS_MODID, this.versioning));
 
 		System.out.println("Tags...");
 		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
@@ -114,8 +134,16 @@ public class BOP implements Presetting
 		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
 		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
 
-		English.BOP.bopLang(MAJ_WOOD, false);
-		English.BOP.bopLeaves1204Lang(LEAVES_LANG);
+		if(this.b)
+		{
+			English.BOP.bop1204Lang(MAJ_WOOD);
+			English.BOP.bopLeaves1204Lang(LEAVES_LANG);
+		}
+		else
+		{
+			English.BOP.bopLang(MAJ_WOOD, false);
+			English.BOP.bopLeavesLang(LEAVES_LANG, false);
+		}
 
 		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
 		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
@@ -129,9 +157,17 @@ public class BOP implements Presetting
 		
 		MAJ_WOOD.clear();
 		LEAVES_LANG.clear();
-		French.BOP.bopLang(MAJ_WOOD, false);
-		French.BOP.bopLeaves1204Lang(LEAVES_LANG);
 
+		if(this.b)
+		{
+			French.BOP.bop1204Lang(MAJ_WOOD);
+			French.BOP.bopLeaves1204Lang(LEAVES_LANG);
+		}
+		else
+		{
+			French.BOP.bopLang(MAJ_WOOD, false);
+			French.BOP.bopLeavesLang(LEAVES_LANG, false);
+		}
 		genLangFrench(LOCATION, CompatModid, new BridgesLangGenerator());
 		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
 		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
@@ -145,6 +181,7 @@ public class BOP implements Presetting
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
 	{
+		res.setModid(CompatModid);
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, false);
