@@ -72,7 +72,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -112,7 +112,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -159,7 +159,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -207,7 +207,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -253,7 +253,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -298,7 +298,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -345,7 +345,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -391,7 +391,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -439,7 +439,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -486,7 +486,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -537,7 +537,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -562,10 +562,11 @@ public class McwDataGen implements IModFiles.IData
 	
 	            for (Path file : acaciaFiles) {
 	            	try {
+	            		boolean isEMMat = i.equals("mushroom") && isStemWood;
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	
 	                    List<String> modifiedLines = lines.stream()
-	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace("minecraft:acacia_log", (isEMMat ? "minecraft" : ModidOfBaseMod) +":"+i + (isStemWood ? "_stem" : "_log")))
 	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
 	                            .map(line -> line.replace("minecraft:stripped_acacia_log", ModidOfBaseMod+":stripped_"+i + (isStemWood ? "_stem" : "_log")))
 	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+i))
@@ -588,7 +589,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -600,6 +601,11 @@ public class McwDataGen implements IModFiles.IData
 	}
 	
 	public void RecipesLogAllIsChargedPrefixed(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2)
+	{
+		RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, isStemWood, ModidCharged1, ModidCharged2, false);
+	}
+	
+	public void RecipesLogAllIsChargedPrefixed(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2, boolean pWood1201)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
 		
@@ -615,7 +621,17 @@ public class McwDataGen implements IModFiles.IData
 	            	try {
 			            final int a = i;
 			            boolean isPremiumWoodPrefix = PREFIX_WOOD.get(a).contains("pwood_");
-			            String strip = isPremiumWoodPrefix ? MAT_WOOD.get(a) + "_stripped_log" : "stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log");
+			            final String strip;
+			            
+			            if(pWood1201)
+			            {
+			            	strip = "stripped_"+MAT_WOOD.get(a)+"_log";
+			            }
+			            else
+			            {
+			            	strip = isPremiumWoodPrefix ? MAT_WOOD.get(a) + "_stripped_log" : "stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log");
+			            }
+			            
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	
 	                    List<String> modifiedLines = lines.stream()
@@ -642,7 +658,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -696,7 +712,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -783,7 +799,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -845,7 +861,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -1001,7 +1017,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -1052,7 +1068,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -1080,7 +1096,7 @@ public class McwDataGen implements IModFiles.IData
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	                    
 	                    boolean isPremiumWoods = ModidCharged1.equals("premium_wood") || ModidCharged2.equals("premium_wood");
-	                    String stripped=isPremiumWoods ? stripped=MAT_WOOD.get(a)+"_stripped_log" : "stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log");
+	                    final String stripped=isPremiumWoods ? MAT_WOOD.get(a)+"_stripped_log" : "stripped_"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log");
 	                    
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log")))
@@ -1106,7 +1122,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -1148,7 +1164,7 @@ public class McwDataGen implements IModFiles.IData
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -1187,7 +1203,7 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"loot_tables"+s+"blocks"+s, newFileName);
 	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }

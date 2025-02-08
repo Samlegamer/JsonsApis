@@ -1,9 +1,11 @@
 package fr.samlegamer.api.datagen.fences;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,8 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesTagsGenerator implements IModFiles.ITagData
 {
-	private boolean stone;
-	private List<String> MAT_ROCK;
+	private final boolean stone;
+	private final List<String> MAT_ROCK;
 	private List<String> LEAVES;
 
 	public FencesTagsGenerator(boolean s, List<String> rock)
@@ -40,15 +42,14 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	}
 	
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
-	{		
-		File file = new File(LOCATION + "MineableAxeData(Macaw's Fences).json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(LOCATION, "MineableAxeData(Macaw's Fences).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -74,8 +75,6 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -86,19 +85,18 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	}
 
 	public void TagsWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
-	{		
-		File blk = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fences.json");
-		File blk2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "fence_gates.json");
-		File itm = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_ITEM.getPath() + "fences.json");
-		File itm4 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_ITEM.getPath() + "walls.json");
-		File blk4 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "walls.json");
+	{
+		Path blk = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "fences.json");
+		Path blk2 = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "fence_gates.json");
+		Path itm = Path.of(LOCATION, ClassicFolderTypes.TAGS_ITEM.getPath(), "fences.json");
+		Path itm4 = Path.of(LOCATION, ClassicFolderTypes.TAGS_ITEM.getPath(), "walls.json");
+		Path blk4 = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "walls.json");
 
-		if(!itm4.exists())
+		if(!Files.exists(itm4))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(itm4);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(itm4, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -135,22 +133,18 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				itm4.createNewFile();
 				McwAPI.message(itm4);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
 
-		if(!blk4.exists())
+		if(!Files.exists(blk4))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(blk4);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(blk4, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -187,8 +181,6 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				blk4.createNewFile();
 				McwAPI.message(blk4);
 			}
 			catch (IOException e)
@@ -196,12 +188,12 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				e.printStackTrace();
 			}	
 		}
-		if(!blk.exists())
+
+		if(!Files.exists(blk))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(blk);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(blk, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -264,8 +256,6 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				blk.createNewFile();
 				McwAPI.message(blk);
 			}
 			catch (IOException e)
@@ -273,13 +263,12 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				e.printStackTrace();
 			}	
 		}
-		
-		if(!blk2.exists())
+
+		if(!Files.exists(blk2))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(blk2);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(blk2, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -318,8 +307,6 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				blk2.createNewFile();
 				McwAPI.message(blk2);
 			}
 			catch (IOException e)
@@ -327,13 +314,12 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				e.printStackTrace();
 			}	
 		}
-		
-		if(!itm.exists())
+
+		if(!Files.exists(itm))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(itm);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(itm, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -380,8 +366,6 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				itm.createNewFile();
 				McwAPI.message(itm);
 			}
 			catch (IOException e)
@@ -393,16 +377,15 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 
 	@Override
 	public void PickaxeDataGen(String LOCATION, String CompatModid, List<String> MAT_ROCK)
-	{		
-		File file = new File(LOCATION + "MineablePickaxeData(Macaw's Fences).json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(LOCATION, "MineablePickaxeData(Macaw's Fences).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
+
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
 						+ "  \"values\": [");
@@ -425,12 +408,9 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -445,14 +425,13 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 	@Override
 	public void HoeDataGenWood(String LOCATION, String CompatModid, List<String> LEAVES)
 	{
-		File file = new File(LOCATION + "MineableHoeData(Macaw's Fences).json");
-		
-		if(!file.exists() && !LEAVES.isEmpty())
+		Path file = Path.of(LOCATION, "MineableHoeData(Macaw's Fences).json");
+
+		if(!Files.exists(file) && !LEAVES.isEmpty())
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -468,12 +447,9 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}

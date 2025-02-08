@@ -20,35 +20,54 @@ import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.bridges.BridgesBYGWarden;
-import fr.samlegamer.utils.preset.fences.FencesBYGWarden;
+import fr.samlegamer.utils.preset.bridges.BridgesBWG;
+import fr.samlegamer.utils.preset.fences.FencesBWG;
 
-public class BYGWarden implements Presetting
+public class BWG implements Presetting
 {
-	protected static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD);
-	protected static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD);
-	protected static final McwDataGen data = new McwDataGen(Compatibilities.MCW_ROOFS_MODID);
+	private String version = "1.21";
+	
+	protected final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD);
+	protected final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD);
+	protected final McwDataGen data = new McwDataGen(Compatibilities.MCW_ROOFS_MODID, version);
+	
+	protected final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
+	protected final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID, version);
 
-	protected static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
-	protected static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
+	protected final McwModsRessources client_wood_furnitures = new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL);
+	protected final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, version);
 
-	protected static final McwModsRessources client_wood_furnitures = new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL);
-	protected static final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID);
-
-	protected static final List<String> MAT_WOOD = new ArrayList<String>();
-	protected static final List<String> MAT_ROCK = new ArrayList<String>();
-	protected static final List<String> WALL = new ArrayList<String>();
-	protected static final List<String> FLOOR = new ArrayList<String>();
-	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
-	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
-	protected static final List<String> LEAVES = new ArrayList<String>();
-	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
+	protected final List<String> MAT_WOOD = new ArrayList<String>();
+	protected final List<String> MAT_ROCK = new ArrayList<String>();
+	protected final List<String> WALL = new ArrayList<String>();
+	protected final List<String> FLOOR = new ArrayList<String>();
+	protected final List<String> MAJ_WOOD = new ArrayList<String>();
+	protected final List<String> MAJ_ROCK = new ArrayList<String>();
+	protected final List<String> LEAVES = new ArrayList<String>();
+	protected final List<String> LEAVES_LANG = new ArrayList<String>();
+	
+	public BWG(String version)
+	{
+		this.version = version;
+	}
+	
+	public BWG()
+	{
+		this("1.20");
+	}
 	
 	protected void genWoodBYGFurnitures(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
 	{
 		client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		client_wood_furnitures.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		if(isStem)
+		{
+			client_wood_furnitures.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "stem", "stripped_stem");
+		}
+		else
+		{
+			client_wood_furnitures.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		}
 		data_furnitures.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data_furnitures.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data_furnitures.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
@@ -58,7 +77,14 @@ public class BYGWarden implements Presetting
 	{
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		if(isStem)
+		{
+			client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "stem", "stripped_stem");
+		}
+		else
+		{
+			client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		}
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, Compatibilities.MCW_ROOFS_MODID);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
@@ -78,64 +104,72 @@ public class BYGWarden implements Presetting
 	{
 		client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		client_wood_stairs.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		if(isStem)
+		{
+			client_wood_stairs.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "stem", "stripped_stem");
+		}
+		else
+		{
+			client_wood_stairs.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
+		}
 		data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
 		data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, Compatibilities.MCW_STAIRS_MODID);
 		data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
-	
+
 	@Override
 	public void init(String LOCATION)
 	{
 		final String CompatModid = "mcwbyg";
 
-		BridgesBYGWarden bridges = new BridgesBYGWarden(CompatModid);
+		BridgesBWG bridges = new BridgesBWG(CompatModid, version);
 		bridges.init(LOCATION);
-		FencesBYGWarden fences = new FencesBYGWarden(CompatModid);
+		FencesBWG fences = new FencesBWG(CompatModid, version);
 		fences.init(LOCATION);
-		
+
 		McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		McwAPI.FurnituresGenFolder(LOCATION);
 		McwAPI.StairsGenFolder(LOCATION);
 
-		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES;
-		String ModidOfBaseMod = Compatibilities.BYG_MODID;
+		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120;
+		String ModidOfBaseMod = Compatibilities.BYG_MODID_120;
+
 		System.out.println("Start Wood Data/Client");
-		ModsList.bygWildUp(MAT_WOOD, false);
+		ModsList.byg120(MAT_WOOD, false);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
 		MAT_WOOD.clear();
-		ModsList.bygWildUp(MAT_WOOD, true);
+		ModsList.byg120(MAT_WOOD, true);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, true);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Data/Client");
 
 		System.out.println("Start Stone Data/Client");
-		ModsList.bygRockFenceable(MAT_ROCK, WALL, FLOOR);
+		ModsList.bygRock120(MAT_ROCK, WALL, FLOOR);
 		genStoneBYG(LOCATION, CompatModid, MAT_ROCK, WALL, FLOOR, TextureLocationFormodid, ModidOfBaseMod);
 		System.out.println("Done Stone Data/Client");
 		
 		
 		System.out.println("Start Wood Data/Client");
-		ModsList.bygWildUp(MAT_WOOD, false);
+		ModsList.byg120(MAT_WOOD, false);
 		genWoodBYGFurnitures(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
 		MAT_WOOD.clear();
-		ModsList.bygWildUp(MAT_WOOD, true);
+		ModsList.byg120(MAT_WOOD, true);
 		genWoodBYGFurnitures(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, true);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Data/Client");
 		
 		System.out.println("Start Wood Data/Client");
-		ModsList.bygWildUp(MAT_WOOD, false);
+		ModsList.byg120(MAT_WOOD, false);
 		genWoodBYGStairs(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);
 		MAT_WOOD.clear();
-		ModsList.bygWildUp(MAT_WOOD, true);
+		ModsList.byg120(MAT_WOOD, true);
 		genWoodBYGStairs(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, true);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Data/Client");
 
-		ModsList.bygWildUp(MAT_WOOD);
-		ModsList.bygLeavesWildUp(LEAVES);
+		ModsList.byg120(MAT_WOOD);
+		ModsList.bygLeaves120(LEAVES);
 
 		System.out.println("Start Generate Tags");
 		FencesTagsGenerator tags_fences = new FencesTagsGenerator(true, MAT_ROCK, LEAVES);
@@ -156,9 +190,9 @@ public class BYGWarden implements Presetting
 		System.out.println("Done Generate Tags");
 
 		System.out.println("Start Generate English Files");
-		English.BYG.bygLangWildUp(LEAVES_LANG);
-		English.BYG.bygLangWildUp(MAJ_WOOD);
-		English.BYG.bygRockFenceableLang(MAJ_ROCK);
+		English.BYG.bygLeaves120Lang(LEAVES_LANG);
+		English.BYG.byg120Lang(MAJ_WOOD);
+		English.BYG.bygRockLang120(MAJ_ROCK);
 		FencesLangGenerator english_fences = new FencesLangGenerator(LEAVES, LEAVES_LANG);
 		FurnituresLangGenerator english_furni = new FurnituresLangGenerator();
 		RoofsLangGenerator english_roof = new RoofsLangGenerator();
@@ -173,9 +207,9 @@ public class BYGWarden implements Presetting
 
 		System.out.println("Start Generate French Files");
 		McwAPI.clears(MAJ_WOOD, MAJ_ROCK, LEAVES_LANG);
-		French.BYG.bygLeavesWildUpLang(LEAVES_LANG);
-		French.BYG.bygLangWildUp(MAJ_WOOD);
-		French.BYG.bygRockFenceableLang(MAJ_ROCK);
+		French.BYG.bygLeaves120Lang(LEAVES_LANG);
+		French.BYG.byg120Lang(MAJ_WOOD);
+		French.BYG.bygRockLang120(MAJ_ROCK);
 		FencesLangGenerator french_fences = new FencesLangGenerator(LEAVES, LEAVES_LANG);
 		FurnituresLangGenerator french_furni = new FurnituresLangGenerator();
 		RoofsLangGenerator french_roof = new RoofsLangGenerator();
@@ -188,5 +222,9 @@ public class BYGWarden implements Presetting
 		french_stairs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 		System.out.println("Done Generate French Files");
 		System.out.println("Finish Registries");
+	}
+
+	public String getVersion() {
+		return version;
 	}
 }

@@ -1,9 +1,11 @@
 package fr.samlegamer.api.datagen.stairs;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +15,7 @@ import fr.samlegamer.utils.IModFiles;
 
 public class StairsTagsGenerator implements IModFiles.ITagData
 {
-	private List<String> MAT_ROCK;
+	private final List<String> MAT_ROCK;
 	
 	public StairsTagsGenerator(List<String> MAT_ROCK)
 	{
@@ -26,15 +28,14 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 	}
 	
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> MAT_WOOD)
-	{		
-		File file = new File(LOCATION + "MineableAxeData (Stairs).json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(LOCATION, "MineableAxeData (Stairs).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -44,7 +45,7 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 				for(String i : MAT_WOOD)
 				{
 					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_terrace_stairs\",\r\n"
+					buffer.write("	  \""+Modid+":"+i+"_terrace_stairs\",\r\n"
 							+ "	  \""+Modid+":"+i+"_skyline_stairs\",\r\n"
 							+ "	  \""+Modid+":"+i+"_compact_stairs\",\r\n"
 							+ "	  \""+Modid+":"+i+"_bulk_stairs\",\r\n"
@@ -56,27 +57,23 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 				
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
 	}
 	
 	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK)
-	{		
-		File file = new File(LOCATION + "MineablePickaxeData (Stairs).json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(LOCATION, "MineablePickaxeData (Stairs).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -98,8 +95,6 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 				
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -111,14 +106,13 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, List<String> MAT_ROCK, String FileName, String objName)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + FileName + ".json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -142,12 +136,9 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}

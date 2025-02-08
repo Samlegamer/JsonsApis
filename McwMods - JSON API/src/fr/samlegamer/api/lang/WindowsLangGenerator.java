@@ -1,9 +1,11 @@
 package fr.samlegamer.api.lang;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -14,15 +16,14 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 {
 	@Override
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
-	{		
-		File file = new File(McwMain.LOCATION + "En_Us_Wood_Windows.json");
+	{
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Wood_Windows.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{");
 				buffer.newLine();
@@ -30,19 +31,18 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
 				{
 					McwAPI.verifJsonLang(buffer, nbm);
-					//buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_planks_path\": \""+MAJ_MAT.get(nbm)+" Planks Path\"");
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window\":\"Resizeable "+MAJ_MAT.get(nbm)+" Window\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window\":\"Resizeable "+MAJ_MAT.get(nbm)+" Planks Window\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window2\":\"Rectangle "+MAJ_MAT.get(nbm)+" Window\",\r\n"
-							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window2\":\"Rectangle "+MAJ_MAT.get(nbm)+" Planks Window\",");
+							+ "\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window2\":\"Rectangle "+MAJ_MAT.get(nbm)+" Planks Window\",");
 					buffer.newLine();
-					buffer.write("		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window\":\"Resizeable Stripped "+MAJ_MAT.get(nbm)+" Window\",\r\n"
-							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window2\":\"Rectangle Stripped "+MAJ_MAT.get(nbm)+" Window\",\r\n");
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window\":\"Resizeable Stripped "+MAJ_MAT.get(nbm)+" Window\",\r\n"
+							+ "\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window2\":\"Rectangle Stripped "+MAJ_MAT.get(nbm)+" Window\",\r\n");
 					
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_four_window\":\""+MAJ_MAT.get(nbm)+" Four Pane Window\",\r\n"
-							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_four_window\":\""+MAJ_MAT.get(nbm)+" Planks Four Pane Window\",");
+							+ "\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_four_window\":\""+MAJ_MAT.get(nbm)+" Planks Four Pane Window\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_four_window\":\"Stripped "+MAJ_MAT.get(nbm)+" Four Pane Window\",");
 					buffer.newLine();
@@ -57,7 +57,7 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_louvered_shutter\":\""+MAJ_MAT.get(nbm)+" Louvered Shutter\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pane_window\":\""+MAJ_MAT.get(nbm)+" Pane Window\",\r\n"
-							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_pane_window\":\"Stripped "+MAJ_MAT.get(nbm)+" Pane Window\",");
+							+ "\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_pane_window\":\"Stripped "+MAJ_MAT.get(nbm)+" Pane Window\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_pane_window\":\""+MAJ_MAT.get(nbm)+" Planks Pane Window\",");
 					buffer.newLine();
@@ -67,8 +67,6 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -81,14 +79,13 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Windows.json");
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Wood_Windows.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{");
 				buffer.newLine();
@@ -101,13 +98,13 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window\":\"Fenêtre redimensionnable en planches de "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_window2\":\"Fenêtre rectangulaire en "+MAJ_MAT.get(nbm)+"\",\r\n"
-							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window2\":\"Fenêtre rectangulaire en planches de "+MAJ_MAT.get(nbm)+"\",");
+							+ "\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_window2\":\"Fenêtre rectangulaire en planches de "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
-					buffer.write("		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window\":\"Fenêtre redimensionnable en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n"
-							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window2\":\"Fenêtre rectangulaire en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n");
+					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window\":\"Fenêtre redimensionnable en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n"
+							+ "\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_window2\":\"Fenêtre rectangulaire en "+MAJ_MAT.get(nbm)+" écorcée\",\r\n");
 					
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_four_window\":\"Fenêtre à quatre panneaux en "+MAJ_MAT.get(nbm)+"\",\r\n"
-							+ "		\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_four_window\":\"Fenêtre à quatre panneaux en planches de "+MAJ_MAT.get(nbm)+"\",");
+							+ "\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_four_window\":\"Fenêtre à quatre panneaux en planches de "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_log_four_window\":\"Fenêtre à quatre panneaux en "+MAJ_MAT.get(nbm)+" écorcée\",");
 					buffer.newLine();
@@ -122,7 +119,7 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_louvered_shutter\":\"Volet persienné en "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_pane_window\":\"Fenêtre à panneaux en "+MAJ_MAT.get(nbm)+"\",\r\n"
-							+ "		\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_pane_window\":\"Fenêtre à panneaux en "+MAJ_MAT.get(nbm)+" écorcée\",");
+							+ "\"block."+CompatModid+".stripped_"+MAT_WOOD.get(nbm)+"_pane_window\":\"Fenêtre à panneaux en "+MAJ_MAT.get(nbm)+" écorcée\",");
 					buffer.newLine();
 					buffer.write("\"block."+CompatModid+"."+MAT_WOOD.get(nbm)+"_plank_pane_window\":\"Fenêtre à panneaux en planches de "+MAJ_MAT.get(nbm)+"\",");
 					buffer.newLine();
@@ -132,8 +129,6 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -148,6 +143,6 @@ public class WindowsLangGenerator  implements IModFiles.ILang
 	}
 
 	@Override
-	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT) {
+	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT){
 	}
 }

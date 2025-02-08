@@ -22,10 +22,6 @@ import fr.samlegamer.utils.*;
 public class FencesBWG implements Presetting
 {
 	/*Instance*/
-	protected static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
-	protected static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE);
-	protected static final McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
-	
 	protected static final List<String> MAT_WOOD = new ArrayList<String>();
 	protected static final List<String> MAT_ROCK = new ArrayList<String>();
 	protected static final List<String> WALL = new ArrayList<String>();
@@ -35,10 +31,24 @@ public class FencesBWG implements Presetting
 	protected static final List<String> LEAVES = new ArrayList<String>();
 	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
 	protected boolean fbric;
+	protected String CompatModid;
+	private static String version = "1.21";
+	protected static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
+	protected static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE);
+	protected static final McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID, version);
+
+	public FencesBWG(String CompatModid, String version)
+	{
+		this.CompatModid = CompatModid;
+		this.fbric = false;
+		FencesBWG.version = version;
+	}
 	
 	public FencesBWG(boolean isFabric)
 	{
 		this.fbric = isFabric;
+		this.CompatModid = fbric ? Compatibilities.BYG_FENCES_MODID_FABRIC : Compatibilities.BYG_FENCES_MODID;
+		FencesBWG.version = "1.20";
 	}
 	
 	protected void clearAll()
@@ -59,7 +69,7 @@ public class FencesBWG implements Presetting
 		client_wood.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 		data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
 		data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-		data.RecipesLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge");
+		data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 	}
 	
 	protected void genWoodBYG(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
@@ -68,7 +78,7 @@ public class FencesBWG implements Presetting
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", isStem ? "stem" : "log", isStem ? "stripped_stem" : "stripped_log");
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 	}
 
@@ -78,7 +88,7 @@ public class FencesBWG implements Presetting
 		client_stone.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
@@ -91,7 +101,6 @@ public class FencesBWG implements Presetting
 		String ClassBlockRegistry = "MFBYGBlocksRegistry";
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES_120;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID_120;
-		String CompatModid = fbric ? Compatibilities.BYG_FENCES_MODID_FABRIC : Compatibilities.BYG_FENCES_MODID;
 		System.out.println("Start Wood Data/Client");
 		ModsList.byg120(MAT_WOOD, false);
 		genWoodBYG(LOCATION, CompatModid, MAT_WOOD, TextureLocationFormodid, ModidOfBaseMod, false);

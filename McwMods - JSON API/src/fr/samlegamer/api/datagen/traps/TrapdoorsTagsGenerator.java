@@ -1,11 +1,12 @@
 package fr.samlegamer.api.datagen.traps;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.IModFiles.ITagData;
@@ -15,14 +16,13 @@ public class TrapdoorsTagsGenerator implements ITagData
 	@Override
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
-		File file = new File(LOCATION + "MineableAxeData(Macaw's Trapdoors).json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, "MineableAxeData(Macaw's Trapdoors).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -62,18 +62,17 @@ public class TrapdoorsTagsGenerator implements ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barrel_trapdoor\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\"");
+					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_whispering_trapdoor\"");
 				}
-				
+
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -89,14 +88,13 @@ public class TrapdoorsTagsGenerator implements ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + FileName + ".json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -111,8 +109,6 @@ public class TrapdoorsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -120,7 +116,6 @@ public class TrapdoorsTagsGenerator implements ITagData
 				e.printStackTrace();
 			}	
 		}
-
 	}
 	
 	@Override
@@ -141,16 +136,16 @@ public class TrapdoorsTagsGenerator implements ITagData
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "swamp_trapdoors", "_swamp_trapdoor");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "tropical_trapdoors", "_tropical_trapdoor");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "waffle_trapdoors", "_blossom_trapdoor");
-		
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() +"wooden_trapdoors.json");
-		File file2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_ITEM.getPath() +"wooden_trapdoors.json");
+		addTagWood(LOCATION, CompatModid, MAT_WOOD, "whispering_trapdoors", "_whispering_trapdoor");
 
-		if(!file2.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "wooden_trapdoors.json");
+		Path file2 = Path.of(LOCATION, ClassicFolderTypes.TAGS_ITEM.getPath(), "wooden_trapdoors.json");
+
+		if(!Files.exists(file2))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file2);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file2, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -190,29 +185,26 @@ public class TrapdoorsTagsGenerator implements ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barrel_trapdoor\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\"");
+					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_whispering_trapdoor\"");
 				}
-				
+
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file2.createNewFile();
 				McwAPI.message(file2);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
-		
-		
-		if(!file.exists())
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -252,14 +244,14 @@ public class TrapdoorsTagsGenerator implements ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_barrel_trapdoor\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\"");
+					buffer.write("\""+CompatModid+":"+i+"_ranch_trapdoor\",");
+					buffer.newLine();
+					buffer.write("\""+CompatModid+":"+i+"_whispering_trapdoor\"");
 				}
-				
+
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

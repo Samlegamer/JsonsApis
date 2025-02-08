@@ -1,32 +1,20 @@
 package fr.samlegamer.utils;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 import fr.samlegamer.McwAPI;
 
 public class APIWriter
 {
-	public static void write(File fileIn, String write)
-	{
-		if(!fileIn.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(fileIn);
-				BufferedWriter buffer = new BufferedWriter(writer);				
-				
-				buffer.write(write);
-				
-				buffer.close();
-				writer.close();
-				fileIn.createNewFile();
-				McwAPI.message(fileIn);
-			}
-			catch (IOException e)
-			{
+	public static void write(Path filePath, String content) {
+		if (!Files.exists(filePath)) {
+			try {
+				Files.writeString(filePath, content, StandardOpenOption.CREATE);
+				McwAPI.message(filePath);
+			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}

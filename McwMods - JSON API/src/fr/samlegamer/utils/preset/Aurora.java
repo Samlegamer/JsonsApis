@@ -50,14 +50,34 @@ public class Aurora implements Presetting
 	private boolean activeFences;
 	private boolean activeFurnitures;
 	private boolean activeStairs;
-
-	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs)
+	private boolean is120;
+	
+	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs, boolean is120)
 	{
 		this.activeBridges=activeBridges;
 		this.activeRoofs=activeRoofs;
 		this.activeFences=activeFences;
 		this.activeFurnitures=activeFurnitures;
 		this.activeStairs=activeStairs;
+		this.is120=is120;
+	}
+	
+	public Aurora(boolean is120)
+	{
+		this(true, true, true, true, true, is120);
+	}
+	
+	private void setEMMats(List<String> MAT_WOOD)
+	{
+		if(this.is120)
+		{
+			MAT_WOOD.add("mushroom");
+		}
+		else
+		{
+			MAT_WOOD.add("brown_mushroom");
+			MAT_WOOD.add("red_mushroom");
+		}
 	}
 	
 	@Override
@@ -94,8 +114,7 @@ public class Aurora implements Presetting
 			data_bridges.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
 			MAT_WOOD.clear();
 	
-			MAT_WOOD.add("brown_mushroom");
-			MAT_WOOD.add("red_mushroom");
+			setEMMats(MAT_WOOD);
 			txtLocMod = "enhanced_mushrooms:block";
 			ModidOfBaseMod = "enhanced_mushrooms";
 			client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -144,8 +163,7 @@ public class Aurora implements Presetting
 			LEAVES.clear();
 			MAT_WOOD.clear();
 	
-			MAT_WOOD.add("brown_mushroom");
-			MAT_WOOD.add("red_mushroom");
+			setEMMats(MAT_WOOD);
 			txtLocMod = "enhanced_mushrooms:block";
 			ModidOfBaseMod = "enhanced_mushrooms";
 			client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -194,8 +212,7 @@ public class Aurora implements Presetting
 			data_roofs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
 			MAT_WOOD.clear();
 	
-			MAT_WOOD.add("brown_mushroom");
-			MAT_WOOD.add("red_mushroom");
+			setEMMats(MAT_WOOD);
 			txtLocMod = "enhanced_mushrooms:block";
 			ModidOfBaseMod = "enhanced_mushrooms";
 			client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -235,8 +252,7 @@ public class Aurora implements Presetting
 			data_furnitures.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
 			MAT_WOOD.clear();
 	
-			MAT_WOOD.add("brown_mushroom");
-			MAT_WOOD.add("red_mushroom");
+			setEMMats(MAT_WOOD);
 			txtLocMod = "enhanced_mushrooms:block";
 			ModidOfBaseMod = "enhanced_mushrooms";
 			client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -276,8 +292,7 @@ public class Aurora implements Presetting
 			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
 			MAT_WOOD.clear();
 	
-			MAT_WOOD.add("brown_mushroom");
-			MAT_WOOD.add("red_mushroom");
+			setEMMats(MAT_WOOD);
 			txtLocMod = "enhanced_mushrooms:block";
 			ModidOfBaseMod = "enhanced_mushrooms";
 			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
@@ -302,9 +317,18 @@ public class Aurora implements Presetting
 			System.out.println("Done Wood Client");
 		}
 		System.out.println("Start Data/Tags/Lang/ForgeCode");
-		ModsList.AuroraWoods(MAT_WOOD);
+		
+		if(this.is120)
+		{
+			ModsList.AuroraWoods1201(MAT_WOOD);
+			English.Aurora.AuroraWoods1201Lang(MAJ_WOOD);
+		}
+		else
+		{
+			ModsList.AuroraWoods(MAT_WOOD);
+			English.Aurora.AuroraWoodsLang(MAJ_WOOD);
+		}
 		ModsList.AuroraLeaves(LEAVES);
-		English.Aurora.AuroraWoodsLang(MAJ_WOOD);
 		English.Aurora.AuroraLeavesLang(MAJ_LEAVES);
 		BridgesTagsGenerator tag_bridges = new BridgesTagsGenerator();		
 		RoofsTagsGenerator tag_roofs = new RoofsTagsGenerator();
@@ -338,7 +362,14 @@ public class Aurora implements Presetting
 		MAJ_WOOD.clear();
 		MAJ_LEAVES.clear();
 		
-		French.Aurora.AuroraWoodsLang(MAJ_WOOD);
+		if(this.is120)
+		{
+			French.Aurora.AuroraWoods1201Lang(MAJ_WOOD);
+		}
+		else
+		{
+			French.Aurora.AuroraWoodsLang(MAJ_WOOD);
+		}
 		French.Aurora.AuroraLeavesLang(MAJ_LEAVES);
 		lang_bridges.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
 		lang_roofs.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);

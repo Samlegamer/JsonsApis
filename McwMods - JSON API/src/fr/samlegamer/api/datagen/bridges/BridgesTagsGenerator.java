@@ -1,9 +1,11 @@
 package fr.samlegamer.api.datagen.bridges;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -14,14 +16,13 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 {
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{		
-		File file = new File(LOCATION + "MineableAxeData (Bridges).json");
+		Path file = Path.of(LOCATION, "MineableAxeData (Bridges).json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -41,8 +42,6 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -54,14 +53,13 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 	
 	public void PickaxeDataGen(String LOCATION, String Modid, List<String> MAT_ROCK)
 	{		
-		File file = new File(LOCATION + "MineablePickaxeData (Bridges).json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION + "MineablePickaxeData (Bridges).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -79,8 +77,6 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -90,81 +86,51 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 		}
 	}
 
+	private void addTag(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
+	{
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+
+		if(!Files.exists(file))
+		{
+			try
+			{
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
+
+				buffer.write("{\r\n"
+						+ "  \"values\": [");
+				buffer.newLine();
+
+				for(String i : MAT_WOOD)
+				{
+					McwAPI.verifJson(buffer, i, MAT_WOOD);
+					buffer.write("\""+Modid+":"+i+objName+"\"");
+				}
+
+				buffer.write("  ]\r\n"
+						+ "}");
+				buffer.close();
+				McwAPI.message(file);
+			}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
 	public void TagsWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "log_bridges.json");
-		File file2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "log_stairs.json");
-		File file3 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "rail_bridges.json");
-		File file4 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "rope_bridges.json");
-		File file5 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "rope_stairs.json");
-		File file6 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "wooden_piers.json");
-
-		if(!file6.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file6);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_bridge_pier\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file6.createNewFile();
-				McwAPI.message(file6);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "rope_bridges.json");
+		addTag(LOCATION, Modid, MAT_WOOD, "log_bridges", "_log_bridge_middle");
+		addTag(LOCATION, Modid, MAT_WOOD, "log_stairs", "_log_bridge_stair");
+		addTag(LOCATION, Modid, MAT_WOOD, "rail_bridges", "_rail_bridge");
+		addTag(LOCATION, Modid, MAT_WOOD, "rope_stairs", "_rope_bridge_stair");
+		addTag(LOCATION, Modid, MAT_WOOD, "wooden_piers", "_bridge_pier");
 		
-		if(!file5.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file5);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_rope_bridge_stair\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file5.createNewFile();
-				McwAPI.message(file5);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-		
-		if(!file4.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file4);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -179,149 +145,26 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file4.createNewFile();
-				McwAPI.message(file4);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-		
-		if(!file3.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file3);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_rail_bridge\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file3.createNewFile();
-				McwAPI.message(file3);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-		
-		if(!file2.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file2);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_log_bridge_stair\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file2.createNewFile();
-				McwAPI.message(file2);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-		
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_WOOD)
-				{
-					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+Modid+":"+i+"_log_bridge_middle\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
 	}
 
 	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK)
-	{		
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "stone_piers.json");
-		File file2 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "stone_bridges.json");
-		File file3 = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "stone_stairs.json");
+	{
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "stone_bridges.json");
 
-		if(!file3.exists())
+		addTag(LOCATION, Modid, MAT_ROCK, "stone_stairs", "_bridge_stair");
+		addTag(LOCATION, Modid, MAT_ROCK, "stone_piers", "_bridge_pier");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file3);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_ROCK)
-				{
-					McwAPI.verifJson(buffer, i, MAT_ROCK);
-					buffer.write("\""+Modid+":"+i+"_bridge_stair\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file3.createNewFile();
-				McwAPI.message(file3);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-		
-		if(!file2.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file2);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -338,38 +181,6 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file2.createNewFile();
-				McwAPI.message(file2);
-			}
-			catch (IOException e)
-			{
-				e.printStackTrace();
-			}	
-		}
-	
-		if(!file.exists())
-		{
-			try
-			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
-				
-				buffer.write("{\r\n"
-						+ "  \"values\": [");
-				buffer.newLine();
-				
-				for(String i : MAT_ROCK)
-				{
-					McwAPI.verifJson(buffer, i, MAT_ROCK);
-					buffer.write("\""+Modid+":"+i+"_bridge_pier\"");
-				}
-				
-				buffer.write("  ]\r\n"
-						+ "}");
-				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

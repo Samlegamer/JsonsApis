@@ -1,9 +1,11 @@
 package fr.samlegamer.api.datagen.furnitures;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -13,15 +15,14 @@ import fr.samlegamer.utils.IModFiles;
 public class FurnituresTagsGenerator implements IModFiles.ITagData
 {
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
-	{		
-		File file = new File(LOCATION + "MineableAxeData(Macaw's Furnitures).json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(LOCATION, "MineableAxeData(Macaw's Furnitures).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -31,76 +32,73 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 				for(String i : MAT_WOOD)
 				{
 					McwAPI.verifJson(buffer, i, MAT_WOOD);
-					buffer.write("\""+CompatModid+":"+i+"_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_modern_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_double_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_bookshelf\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_bookshelf_cupboard\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_double_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_bookshelf_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_lower_bookshelf_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_large_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_lower_triple_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_triple_drawer\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_covered_desk\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_modern_desk\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_table\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_end_table\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_coffee_table\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_glass_table\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_chair\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_modern_chair\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_striped_chair\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_stool_chair\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_counter\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_drawer_counter\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_double_drawer_counter\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_cupboard_counter\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_double_wardrobe\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf_cupboard\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_double_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_lower_bookshelf_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_large_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_lower_triple_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_triple_drawer\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_desk\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_covered_desk\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_desk\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_table\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_end_table\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_coffee_table\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_table\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_chair\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_striped_chair\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_stool_chair\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_counter\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_drawer_counter\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_double_drawer_counter\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_cupboard_counter\","+ "");
+					buffer.write("\""+CompatModid+":"+i+"_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_modern_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_double_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_bookshelf\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_bookshelf_cupboard\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_double_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_bookshelf_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_lower_bookshelf_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_large_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_lower_triple_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_triple_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_covered_desk\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_modern_desk\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_table\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_end_table\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_coffee_table\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_glass_table\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_modern_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_striped_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_stool_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_drawer_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_double_drawer_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_cupboard_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_double_wardrobe\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf_cupboard\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_double_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_bookshelf_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_lower_bookshelf_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_large_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_lower_triple_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_triple_drawer\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_desk\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_covered_desk\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_desk\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_table\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_end_table\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_coffee_table\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_table\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_modern_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_striped_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_stool_chair\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_drawer_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_double_drawer_counter\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_cupboard_counter\","+ "\n");
 					//3.3.0 Update
-					buffer.write("\""+CompatModid+":"+i+"_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_double_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":"+i+"_glass_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_double_kitchen_cabinet\","+ "");
-					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_kitchen_cabinet\""+ "");
+					buffer.write("\""+CompatModid+":"+i+"_kitchen_cabinet\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_double_kitchen_cabinet\","+ "\n");
+					buffer.write("\""+CompatModid+":"+i+"_glass_kitchen_cabinet\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_kitchen_cabinet\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_double_kitchen_cabinet\","+ "\n");
+					buffer.write("\""+CompatModid+":stripped_"+i+"_glass_kitchen_cabinet\"");
 				}
 				
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -112,14 +110,13 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + FileName + ".json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -136,8 +133,6 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -150,14 +145,13 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 	
 	private void cabinet(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "cabinet.json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "cabinet.json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -182,8 +176,6 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -199,16 +191,15 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 		addTagWood(LOCATION, Modid, MAT_WOOD, FileName, FileName);
 	}
 	
-	private void wadobe(String LOCATION, String Modid, List<String> MAT_WOOD)
+	private void wadrobe(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "wadrobe.json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "wadrobe.json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -223,12 +214,9 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -264,7 +252,7 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 		addTagWood(LOCATION, Modid, MAT_WOOD, "striped_chair");
 		addTagWood(LOCATION, Modid, MAT_WOOD, "table");
 		addTagWood(LOCATION, Modid, MAT_WOOD, "triple_drawer");
-		wadobe(LOCATION, Modid, MAT_WOOD);
+		wadrobe(LOCATION, Modid, MAT_WOOD);
 	}
 
 	@Override

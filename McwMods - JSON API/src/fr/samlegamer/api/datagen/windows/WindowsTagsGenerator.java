@@ -1,9 +1,11 @@
 package fr.samlegamer.api.datagen.windows;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -15,14 +17,13 @@ public class WindowsTagsGenerator implements ITagData
 	@Override
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
-		File file = new File(LOCATION + "MineableAxeData(Macaw's Windows).json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, "MineableAxeData(Macaw's Windows).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -72,12 +73,9 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -93,14 +91,13 @@ public class WindowsTagsGenerator implements ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + FileName + ".json");
-		
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -115,12 +112,9 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
@@ -132,15 +126,14 @@ public class WindowsTagsGenerator implements ITagData
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "blinds", "_blinds");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "curtain_rods", "_curtain_rod");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "parapets", "_log_parapet");
-				
-		File windows_two = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "windows_two.json");
-		
-		if(!windows_two.exists())
+
+		Path windows_two = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows_two.json");
+
+		if(!Files.exists(windows_two))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(windows_two);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(windows_two, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -159,8 +152,6 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				windows_two.createNewFile();
 				McwAPI.message(windows_two);
 			}
 			catch (IOException e)
@@ -168,15 +159,14 @@ public class WindowsTagsGenerator implements ITagData
 				e.printStackTrace();
 			}	
 		}
-		
-		File windows_four = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "windows_four.json");
-		
-		if(!windows_four.exists())
+
+		Path windows_four = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows_four.json");
+
+		if(!Files.exists(windows_four))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(windows_four);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(windows_four, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -195,8 +185,6 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				windows_four.createNewFile();
 				McwAPI.message(windows_four);
 			}
 			catch (IOException e)
@@ -204,15 +192,14 @@ public class WindowsTagsGenerator implements ITagData
 				e.printStackTrace();
 			}	
 		}
-		
-		File windows = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "windows.json");
-		
-		if(!windows.exists())
+
+		Path windows = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows.json");
+
+		if(!Files.exists(windows))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(windows);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(windows, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -231,24 +218,20 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				windows.createNewFile();
 				McwAPI.message(windows);
 			}
-			catch (IOException e)
-			{
+			catch (IOException e) {
 				e.printStackTrace();
 			}	
 		}
-		
-		File shutters = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "shutters.json");
-		
-		if(!shutters.exists())
+
+		Path shutters = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "shutters.json");
+
+		if(!Files.exists(shutters))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(shutters);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(shutters, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"values\": [");
@@ -265,8 +248,6 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.write("  ]\r\n"
 						+ "}");
 				buffer.close();
-				writer.close();
-				shutters.createNewFile();
 				McwAPI.message(shutters);
 			}
 			catch (IOException e)
@@ -274,15 +255,14 @@ public class WindowsTagsGenerator implements ITagData
 				e.printStackTrace();
 			}	
 		}
-		
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() +"walls (Windows).json");
 
-		if(!file.exists())
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "walls (Windows).json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{\r\n"
 						+ "  \"replace\": false,\r\n"
@@ -320,8 +300,6 @@ public class WindowsTagsGenerator implements ITagData
 				buffer.newLine();
 				buffer.write("  ]\r\n" + "}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

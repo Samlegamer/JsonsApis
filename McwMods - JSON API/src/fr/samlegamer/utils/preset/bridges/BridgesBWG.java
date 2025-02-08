@@ -25,9 +25,17 @@ import fr.samlegamer.utils.*;
 public class BridgesBWG implements Presetting
 {
 	/*Instance*/
+	protected String CompatModid;
+	private static String version = "1.21";
 	private static final McwModsRessources client_wood = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
 	private static final McwModsRessources client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
-	private static final IModFiles.IData data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
+	private static final McwDataGen data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, version);
+
+	public BridgesBWG(String CompatModid, String version)
+	{
+		this.CompatModid = CompatModid;
+		BridgesBWG.version = version;
+	}
 	
 	@Override
 	public void init(String LOCATION)
@@ -41,25 +49,29 @@ public class BridgesBWG implements Presetting
 		List<String> FLOOR = new ArrayList<String>();
 		List<String> MAJ_WOOD = new ArrayList<String>();
 		List<String> MAJ_ROCK = new ArrayList<String>();
-		String CompatModid = Compatibilities.BYG_BRIDGES_MODID;
 		String ClassBlockRegistry = "MBBYGBlocksRegistry";
 		System.out.println("Start Wood Client");
 		String txtLocMod = Compatibilities.BYG_TEXTURES_120;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID_120;
-		ModsList.byg120(MAT_WOOD);
+		ModsList.byg120(MAT_WOOD, false);
 		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, txtLocMod, MAT_WOOD, "planks", "log", "stripped_log");
+		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+		MAT_WOOD.clear();
+		ModsList.byg120(MAT_WOOD, true);
+		client_wood.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+		client_wood.createWoodCustomModelsBlocksBYGSetting(LOCATION, txtLocMod, MAT_WOOD, "planks", "stem", "stripped_stem");
 		client_wood.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		MAT_WOOD.clear();
 		ModsList.byg120(MAT_WOOD, false);
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_BRIDGES_MODID);
 		MAT_WOOD.clear();
 		ModsList.byg120(MAT_WOOD, true);
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_BRIDGES_MODID);
 		MAT_WOOD.clear();
 		System.out.println("Done Wood Client");
 		System.out.println("Start Stone Client");
@@ -69,7 +81,7 @@ public class BridgesBWG implements Presetting
 		client_stone.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
 		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		data.RecipesStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();

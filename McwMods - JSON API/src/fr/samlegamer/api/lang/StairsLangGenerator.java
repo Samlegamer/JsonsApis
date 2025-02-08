@@ -1,11 +1,12 @@
 package fr.samlegamer.api.lang;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwMain;
 import fr.samlegamer.utils.IModFiles;
@@ -13,15 +14,14 @@ import fr.samlegamer.utils.IModFiles;
 public class StairsLangGenerator implements IModFiles.ILang
 {
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
-	{		
-		File file = new File(McwMain.LOCATION + "En_Us_Wood_Stairs.json");
+	{
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Wood_Stairs.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
 				{
@@ -38,8 +38,6 @@ public class StairsLangGenerator implements IModFiles.ILang
 				
 				buffer.newLine();
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -51,14 +49,13 @@ public class StairsLangGenerator implements IModFiles.ILang
 
 	public void initAllStoneEnglish(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "En_Us_Stone_Stairs.json");
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Stone_Stairs.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				for(int nbm = 0; nbm < MAT_ROCK.size(); nbm++)
 				{
@@ -73,8 +70,6 @@ public class StairsLangGenerator implements IModFiles.ILang
 							+ "\"block."+CompatModid+"."+MAT_ROCK.get(nbm)+"_platform\": \""+MAJ_MAT.get(nbm)+" Platform\",");
 				}
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -87,14 +82,13 @@ public class StairsLangGenerator implements IModFiles.ILang
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Stairs.json");
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Wood_Stairs.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				for(int nbm = 0;nbm<MAT_WOOD.size();nbm++)
 				{
@@ -110,8 +104,6 @@ public class StairsLangGenerator implements IModFiles.ILang
 				}
 				
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -124,14 +116,13 @@ public class StairsLangGenerator implements IModFiles.ILang
 	
 	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Stone_Stairs.json");
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Stone_Stairs.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				for(int nbm = 0; nbm < MAT_ROCK.size(); nbm++)
 				{
@@ -147,8 +138,6 @@ public class StairsLangGenerator implements IModFiles.ILang
 
 				}
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

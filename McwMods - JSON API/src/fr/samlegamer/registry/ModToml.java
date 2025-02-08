@@ -17,7 +17,6 @@ public class ModToml
 		switch(versionMC)
 		{
 		case "1.19.2":
-			idForForge = 43;
 			Vrange = "1.19.2,1.20";
 			break;
 		case "1.19.1":
@@ -42,7 +41,7 @@ public class ModToml
 			break;
 		}
 		
-		APIWriter.write(file, "modLoader=\"javafml\"\r\n"
+		APIWriter.write(file.toPath(), "modLoader=\"javafml\"\r\n"
 				+ "loaderVersion=\"["+idForForge+",)\"\r\n"
 				+ "license=\"All rights reserved\"\r\n"
 				+ "\r\n"

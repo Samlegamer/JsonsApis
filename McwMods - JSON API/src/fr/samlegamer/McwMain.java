@@ -8,7 +8,7 @@ import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BYGWarden;
+import fr.samlegamer.utils.preset.BOP;
 
 public class McwMain
 {	
@@ -43,7 +43,32 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new BYGWarden());
+		preset(new BOP(true, "1.21"));
+		/*French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
+		MAT_WOOD.add("bamboo");
+		MAJ_WOOD.add("bamboo");
+		DoorsLangGenerator lang = new DoorsLangGenerator();
+		lang.initAllWoodFrench("mcwdoors", MAT_WOOD, MAJ_WOOD);
+		
+		FabricMissingFrozCode missing = new FabricMissingFrozCode();
+		String MODID = "mcwbiomesoplenty";
+		ModsList.bop1201(MAT_WOOD);
+		ModsList.bopLeaves1201(LEAVES);
+		missing.bridges(LOCATION, "macawsbridgesbop", MODID, MAT_WOOD, MAT_ROCK);
+		missing.roofs(LOCATION, "macawsroofsbop", MODID, MAT_WOOD, MAT_ROCK);
+		missing.fences(LOCATION, "mcwfencesbop", MODID, MAT_WOOD, LEAVES, MAT_ROCK);
+		missing.furnitures(LOCATION, "mcwfurnituresbop", MODID, MAT_WOOD);*/
+		/*FabricMissingFrozCode missing = new FabricMissingFrozCode();
+		String MODID = "mcwbyg";
+		ModsList.bygWildUp(MAT_WOOD);
+		ModsList.bygRock(MAT_ROCK);
+		missing.bridges(LOCATION, "macawsbridgesbyg", MODID, MAT_WOOD, MAT_ROCK);
+		MAT_ROCK.clear();
+		ModsList.bygRockFenceable(MAT_ROCK);
+		missing.fences(LOCATION, "z_mcwfencesbyg", MODID, MAT_WOOD, LEAVES, MAT_ROCK);
+		missing.furnitures(LOCATION, "mcwfurnituresbyg", MODID, MAT_WOOD);
+		missing.roofs(LOCATION, "z_mcwroofsbyg", MODID, MAT_WOOD, MAT_ROCK);*/
+		//preset(new BYGWarden());
 		/*McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 		McwAPI.FurnituresGenFolder(LOCATION);

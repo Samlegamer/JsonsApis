@@ -9,6 +9,8 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.Uncomplete;
 
+/* Update to path system */
+@Deprecated
 @Uncomplete(missing = "Unworked", percent = 5)
 public class McwLang
 {

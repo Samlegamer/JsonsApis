@@ -83,7 +83,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -144,7 +144,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -160,6 +160,11 @@ public class McwModsRessources implements IModFiles.IClient
 	
 	public void createWoodModelsBlocksPrefixed(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood)
 	{
+		createWoodModelsBlocksPrefixed(LOCATION, TextureLocationFormodid, MAT_WOOD, PREFIX_WOOD, isStemWood, false);
+	}
+	
+	public void createWoodModelsBlocksPrefixed(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, boolean pWood1201)
+	{
 		List<Path> directories = new ArrayList<Path>();
 		
 		for(String str : this.fold.getPathList())
@@ -170,7 +175,7 @@ public class McwModsRessources implements IModFiles.IClient
 			{
 				for(int i = 0; i<MAT_WOOD.size();i++)
 				{
-					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
+					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom 
 			        try (Stream<Path> files = Files.list(directory)) {
 			            List<Path> acaciaFiles = files
 			                    .filter(file -> file.getFileName().toString().contains("acacia") && 
@@ -183,14 +188,28 @@ public class McwModsRessources implements IModFiles.IClient
 					            boolean isBlueSkiesPrefix = PREFIX_WOOD.get(a).contains("bsky_");
 					            boolean isPremiumWoodPrefix = PREFIX_WOOD.get(a).contains("pwood_");
 					            
-					            String log = isBlueSkiesPrefix ? MAT_WOOD.get(a)+"_log_side" : MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+					            final String aaa;
+					            final String bbb;
 					            String strip = isBlueSkiesPrefix ? "stripped_"+MAT_WOOD.get(a)+"_log_side" : "stripped_"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+
+					            if(pWood1201)
+					            {
+					            	aaa = MAT_WOOD.get(a)+"_log_side";
+					            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log_side";
+					            }
+					            else
+					            {
+					            	aaa = MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+					            	bbb = (isPremiumWoodPrefix ? MAT_WOOD.get(a)+"_stripped_log" : strip);
+					            }
+					            
+					            String log = isBlueSkiesPrefix ? MAT_WOOD.get(a)+"_log_side" : aaa;
 					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    List<String> modifiedLines = lines.stream()
 			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_louvered_shutter"))
 			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+(isPremiumWoodPrefix ? MAT_WOOD.get(a)+"_stripped_log" : strip)))
+			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+bbb))
 			                            .map(line -> line.replace("minecraft:block/acacia_log_top", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")+"_top"))
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+log))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
@@ -213,7 +232,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -266,7 +285,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -318,7 +337,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -365,7 +384,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -403,7 +422,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -436,7 +455,7 @@ public class McwModsRessources implements IModFiles.IClient
 					            final int a = nbm;
 					            boolean isSandStoneCustom = WALL.get(a).contains("sandstone");
 					            String top = isSandStoneCustom ? WALL.get(a)+"_top" : WALL.get(a);
-					            String top1 = isSandStoneCustom ? FLOOR.get(a)+"_top" : FLOOR.get(a);
+					            String top1 = isSandStoneCustom ? FLOOR.get(a) : FLOOR.get(a);
 					            String walltext = MOD_ID.equals(Compatibilities.MCW_FENCES_MODID) ? FLOOR.get(a) : WALL.get(a);
 			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
@@ -450,7 +469,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -496,7 +515,7 @@ public class McwModsRessources implements IModFiles.IClient
 
 	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -536,7 +555,7 @@ public class McwModsRessources implements IModFiles.IClient
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.BLOCKSTATES.getPath(), newFileName);
 
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }
@@ -584,7 +603,7 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -632,7 +651,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -678,7 +697,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -723,7 +742,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-			                    McwAPI.message(newFilePath.toFile());
+			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {
 			                    e.printStackTrace();
 			                }
@@ -758,7 +777,7 @@ public class McwModsRessources implements IModFiles.IClient
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), newFileName);
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
-	                    McwAPI.message(newFilePath.toFile());
+	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
 	                    e.printStackTrace();
 	                }

@@ -140,6 +140,6 @@ public class FurnituresBlockEntityModifier
 			}
 		}
 		
-		APIWriter.write(at, "public-f net.minecraft.world.level.block.entity.BlockEntityType f_58915_ # validBlocks");
+		APIWriter.write(at.toPath(), "public-f net.minecraft.world.level.block.entity.BlockEntityType f_58915_ # validBlocks");
 	}
 }

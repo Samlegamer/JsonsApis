@@ -3,6 +3,8 @@ package fr.samlegamer;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -127,6 +129,7 @@ public class McwAPI
 		result.add("rp_bark"+File.separator);
 		result.add("swamp"+File.separator);
 		result.add("tropical"+File.separator);
+		result.add("whispering"+File.separator);
 		return result;
 	}
 	
@@ -159,6 +162,7 @@ public class McwAPI
 		result.add("tropical"+File.separator);
 		result.add("waffle"+File.separator);
 		result.add("western"+File.separator);
+		result.add("whispering"+File.separator);
 		return result;
 	}
 	
@@ -214,9 +218,15 @@ public class McwAPI
 	/*
 	 * A message for file generated
 	 */
+	public static void message(Path file)
+	{
+		System.out.println("File : "+file.toString()+" has generated !");
+	}
+
+	@Deprecated
 	public static void message(File file)
 	{
-		System.out.println("File : "+file.getName()+" has generated !"); 
+		message(file.toPath());
 	}
 	
 	/*
@@ -224,11 +234,16 @@ public class McwAPI
 	 */
 	private static void registerFolder(String location, String path)
 	{
-		File folderBase = new File(location + path);
-		
-		if(!folderBase.exists())
+		Path folderBase = Path.of(location + path);
+
+		if(!Files.exists(folderBase))
 		{
-			folderBase.mkdir();
+			try {
+				Files.createDirectory(folderBase);
+			}
+			catch (IOException ex) {
+				System.out.println("Couldn't create folder : "+ex.getMessage());
+			}
 		}
 	}
 	
@@ -349,6 +364,7 @@ public class McwAPI
 		registerFolder(location, "models/block/tropical/");
 		registerFolder(location, "models/block/waffle/");
 		registerFolder(location, "models/block/western/");
+		registerFolder(location, "models/block/whispering/");
 	}
 	
 	public static void WindowsGenFolder(String location)
@@ -382,6 +398,7 @@ public class McwAPI
 		registerFolder(location, "models/block/rp_bark/");
 		registerFolder(location, "models/block/swamp/");
 		registerFolder(location, "models/block/tropical/");
+		registerFolder(location, "models/block/whispering/");
 		
 		/*Textures Folders*/
 		registerFolder(location, "textures/block/");
@@ -399,6 +416,7 @@ public class McwAPI
 		registerFolder(location, "textures/block/paper/");
 		registerFolder(location, "textures/block/swamp/");
 		registerFolder(location, "textures/block/tropical/");
+		registerFolder(location, "textures/block/whispering/");
 	}
 
 	public static void StairsGenFolder(String location)

@@ -1,9 +1,11 @@
 package fr.samlegamer.api.lang;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +15,8 @@ import fr.samlegamer.utils.IModFiles;
 
 public class FencesLangGenerator implements IModFiles.ILang
 {
-	private List<String> LEAVES;
-	private List<String> LEAVES_LANG;
+	private final List<String> LEAVES;
+	private final List<String> LEAVES_LANG;
 
 	public FencesLangGenerator(List<String> leaves, List<String> lang)
 	{
@@ -26,18 +28,16 @@ public class FencesLangGenerator implements IModFiles.ILang
 	{
 		this(new ArrayList<String>(), new ArrayList<String>());
 	}
-
-
+	
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
-	{		
-		File file = new File(McwMain.LOCATION + "En_Us_Wood_Fences.json");
+	{
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Wood_Fences.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 			
 				buffer.write("{");
 				buffer.newLine();
@@ -73,8 +73,6 @@ public class FencesLangGenerator implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -87,14 +85,13 @@ public class FencesLangGenerator implements IModFiles.ILang
 	@Override
 	public void initAllStoneEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT) 
 	{
-		File file = new File(McwMain.LOCATION + "En_Us_Stone_Fences.json");
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Stone_Fences.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 			
 				buffer.write("{");
 				buffer.newLine();
@@ -117,8 +114,6 @@ public class FencesLangGenerator implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -131,14 +126,13 @@ public class FencesLangGenerator implements IModFiles.ILang
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Fences.json");
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Wood_Fences.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 			
 				buffer.write("{");
 				buffer.newLine();
@@ -174,8 +168,6 @@ public class FencesLangGenerator implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -189,14 +181,13 @@ public class FencesLangGenerator implements IModFiles.ILang
 	@Override
 	public void initAllStoneFrench(String CompatModid, List<String> MAT_ROCK, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Stone_Fences.json");
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Stone_Fences.json");
 		
-		if(!file.exists())
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 			
 				buffer.write("{");
 				buffer.newLine();
@@ -219,8 +210,6 @@ public class FencesLangGenerator implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

@@ -27,6 +27,18 @@ public class French
 			MAT_WOOD.add("érable");
 			MAT_WOOD.add("étoilée");
 		}
+
+		public static void BlueSkiesLang1201(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("bleu brillant");
+			MAT_WOOD.add("comète");
+			MAT_WOOD.add("crépuscule");
+			MAT_WOOD.add("gel brillant");
+			MAT_WOOD.add("lunaire");
+			MAT_WOOD.add("érable");
+			MAT_WOOD.add("étoilée");
+		}
+
 	}
 	
 	public static class Aurora
@@ -100,6 +112,20 @@ public class French
 			LEAVES.addAll(List.of("tremble", "sombrepin","cornouiller", "morado", "pallisandre", "yucca", "érable", "érable rouges", "érable jaunes", "érable oranges", "cerisier", 
 			"glycine bleu", "glycine rose", "glycine blanc", "glycine violet", "saule", "rivière"));
 		}
+		
+		public static void abnormalsWood120Lang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.addAll(List.of("tremble", "sombrepin", "cornouiller", "morado", "pallisandre", "yucca", 
+			"laurier", "érable", "prunier", "Wisteria", "saule", "pin", "bois flotté", "rivière", "lévita"));
+		}
+
+		public static void abnormalsLeaves120Lang(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("tremble", "sombrepin", "cornouiller", "morado", "pallisandre", "yucca", 
+			"laurier", "érable", "érable rouges", "érable jaunes", "érable oranges", "prunier",
+			"glycine bleu", "glycine rose", "glycine blanc", "glycine violet", "saule", "pin", "rivière"));
+		}
+
 	}
 	
 	public static class BOP
@@ -327,6 +353,7 @@ public class French
 	
 	public static class Minecraft
 	{
+		//prismarine sombre (windows)
 		public static void mcWood(List<String> MAT, List<String> MAJ_MAT)
 		{
 			MAT.add("oak");

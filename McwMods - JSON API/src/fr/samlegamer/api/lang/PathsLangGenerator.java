@@ -1,9 +1,11 @@
 package fr.samlegamer.api.lang;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
@@ -14,15 +16,14 @@ public class PathsLangGenerator  implements IModFiles.ILang
 {
 	@Override
 	public void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
-	{		
-		File file = new File(McwMain.LOCATION + "En_Us_Wood_Paths.json");
-		
-		if(!file.exists())
+	{
+		Path file = Path.of(McwMain.LOCATION, "En_Us_Wood_Paths.json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{");
 				buffer.newLine();
@@ -36,8 +37,6 @@ public class PathsLangGenerator  implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)
@@ -50,14 +49,13 @@ public class PathsLangGenerator  implements IModFiles.ILang
 	@Override
 	public void initAllWoodFrench(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{
-		File file = new File(McwMain.LOCATION + "Fr_Fr_Wood_Paths.json");
-		
-		if(!file.exists())
+		Path file = Path.of(McwMain.LOCATION, "Fr_Fr_Wood_Paths.json");
+
+		if(!Files.exists(file))
 		{
 			try
 			{
-				FileWriter writer = new FileWriter(file);
-				BufferedWriter buffer = new BufferedWriter(writer);
+				BufferedWriter buffer = Files.newBufferedWriter(file, StandardCharsets.UTF_8, StandardOpenOption.CREATE_NEW);
 				
 				buffer.write("{");
 				buffer.newLine();
@@ -71,8 +69,6 @@ public class PathsLangGenerator  implements IModFiles.ILang
 				buffer.newLine();
 				buffer.write("}");
 				buffer.close();
-				writer.close();
-				file.createNewFile();
 				McwAPI.message(file);
 			}
 			catch (IOException e)

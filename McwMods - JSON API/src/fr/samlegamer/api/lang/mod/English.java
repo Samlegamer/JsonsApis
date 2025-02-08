@@ -27,6 +27,18 @@ public class English
 			MAT_WOOD.add("Maple");
 			MAT_WOOD.add("Starlit");
 		}
+
+		public static void BlueSkiesLang1201(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.add("Bluebright");
+			MAT_WOOD.add("Comet");
+			MAT_WOOD.add("Dusk");
+			MAT_WOOD.add("Frostbright");
+			MAT_WOOD.add("Lunar");
+			MAT_WOOD.add("Maple");
+			MAT_WOOD.add("Starlit");
+		}
+
 	}
 	
 	public static class Sajevius
@@ -126,6 +138,20 @@ public class English
 			LEAVES.addAll(List.of("Aspen", "Grimwood","Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Red Maple", "Yellow Maple", "Orange Maple", "Cherry", 
 			"Blue Wisteria", "Pink Wisteria", "White Wisteria", "Purple Wisteria", "Willow", "River"));
 		}
+		
+		public static void abnormalsWood120Lang(List<String> MAT_WOOD)
+		{
+			MAT_WOOD.addAll(List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", 
+			"Laurel", "Maple", "Plum", "Wisteria", "Willow", "Pine", "Driftwood", "River", "Poise"));
+		}
+
+		public static void abnormalsLeaves120Lang(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", 
+			"Laurel", "Maple", "Red Maple", "Yellow Maple", "Orange Maple", "Plum",
+			"Blue Wisteria", "Pink Wisteria", "White Wisteria", "Purple Wisteria", "Willow", "Pine", "River"));
+		}
+
 	}
 	
 	public static class BOP

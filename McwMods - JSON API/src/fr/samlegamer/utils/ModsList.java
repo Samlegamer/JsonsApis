@@ -163,7 +163,7 @@ public class ModsList
 	{
 		List<String> WALL = new ArrayList<String>();
 		List<String> FLOOR = new ArrayList<String>();
-		bygRock(MAT_ROCK, WALL, FLOOR);
+		bygRock120(MAT_ROCK, WALL, FLOOR);
 	}
 	
 	public static void byg(List<String> MATERIAL)
@@ -361,6 +361,19 @@ public class ModsList
 		LEAVES.add("river");
 	}
 
+	public static void abnormalsWood120(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", 
+		"laurel", "maple", "plum", "wisteria", "willow", "pine", "driftwood", "river", "poise"));
+	}
+
+	public static void abnormalsLeaves120(List<String> LEAVES)
+	{
+		LEAVES.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", 
+		"laurel", "maple", "red_maple", "yellow_maple","orange_maple", "plum", "blue_wisteria", 
+		"pink_wisteria", "white_wisteria", "purple_wisteria", "willow", "pine", "river"));
+	}
+	
 	public static void betterlandsWoods(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("juniper");
@@ -461,7 +474,7 @@ public class ModsList
 		MAT_WOOD.add("bsky_maple");
 		MAT_WOOD.add("bsky_starlit");
 	}
-	
+
 	public static void BlueSkiesTextures(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("bluebright");
@@ -472,7 +485,30 @@ public class ModsList
 		MAT_WOOD.add("maple");
 		MAT_WOOD.add("starlit");
 	}
-	
+
+	/* New for 1.20.1 */
+	public static void BlueSkiesBsky1201(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.add("bsky_bluebright");
+		MAT_WOOD.add("bsky_comet");
+		MAT_WOOD.add("bsky_dusk");
+		MAT_WOOD.add("bsky_frostbright");
+		MAT_WOOD.add("bsky_lunar");
+		MAT_WOOD.add("bsky_maple");
+		MAT_WOOD.add("bsky_starlit");
+	}
+
+	public static void BlueSkiesTextures1201(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.add("bluebright");
+		MAT_WOOD.add("comet");
+		MAT_WOOD.add("dusk");
+		MAT_WOOD.add("frostbright");
+		MAT_WOOD.add("lunar");
+		MAT_WOOD.add("maple");
+		MAT_WOOD.add("starlit");
+	}
+
 	public static void PremiumWoodPwood(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("pwood_magic");
