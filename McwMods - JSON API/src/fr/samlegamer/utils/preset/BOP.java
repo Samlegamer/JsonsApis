@@ -1,5 +1,6 @@
 package fr.samlegamer.utils.preset;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,6 +31,7 @@ import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
+import fr.samlegamer.utils.JsonsUtils;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 
@@ -160,6 +162,11 @@ public class BOP implements Presetting
 
 		if(this.b)
 		{
+			//Delete maple hedge data
+			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE, "maple_hedge");
+			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.LOOT_TABLES, "maple_hedge");
+			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE, "maple_hedge");
+
 			French.BOP.bop1204Lang(MAJ_WOOD);
 			French.BOP.bopLeaves1204Lang(LEAVES_LANG);
 		}

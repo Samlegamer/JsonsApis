@@ -125,7 +125,7 @@ public class DoorsTagsGenerator implements ITagData
 	public void TagsWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "bamboo_doors", "_bamboo_door");
-		addTagWood(LOCATION, CompatModid, MAT_WOOD, "bark_doors", "_bark_door");
+		//addTagWood(LOCATION, CompatModid, MAT_WOOD, "bark_doors", "_bark_door"); not exist ???
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "barn_doors", "_barn_door");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "barn_glass_doors", "_barn_glass_door");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "beach_doors", "_beach_door");
