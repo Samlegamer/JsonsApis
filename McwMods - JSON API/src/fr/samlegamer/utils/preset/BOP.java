@@ -1,9 +1,7 @@
 package fr.samlegamer.utils.preset;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
@@ -162,11 +160,6 @@ public class BOP implements Presetting
 
 		if(this.b)
 		{
-			//Delete maple hedge data
-			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE, "maple_hedge");
-			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.LOOT_TABLES, "maple_hedge");
-			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE, "maple_hedge");
-
 			French.BOP.bop1204Lang(MAJ_WOOD);
 			French.BOP.bopLeaves1204Lang(LEAVES_LANG);
 		}
@@ -184,6 +177,20 @@ public class BOP implements Presetting
 		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
 		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
 		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
+		
+		if(this.b)
+		{
+			//Delete maple hedge data
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "maple_hedge.json");
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "maple_hedge.json");
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "maple_hedge.json");
+		}
+		else
+		{
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "cherry_hedge.json");
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "cherry_hedge.json");
+			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
+		}
 	}
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)

@@ -8,7 +8,7 @@ import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BYG;
+import fr.samlegamer.utils.preset.BOP;
 
 public class McwMain
 {	
@@ -43,7 +43,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new BYG());
+		preset(new BOP(true, "1.21"));
 		/*French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
 		MAT_WOOD.add("bamboo");
 		MAJ_WOOD.add("bamboo");

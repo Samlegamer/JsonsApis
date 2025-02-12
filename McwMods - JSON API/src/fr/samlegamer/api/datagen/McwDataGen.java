@@ -503,7 +503,6 @@ public class McwDataGen implements IModFiles.IData
 		
 		for(String i : MAT_WOOD)
 		{
-	        // Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 	        try (Stream<Path> files = Files.list(directory)) {
 	            List<Path> acaciaFiles = files
 	                    .filter(file -> file.getFileName().toString().contains("acacia"))
@@ -511,10 +510,10 @@ public class McwDataGen implements IModFiles.IData
 	
 	            for (Path file : acaciaFiles) {
 	            	try {
-	                    // Lire tout le contenu du fichier
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-	
-	                    // Remplacer "acacia" par "cherry" dans le contenu
+	                    
+	                    
+	                    
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
 	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
@@ -523,7 +522,7 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
 	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
 	                            .collect(Collectors.toList());
-	
+	                    //mcwdoors:acacia
 	                    String modLoadedCondition = "\"conditions\": [\r\n"
 	                    		+ "    {\r\n"
 	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
@@ -531,11 +530,10 @@ public class McwDataGen implements IModFiles.IData
 	                    		+ "    }\r\n"
 	                    		+ "  ],";
 	                     modifiedLines.add(1, modLoadedCondition);
-	                    // D�terminer le nouveau nom de fichier
+
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	
-	                    // �crire le contenu modifi� dans un nouveau fichier
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
@@ -920,7 +918,7 @@ public class McwDataGen implements IModFiles.IData
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					McwAPI.message(file);
+					McwAPI.message(file.toPath());
 				}
 				catch (IOException e)
 				{
@@ -973,7 +971,7 @@ public class McwDataGen implements IModFiles.IData
 					buffer.close();
 					writer.close();
 					file.createNewFile();
-					McwAPI.message(file);
+					McwAPI.message(file.toPath());
 				}
 				catch (IOException e)
 				{
