@@ -22,6 +22,7 @@ import fr.samlegamer.utils.*;
  * For 1.19 use BridgesBYGWarden
  * For 1.20.1 use BridgesBWG
  */
+@Deprecated(forRemoval = true)
 public class BridgesBYG implements Presetting
 {
 	/*Instance*/

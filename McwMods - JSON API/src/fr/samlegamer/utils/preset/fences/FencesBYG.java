@@ -10,6 +10,7 @@ import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.ModsList;
 
+@Deprecated(forRemoval = true)
 public class FencesBYG extends FencesBYGWarden
 {
 	protected void genWoodBYG(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)

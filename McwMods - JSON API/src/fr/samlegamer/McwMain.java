@@ -3,12 +3,8 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import fr.samlegamer.McwAPI.ClientFolderTypes;
-import fr.samlegamer.api.clientgen.McwModsRessources;
-import fr.samlegamer.api.datagen.McwDataGen;
-import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BOP;
+import fr.samlegamer.utils.preset.BWG;
 
 public class McwMain
 {	
@@ -28,22 +24,10 @@ public class McwMain
 	public static final String TextureLocationFormodid = Compatibilities.BOP_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BOP_MODID; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)*/
-	protected static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
-	protected static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
-
-	protected static void genWoodBYGStairs(String LOCATION, String CompatModid, List<String> MAT_WOOD, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem)
-	{
-		client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-		client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		client_wood_stairs.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
-		data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
-		data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, Compatibilities.MCW_STAIRS_MODID);
-		data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-	}
 
 	public static void main(String[] args)
 	{
-		preset(new BOP(true, "1.21"));
+		preset(new BWG("1.21"));
 		/*French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
 		MAT_WOOD.add("bamboo");
 		MAJ_WOOD.add("bamboo");

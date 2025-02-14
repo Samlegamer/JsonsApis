@@ -248,6 +248,7 @@ public class BYG implements Presetting
 		MAT_ROCK.clear();
 		WALL.clear();
 		FLOOR.clear();
+		LEAVES.clear();
 		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
 		
 		if(bridges)
