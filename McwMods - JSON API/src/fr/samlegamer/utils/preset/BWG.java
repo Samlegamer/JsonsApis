@@ -163,11 +163,11 @@ public class BWG implements Presetting
 		
 		genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID,
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+					new McwDataGen(Compatibilities.MCW_ROOFS_MODID, version));
 		
 		genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_FENCES_MODID,
 					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE),
-					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
+					new McwDataGen(Compatibilities.MCW_FENCES_MODID, version));
 		
 		MAT_ROCK.clear();
 		WALL.clear();
@@ -177,7 +177,7 @@ public class BWG implements Presetting
 		
 		genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID,
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE),
-					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
+					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, version));
 		
 		System.out.println("Done Stone Data/Client");
 		
