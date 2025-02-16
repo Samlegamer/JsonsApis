@@ -314,7 +314,7 @@ public class BWG implements Presetting
 			client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
 		}
 		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
-		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, Compatibilities.BYG_MODID);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, Compatibilities.BYG_MODID_120);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compatmcw.equals(Compatibilities.MCW_FENCES_MODID))
@@ -330,7 +330,7 @@ public class BWG implements Presetting
 			client.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
 			data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.RecipesLogAllwithResearch(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge");
+			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", compatmcw, Compatibilities.BYG_MODID_120);
 		}
 	}
 	

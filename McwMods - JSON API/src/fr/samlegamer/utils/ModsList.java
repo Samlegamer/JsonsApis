@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import fr.samlegamer.registry.Compatibilities;
+
 public class ModsList
 {
 	private static final Collection<String> BOP_WOODS = List.of("dead", "fir", "hellbark", "jacaranda", "magic", "mahogany", "palm", "redwood", "umbran", "willow");
@@ -294,6 +296,8 @@ public class ModsList
 		MAT_WOOD.add("purple_hard_mushroom");
 	}
 	
+	
+	
 	public static void abnormalsWood(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("aspen");
@@ -440,6 +444,26 @@ public class ModsList
 		PremiumWoodPwood(MAT_WOOD);
 	}
 	
+	public static void AuroraWoods(List<String> MAT_WOOD, String modid)
+	{
+		if(modid.equals(Compatibilities.BAYOU_BLUES_MODID))
+		{
+			MAT_WOOD.add("cypress");
+		}
+		
+		if(modid.equals(Compatibilities.ENHANCED_MUSHROOMS_MODID))
+		{
+			MAT_WOOD.add("brown_mushroom");
+			MAT_WOOD.add("red_mushroom");
+		}
+		
+		if(modid.equals(Compatibilities.ABUNDANCE_MODID))
+		{
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("redbud");
+		}
+	}
+
 	public static void AuroraWoods(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("cypress");
@@ -447,6 +471,20 @@ public class ModsList
 		MAT_WOOD.add("red_mushroom");
 		MAT_WOOD.add("jacaranda");
 		MAT_WOOD.add("redbud");
+	}
+	
+	public static void AuroraLeaves(List<String> MAT_WOOD, String modid)
+	{
+		if(modid.equals(Compatibilities.BAYOU_BLUES_MODID))
+		{
+			MAT_WOOD.add("cypress");
+		}
+				
+		if(modid.equals(Compatibilities.ABUNDANCE_MODID))
+		{
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("redbud");
+		}
 	}
 	
 	public static void AuroraLeaves(List<String> MAT_WOOD)
@@ -462,6 +500,25 @@ public class ModsList
 		MAT_WOOD.add("mushroom");
 		MAT_WOOD.add("jacaranda");
 		MAT_WOOD.add("redbud");
+	}
+	
+	public static void AuroraWoods1201(List<String> MAT_WOOD, String modid)
+	{
+		if(modid.equals(Compatibilities.BAYOU_BLUES_MODID))
+		{
+			MAT_WOOD.add("cypress");
+		}
+		
+		if(modid.equals(Compatibilities.ENHANCED_MUSHROOMS_MODID))
+		{
+			MAT_WOOD.add("mushroom");
+		}
+		
+		if(modid.equals(Compatibilities.ABUNDANCE_MODID))
+		{
+			MAT_WOOD.add("jacaranda");
+			MAT_WOOD.add("redbud");
+		}
 	}
 	
 	public static void BlueSkiesBsky(List<String> MAT_WOOD)

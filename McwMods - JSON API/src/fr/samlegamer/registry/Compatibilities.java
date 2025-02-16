@@ -28,6 +28,13 @@ public class Compatibilities
 	public static final String BOP_FURNITURES_MODID = "mcwfurnituresbop";
 	public static final String BYG_FURNITURES_MODID = "mcwfurnituresbyg";
 
+	public static final String BAYOU_BLUES_MODID = "bayou_blues";
+	public static final String BAYOU_BLUES_TEXTURES = "bayou_blues:block";
+	public static final String ENHANCED_MUSHROOMS_MODID = "enhanced_mushrooms";
+	public static final String ENHANCED_MUSHROOMS_TEXTURES = "enhanced_mushrooms:block";
+	public static final String ABUNDANCE_MODID = "abundance";
+	public static final String ABUNDANCE_TEXTURES = "abundance:block";
+	
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
 	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";
