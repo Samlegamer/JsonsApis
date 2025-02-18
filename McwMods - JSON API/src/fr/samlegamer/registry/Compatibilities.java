@@ -28,6 +28,24 @@ public class Compatibilities
 	public static final String BOP_FURNITURES_MODID = "mcwfurnituresbop";
 	public static final String BYG_FURNITURES_MODID = "mcwfurnituresbyg";
 
+	/* Abnormals */
+	public static final String BUZZBEES_MODID = "buzzier_bees";
+	public static final String BUZZBEES_TEXTURES = "buzzier_bees:block";
+	public static final String ATMO_MODID = "atmospheric";
+	public static final String ATMO_TEXTURES = "atmospheric:block";
+	public static final String AUTUM_MODID = "autumnity";
+	public static final String AUTUM_TEXTURES = "autumnity:block";
+	public static final String ENVI_MODID = "environmental";
+	public static final String ENVI_TEXTURES = "environmental:block";
+	public static final String UAQUA_MODID = "upgrade_aquatic";
+	public static final String UAQUA_TEXTURES = "upgrade_aquatic:block";
+	public static final String ENDERGETIC_MODID = "endergetic";
+	public static final String ENDERGETIC_TEXTURES = "endergetic:block";
+
+	public static final String CAVERNCHASMS_MODID = "caverns_and_chasms";
+	public static final String CAVERNCHASMS_TEXTURES = "caverns_and_chasms:block";
+	
+	/* Aurora */
 	public static final String BAYOU_BLUES_MODID = "bayou_blues";
 	public static final String BAYOU_BLUES_TEXTURES = "bayou_blues:block";
 	public static final String ENHANCED_MUSHROOMS_MODID = "enhanced_mushrooms";

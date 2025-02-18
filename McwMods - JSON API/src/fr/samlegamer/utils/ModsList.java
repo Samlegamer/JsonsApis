@@ -296,86 +296,218 @@ public class ModsList
 		MAT_WOOD.add("purple_hard_mushroom");
 	}
 	
-	
-	
 	public static void abnormalsWood(List<String> MAT_WOOD)
 	{
-		MAT_WOOD.add("aspen");
-		MAT_WOOD.add("grimwood");
-		MAT_WOOD.add("kousa");
-		MAT_WOOD.add("morado");
-		MAT_WOOD.add("rosewood");
-		MAT_WOOD.add("yucca");
-		MAT_WOOD.add("maple");
-		MAT_WOOD.add("cherry");
-		MAT_WOOD.add("wisteria");
-		MAT_WOOD.add("willow");
-		MAT_WOOD.add("driftwood");
-		MAT_WOOD.add("river");
-		MAT_WOOD.add("poise");
+		abnormalsWood(MAT_WOOD, Compatibilities.ATMO_MODID);
+		abnormalsWood(MAT_WOOD, Compatibilities.AUTUM_MODID);
+		abnormalsWood(MAT_WOOD, Compatibilities.ENVI_MODID);
+		abnormalsWood(MAT_WOOD, Compatibilities.UAQUA_MODID);
+		abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
+	}
+	
+	public static void abnormalsWood119(List<String> MAT_WOOD)
+	{
+		abnormalsWood(MAT_WOOD);
+		abnormalsWood(MAT_WOOD, Compatibilities.CAVERNCHASMS_MODID);
+	}
+	
+	public static void abnormalsWood(List<String> MAT_WOOD, String compat)
+	{
+		if(compat.equals(Compatibilities.ATMO_MODID))
+		{
+			MAT_WOOD.add("aspen");
+			MAT_WOOD.add("grimwood");
+			MAT_WOOD.add("kousa");
+			MAT_WOOD.add("morado");
+			MAT_WOOD.add("rosewood");
+			MAT_WOOD.add("yucca");
+		}
+		
+		if(compat.equals(Compatibilities.AUTUM_MODID))
+		{
+			MAT_WOOD.add("maple");
+		}
+		
+		if(compat.equals(Compatibilities.ENVI_MODID))
+		{
+			MAT_WOOD.add("cherry");
+			MAT_WOOD.add("wisteria");
+			MAT_WOOD.add("willow");
+		}
+		
+		if(compat.equals(Compatibilities.UAQUA_MODID))
+		{
+			MAT_WOOD.add("driftwood");
+			MAT_WOOD.add("river");
+		}
+		
+		if(compat.equals(Compatibilities.ENDERGETIC_MODID))
+		{
+			MAT_WOOD.add("poise");
+		}
+		
+		if(compat.equals(Compatibilities.CAVERNCHASMS_MODID))
+		{
+			MAT_WOOD.add("azalea");
+		}
 	}
 
-	public static void abnormalsRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	public static void abnormalsRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String compat)
 	{
-		MAT_ROCK.add("honeycomb_brick");
-		MAT_ROCK.add("honeycomb_tile");
-		WALL.add("honeycomb_bricks");
-		WALL.add("honeycomb_tiles");
-		FLOOR.add("honeycomb_block");
-		FLOOR.add("honeycomb_bricks");
+		if(compat.equals(Compatibilities.BUZZBEES_MODID))
+		{
+			MAT_ROCK.add("honeycomb_brick");
+			MAT_ROCK.add("honeycomb_tile");
+			WALL.add("honeycomb_bricks");
+			WALL.add("honeycomb_tiles");
+			FLOOR.add("honeycomb_block");
+			FLOOR.add("honeycomb_bricks");
+		}
 
-		MAT_ROCK.add("red_arid_sandstone");
-		MAT_ROCK.add("arid_sandstone");
-		WALL.add("red_arid_sandstone");
-		WALL.add("arid_sandstone");
-		FLOOR.add("arid_sand");
-		FLOOR.add("red_arid_sand");
+		if(compat.equals(Compatibilities.ATMO_MODID))
+		{
+			MAT_ROCK.add("red_arid_sandstone");
+			MAT_ROCK.add("arid_sandstone");
+			WALL.add("red_arid_sandstone");
+			WALL.add("arid_sandstone");
+			FLOOR.add("arid_sand");
+			FLOOR.add("red_arid_sand");
+		}
 
-		MAT_ROCK.add("snail_shell_bricks");
-		MAT_ROCK.add("snail_shell_tiles");
-		WALL.add("snail_shell_bricks");
-		WALL.add("snail_shell_tiles");
-		FLOOR.add("snail_shell_block_stripes");
-		FLOOR.add("snail_shell_bricks");
+		if(compat.equals(Compatibilities.AUTUM_MODID))
+		{
+			MAT_ROCK.add("snail_shell_bricks");
+			MAT_ROCK.add("snail_shell_tiles");
+			WALL.add("snail_shell_bricks");
+			WALL.add("snail_shell_tiles");
+			FLOOR.add("snail_shell_block_stripes");
+			FLOOR.add("snail_shell_bricks");
+		}
 	}
 	
 	public static void abnormalsRock(List<String> MAT_ROCK)
 	{
-		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>());
+		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.BUZZBEES_MODID);
+		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.ATMO_MODID);
+		abnormalsRock(MAT_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.AUTUM_MODID);
 	}
 	
 	public static void abnormalsLeaves(List<String> LEAVES)
 	{
-		LEAVES.add("aspen");
-		LEAVES.add("grimwood");
-		LEAVES.add("kousa");
-		LEAVES.add("morado");
-		LEAVES.add("rosewood");
-		LEAVES.add("yucca");
-		LEAVES.add("maple");
-		LEAVES.add("red_maple");
-		LEAVES.add("yellow_maple");
-		LEAVES.add("orange_maple");
-		LEAVES.add("cherry");
-		LEAVES.add("blue_wisteria");
-		LEAVES.add("pink_wisteria");
-		LEAVES.add("white_wisteria");
-		LEAVES.add("purple_wisteria");
-		LEAVES.add("willow");
-		LEAVES.add("river");
+		abnormalsLeaves(LEAVES, Compatibilities.ATMO_MODID);
+		abnormalsLeaves(LEAVES, Compatibilities.AUTUM_MODID);
+		abnormalsLeaves(LEAVES, Compatibilities.ENVI_MODID);
+		abnormalsLeaves(LEAVES, Compatibilities.UAQUA_MODID);
 	}
-
+	
+	public static void abnormalsLeaves(List<String> LEAVES, String compat)
+	{
+		if(compat.equals(Compatibilities.ATMO_MODID))
+		{
+			LEAVES.add("aspen");
+			LEAVES.add("grimwood");
+			LEAVES.add("kousa");
+			LEAVES.add("morado");
+			LEAVES.add("rosewood");
+			LEAVES.add("yucca");
+		}
+	
+		if(compat.equals(Compatibilities.AUTUM_MODID))
+		{
+			LEAVES.add("maple");
+			LEAVES.add("red_maple");
+			LEAVES.add("yellow_maple");
+			LEAVES.add("orange_maple");
+		}
+		
+		if(compat.equals(Compatibilities.ENVI_MODID))
+		{
+			LEAVES.add("cherry");
+			LEAVES.add("blue_wisteria");
+			LEAVES.add("pink_wisteria");
+			LEAVES.add("white_wisteria");
+			LEAVES.add("purple_wisteria");
+			LEAVES.add("willow");
+		}
+		
+		if(compat.equals(Compatibilities.UAQUA_MODID))
+		{
+			LEAVES.add("river");
+		}
+	}
+	
+	public static void abnormalsWood120(List<String> MAT_WOOD, String compat)
+	{
+		if(compat.equals(Compatibilities.ATMO_MODID))
+		{
+			MAT_WOOD.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", "laurel")); 
+		}
+		
+		if(compat.equals(Compatibilities.AUTUM_MODID))
+		{
+			MAT_WOOD.add("maple");
+		}
+		
+		if(compat.equals(Compatibilities.ENVI_MODID))
+		{
+			MAT_WOOD.addAll(List.of("plum", "wisteria", "willow", "pine"));
+		}
+		
+		if(compat.equals(Compatibilities.UAQUA_MODID))
+		{
+			MAT_WOOD.addAll(List.of("driftwood", "river"));
+		}
+		
+		if(compat.equals(Compatibilities.ENDERGETIC_MODID))
+		{
+			MAT_WOOD.add("poise");
+		}
+		
+		if(compat.equals(Compatibilities.CAVERNCHASMS_MODID))
+		{
+			MAT_WOOD.add("azalea");
+		}
+	}
+	
 	public static void abnormalsWood120(List<String> MAT_WOOD)
 	{
-		MAT_WOOD.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", 
-		"laurel", "maple", "plum", "wisteria", "willow", "pine", "driftwood", "river", "poise"));
+		abnormalsWood120(MAT_WOOD, Compatibilities.ATMO_MODID);
+		abnormalsWood120(MAT_WOOD, Compatibilities.AUTUM_MODID);
+		abnormalsWood120(MAT_WOOD, Compatibilities.ENVI_MODID);
+		abnormalsWood120(MAT_WOOD, Compatibilities.UAQUA_MODID);
+		abnormalsWood120(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
+		abnormalsWood120(MAT_WOOD, Compatibilities.CAVERNCHASMS_MODID);
 	}
 
+	public static void abnormalsLeaves120(List<String> LEAVES, String compat)
+	{
+		if(compat.equals(Compatibilities.ATMO_MODID))
+		{
+			LEAVES.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", "laurel"));
+		}
+		
+		if(compat.equals(Compatibilities.AUTUM_MODID))
+		{
+			LEAVES.addAll(List.of("maple", "red_maple", "yellow_maple","orange_maple"));
+		}
+		
+		if(compat.equals(Compatibilities.ENVI_MODID))
+		{
+			LEAVES.addAll(List.of("plum", "blue_wisteria", "pink_wisteria", "white_wisteria", "purple_wisteria", "willow", "pine"));
+		}
+		
+		if(compat.equals(Compatibilities.UAQUA_MODID))
+		{
+			LEAVES.add("river");
+		}
+	}
+	
 	public static void abnormalsLeaves120(List<String> LEAVES)
 	{
-		LEAVES.addAll(List.of("aspen", "grimwood", "kousa", "morado", "rosewood", "yucca", 
-		"laurel", "maple", "red_maple", "yellow_maple","orange_maple", "plum", "blue_wisteria", 
-		"pink_wisteria", "white_wisteria", "purple_wisteria", "willow", "pine", "river"));
+		abnormalsLeaves120(LEAVES, Compatibilities.ATMO_MODID);
+		abnormalsLeaves120(LEAVES, Compatibilities.AUTUM_MODID);
+		abnormalsLeaves120(LEAVES, Compatibilities.ENVI_MODID);
+		abnormalsLeaves120(LEAVES, Compatibilities.UAQUA_MODID);
 	}
 	
 	public static void betterlandsWoods(List<String> MAT_WOOD)

@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BWG;
+import fr.samlegamer.utils.preset.AbnormalsWarden;
 
 public class McwMain
 {	
@@ -27,12 +27,16 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new BWG("1.21"));
-		/*French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
+		preset(new AbnormalsWarden());
+		/*
+		final PathsLangGenerator roofLang = new PathsLangGenerator();
+		
+		French.Minecraft.mcWood(MAT_WOOD, MAJ_WOOD);
 		MAT_WOOD.add("bamboo");
 		MAJ_WOOD.add("bamboo");
-		DoorsLangGenerator lang = new DoorsLangGenerator();
-		lang.initAllWoodFrench("mcwdoors", MAT_WOOD, MAJ_WOOD);
+		roofLang.initAllWoodFrench(Compatibilities.MCW_PATHS_MODID, MAT_WOOD, MAJ_WOOD);
+		French.Minecraft.mcPaths(MAT_ROCK, MAJ_ROCK);
+		roofLang.initAllStoneFrench(Compatibilities.MCW_PATHS_MODID, MAT_ROCK, MAJ_ROCK);
 		
 		FabricMissingFrozCode missing = new FabricMissingFrozCode();
 		String MODID = "mcwbiomesoplenty";

@@ -96,6 +96,12 @@ public class French
 			MAJ_WOOD.add("rivière");
 			MAJ_WOOD.add("lévita");
 		}
+		
+		public static void abnormalsWood119Lang(List<String> MAJ_WOOD)
+		{
+			abnormalsWoodLang(MAJ_WOOD);
+			MAJ_WOOD.add("azalée");
+		}
 
 		public static void abnormalsRockLang(List<String> MAJ_ROCK)
 		{
@@ -116,7 +122,7 @@ public class French
 		public static void abnormalsWood120Lang(List<String> MAT_WOOD)
 		{
 			MAT_WOOD.addAll(List.of("tremble", "sombrepin", "cornouiller", "morado", "pallisandre", "yucca", 
-			"laurier", "érable", "prunier", "Wisteria", "saule", "pin", "bois flotté", "rivière", "lévita"));
+			"laurier", "érable", "prunier", "Wisteria", "saule", "pin", "bois flotté", "rivière", "lévita", "azalée"));
 		}
 
 		public static void abnormalsLeaves120Lang(List<String> LEAVES)
@@ -490,55 +496,157 @@ public class French
 			MAJ_MAT.add("briques du nether");
 			MAJ_MAT.add("briques de l'End");
 		}
-
-		public static void mcTerracotaConcrete(List<String> MAT_ROCK, List<String> MAJ_MAT)
+		
+		public static void mcPaths(List<String> MAT_ROCK, List<String> MAJ_MAT)
 		{
-			MAT_ROCK.add("brick");
-			MAT_ROCK.add("stone_brick");
-			MAT_ROCK.add("mossy_stone_brick");
+			MAT_ROCK.add("andesite");
+			MAT_ROCK.add("diorite");
+			MAT_ROCK.add("granite");
 			MAT_ROCK.add("sandstone");
 			MAT_ROCK.add("red_sandstone");
-			MAT_ROCK.add("deepslate_brick");
-			MAT_ROCK.add("deepslate_tile");
-			MAT_ROCK.add("mud_brick");
-			MAT_ROCK.add("blackstone");
-
-			MAT_ROCK.add("asian_red");
-			MAT_ROCK.add("glass");
-			
+			MAT_ROCK.add("brick");
 			MAT_ROCK.add("cobblestone");
 			MAT_ROCK.add("mossy_cobblestone");
-			MAT_ROCK.add("andesite");
-			MAT_ROCK.add("granite");
-			MAT_ROCK.add("diorite");
-			MAT_ROCK.add("prismarine_bricks");
-			MAT_ROCK.add("nether_bricks");
-			MAT_ROCK.add("end_stone_bricks");
-			
-			MAJ_MAT.add("briques");
-			MAJ_MAT.add("pierre taillée");
-			MAJ_MAT.add("pierre taillée moussue");
+			MAT_ROCK.add("cobbled_deepslate");
+			MAT_ROCK.add("deepslate");
+			MAT_ROCK.add("mud_brick");
+			MAT_ROCK.add("blackstone");
+			MAT_ROCK.add("dark_prismarine");
+
+			MAJ_MAT.add("andésite");
+			MAJ_MAT.add("diorite");
+			MAJ_MAT.add("granite");
 			MAJ_MAT.add("grès");
 			MAJ_MAT.add("grès rouge");
-			MAJ_MAT.add("ardoise des abîmes taillée");
-			MAJ_MAT.add("ardoise des abîmes carrelée");
-			MAJ_MAT.add("briques de terre crue");
-			MAJ_MAT.add("roche noire");
-			
-			MAJ_MAT.add("rouge asiatique");
-			MAJ_MAT.add("verre");
-			
+			MAJ_MAT.add("brique");
 			MAJ_MAT.add("pierre");
 			MAJ_MAT.add("pierre moussue");
-			MAJ_MAT.add("andésite");
-			MAJ_MAT.add("granite");
-			MAJ_MAT.add("diorite");
-			MAJ_MAT.add("briques de prismarine");
-			MAJ_MAT.add("briques du nether");
-			MAJ_MAT.add("briques de l'End");
-		
+			MAJ_MAT.add("pierres des abîmes");
+			MAJ_MAT.add("ardoise des abîmes");
+			MAJ_MAT.add("briques de terre crue");
+			MAJ_MAT.add("roche noire");
+			MAJ_MAT.add("prismarine sombre");
 		}
 
+		public static void mcRoofs(List<String> MAT_ROCK, List<String> MAJ_MAT)
+		{
+			MAT_ROCK.add("white_terracotta");
+			MAT_ROCK.add("light_gray_terracotta");
+			MAT_ROCK.add("gray_terracotta");
+			MAT_ROCK.add("black_terracotta");
+			MAT_ROCK.add("blue_terracotta");
+			MAT_ROCK.add("light_blue_terracotta");
+			MAT_ROCK.add("cyan_terracotta");
+			MAT_ROCK.add("lime_terracotta");
+			MAT_ROCK.add("green_terracotta");
+			MAT_ROCK.add("yellow_terracotta");
+			MAT_ROCK.add("brown_terracotta");
+			MAT_ROCK.add("orange_terracotta");
+			MAT_ROCK.add("red_terracotta");
+			MAT_ROCK.add("magenta_terracotta");
+			MAT_ROCK.add("pink_terracotta");
+			MAT_ROCK.add("purple_terracotta");
+			MAT_ROCK.add("white_concrete");
+			MAT_ROCK.add("light_gray_concrete");
+			MAT_ROCK.add("gray_concrete");
+			MAT_ROCK.add("black_concrete");
+			MAT_ROCK.add("blue_concrete");
+			MAT_ROCK.add("light_blue_concrete");
+			MAT_ROCK.add("cyan_concrete");
+			MAT_ROCK.add("lime_concrete");
+			MAT_ROCK.add("green_concrete");
+			MAT_ROCK.add("yellow_concrete");
+			MAT_ROCK.add("brown_concrete");
+			MAT_ROCK.add("orange_concrete");
+			MAT_ROCK.add("red_concrete");
+			MAT_ROCK.add("magenta_concrete");
+			MAT_ROCK.add("pink_concrete");
+			MAT_ROCK.add("purple_concrete");
+			MAT_ROCK.add("white");
+			MAT_ROCK.add("light_gray");
+			MAT_ROCK.add("gray");
+			MAT_ROCK.add("black");
+			MAT_ROCK.add("base");
+
+			MAT_ROCK.add("stone");
+			MAT_ROCK.add("granite");
+			MAT_ROCK.add("diorite");
+			MAT_ROCK.add("andesite");
+			MAT_ROCK.add("cobblestone");
+			MAT_ROCK.add("sandstone");
+			MAT_ROCK.add("red_sandstone");
+			MAT_ROCK.add("bricks");
+			MAT_ROCK.add("blackstone");
+			MAT_ROCK.add("deepslate");
+			MAT_ROCK.add("mud_brick");
+			MAT_ROCK.add("nether_bricks");
+			MAT_ROCK.add("red_nether_bricks");
+			MAT_ROCK.add("thatch");
+			MAT_ROCK.add("prismarine_brick");
+			MAT_ROCK.add("dark_prismarine");
+			MAT_ROCK.add("stone_bricks");
+			MAT_ROCK.add("bamboo_mosaic");
+			MAT_ROCK.add("grass");
+			
+			MAJ_MAT.add("terre cuite blanche");
+			MAJ_MAT.add("terre cuite gris clair");
+			MAJ_MAT.add("terre cuite grise");
+			MAJ_MAT.add("terre cuite noire");
+			MAJ_MAT.add("terre cuite bleue");
+			MAJ_MAT.add("terre cuite bleu clair");
+			MAJ_MAT.add("terre cuite cyan");
+			MAJ_MAT.add("terre cuite vert clair");
+			MAJ_MAT.add("terre cuite verte");
+			MAJ_MAT.add("terre cuite jaune");
+			MAJ_MAT.add("terre cuite marron");
+			MAJ_MAT.add("terre cuite orange");
+			MAJ_MAT.add("terre cuite rouge");
+			MAJ_MAT.add("terre cuite magenta");
+			MAJ_MAT.add("terre cuite rose");
+			MAJ_MAT.add("terre cuite violette");
+			MAJ_MAT.add("béton blanc");
+			MAJ_MAT.add("béton gris clair");
+			MAJ_MAT.add("béton gris");
+			MAJ_MAT.add("béton noir");
+			MAJ_MAT.add("béton bleu");
+			MAJ_MAT.add("béton bleu clair");
+			MAJ_MAT.add("béton cyan");
+			MAJ_MAT.add("béton vert clair");
+			MAJ_MAT.add("béton vert");
+			MAJ_MAT.add("béton jaune");
+			MAJ_MAT.add("béton marron");
+			MAJ_MAT.add("béton orange");
+			MAJ_MAT.add("béton rouge");
+			MAJ_MAT.add("béton magenta");
+			MAJ_MAT.add("béton rose");
+			MAJ_MAT.add("béton violette");
+			MAJ_MAT.add("blanc");
+			MAJ_MAT.add("gris clair");
+			MAJ_MAT.add("gris");
+			MAJ_MAT.add("noir");
+			MAJ_MAT.add("basic");
+			
+			MAJ_MAT.add("roche");
+			MAJ_MAT.add("granite");
+			MAJ_MAT.add("diorite");
+			MAJ_MAT.add("andésite");
+			MAJ_MAT.add("pierre");
+			MAJ_MAT.add("grès");
+			MAJ_MAT.add("grès rouge");
+			MAJ_MAT.add("briques");
+			MAJ_MAT.add("roche noire");
+			MAJ_MAT.add("ardoise des abîmes");
+			MAJ_MAT.add("briques de terre crue");
+			MAJ_MAT.add("briques du nether");
+			MAJ_MAT.add("briques du nether rouges");
+			MAJ_MAT.add("chaume");
+			MAJ_MAT.add("briques de prismarine");
+			MAJ_MAT.add("prismarine sombre");
+			MAJ_MAT.add("pierre taillée");
+			MAJ_MAT.add("mosaïque de bambou");
+			MAJ_MAT.add("herbe");
+		}
+		
 		public static void mcRockFences(List<String> MAT_ROCK, List<String> MAJ_MAT)
 		{
 			MAT_ROCK.add("stone_brick");

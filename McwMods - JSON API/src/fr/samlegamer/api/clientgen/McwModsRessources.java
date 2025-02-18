@@ -258,7 +258,6 @@ public class McwModsRessources implements IModFiles.IClient
 			{
 				for(String i : MAT_WOOD)
 				{
-					// Filtrer et traiter les fichiers contenant "acacia" dans leur nom
 			        try (Stream<Path> files = Files.list(directory)) {
 			            List<Path> acaciaFiles = files
 			                    .filter(file -> file.getFileName().toString().contains("acacia") && 
@@ -267,23 +266,37 @@ public class McwModsRessources implements IModFiles.IClient
 		
 			            for (Path file : acaciaFiles) {
 			            	try {
-			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-			                    // Remplacer "acacia" par "cherry" dans le contenu
+
 			                    List<String> modifiedLines = lines.stream()
+			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
+			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+nameOfTexturesStripped))
+			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
+			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
+			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
+			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
+			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
+			                            .map(line -> line.replace("acacia", i))
+			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
+			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
+			                            /*.map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+nameOfTexturesStripped))
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))		                            
 			                            .map(line -> line.replace("mcwtrpdoors", Modid))
-			                            .map(line -> line.replace("mcwdoors", Modid))
+			                            .map(line -> line.replace("mcwdoors", Modid))*/
 			                            .collect(Collectors.toList());
 		
-			                    // D�terminer le nouveau nom de fichier
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
 			                    Path newFilePath = Paths.get(McwMain.LOCATION+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str, newFileName);
 		
-			                    // �crire le contenu modifi� dans un nouveau fichier
 			                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 			                    McwAPI.message(newFilePath);
 			                } catch (IOException e) {

@@ -127,6 +127,12 @@ public class English
 		{
 			MAJ_WOOD.addAll(List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", "Maple", "Cherry", "Wisteria", "Willow", "Driftwood", "River", "Poise"));
 		}
+		
+		public static void abnormalsWood119Lang(List<String> MAJ_WOOD)
+		{
+			abnormalsWoodLang(MAJ_WOOD);
+			MAJ_WOOD.add("Azalea");
+		}
 
 		public static void abnormalsRockLang(List<String> MAJ_ROCK)
 		{
@@ -142,7 +148,7 @@ public class English
 		public static void abnormalsWood120Lang(List<String> MAT_WOOD)
 		{
 			MAT_WOOD.addAll(List.of("Aspen", "Grimwood", "Kousa", "Morado", "Rosewood", "Yucca", 
-			"Laurel", "Maple", "Plum", "Wisteria", "Willow", "Pine", "Driftwood", "River", "Poise"));
+			"Laurel", "Maple", "Plum", "Wisteria", "Willow", "Pine", "Driftwood", "River", "Poise", "Azalea"));
 		}
 
 		public static void abnormalsLeaves120Lang(List<String> LEAVES)
