@@ -28,6 +28,9 @@ public class Compatibilities
 	public static final String BOP_FURNITURES_MODID = "mcwfurnituresbop";
 	public static final String BYG_FURNITURES_MODID = "mcwfurnituresbyg";
 
+	public static final String QUARK_MODID = "quark";
+	public static final String QUARK_TEXTURE = "quark:block";
+
 	/* Abnormals */
 	public static final String BUZZBEES_MODID = "buzzier_bees";
 	public static final String BUZZBEES_TEXTURES = "buzzier_bees:block";

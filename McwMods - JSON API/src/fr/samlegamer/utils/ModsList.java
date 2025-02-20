@@ -10,7 +10,7 @@ public class ModsList
 {
 	private static final Collection<String> BOP_WOODS = List.of("dead", "fir", "hellbark", "jacaranda", "magic", "mahogany", "palm", "redwood", "umbran", "willow");
 
-	//Quark Mat
+	/* For 1.16.5 */
 	public static void quarkRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		Collection<String> mat = List.of("andesite_bricks", "basalt_bricks", "biotite_bricks", "diorite_bricks", "elder_prismarine_bricks", "granite_bricks", "jasper_bricks", "limestone_bricks", "magma_bricks", "marble_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "slate_bricks", "soul_sandstone_bricks");
@@ -19,10 +19,28 @@ public class ModsList
 		Collection<String> flo = List.of("andesite", "basalt", "biotite_block", "diorite", "elder_prismarine", "granite", "jasper", "limestone", "magma_block", "marble", "permafrost", "red_sandstone", "sandstone", "slate", "soul_sandstone");
 		FLOOR.addAll(flo);
 	}
-		
+	
+	/* For 1.16.5 | 1.18.2 */
 	public static void quarkLeaves(List<String> LEAVES)
 	{
 		LEAVES.addAll(List.of("blue_blossom", "lavender_blossom", "orange_blossom", "pink_blossom", "red_blossom", "yellow_blossom"));
+	}
+	
+	public static void quarkRock118(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		Collection<String> mat = List.of("soul_sandstone_bricks", "limestone_bricks", "jasper_bricks", "shale_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "cobblestone_bricks", 
+		"mossy_cobblestone_bricks", "blackstone_bricks", "diorite_bricks", "granite_bricks", "andesite_bricks", "calcite_bricks", "dripstone_bricks", "tuff_bricks");
+		MAT_ROCK.addAll(mat);
+		WALL.addAll(mat);
+		Collection<String> flo = List.of("soul_sandstone", "limestone", "jasper", "shale", "permafrost", "red_sandstone", "sandstone", "cobblestone", 
+		"mossy_cobblestone", "blackstone", "diorite", "granite", "andesite", "calcite", "dripstone", "tuff");
+		FLOOR.addAll(flo);
+	}
+
+	public static void quarkWood118(List<String> MAT_WOOD)
+	{
+		MAT_WOOD.add("blossom");
+		MAT_WOOD.add("azalea");
 	}
 	
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)

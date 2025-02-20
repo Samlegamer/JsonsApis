@@ -108,11 +108,23 @@ public class English
 	
 	public static class Quark
 	{
+		public static void quarkRock118Lang(List<String> MAJ_ROCK)
+		{
+			Collection<String> mat = List.of("Soul Sandstone Bricks", "Limestone Bricks", "Jasper Bricks", "Shale Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Cobblestone Bricks", 
+					"Mossy Cobblestone Bricks", "Blackstone Bricks", "Diorite Bricks", "Granite Bricks", "Andesite Bricks", "Calcite Bricks", "Dripstone Bricks", "Tuff Bricks");
+			MAJ_ROCK.addAll(mat);
+		}
+
 		public static void quarkRockLang(List<String> MAJ_ROCK)
 		{
 			Collection<String> mat = List.of("Andesite Bricks", "Basalt Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "Granite Bricks", "Jasper Bricks", 
 			"Limestone Bricks", "Magma Bricks", "Marble Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Slate Bricks", "Soul Sandstone Bricks");
 			MAJ_ROCK.addAll(mat);
+		}
+		
+		public static void quarkWood118(List<String> LEAVES)
+		{
+			LEAVES.addAll(List.of("Blossom", "Azalea"));
 		}
 		
 		public static void quarkLeaves(List<String> LEAVES)

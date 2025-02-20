@@ -2,9 +2,10 @@ package fr.samlegamer;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.AbnormalsWarden;
+import fr.samlegamer.utils.preset.Abnormals1201;
 
 public class McwMain
 {	
@@ -24,10 +25,14 @@ public class McwMain
 	public static final String TextureLocationFormodid = Compatibilities.BOP_TEXTURES; //modid:block for textures location (ex : assets/quark/textures/block = quark:block)
 	public static final String ModidOfBaseMod = Compatibilities.BOP_MODID; //For recipes (ex: bop:cherry_log)
 	public static final String ClassBlockRegistry = "MFBYGBlocksRegistry"; // Blocks Class Registries (ex : IafBlockRegistry)*/
-
+	
 	public static void main(String[] args)
 	{
-		preset(new AbnormalsWarden());
+		/*
+		 * quark : 
+		 * , 
+		 */
+		//preset(new Abnormals1201());
 		/*
 		final PathsLangGenerator roofLang = new PathsLangGenerator();
 		

@@ -18,7 +18,7 @@ import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 
-public class MacadonQuark implements Presetting
+public class QuarkNether implements Presetting
 {
 	/*Instance*/
 	protected static McwModsRessources client_wood;
@@ -70,8 +70,8 @@ public class MacadonQuark implements Presetting
 		data = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
 		client_stone = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE);
 		client_wood = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
-		String TextureLocationFormodid = "quark:block";
-		String ModidOfBaseMod = "quark";
+		String TextureLocationFormodid = Compatibilities.QUARK_TEXTURE;
+		String ModidOfBaseMod = Compatibilities.QUARK_MODID;
 		String CompatModid = "mcwquark";
 		ModsList.quarkRock(MAT_ROCK, WALL, FLOOR);
 		genStoneBYG(LOCATION, CompatModid, MAT_ROCK, WALL, FLOOR, TextureLocationFormodid, ModidOfBaseMod);
