@@ -232,7 +232,7 @@ public class McwAPI
 	/*
 	 * Simplified Method
 	 */
-	private static void registerFolder(String location, String path)
+	public static void registerFolder(String location, String path)
 	{
 		Path folderBase = Path.of(location + path);
 

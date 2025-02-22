@@ -31,7 +31,7 @@ import fr.samlegamer.utils.IModFiles.ITagData;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 
-public class QuarkCaveAndCliffs implements Presetting
+public class QuarkWarden implements Presetting
 {
 	protected static final List<String> MAT_WOOD = new ArrayList<String>();
 	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
@@ -57,8 +57,8 @@ public class QuarkCaveAndCliffs implements Presetting
 		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		ModsList.quarkWood118(MAT_WOOD);
-		ModsList.quarkLeaves(LEAVES);
+		ModsList.quarkWood119(MAT_WOOD);
+		ModsList.quarkLeaves119(LEAVES);
 		ModsList.quarkRock118(MAT_ROCK, WALL, FLOOR);
 		
 		String TextureLocationFormodid = Compatibilities.QUARK_TEXTURE;
@@ -131,8 +131,8 @@ public class QuarkCaveAndCliffs implements Presetting
 		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
 
 		English.Quark.quarkRock118Lang(MAJ_ROCK);
-		English.Quark.quarkWood118Lang(MAJ_WOOD);
-		English.Quark.quarkLeavesLang(LEAVES_LANG);
+		English.Quark.quarkWood119Lang(MAJ_WOOD);
+		English.Quark.quarkLeaves119Lang(LEAVES_LANG);
 
 		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
 		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());

@@ -8,7 +8,6 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.utils.IModFiles;

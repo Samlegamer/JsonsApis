@@ -2,7 +2,6 @@ package fr.samlegamer;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.preset.Abnormals1201;
@@ -32,7 +31,7 @@ public class McwMain
 		 * quark : 
 		 * , 
 		 */
-		//preset(new Abnormals1201());
+		preset(new Abnormals1201());
 		/*
 		final PathsLangGenerator roofLang = new PathsLangGenerator();
 		

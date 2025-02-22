@@ -1,6 +1,7 @@
 package fr.samlegamer.api.datagen.stairs;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -10,7 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
 public class StairsTagsGenerator implements IModFiles.ITagData
@@ -20,6 +23,7 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 	public StairsTagsGenerator(List<String> MAT_ROCK)
 	{
 		this.MAT_ROCK = MAT_ROCK;
+		McwAPI.registerFolder(McwMain.LOCATION + ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_STAIRS_MODID + File.separator);
 	}
 	
 	public StairsTagsGenerator()
@@ -106,7 +110,7 @@ public class StairsTagsGenerator implements IModFiles.ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, List<String> MAT_ROCK, String FileName, String objName)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_STAIRS_MODID + File.separator, FileName + ".json");
 
 		if(!Files.exists(file))
 		{

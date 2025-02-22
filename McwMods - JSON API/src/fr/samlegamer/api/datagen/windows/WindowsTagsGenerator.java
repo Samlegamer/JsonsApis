@@ -1,6 +1,7 @@
 package fr.samlegamer.api.datagen.windows;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -9,11 +10,18 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class WindowsTagsGenerator implements ITagData
 {
+	public WindowsTagsGenerator()
+	{
+		McwAPI.registerFolder(McwMain.LOCATION + ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator);
+	}
+	
 	@Override
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
@@ -91,7 +99,7 @@ public class WindowsTagsGenerator implements ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator, FileName + ".json");
 
 		if(!Files.exists(file))
 		{
@@ -127,7 +135,7 @@ public class WindowsTagsGenerator implements ITagData
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "curtain_rods", "_curtain_rod");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "parapets", "_log_parapet");
 
-		Path windows_two = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows_two.json");
+		Path windows_two = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator, "windows_two.json");
 
 		if(!Files.exists(windows_two))
 		{
@@ -160,7 +168,7 @@ public class WindowsTagsGenerator implements ITagData
 			}	
 		}
 
-		Path windows_four = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows_four.json");
+		Path windows_four = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator, "windows_four.json");
 
 		if(!Files.exists(windows_four))
 		{
@@ -193,7 +201,7 @@ public class WindowsTagsGenerator implements ITagData
 			}	
 		}
 
-		Path windows = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "windows.json");
+		Path windows = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator, "windows.json");
 
 		if(!Files.exists(windows))
 		{
@@ -225,7 +233,7 @@ public class WindowsTagsGenerator implements ITagData
 			}	
 		}
 
-		Path shutters = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "shutters.json");
+		Path shutters = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_WINDOWS_MODID + File.separator, "shutters.json");
 
 		if(!Files.exists(shutters))
 		{

@@ -1,6 +1,7 @@
 package fr.samlegamer.api.datagen.furnitures;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -9,11 +10,17 @@ import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 import fr.samlegamer.McwAPI;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
 public class FurnituresTagsGenerator implements IModFiles.ITagData
 {
+	public FurnituresTagsGenerator() {
+		McwAPI.registerFolder(McwMain.LOCATION + ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_FURNITURES_MODID + File.separator);
+	}
+	
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
 		Path file = Path.of(LOCATION, "MineableAxeData(Macaw's Furnitures).json");
@@ -110,7 +117,7 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_FURNITURES_MODID + File.separator, FileName + ".json");
 
 		if(!Files.exists(file))
 		{
@@ -145,7 +152,7 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 	
 	private void cabinet(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "cabinet.json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_FURNITURES_MODID + File.separator, "cabinet.json");
 
 		if(!Files.exists(file))
 		{
@@ -193,7 +200,7 @@ public class FurnituresTagsGenerator implements IModFiles.ITagData
 	
 	private void wadrobe(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "wadrobe.json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_FURNITURES_MODID + File.separator, "wadrobe.json");
 
 		if(!Files.exists(file))
 		{

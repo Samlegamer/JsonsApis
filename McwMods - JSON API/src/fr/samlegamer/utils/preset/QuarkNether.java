@@ -80,7 +80,7 @@ public class QuarkNether implements Presetting
 		lang.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
 		
 		ModsList.quarkLeaves(LEAVES);
-		English.Quark.quarkLeaves(LEAVES_LANG);
+		English.Quark.quarkLeavesLang(LEAVES_LANG);
 		data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
 		client_stone = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE);
 		client_wood = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);

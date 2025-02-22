@@ -1,6 +1,7 @@
 package fr.samlegamer.api.datagen.doors;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -8,11 +9,18 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
 import fr.samlegamer.McwAPI;
+import fr.samlegamer.McwMain;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class DoorsTagsGenerator implements ITagData
 {
+	public DoorsTagsGenerator()
+	{
+		McwAPI.registerFolder(McwMain.LOCATION + ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_DOORS_MODID + File.separator);
+	}
+	
 	@Override
 	public void AxeDataGenWood(String LOCATION, String CompatModid, List<String> MAT_WOOD)
 	{
@@ -90,7 +98,7 @@ public class DoorsTagsGenerator implements ITagData
 
 	private void addTagWood(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_DOORS_MODID + File.separator, FileName + ".json");
 
 		if(!Files.exists(file))
 		{

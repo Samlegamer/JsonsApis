@@ -10,6 +10,76 @@ public class ModsList
 {
 	private static final Collection<String> BOP_WOODS = List.of("dead", "fir", "hellbark", "jacaranda", "magic", "mahogany", "palm", "redwood", "umbran", "willow");
 
+	public static void TerraformersMCLeaves(List<String> LEAVES, String compat)
+	{
+		if(compat.equals(Compatibilities.TRAVERSE_MODID))
+		{
+			LEAVES.addAll(List.of("fir", "red_autumnal", "brown_autumnal", "orange_autumnal", "yellow_autumnal"));
+		}
+		
+		if(compat.equals(Compatibilities.TERRESTRIA_MODID))
+		{
+			LEAVES.addAll(List.of("redwood", "hemlock", "rubber", "cypress", "willow", "japanese_maple", "rainbow_eucalyptus", 
+					"sakura", "yucca", "japanese_maple_shrub", "dark_japanese_maple", "jungle_palm"));
+		}
+	}
+	
+	public static void TerraformersMCWood(List<String> MAT_WOOD, String compat)
+	{
+		if(compat.equals(Compatibilities.TRAVERSE_MODID))
+		{
+			MAT_WOOD.add("fir");
+		}
+		
+		if(compat.equals(Compatibilities.CINDERSCAPES_MODID))
+		{
+			MAT_WOOD.add("scorched");
+			MAT_WOOD.add("umbral");
+		}
+		
+		if(compat.equals(Compatibilities.TERRESTRIA_MODID))
+		{
+			MAT_WOOD.add("redwood");
+			MAT_WOOD.add("hemlock");
+			MAT_WOOD.add("rubber");
+			MAT_WOOD.add("cypress");
+			MAT_WOOD.add("willow");
+			MAT_WOOD.add("japanese_maple");
+			MAT_WOOD.add("rainbow_eucalyptus");
+			MAT_WOOD.add("sakura");
+			MAT_WOOD.add("yucca");
+		}
+	}
+	
+	public static void TerraformersMCRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String compat)
+	{
+		if(compat.equals(Compatibilities.CINDERSCAPES_MODID))
+		{
+			MAT_ROCK.add("sulfur_quartz_bricks");
+			WALL.add("sulfur_quartz_bricks");
+			FLOOR.add("sulfur_quartz_block");
+			
+			MAT_ROCK.add("rose_quartz_bricks");
+			WALL.add("rose_quartz_bricks");
+			FLOOR.add("rose_quartz_block");
+			
+			MAT_ROCK.add("smoky_quartz_bricks");
+			WALL.add("smoky_quartz_bricks");
+			FLOOR.add("smoky_quartz_block");
+		}
+		
+		if(compat.equals(Compatibilities.TERRESTRIA_MODID))
+		{
+			MAT_ROCK.add("basalt_bricks");
+			WALL.add("basalt_bricks");
+			FLOOR.add("basalt_cobblestone");
+
+			MAT_ROCK.add("mossy_basalt_bricks");
+			WALL.add("mossy_basalt_bricks");
+			FLOOR.add("mossy_basalt_cobblestone");
+		}
+	}
+	
 	/* For 1.16.5 */
 	public static void quarkRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
@@ -26,6 +96,30 @@ public class ModsList
 		LEAVES.addAll(List.of("blue_blossom", "lavender_blossom", "orange_blossom", "pink_blossom", "red_blossom", "yellow_blossom"));
 	}
 	
+	/* 1.19.2 */
+	public static void quarkLeaves119(List<String> LEAVES)
+	{
+		quarkLeaves(LEAVES);
+		LEAVES.add("ancient");
+	}
+
+	public static void quarkRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		quarkRock118(MAT_ROCK, WALL, FLOOR);
+		MAT_ROCK.add("raw_iron_bricks");
+		WALL.add("raw_iron_bricks");
+		FLOOR.add("raw_iron_block");
+		
+		MAT_ROCK.add("raw_gold_bricks");
+		WALL.add("raw_gold_bricks");
+		FLOOR.add("raw_gold_block");
+
+		MAT_ROCK.add("raw_copper_bricks");
+		WALL.add("raw_copper_bricks");
+		FLOOR.add("raw_copper_block");
+	}
+	
+	/* 1.18.2 | 1.19.2 */
 	public static void quarkRock118(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		Collection<String> mat = List.of("soul_sandstone_bricks", "limestone_bricks", "jasper_bricks", "shale_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "cobblestone_bricks", 
@@ -37,10 +131,18 @@ public class ModsList
 		FLOOR.addAll(flo);
 	}
 
+	/* 1.18.2 */
 	public static void quarkWood118(List<String> MAT_WOOD)
 	{
 		MAT_WOOD.add("blossom");
 		MAT_WOOD.add("azalea");
+	}
+	
+	/* 1.19.2 */
+	public static void quarkWood119(List<String> MAT_WOOD)
+	{
+		quarkWood118(MAT_WOOD);
+		MAT_WOOD.add("ancient");
 	}
 	
 	public static void bygRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)

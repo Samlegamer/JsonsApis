@@ -2,6 +2,18 @@ package fr.samlegamer.registry;
 
 public class Compatibilities
 {
+	public static final String TRAVERSE_MODID = "traverse";
+	public static final String CINDERSCAPES_MODID = "cinderscapes";
+	public static final String TERRESTRIA_MODID = "terrestria";
+	public static final String TRAVERSE_TEXTURES = "traverse:block";
+	public static final String CINDERSCAPES_TEXTURES = "cinderscapes:block";
+	public static final String TERRESTRIA_TEXTURES = "terrestria:block";
+	
+	public static final String BLUE_SKIES_MODID = "blue_skies";
+	public static final String BLUE_SKIES_TEXTURES = "blue_skies:block";
+	public static final String PREMIUM_WOOD_MODID = "premium_wood";
+	public static final String PREMIUM_WOOD_TEXTURES = "premium_wood:block";
+	
 	public static final String BOP_ROOFS_MODID = "macawsroofsbop";
 	public static final String BOP_TEXTURES = "biomesoplenty:block";
 	public static final String BOP_MODID = "biomesoplenty";

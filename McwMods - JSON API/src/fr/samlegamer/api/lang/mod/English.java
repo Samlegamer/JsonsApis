@@ -108,6 +108,14 @@ public class English
 	
 	public static class Quark
 	{
+		public static void quarkRock120Lang(List<String> MAJ_ROCK)
+		{
+			quarkRock118Lang(MAJ_ROCK);
+			MAJ_ROCK.add("Raw Iron Bricks");
+			MAJ_ROCK.add("Raw Gold Bricks");
+			MAJ_ROCK.add("Raw Copper Bricks");
+		}
+		
 		public static void quarkRock118Lang(List<String> MAJ_ROCK)
 		{
 			Collection<String> mat = List.of("Soul Sandstone Bricks", "Limestone Bricks", "Jasper Bricks", "Shale Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Cobblestone Bricks", 
@@ -122,14 +130,26 @@ public class English
 			MAJ_ROCK.addAll(mat);
 		}
 		
-		public static void quarkWood118(List<String> LEAVES)
+		public static void quarkWood118Lang(List<String> MAJ_WOOD)
 		{
-			LEAVES.addAll(List.of("Blossom", "Azalea"));
+			MAJ_WOOD.addAll(List.of("Blossom", "Azalea"));
 		}
 		
-		public static void quarkLeaves(List<String> LEAVES)
+		public static void quarkWood119Lang(List<String> MAJ_WOOD)
 		{
-			LEAVES.addAll(List.of("Blue Blossom", "Lavender Blossom", "Orange Blossom", "Pink Blossom", "Red Blossom", "Yellow Blossom"));
+			quarkWood118Lang(MAJ_WOOD);
+			MAJ_WOOD.add("Ancient");
+		}
+		
+		public static void quarkLeaves119Lang(List<String> LEAVES_LANG)
+		{
+			quarkLeavesLang(LEAVES_LANG);
+			LEAVES_LANG.add("Ancient");
+		}
+		
+		public static void quarkLeavesLang(List<String> LEAVES_LANG)
+		{
+			LEAVES_LANG.addAll(List.of("Blue Blossom", "Lavender Blossom", "Orange Blossom", "Pink Blossom", "Red Blossom", "Yellow Blossom"));
 		}
 	}
 	

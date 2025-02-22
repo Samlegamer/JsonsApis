@@ -1,19 +1,26 @@
 package fr.samlegamer.api.datagen.bridges;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.McwMain;
+import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
 public class BridgesTagsGenerator implements IModFiles.ITagData
 {
+	public BridgesTagsGenerator()
+	{
+		McwAPI.registerFolder(McwMain.LOCATION + ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_BRIDGES_MODID + File.separator);
+	}
+	
 	public void AxeDataGenWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{		
 		Path file = Path.of(LOCATION, "MineableAxeData (Bridges).json");
@@ -88,7 +95,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 
 	private void addTag(String LOCATION, String Modid, List<String> MAT_WOOD, String FileName, String objName)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), FileName + ".json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_BRIDGES_MODID + File.separator, FileName + ".json");
 
 		if(!Files.exists(file))
 		{
@@ -119,7 +126,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 
 	public void TagsWood(String LOCATION, String Modid, List<String> MAT_WOOD)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "rope_bridges.json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_BRIDGES_MODID + File.separator, "rope_bridges.json");
 		addTag(LOCATION, Modid, MAT_WOOD, "log_bridges", "_log_bridge_middle");
 		addTag(LOCATION, Modid, MAT_WOOD, "log_stairs", "_log_bridge_stair");
 		addTag(LOCATION, Modid, MAT_WOOD, "rail_bridges", "_rail_bridge");
@@ -155,7 +162,7 @@ public class BridgesTagsGenerator implements IModFiles.ITagData
 
 	public void TagsRock(String LOCATION, String Modid, List<String> MAT_ROCK)
 	{
-		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "stone_bridges.json");
+		Path file = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), Compatibilities.MCW_BRIDGES_MODID + File.separator, "stone_bridges.json");
 
 		addTag(LOCATION, Modid, MAT_ROCK, "stone_stairs", "_bridge_stair");
 		addTag(LOCATION, Modid, MAT_ROCK, "stone_piers", "_bridge_pier");
