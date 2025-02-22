@@ -207,8 +207,8 @@ public class McwModsRessources implements IModFiles.IClient
 					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_louvered_shutter"))
-			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+MAT_WOOD.get(a)+"_shutter"))
+			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_louvered_shutter"))
+			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+bbb))
 			                            .map(line -> line.replace("minecraft:block/acacia_log_top", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")+"_top"))
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+log))
@@ -216,7 +216,7 @@ public class McwModsRessources implements IModFiles.IClient
 			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
 			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_leaves"))
 			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
-			                            .map(line -> line.replace("acacia", MAT_WOOD.get(a)))
+			                            .map(line -> line.replace("acacia", PREFIX_WOOD.get(a)))
 			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
 			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
 			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))

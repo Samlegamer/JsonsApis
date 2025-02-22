@@ -1,5 +1,6 @@
 package fr.samlegamer.utils.preset;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +9,27 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
+import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
 import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
+import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
 import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
+import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
+import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
 import fr.samlegamer.api.lang.BridgesLangGenerator;
+import fr.samlegamer.api.lang.DoorsLangGenerator;
 import fr.samlegamer.api.lang.FencesLangGenerator;
 import fr.samlegamer.api.lang.FurnituresLangGenerator;
+import fr.samlegamer.api.lang.PathsLangGenerator;
 import fr.samlegamer.api.lang.RoofsLangGenerator;
 import fr.samlegamer.api.lang.StairsLangGenerator;
+import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
+import fr.samlegamer.api.lang.WindowsLangGenerator;
 import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.api.lang.mod.French;
 import fr.samlegamer.registry.Compatibilities;
+import fr.samlegamer.utils.JsonsUtils;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 
@@ -34,8 +44,9 @@ public class ModdingLegacy implements Presetting
 	private boolean doors;
 	private boolean paths;
 	private boolean windows;
+	private boolean SupNether;
 	
-	public ModdingLegacy(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean traps, boolean doors, boolean paths, boolean windows)
+	public ModdingLegacy(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean traps, boolean doors, boolean paths, boolean windows, boolean SupNether)
 	{
 		this.bridges=bridges;
 		this.roofs=roofs;
@@ -46,22 +57,12 @@ public class ModdingLegacy implements Presetting
 		this.doors=doors;
 		this.paths=paths;
 		this.windows=windows;
+		this.SupNether=SupNether;
 	}
 	
-	public ModdingLegacy()
+	public ModdingLegacy(boolean SupNether)
 	{
-		this(true, true, true, true, true, true, true, true, true);
-	}
-	
-	private void genRessourcesBsky(String LOCATION, String CompatModid, String txtLocMod, List<String> PREFIX_WOOD, List<String> MAT_WOOD, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen data)
-	{
-		res.setModid(CompatModid);
-		res.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-		res.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
-		res.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-		data.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
-		data.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
-		data.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, compat, ModidOfBaseMod);
+		this(true, true, true, true, true, true, true, true, true, SupNether);
 	}
 	
 	@Override
@@ -72,6 +73,10 @@ public class ModdingLegacy implements Presetting
 		McwAPI.FencesGenFolder(LOCATION);
 		McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.BridgesGenFolder(LOCATION);
+		McwAPI.PathsGenFolder(LOCATION);
+		McwAPI.DoorsGenFolder(LOCATION);
+		McwAPI.TrapdoorsGenFolder(LOCATION);
+		McwAPI.WindowsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
 		List<String> PREFIX_WOOD = new ArrayList<String>();
@@ -315,6 +320,8 @@ public class ModdingLegacy implements Presetting
 		LEAVES.clear();
 		PREFIX_LEAVES.clear();		
 		
+		
+		
 		ModsList.BlueSkiesBsky(PREFIX_WOOD);
 		ModsList.PremiumWoodPwood(PREFIX_WOOD);
 		English.ModdingLegacy.BlueSkiesLang(MAJ_WOOD);
@@ -362,6 +369,30 @@ public class ModdingLegacy implements Presetting
 		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
 		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		stairs_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		
+		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
+		PathsLangGenerator paths_lang = new PathsLangGenerator();
+		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		paths_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+
+		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
+		DoorsLangGenerator doors_lang = new DoorsLangGenerator();
+		doors_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		doors_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		doors_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+
+		TrapdoorsTagsGenerator traps_tags = new TrapdoorsTagsGenerator();
+		TrapdoorsLangGenerator traps_lang = new TrapdoorsLangGenerator();
+		traps_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		traps_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		traps_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+
+		WindowsTagsGenerator wins_tags = new WindowsTagsGenerator();
+		WindowsLangGenerator wins_lang = new WindowsLangGenerator();
+		wins_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		wins_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		wins_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+
 		MAJ_LEAVES.clear();
 		PREFIX_LEAVES.clear();
 		PREFIX_WOOD.clear();
@@ -374,9 +405,9 @@ public class ModdingLegacy implements Presetting
 		PREFIX_WOOD.add("bsky_crystallized");
 		MAJ_WOOD.add("cristallisé");
 
-		bridges_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
-		bridges_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
-		roofs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//bridges_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//bridges_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//roofs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
 		
 		bridges_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
 		roofs_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
@@ -392,18 +423,46 @@ public class ModdingLegacy implements Presetting
 		PREFIX_LEAVES.add("bsky_crystallized");
 		MAJ_LEAVES.add("cristallisé");
 
-		fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
-		fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_LEAVES);
-		fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_LEAVES);
+		//fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		fences_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
 		
-		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
-		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		//furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		furni_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
-		
 		stairs_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		paths_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		doors_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		traps_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		wins_lang.initAllWoodFrench(CompatModid, PREFIX_WOOD, MAJ_WOOD);
+		
+
+		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "crystallized", "blue_skies:crystallized_fence", "blue_skies:crystallized_wall");
+
+
+		for(String folderInModel : McwAPI.ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD.getPathList())
+		{
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ folderInModel + File.separator, "crystallized", "stripped_crystallized_log_side", "crystallized_planks");
+		}
+
+		if(SupNether)
+		{
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ "hedges" + File.separator, "bsky_cherry", "cherry_leaves", "cherry_leaves_cant_grow");
+		}
 	}
 	
+	private void genRessourcesBsky(String LOCATION, String CompatModid, String txtLocMod, List<String> PREFIX_WOOD, List<String> MAT_WOOD, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen data)
+	{
+		res.setModid(CompatModid);
+		res.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
+		res.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
+		res.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
+		data.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+		data.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
+		data.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, compat, ModidOfBaseMod);
+	}
+
 	public void genPwoodWood(String LOCATION, String CompatModid, String txtLocMod, List<String> MAT_WOOD, List<String> PREFIX_WOOD, List<String> LEAVES, List<String> PREFIX_LEAVES, String ModidOfBaseMod, String folderWood)
 	{
 		/*Instance Bridges*/

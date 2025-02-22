@@ -40,18 +40,43 @@ public class ModdingLegacy120 implements Presetting
 	private static final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
 	private static final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
 
-	public boolean blueSkies;
-	public boolean premiumWood;
-
-	public ModdingLegacy120(boolean blueSkies, boolean premiumWood)
+	private boolean bridges;
+	private boolean roofs;
+	private boolean fences;
+	private boolean furnitures;
+	private boolean stairs;
+	private boolean traps;
+	private boolean doors;
+	private boolean paths;
+	private boolean windows;
+	
+	public ModdingLegacy120(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean traps, boolean doors, boolean paths, boolean windows)
 	{
-		this.blueSkies = blueSkies;
-		this.premiumWood = premiumWood;
+		this.bridges=bridges;
+		this.roofs=roofs;
+		this.fences=fences;
+		this.furnitures=furnitures;
+		this.stairs=stairs;
+		this.traps=traps;
+		this.doors=doors;
+		this.paths=paths;
+		this.windows=windows;
 	}
 	
 	public ModdingLegacy120()
 	{
-		this(true, true);
+		this(true, true, true, true, true, true, true, true, true);
+	}
+	
+	private void genRessourcesBsky(String LOCATION, String CompatModid, String txtLocMod, List<String> PREFIX_WOOD, List<String> MAT_WOOD, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen data)
+	{
+		res.setModid(CompatModid);
+		res.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
+		res.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
+		res.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
+		data.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+		data.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
+		data.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, compat, ModidOfBaseMod);
 	}
 	
 	@Override
@@ -73,7 +98,7 @@ public class ModdingLegacy120 implements Presetting
 		String CompatModid = "mcwmoddinglegacy";
 		String txtLocMod, ModidOfBaseMod;
 		
-		if(blueSkies)
+		if(true)
 		{
 
 			ModsList.BlueSkiesBsky1201(PREFIX_WOOD);
@@ -162,7 +187,7 @@ public class ModdingLegacy120 implements Presetting
 			PREFIX_LEAVES.clear();
 		}
 		
-		if(premiumWood)
+		if(true)
 		{
 			txtLocMod = "premium_wood:block";
 			ModidOfBaseMod = "premium_wood";
