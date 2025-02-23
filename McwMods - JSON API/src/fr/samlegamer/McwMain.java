@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.ModdingLegacy;
+import fr.samlegamer.utils.preset.ModdingLegacy1201;
 
 public class McwMain
 {	
@@ -30,7 +30,7 @@ public class McwMain
 		/*
 		 * quark : 
 		 */
-		preset(new ModdingLegacy(true));
+		preset(new ModdingLegacy1201());
 		/*
 		final PathsLangGenerator roofLang = new PathsLangGenerator();
 		
