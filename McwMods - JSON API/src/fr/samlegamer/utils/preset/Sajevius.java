@@ -244,7 +244,6 @@ public class Sajevius implements Presetting
 		MAJ_WOOD.clear();
 		MAJ_LEAVES.clear();
 		System.out.println("Done Data/Tags/Lang");
-		System.out.println("Finish Aurora Registries");
 	}
 	
 	protected void genShroom(String LOCATION, String CompatModid, String txtLocMod, String ModidOfBaseMod, List<String> MAT_WOOD, String nameOfTexturesPlanks, String nameOfTexturesLogs, String nameOfTexturesStripped, String hyphae, String planksStuff)

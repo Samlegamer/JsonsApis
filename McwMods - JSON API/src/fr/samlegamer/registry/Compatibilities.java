@@ -2,6 +2,7 @@ package fr.samlegamer.registry;
 
 public class Compatibilities
 {
+	/* TerraformersMC */
 	public static final String TRAVERSE_MODID = "traverse";
 	public static final String CINDERSCAPES_MODID = "cinderscapes";
 	public static final String TERRESTRIA_MODID = "terrestria";
@@ -9,37 +10,23 @@ public class Compatibilities
 	public static final String CINDERSCAPES_TEXTURES = "cinderscapes:block";
 	public static final String TERRESTRIA_TEXTURES = "terrestria:block";
 	
+	/* Modding Legacy */
 	public static final String BLUE_SKIES_MODID = "blue_skies";
 	public static final String BLUE_SKIES_TEXTURES = "blue_skies:block";
 	public static final String PREMIUM_WOOD_MODID = "premium_wood";
 	public static final String PREMIUM_WOOD_TEXTURES = "premium_wood:block";
 	
-	public static final String BOP_ROOFS_MODID = "macawsroofsbop";
+	/* BOP */
 	public static final String BOP_TEXTURES = "biomesoplenty:block";
 	public static final String BOP_MODID = "biomesoplenty";
 
-	public static final String BYG_ROOFS_MODID = "macawsroofsbyg";
+	/* BYG/BWG */
 	public static final String BYG_TEXTURES = "byg:block";
 	public static final String BYG_MODID = "byg";
 	public static final String BYG_TEXTURES_120 = "biomeswevegone:block";
 	public static final String BYG_MODID_120 = "biomeswevegone";
-	public static final String BYG_ROOFS_FABRIC_MODID = "z_mcwroofsbyg";
 	
-	public static final String BOP_BRIDGES_MODID = "macawsbridgesbop";
-	public static final String BYG_BRIDGES_MODID = "macawsbridgesbyg";
-
-	public static final String ABNORMALS_BRIDGES_MODID = "mcwbridgesabnormals";
-	public static final String AURORA_BRIDGES_MODID = "mcwbridgesaurora";
-	public static final String MODDINGLEGACY_BRIDGES_MODID = "mcwbridgesmoddinglegacy";
-	public static final String SAJEVIUS_BRIDGES_MODID = "mcwbridgessajevius";
-
-	public static final String BOP_FENCES_MODID = "mcwfencesbop";
-	public static final String BYG_FENCES_MODID = "mcwfencesbyg";
-	public static final String BYG_FENCES_MODID_FABRIC = "z_mcwfencesbyg";
-
-	public static final String BOP_FURNITURES_MODID = "mcwfurnituresbop";
-	public static final String BYG_FURNITURES_MODID = "mcwfurnituresbyg";
-
+	/* Quark */
 	public static final String QUARK_MODID = "quark";
 	public static final String QUARK_TEXTURE = "quark:block";
 
@@ -56,7 +43,6 @@ public class Compatibilities
 	public static final String UAQUA_TEXTURES = "upgrade_aquatic:block";
 	public static final String ENDERGETIC_MODID = "endergetic";
 	public static final String ENDERGETIC_TEXTURES = "endergetic:block";
-
 	public static final String CAVERNCHASMS_MODID = "caverns_and_chasms";
 	public static final String CAVERNCHASMS_TEXTURES = "caverns_and_chasms:block";
 	

@@ -5,6 +5,42 @@ import java.util.List;
 
 public class French
 {
+	public static class TerraformersMC
+	{
+		public static void TerraformersMCLeavesLang(List<String> MAJ_LEAVES)
+		{
+			MAJ_LEAVES.addAll(List.of("épicéa", "automnales rouges", "automnales brunes", "automnales oranges", "automnales jaunes",
+			"séquoia", "tsuga", "hévéa", "cyprès", "saule", "érable japonais", "eucalyptus arc-en-ciel", 
+						"sakura", "palmier yucca", "buisson d'érable japonais", "érable japonais sombre", "palmier de la jungle"));
+		}
+
+		public static void TerraformersMCWoodLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("épicéa");
+			MAJ_WOOD.add("roussie");
+			MAJ_WOOD.add("éclipsée");
+			MAJ_WOOD.add("séquoia");
+			MAJ_WOOD.add("tsuga");
+			MAJ_WOOD.add("hévéa");
+			MAJ_WOOD.add("cyprès");
+			MAJ_WOOD.add("saule");
+			MAJ_WOOD.add("érable japonais");
+			MAJ_WOOD.add("eucalyptus arc-en-ciel");
+			MAJ_WOOD.add("sakura");
+			MAJ_WOOD.add("palmier yucca");
+		}
+
+		public static void TerraformersMCRockLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("briques de quartz sulfureux");
+			MAJ_ROCK.add("briques de quartz rose");
+			MAJ_ROCK.add("briques de quartz fumé");
+			MAJ_ROCK.add("roche volcanique taillée");
+			MAJ_ROCK.add("roche volcanique taillée moussue");
+		}
+
+	}
+
 	public static class ModdingLegacy
 	{
 		public static void PremiumWoodLang(List<String> MAJ_WOOD)

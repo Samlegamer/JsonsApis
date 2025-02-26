@@ -1,10 +1,45 @@
 package fr.samlegamer.api.lang.mod;
-
 import java.util.Collection;
 import java.util.List;
 
 public class English
 {
+	public static class TerraformersMC
+	{
+		public static void TerraformersMCLeavesLang(List<String> MAJ_LEAVES)
+		{
+			MAJ_LEAVES.addAll(List.of("Fir", "Red Autumnal", "Brown Autumnal", "Orange Autumnal", "Yellow Autumnal",
+			"Redwood", "Hemlock", "Rubber", "Cypress", "Willow", "Japanese Maple", "Rainbow Eucalyptus", 
+						"Sakura", "Yucca Palm", "Japanese Maple Shrub", "Dark Japanese Maple", "Jungle Palm"));
+		}
+
+		public static void TerraformersMCWoodLang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.add("Fir");
+			MAJ_WOOD.add("Scorched");
+			MAJ_WOOD.add("Umbral");
+			MAJ_WOOD.add("Redwood");
+			MAJ_WOOD.add("Hemlock");
+			MAJ_WOOD.add("Rubber");
+			MAJ_WOOD.add("Cypress");
+			MAJ_WOOD.add("Willow");
+			MAJ_WOOD.add("Japanese Maple");
+			MAJ_WOOD.add("Rainbow Eucalyptus");
+			MAJ_WOOD.add("Sakura");
+			MAJ_WOOD.add("Yucca Palm");
+		}
+
+		public static void TerraformersMCRockLang(List<String> MAJ_ROCK)
+		{
+			MAJ_ROCK.add("Sulfur Quartz Bricks");
+			MAJ_ROCK.add("Rose Quartz Bricks");
+			MAJ_ROCK.add("Smoky Quartz Bricks");
+			MAJ_ROCK.add("Volcanic Bricks");
+			MAJ_ROCK.add("Mossy Volcanic Bricks");
+		}
+
+	}
+	
 	public static class ModdingLegacy
 	{
 		public static void PremiumWoodLang(List<String> MAJ_WOOD)
@@ -55,7 +90,6 @@ public class English
 		{
 			MAJ_WOOD.add("Juniper");
 		}
-		
 		
 		public static void betterlandsRocksLang(List<String> MAJ_ROCK)
 		{
@@ -141,16 +175,33 @@ public class English
 			MAJ_WOOD.add("Ancient");
 		}
 		
+		public static void quarkWood120Lang(List<String> MAJ_WOOD)
+		{
+			MAJ_WOOD.addAll(List.of("Trumpet", "Azalea", "Ashen"));
+		}
+
+		
 		public static void quarkLeaves119Lang(List<String> LEAVES_LANG)
 		{
-			quarkLeavesLang(LEAVES_LANG);
+			quarkLeaves118Lang(LEAVES_LANG);
 			LEAVES_LANG.add("Ancient");
+		}
+		
+		public static void quarkLeaves120Lang(List<String> LEAVES_LANG)
+		{
+			LEAVES_LANG.addAll(List.of("Frosty Trumpet", "Serene Trumpet", "Warm Trumpet", "Fiery Trumpet", "Sunny Trumpet", "Ancient"));
 		}
 		
 		public static void quarkLeavesLang(List<String> LEAVES_LANG)
 		{
 			LEAVES_LANG.addAll(List.of("Blue Blossom", "Lavender Blossom", "Orange Blossom", "Pink Blossom", "Red Blossom", "Yellow Blossom"));
 		}
+		
+		public static void quarkLeaves118Lang(List<String> LEAVES_LANG)
+		{
+			LEAVES_LANG.addAll(List.of("Frosty Blossom", "Serene Blossom", "Warm Blossom", "Sweet Blossom", "Fiery Blossom", "Sunny Blossom"));
+		}
+
 	}
 	
 	public static class Abnormals

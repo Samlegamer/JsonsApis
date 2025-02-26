@@ -21,7 +21,7 @@ public class McwAPI
 		ADVANCEMENT_RECIPE("data"+File.separator+"advancements"+File.separator+"recipes"+File.separator), 
 		LOOT_TABLES("data"+File.separator+"loot_tables"+File.separator+"blocks"+File.separator),
 		BLOCKSTATES("blockstates"+File.separator),
-		LANG("blockstates"+File.separator),
+		LANG("lang"+File.separator),
 		MODELS("models"+File.separator),
 		MODEL_BLOCK("models"+File.separator+"block"+File.separator),
 		MODEL_ITEM("models"+File.separator+"item"+File.separator);

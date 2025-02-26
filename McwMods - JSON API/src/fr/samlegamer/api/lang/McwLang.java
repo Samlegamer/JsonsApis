@@ -29,7 +29,7 @@ public class McwLang
 
 	public void english(String LOCATION, String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT)
 	{
-		File file = new File(LOCATION + File.separator + ClassicFolderTypes.TAGS_BLOCK.getPath() + "en_us.json");
+		File file = new File(LOCATION + File.separator + ClassicFolderTypes.LANG.getPath() + "en_us.json");
 
 		if(!file.exists())
 		{

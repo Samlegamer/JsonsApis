@@ -20,8 +20,14 @@ public class ModsList
 		if(compat.equals(Compatibilities.TERRESTRIA_MODID))
 		{
 			LEAVES.addAll(List.of("redwood", "hemlock", "rubber", "cypress", "willow", "japanese_maple", "rainbow_eucalyptus", 
-					"sakura", "yucca", "japanese_maple_shrub", "dark_japanese_maple", "jungle_palm"));
+					"sakura", "yucca_palm", "japanese_maple_shrub", "dark_japanese_maple", "jungle_palm"));
 		}
+	}
+	
+	public static void TerraformersMCLeaves(List<String> LEAVES)
+	{
+		TerraformersMCLeaves(LEAVES, Compatibilities.TRAVERSE_MODID);
+		TerraformersMCLeaves(LEAVES, Compatibilities.TERRESTRIA_MODID);
 	}
 	
 	public static void TerraformersMCWood(List<String> MAT_WOOD, String compat)
@@ -47,8 +53,15 @@ public class ModsList
 			MAT_WOOD.add("japanese_maple");
 			MAT_WOOD.add("rainbow_eucalyptus");
 			MAT_WOOD.add("sakura");
-			MAT_WOOD.add("yucca");
+			MAT_WOOD.add("yucca_palm");
 		}
+	}
+	
+	public static void TerraformersMCWood(List<String> MAT_WOOD)
+	{
+		TerraformersMCWood(MAT_WOOD, Compatibilities.TRAVERSE_MODID);
+		TerraformersMCWood(MAT_WOOD, Compatibilities.CINDERSCAPES_MODID);
+		TerraformersMCWood(MAT_WOOD, Compatibilities.TERRESTRIA_MODID);
 	}
 	
 	public static void TerraformersMCRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String compat)
@@ -80,6 +93,12 @@ public class ModsList
 		}
 	}
 	
+	public static void TerraformersMCRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
+	{
+		TerraformersMCRock(MAT_ROCK, WALL, FLOOR, Compatibilities.CINDERSCAPES_MODID);
+		TerraformersMCRock(MAT_ROCK, WALL, FLOOR, Compatibilities.TERRESTRIA_MODID);
+	}
+	
 	/* For 1.16.5 */
 	public static void quarkRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
@@ -103,6 +122,12 @@ public class ModsList
 		LEAVES.add("ancient");
 	}
 
+	/* 1.20.1 */
+	public static void quarkLeaves120(List<String> LEAVES)
+	{
+		LEAVES.addAll(List.of("blue_blossom", "lavender_blossom", "orange_blossom", "red_blossom", "yellow_blossom", "ancient"));
+	}
+	
 	public static void quarkRock120(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
 		quarkRock118(MAT_ROCK, WALL, FLOOR);
