@@ -373,6 +373,7 @@ public class ModdingLegacy implements Presetting
 		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
 		PathsLangGenerator paths_lang = new PathsLangGenerator();
 		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_WOOD);
+		paths_tags.TagsWood(LOCATION, CompatModid, PREFIX_WOOD);
 		paths_lang.initAllWoodEnglish(CompatModid, PREFIX_WOOD, MAJ_WOOD);
 
 		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
