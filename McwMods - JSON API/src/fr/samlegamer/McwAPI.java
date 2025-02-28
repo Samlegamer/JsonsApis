@@ -24,7 +24,9 @@ public class McwAPI
 		LANG("lang"+File.separator),
 		MODELS("models"+File.separator),
 		MODEL_BLOCK("models"+File.separator+"block"+File.separator),
-		MODEL_ITEM("models"+File.separator+"item"+File.separator);
+		MODEL_ITEM("models"+File.separator+"item"+File.separator),
+		ITEMS("items"+File.separator);
+		
 		private String path;
 		private ClassicFolderTypes(String path)
 		{

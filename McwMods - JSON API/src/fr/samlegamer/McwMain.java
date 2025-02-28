@@ -3,8 +3,10 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import fr.samlegamer.McwAPI.ClassicFolderTypes;
+import fr.samlegamer.utils.JsonsUtils;
+import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.QuarkWarden;
 
 public class McwMain
 {	
@@ -22,7 +24,24 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new QuarkWarden());
+		
+		fixForPaleGarden();
+		//preset(new QuarkWarden());
+	}
+	
+	public static void fixForPaleGarden()
+	{
+		McwAPI.registerFolder(McwMain.LOCATION, ClassicFolderTypes.ITEMS.getPath());
+		
+		JsonsUtils.adder1214(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), ".json", "\"model\" : {\r\n"
+				+ "    \"type\" : \"minecraft:model\",", "}");
+		ModsList.bop1201(MAT_WOOD);
+		JsonsUtils.Doors1214(LOCATION, "mcwbiomesoplenty", MAT_WOOD);
+	}
+	
+	public void fix()
+	{
+		
 	}
 	
 	public static void preset(Presetting preset)
