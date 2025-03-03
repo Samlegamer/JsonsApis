@@ -6,6 +6,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -40,17 +41,19 @@ public class BOP implements Presetting
 	public static final List<String> LEAVES = new ArrayList<String>();
 	public static final List<String> LEAVES_LANG = new ArrayList<String>();
 	private boolean b;
-	private String versioning = "1.20";
+	private String versioning;
+	private ModLoaders modLoader;
 	
-	public BOP(boolean is1201)
+	public BOP(boolean is1201, ModLoaders modL)
 	{
-		this.b = is1201;
+		this(is1201, "1.20", modL);
 	}
 	
-	public BOP(boolean is1201, String version)
+	public BOP(boolean is1201, String version, ModLoaders modL)
 	{
 		this.b = is1201;
 		this.versioning = version;
+		this.modLoader = modL;
 	}
 	@Override
 	public void init(String LOCATION)
@@ -198,8 +201,8 @@ public class BOP implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, false);
-		dat.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
-		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compat.equals(Compatibilities.MCW_FENCES_MODID))
@@ -207,9 +210,9 @@ public class BOP implements Presetting
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, compat, ModidOfBaseMod, modLoader);
 			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, Compatibilities.BOP_MODID);
+			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, Compatibilities.BOP_MODID, modLoader);
 		}
 	}
 	

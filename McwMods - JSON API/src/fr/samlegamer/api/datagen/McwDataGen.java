@@ -38,6 +38,104 @@ public class McwDataGen implements IModFiles.IData
 		this.MOD_ID = modidData;
 	}
 	
+	private void setIfModLoaded(ModLoaders modLoader, String ModidCharged1, String ModidCharged2, List<String> modifiedLines, boolean isAdvancement)
+	{
+		String modLoadedCondition = "";
+		
+		switch(modLoader)
+        {
+        	case FORGE:
+        		if(this.VERSION.equals("1.21.3"))
+        		{
+                    if(isAdvancement)
+                    {
+                    	 modLoadedCondition = "\"forge:conditional\": [\r\n"
+                    	 		+ "    {\r\n"
+                    	 		+ "      \"forge:condition\": {\r\n"
+                    	 		+ "        \"type\": \"forge:and\",\r\n"
+                    	 		+ "        \"values\": [\r\n"
+                    	 		+ "          {\r\n"
+                    	 		+ "            \"type\": \"forge:mod_loaded\",\r\n"
+                    	 		+ "            \"modid\": \""+ModidCharged1+"\"\r\n"
+                    	 		+ "          },\r\n"
+                    	 		+ "          {\r\n"
+                    	 		+ "            \"type\": \"forge:mod_loaded\",\r\n"
+                    	 		+ "            \"modid\": \""+ModidCharged2+"\"\r\n"
+                    	 		+ "          }\r\n"
+                    	 		+ "        ]\r\n"
+                    	 		+ "      },";
+                         modifiedLines.add(1, modLoadedCondition);
+                         modifiedLines.add("\n]\r\n"
+                         		+ "}"); 
+                    }
+                    else
+                    {
+                    	 modLoadedCondition = "\"forge:conditional\": [\r\n"
+                    	 		+ "    {\r\n"
+                    	 		+ "      \"forge:condition\": {\r\n"
+                    	 		+ "        \"type\": \"forge:and\",\r\n"
+                    	 		+ "        \"values\": [\r\n"
+                    	 		+ "          {\r\n"
+                    	 		+ "            \"type\": \"forge:mod_loaded\",\r\n"
+                    	 		+ "            \"modid\": \""+ModidCharged1+"\"\r\n"
+                    	 		+ "          },\r\n"
+                    	 		+ "          {\r\n"
+                    	 		+ "            \"type\": \"forge:mod_loaded\",\r\n"
+                    	 		+ "            \"modid\": \""+ModidCharged2+"\"\r\n"
+                    	 		+ "          }\r\n"
+                    	 		+ "        ]\r\n"
+                    	 		+ "      },";
+                         modifiedLines.add(1, modLoadedCondition);
+                         modifiedLines.add("  ]\r\n"
+                         		+ "}"); 
+                    }
+        		}
+        		else
+        		{
+                    modLoadedCondition = "\"conditions\": [\r\n"
+                    		+ "    {\r\n"
+                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+                    		+ "    },\r\n"
+                    		+ "    {\r\n"
+                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+                    		+ "    }\r\n"
+                    		+ "  ],";
+                    	modifiedLines.add(1, modLoadedCondition);
+        		}
+        		break;
+        		
+        	case FABRIC:
+                	modLoadedCondition = " \"fabric:load_conditions\": [\r\n"
+                		+ "    {\r\n"
+                		+ "      \"condition\": \"fabric:all_mods_loaded\",\r\n"
+                		+ "      \"values\": [\r\n"
+                		+ "        \""+ModidCharged1+"\",\r\n" 
+                		+ "        \""+ModidCharged2+"\"\r\n" 
+                		+ "      ]\r\n"
+                		+ "    }\r\n"
+                		+ "  ],";
+
+                		modifiedLines.add(1, modLoadedCondition);
+        		break;
+
+        	case NEOFORGE:
+        			modLoadedCondition = "\"neoforge:conditions\": [\r\n"
+        					+ "    {\r\n"
+        					+ "      \"type\": \"neoforge:mod_loaded\",\r\n"
+        					+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+        					+ "    },\r\n"
+        					+ "    {\r\n"
+        					+ "      \"type\": \"neoforge:mod_loaded\",\r\n"
+        					+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+        					+ "    }\r\n"
+        					+ "  ],";
+                		modifiedLines.add(1, modLoadedCondition);
+        		break;
+        }
+	}
+	
 	@Override
 	public void AdvancementsLogAll(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood)
 	{
@@ -71,6 +169,104 @@ public class McwDataGen implements IModFiles.IData
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
 	
 	                    // �crire le contenu modifi� dans un nouveau fichier
+	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
+	                    McwAPI.message(newFilePath);
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		}
+	}
+	
+	@Deprecated
+	public void AdvancementsLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2)
+	{
+		AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStemWood, ModidCharged1, ModidCharged2, ModLoaders.FORGE);
+	}
+	
+	public void AdvancementsLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2, ModLoaders modLoader)
+	{
+		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath());
+		
+		for(String i : MAT_WOOD)
+		{
+	        try (Stream<Path> files = Files.list(directory)) {
+	            List<Path> acaciaFiles = files
+	                    .filter(file -> file.getFileName().toString().contains("acacia")&& 
+	    	                    !file.getFileName().toString().contains("hedge"))
+	                    .collect(Collectors.toList());
+	
+	            for (Path file : acaciaFiles) {
+	            	try {
+	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+	
+	                    List<String> modifiedLines = lines.stream()
+	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
+	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+i))
+	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
+	                            .collect(Collectors.toList());
+	
+	                    setIfModLoaded(modLoader, ModidCharged1, ModidCharged2, modifiedLines, true);
+	                    String newFileName = file.getFileName().toString().replace("acacia", i);
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
+	
+	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
+	                    McwAPI.message(newFilePath);
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		}
+	}
+	
+	public void AdvancementsLogAllPrefixedIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2)
+	{
+		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath());
+		
+		for(int i = 0; i<MAT_WOOD.size();i++)
+		{
+	        try (Stream<Path> files = Files.list(directory)) {
+	            List<Path> acaciaFiles = files
+	                    .filter(file -> file.getFileName().toString().contains("acacia")&& 
+	    	                    !file.getFileName().toString().contains("hedge"))
+	                    .collect(Collectors.toList());
+	
+	            for (Path file : acaciaFiles) {
+	            	try {
+			            final int a = i;
+	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+	
+	                    List<String> modifiedLines = lines.stream()
+	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log")))
+	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+MAT_WOOD.get(a)))
+	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+PREFIX_WOOD.get(a)))
+	                            .map(line -> line.replace(MOD_ID+":acacia", CompatModid+":"+PREFIX_WOOD.get(a)))
+	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+PREFIX_WOOD.get(a)))
+	                            .collect(Collectors.toList());
+	
+	                    String modLoadedCondition = "\"conditions\": [\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+	                    		+ "    },\r\n"
+	                    		+ "    {\r\n"
+	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+	                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+	                    		+ "    }\r\n"
+	                    		+ "  ],";
+	                     modifiedLines.add(1, modLoadedCondition);
+
+	                    String newFileName = file.getFileName().toString().replace("acacia", PREFIX_WOOD.get(a));
+	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"advancements"+s+"recipes"+s, newFileName);
+	
 	                    Files.write(newFilePath, modifiedLines, StandardCharsets.UTF_8);
 	                    McwAPI.message(newFilePath);
 	                } catch (IOException e) {
@@ -496,8 +692,14 @@ public class McwDataGen implements IModFiles.IData
 	        }
 		}
 	}
-
+	
+	@Deprecated
 	public void RecipesLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String ModidCharged)
+	{
+		RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStemWood, ModidCharged, ModidCharged, ModLoaders.FORGE);
+	}
+
+	public void RecipesLogAllIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String ModidCharged1, String ModidCharged2, ModLoaders modLoader)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
 		
@@ -512,8 +714,6 @@ public class McwDataGen implements IModFiles.IData
 	            	try {
 	                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 	                    
-	                    
-	                    
 	                    List<String> modifiedLines = lines.stream()
 	                            .map(line -> line.replace("minecraft:acacia_log", ModidOfBaseMod+":"+i + (isStemWood ? "_stem" : "_log")))
 	                            .map(line -> line.replace("minecraft:acacia", ModidOfBaseMod+":"+i))
@@ -523,13 +723,7 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
 	                            .collect(Collectors.toList());
 	                    //mcwdoors:acacia
-	                    String modLoadedCondition = "\"conditions\": [\r\n"
-	                    		+ "    {\r\n"
-	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                    		+ "      \"modid\": \""+ModidCharged+"\"\r\n"
-	                    		+ "    }\r\n"
-	                    		+ "  ],";
-	                     modifiedLines.add(1, modLoadedCondition);
+	                    setIfModLoaded(modLoader, ModidCharged1, ModidCharged2, modifiedLines, false);
 
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
@@ -875,6 +1069,134 @@ public class McwDataGen implements IModFiles.IData
 		RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, new ArrayList<String>(), ModidCharged1, ModidCharged2);
 	}
 
+	@Deprecated
+	public void AdvancementsLeavesHedgesIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> LEAVES, String ModidCharged1, String ModidCharged2)
+	{
+		AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, ModidCharged1, ModidCharged2, ModLoaders.FORGE);
+	}
+	
+	public void AdvancementsLeavesHedgesIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> LEAVES, String ModidCharged1, String ModidCharged2, ModLoaders modLoader)
+	{
+		for(String i : LEAVES)
+		{
+			File file = new File(LOCATION + "data"+s+"advancements"+s+"recipes"+s + i +"_hedge.json");
+			
+			if(!file.exists())
+			{
+				try
+				{
+					String modLoadedCondition = "";
+					String endLine = "";
+					
+					switch(modLoader)
+			        {
+			        	case FORGE:
+			        		if(VERSION.equals("1.21.3"))
+			        		{
+			                    modLoadedCondition = "\"forge:conditional\": [\r\n"
+			                            + "    {\r\n"
+			                            + "      \"forge:condition\": {\r\n"
+			                            + "        \"type\": \"forge:and\",\r\n"
+			                            + "        \"values\": [\r\n"
+			                            + "          {\r\n"
+			                            + "            \"type\": \"forge:mod_loaded\",\r\n"
+			                            + "            \"modid\": \""+ModidCharged1+"\"\r\n"
+			                            + "          },\r\n"
+			                            + "          {\r\n"
+			                            + "            \"type\": \"forge:mod_loaded\",\r\n"
+			                            + "            \"modid\": \""+ModidCharged2+"\"\r\n"
+			                            + "          }\r\n"
+			                            + "        ]\r\n"
+			                            + "      },";
+
+			                    endLine = "\n]\r\n"
+			                    		+ "}"; 
+			        		}
+			        		else
+			        		{
+			                    modLoadedCondition = "\"conditions\": [\r\n"
+			                    		+ "    {\r\n"
+			                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+			                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+			                    		+ "    },\r\n"
+			                    		+ "    {\r\n"
+			                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+			                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+			                    		+ "    }\r\n"
+			                    		+ "  ],";
+			        		}
+			        		break;
+			        		
+			        	case FABRIC:
+			                	modLoadedCondition = " \"fabric:load_conditions\": [\r\n"
+			                		+ "    {\r\n"
+			                		+ "      \"condition\": \"fabric:all_mods_loaded\",\r\n"
+			                		+ "      \"values\": [\r\n"
+			                		+ "        \""+ModidCharged1+"\",\r\n" 
+			                		+ "        \""+ModidCharged2+"\"\r\n" 
+			                		+ "      ]\r\n"
+			                		+ "    }\r\n"
+			                		+ "  ],";
+
+			        		break;
+
+			        	case NEOFORGE:
+			        			modLoadedCondition = "\"neoforge:conditions\": [\r\n"
+			        					+ "    {\r\n"
+			        					+ "      \"type\": \"neoforge:mod_loaded\",\r\n"
+			        					+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+			        					+ "    },\r\n"
+			        					+ "    {\r\n"
+			        					+ "      \"type\": \"neoforge:mod_loaded\",\r\n"
+			        					+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+			        					+ "    }\r\n"
+			        					+ "  ],";
+			        		break;
+			        }
+
+					FileWriter writer = new FileWriter(file);
+					BufferedWriter buffer = new BufferedWriter(writer);
+					
+					buffer.write("{\r\n"+modLoadedCondition
+							+ "  \"parent\": \"minecraft:recipes/root\",\r\n"
+							+ "  \"rewards\": {\r\n"
+							+ "    \"recipes\": [\r\n"
+							+ "	\""+CompatModid+":"+i+"_hedge\"\r\n"
+							+ "    ]\r\n"
+							+ "  },\r\n"
+							+ "  \"criteria\": {\r\n"
+							+ "    \"has_birch\": {\r\n"
+							+ "      \"trigger\": \"minecraft:inventory_changed\",\r\n"
+							+ "      \"conditions\": {\r\n"
+							+ "        \"items\": [\r\n"
+							+ "          {\r\n"
+							+ "            \"item\": \""+ModidOfBaseMod+":"+i+"_leaves\"\r\n"
+							+ "          }\r\n"
+							+ "        ]\r\n"
+							+ "      }\r\n"
+							+ "    }\r\n"
+							+ "  },\r\n"
+							+ "  \"requirements\": [\r\n"
+							+ "    [\r\n"
+							+ "      \"has_birch\"\r\n"
+							+ "    ]\r\n"
+							+ "  ]\r\n"
+							+ "}"+endLine);
+					buffer.newLine();
+					
+					buffer.close();
+					writer.close();
+					file.createNewFile();
+					McwAPI.message(file.toPath());
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	public void AdvancementsLeavesHedges(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> LEAVES)
 	{
 		for(String i : LEAVES)
@@ -981,6 +1303,69 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
+	public void AdvancementsLeavesHedgesPrefixedIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> LEAVES, List<String> PREFIX_LEAVES, String ModidCharged1, String ModidCharged2)
+	{
+		for(int nbm = 0;nbm<LEAVES.size();nbm++)
+		{
+			File file = new File(LOCATION + "data"+s+"advancements"+s+"recipes"+s + PREFIX_LEAVES.get(nbm) +"_hedge.json");
+			
+			if(!file.exists())
+			{
+				try
+				{
+                    String modLoadedCondition = "\"conditions\": [\r\n"
+                    		+ "    {\r\n"
+                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
+                    		+ "    },\r\n"
+                    		+ "    {\r\n"
+                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
+                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
+                    		+ "    }\r\n"
+                    		+ "  ],";
+
+					FileWriter writer = new FileWriter(file);
+					BufferedWriter buffer = new BufferedWriter(writer);
+					
+					buffer.write("{\r\n"+modLoadedCondition
+							+ "  \"parent\": \"minecraft:recipes/root\",\r\n"
+							+ "  \"rewards\": {\r\n"
+							+ "    \"recipes\": [\r\n"
+							+ "	\""+CompatModid+":"+PREFIX_LEAVES.get(nbm)+"_hedge\"\r\n"
+							+ "    ]\r\n"
+							+ "  },\r\n"
+							+ "  \"criteria\": {\r\n"
+							+ "    \"has_birch\": {\r\n"
+							+ "      \"trigger\": \"minecraft:inventory_changed\",\r\n"
+							+ "      \"conditions\": {\r\n"
+							+ "        \"items\": [\r\n"
+							+ "          {\r\n"
+							+ "            \"item\": \""+ModidOfBaseMod+":"+LEAVES.get(nbm)+"_leaves\"\r\n"
+							+ "          }\r\n"
+							+ "        ]\r\n"
+							+ "      }\r\n"
+							+ "    }\r\n"
+							+ "  },\r\n"
+							+ "  \"requirements\": [\r\n"
+							+ "    [\r\n"
+							+ "      \"has_birch\"\r\n"
+							+ "    ]\r\n"
+							+ "  ]\r\n"
+							+ "}");
+					buffer.newLine();
+					
+					buffer.close();
+					writer.close();
+					file.createNewFile();
+					McwAPI.message(file.toPath());
+				}
+				catch (IOException e)
+				{
+					e.printStackTrace();
+				}
+			}
+		}
+	}
 	
 	public void RecipesLogAllwithResearch(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String research)
 	{
@@ -1026,8 +1411,12 @@ public class McwDataGen implements IModFiles.IData
 		}
 	}
 
-
 	public void RecipesLogAllwithResearchIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String research, String ModidCharged1, String ModidCharged2)
+	{
+		RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStemWood, research, ModidCharged1, ModidCharged2, ModLoaders.FORGE);
+	}
+
+	public void RecipesLogAllwithResearchIsCharged(String LOCATION, String CompatModid, String ModidOfBaseMod, List<String> MAT_WOOD, boolean isStemWood, String research, String ModidCharged1, String ModidCharged2, ModLoaders modLoader)
 	{
 		Path directory = Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.RECIPE.getPath());
 		
@@ -1050,18 +1439,7 @@ public class McwDataGen implements IModFiles.IData
 	                            .map(line -> line.replace(MOD_ID+":stripped_acacia", CompatModid+":stripped_"+i))
 	                            .map(line -> line.replace(MOD_ID+":rope_acacia", CompatModid+":rope_"+i))
 	                            .collect(Collectors.toList());
-	
-	                    String modLoadedCondition = "\"conditions\": [\r\n"
-	                    		+ "    {\r\n"
-	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                    		+ "      \"modid\": \""+ModidCharged1+"\"\r\n"
-	                    		+ "    },\r\n"
-	                    		+ "    {\r\n"
-	                    		+ "      \"type\": \"forge:mod_loaded\",\r\n"
-	                    		+ "      \"modid\": \""+ModidCharged2+"\"\r\n"
-	                    		+ "    }\r\n"
-	                    		+ "  ],";
-	                     modifiedLines.add(1, modLoadedCondition);
+	                    setIfModLoaded(modLoader, ModidCharged1, ModidCharged2, modifiedLines, false);
 	                    String newFileName = file.getFileName().toString().replace("acacia", i);
 	                    Path newFilePath = Paths.get(McwMain.LOCATION+"data"+s+"recipes"+s, newFileName);
 	

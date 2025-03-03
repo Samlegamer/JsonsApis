@@ -160,16 +160,17 @@ public class McwModsRessources implements IModFiles.IClient
 	
 	public void createWoodModelsBlocksPrefixed(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood)
 	{
-		createWoodModelsBlocksPrefixed(LOCATION, TextureLocationFormodid, MAT_WOOD, PREFIX_WOOD, isStemWood, false);
+		createWoodModelsBlocksPrefixed(LOCATION, TextureLocationFormodid, MAT_WOOD, PREFIX_WOOD, isStemWood, "1.16.5");
 	}
 	
-	public void createWoodModelsBlocksPrefixed(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, boolean pWood1201)
+	public void createWoodModelsBlocksPrefixed(String LOCATION, String TextureLocationFormodid, List<String> MAT_WOOD, List<String> PREFIX_WOOD, boolean isStemWood, String pwoodVersion)
 	{
 		List<Path> directories = new ArrayList<Path>();
 		
 		for(String str : this.fold.getPathList())
 		{
 			directories.add(Paths.get(McwAPI.READER+VERSION+s+MOD_ID+s+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+str));
+			String versionOfPwood = pwoodVersion;
 			
 			for(Path directory : directories)
 			{
@@ -192,17 +193,22 @@ public class McwModsRessources implements IModFiles.IClient
 					            final String bbb;
 					            String strip = isBlueSkiesPrefix ? "stripped_"+MAT_WOOD.get(a)+"_log_side" : "stripped_"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
 
-					            if(pWood1201)
+					            switch(versionOfPwood)
 					            {
-					            	aaa = MAT_WOOD.get(a)+"_log_side";
-					            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log_side";
+					            	case "1.20.1":
+						            	aaa = MAT_WOOD.get(a)+"_log_side";
+						            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log_side";
+					            		break;
+					            	case "1.21.4":
+						            	aaa = MAT_WOOD.get(a)+"_log";
+						            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log";
+					            		break;
+					            	default:
+						            	aaa = MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
+						            	bbb = (isPremiumWoodPrefix ? MAT_WOOD.get(a)+"_stripped_log" : strip);
+					            		break;
 					            }
-					            else
-					            {
-					            	aaa = MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log");
-					            	bbb = (isPremiumWoodPrefix ? MAT_WOOD.get(a)+"_stripped_log" : strip);
-					            }
-					            
+					            					            
 					            String log = isBlueSkiesPrefix ? MAT_WOOD.get(a)+"_log_side" : aaa;
 					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);

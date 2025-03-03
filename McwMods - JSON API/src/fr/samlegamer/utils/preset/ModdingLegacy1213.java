@@ -33,7 +33,7 @@ import fr.samlegamer.utils.JsonsUtils;
 import fr.samlegamer.utils.ModsList;
 import fr.samlegamer.utils.Presetting;
 
-public class ModdingLegacy1201 implements Presetting
+public class ModdingLegacy1213 implements Presetting
 {
 	private boolean bridges;
 	private boolean roofs;
@@ -45,7 +45,7 @@ public class ModdingLegacy1201 implements Presetting
 	private boolean paths;
 	private boolean windows;
 	
-	public ModdingLegacy1201(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean traps, boolean doors, boolean paths, boolean windows)
+	public ModdingLegacy1213(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean traps, boolean doors, boolean paths, boolean windows)
 	{
 		this.bridges=bridges;
 		this.roofs=roofs;
@@ -58,7 +58,7 @@ public class ModdingLegacy1201 implements Presetting
 		this.windows=windows;
 	}
 	
-	public ModdingLegacy1201()
+	public ModdingLegacy1213()
 	{
 		this(true, true, true, true, true, true, true, true, true);
 	}
@@ -97,7 +97,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
+					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.21"));
 			/*client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
 			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
@@ -110,7 +110,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+					new McwDataGen(Compatibilities.MCW_ROOFS_MODID, "1.21"));
 			/*client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
 			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
@@ -122,7 +122,7 @@ public class ModdingLegacy1201 implements Presetting
 		if(fences)
 		{
 			McwModsRessources res = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
-			McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
+			McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID, "1.21");
 			
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_FENCES_MODID, 
 					res, 
@@ -148,7 +148,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_FURNITURES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL), 
-					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
+					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, "1.21"));
 
 			/*client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_furnitures.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
@@ -162,7 +162,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_STAIRS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
+					new McwDataGen(Compatibilities.MCW_STAIRS_MODID, "1.21"));
 
 			/*client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
@@ -176,28 +176,28 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_TRAPDOORS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
+					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID, "1.21"));
 		}
 		
 		if(doors)
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_DOORS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_DOORS_MODID));
+					new McwDataGen(Compatibilities.MCW_DOORS_MODID, "1.21"));
 		}
 
 		if(paths)
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_PATHS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+					new McwDataGen(Compatibilities.MCW_PATHS_MODID, "1.21"));
 		}
 		
 		if(windows)
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_WINDOWS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
+					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID, "1.21"));
 		}
 		LEAVES.clear();
 		MAT_WOOD.clear();
@@ -214,7 +214,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
+					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.21"));
 
 			/*client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
@@ -228,7 +228,7 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_WOOD, MAT_WOOD, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), 
-					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+					new McwDataGen(Compatibilities.MCW_ROOFS_MODID, "1.21"));
 
 			/*client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
@@ -241,7 +241,7 @@ public class ModdingLegacy1201 implements Presetting
 		if(fences)
 		{
 			McwModsRessources res = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
-			McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
+			McwDataGen data = new McwDataGen(Compatibilities.MCW_FENCES_MODID, "1.21");
 
 			//Hedges
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, PREFIX_LEAVES, "acacia_hedge");
@@ -454,7 +454,7 @@ public class ModdingLegacy1201 implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
 		res.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", MAT_WOOD, PREFIX_WOOD, false);
 		res.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-		data.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+		data.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, compat, ModidOfBaseMod);
 		data.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 		data.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, compat, ModidOfBaseMod);
 	}
@@ -463,46 +463,46 @@ public class ModdingLegacy1201 implements Presetting
 	{
 		/*Instance Bridges*/
 		final McwModsRessources client_wood_bridges = new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
-		final McwDataGen data_bridges = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID);
+		final McwDataGen data_bridges = new McwDataGen(Compatibilities.MCW_BRIDGES_MODID, "1.21");
 		
 		/*Instance Roofs*/
 		final McwModsRessources client_wood_roofs = new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_roofs = new McwDataGen(Compatibilities.MCW_ROOFS_MODID);
+		final McwDataGen data_roofs = new McwDataGen(Compatibilities.MCW_ROOFS_MODID, "1.21");
 		
 		/*Instance Fences*/
 		final McwModsRessources client_wood_fences = new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD);
-		final McwDataGen data_fences = new McwDataGen(Compatibilities.MCW_FENCES_MODID);
+		final McwDataGen data_fences = new McwDataGen(Compatibilities.MCW_FENCES_MODID, "1.21");
 		
 		/*Instance Furniture*/
 		final McwModsRessources client_wood_furnitures = new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL);
-		final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID);
+		final McwDataGen data_furnitures = new McwDataGen(Compatibilities.MCW_FURNITURES_MODID, "1.21");
 
 		/*Instance Stairs*/
 		final McwModsRessources client_wood_stairs = new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID);
+		final McwDataGen data_stairs = new McwDataGen(Compatibilities.MCW_STAIRS_MODID, "1.21");
 
 		/*Instance Paths*/
 		final McwModsRessources client_wood_paths = new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_paths = new McwDataGen(Compatibilities.MCW_PATHS_MODID);
+		final McwDataGen data_paths = new McwDataGen(Compatibilities.MCW_PATHS_MODID, "1.21");
 
 		/*Instance Doors*/
 		final McwModsRessources client_wood_doors = new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_doors = new McwDataGen(Compatibilities.MCW_DOORS_MODID);
+		final McwDataGen data_doors = new McwDataGen(Compatibilities.MCW_DOORS_MODID, "1.21");
 
 		/*Instance Trapdoors*/
 		final McwModsRessources client_wood_traps = new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_traps = new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID);
+		final McwDataGen data_traps = new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID, "1.21");
 
 		/*Instance Stairs*/
 		final McwModsRessources client_wood_windows = new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD);
-		final McwDataGen data_windows = new McwDataGen(Compatibilities.MCW_WINDOWS_MODID);
+		final McwDataGen data_windows = new McwDataGen(Compatibilities.MCW_WINDOWS_MODID, "1.21");
 
 		if(bridges)
 		{
 			client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_bridges.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_bridges.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
 			data_bridges.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_bridges.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, true);
 		}
@@ -510,9 +510,9 @@ public class ModdingLegacy1201 implements Presetting
 		if(roofs)
 		{
 			client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_roofs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_roofs.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
 			data_roofs.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_roofs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, true);
 		}
@@ -520,9 +520,9 @@ public class ModdingLegacy1201 implements Presetting
 		if(fences)
 		{
 			client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_fences.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_fences.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_fences.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_fences.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_fences.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 			data_fences.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_fences.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, true);
 		}
@@ -530,9 +530,9 @@ public class ModdingLegacy1201 implements Presetting
 		if(furnitures)
 		{
 			client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_furnitures.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_furnitures.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_furnitures.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_furnitures.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
 			data_furnitures.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_furnitures.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod, true);
 		}
@@ -540,19 +540,19 @@ public class ModdingLegacy1201 implements Presetting
 		if(fences)
 		{
 			client_wood_fences.createWoodBlockstateswithResearch(LOCATION, CompatModid, PREFIX_LEAVES, "acacia_hedge");
-			client_wood_fences.createWoodModelsBlockswithResearchPrefixed(LOCATION, txtLocMod, LEAVES, PREFIX_LEAVES, Boolean.FALSE, "acacia_wall");
+			client_wood_fences.createWoodModelsBlockswithResearchPrefixed(LOCATION, txtLocMod, LEAVES, PREFIX_LEAVES, false, "acacia_wall");
 			client_wood_fences.createWoodModelItemwithResearch(LOCATION, CompatModid, PREFIX_LEAVES, "acacia_hedge");
-			data_fences.AdvancementsLeavesHedgesPrefixed(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, PREFIX_LEAVES);
+			data_fences.AdvancementsLeavesHedgesPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, PREFIX_LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 			data_fences.LootTableLogAllwithResearchPrefixed(LOCATION, CompatModid, LEAVES, PREFIX_LEAVES, "acacia_hedge");
-			data_fences.RecipesLogAllwithResearchIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, PREFIX_LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data_fences.RecipesLogAllwithResearchIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, PREFIX_LEAVES, false, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
 		}
 		
 		if(stairs)
 		{
 			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_stairs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_stairs.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
 			data_stairs.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_stairs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod, true);
 		}
@@ -561,9 +561,9 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			client_wood_paths.setModid(CompatModid);
 			client_wood_paths.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_paths.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_paths.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_paths.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_paths.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_paths.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_PATHS_MODID, ModidOfBaseMod);
 			data_paths.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_paths.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_PATHS_MODID, ModidOfBaseMod, true);
 		}
@@ -572,9 +572,9 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			client_wood_doors.setModid(CompatModid);
 			client_wood_doors.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_doors.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_doors.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_doors.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_doors.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_doors.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_DOORS_MODID, ModidOfBaseMod);
 			data_doors.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_doors.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_DOORS_MODID, ModidOfBaseMod, true);
 		}
@@ -583,9 +583,9 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			client_wood_traps.setModid(CompatModid);
 			client_wood_traps.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_traps.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_traps.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_traps.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_traps.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_traps.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_TRAPDOORS_MODID, ModidOfBaseMod);
 			data_traps.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_traps.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_TRAPDOORS_MODID, ModidOfBaseMod, true);
 		}
@@ -594,9 +594,9 @@ public class ModdingLegacy1201 implements Presetting
 		{
 			client_wood_windows.setModid(CompatModid);
 			client_wood_windows.createWoodBlockstates(LOCATION, CompatModid, PREFIX_WOOD);
-			client_wood_windows.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.20.1");
+			client_wood_windows.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod, MAT_WOOD, PREFIX_WOOD, false, "1.21.4");
 			client_wood_windows.createWoodModelItem(LOCATION, CompatModid, PREFIX_WOOD);
-			data_windows.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false);
+			data_windows.AdvancementsLogAllPrefixedIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_WINDOWS_MODID, ModidOfBaseMod);
 			data_windows.LootTableLogAll(LOCATION, CompatModid, PREFIX_WOOD);
 			data_windows.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, PREFIX_WOOD, false, Compatibilities.MCW_WINDOWS_MODID, ModidOfBaseMod, true);
 		}
