@@ -9,6 +9,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -48,8 +49,10 @@ public class Aurora implements Presetting
 	private boolean activeTraps;
 	private boolean activeWindows;
 	private boolean is120;
-	
-	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs, boolean activePaths, boolean activeDoors, boolean activeTraps, boolean activeWindows, boolean is120)
+	private ModLoaders modLoader;
+
+	public Aurora(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs, boolean activePaths, boolean activeDoors, boolean activeTraps, boolean activeWindows, 
+	boolean is120, ModLoaders modLoader)
 	{
 		this.activeBridges=activeBridges;
 		this.activeRoofs=activeRoofs;
@@ -61,11 +64,12 @@ public class Aurora implements Presetting
 		this.activeTraps=activeTraps;
 		this.activeWindows=activeWindows;
 		this.is120=is120;
+		this.modLoader=modLoader;
 	}
 	
 	public Aurora(boolean is120)
 	{
-		this(true, true, true, true, true, true, true, true, true, is120);
+		this(true, true, true, true, true, true, true, true, true, is120, ModLoaders.FORGE);
 	}
 
 	private void genRsc(String LOCATION, String CompatModid, String txtLocMod, String ModidOfBaseMod, List<String> MAT_WOOD, Consumer<List<String>> modFunc, String compat, boolean isStem, McwModsRessources res, McwDataGen data)
@@ -75,18 +79,18 @@ public class Aurora implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, isStem);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod, modLoader);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod, modLoader);
 		
 		if(compat.equals(Compatibilities.MCW_FENCES_MODID) && !ModidOfBaseMod.equals(Compatibilities.ENHANCED_MUSHROOMS_MODID))
 		{
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
 			res.createWoodModelsBlockswithResearch(LOCATION, txtLocMod, MAT_WOOD, Boolean.FALSE, "acacia_wall");
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
-			data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD);
+			data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data.LootTableLogAllwithResearch(LOCATION, CompatModid, MAT_WOOD, "acacia_hedge");
-			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 	

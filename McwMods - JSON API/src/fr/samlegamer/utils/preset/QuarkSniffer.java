@@ -7,6 +7,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -44,6 +45,7 @@ public class QuarkSniffer implements Presetting
 	protected static final List<String> WALL = new ArrayList<String>();
 	protected static final List<String> FLOOR = new ArrayList<String>();
 	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
+	private final ModLoaders modLoader = ModLoaders.FORGE;
 
 	@Override
 	public void init(String LOCATION)
@@ -210,8 +212,8 @@ public class QuarkSniffer implements Presetting
 		res.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		res.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		res.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		dat.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, Compatibilities.QUARK_MODID);
+		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
@@ -221,8 +223,8 @@ public class QuarkSniffer implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, false);
-		dat.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
-		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat, Compatibilities.QUARK_MODID);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compat.equals(Compatibilities.MCW_FENCES_MODID))
@@ -230,9 +232,9 @@ public class QuarkSniffer implements Presetting
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, Compatibilities.QUARK_MODID);
+			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 	

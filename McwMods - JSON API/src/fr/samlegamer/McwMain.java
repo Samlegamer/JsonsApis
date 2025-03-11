@@ -3,11 +3,8 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import fr.samlegamer.McwAPI.ClassicFolderTypes;
-import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.utils.JsonsUtils;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.BOP;
+import fr.samlegamer.utils.preset.QuarkNether;
 
 public class McwMain
 {	
@@ -25,21 +22,16 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
+		/* Reload recipes for quark and modding legacy */
+		
+		
 		//JsonsUtils.PreReplacedRecipe1213(LOCATION + ClassicFolderTypes.RECIPE.getPath());
 		/*ModsList.BlueSkiesBsky1201(MAT_WOOD);
 		ModsList.PremiumWoodPwood(MAT_WOOD);
 		fixForPaleGarden("mcwmoddinglegacy", MAT_WOOD);*/
-		preset(new BOP(true, "1.21.3", ModLoaders.NEOFORGE));
+		preset(new QuarkNether());
 	}
 	
-	public static void fixForPaleGarden(String CompatModid, List<String> MAT_WOOD)
-	{
-		McwAPI.registerFolder(McwMain.LOCATION, ClassicFolderTypes.ITEMS.getPath());
-		
-		JsonsUtils.adder1214(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), ".json", "\"model\" : {\r\n"
-				+ "    \"type\" : \"minecraft:model\",", "}");
-		JsonsUtils.Doors1214(LOCATION, CompatModid, MAT_WOOD);
-	}
 	
 	public static void preset(Presetting preset)
 	{

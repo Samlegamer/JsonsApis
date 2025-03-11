@@ -7,6 +7,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -46,15 +47,17 @@ public class TerraformersMC implements Presetting
 	protected static final List<String> FLOOR = new ArrayList<String>();
 	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
 	private String version;
-	
-	public TerraformersMC(String version)
+	private ModLoaders modLoader;
+
+	public TerraformersMC(String version, ModLoaders modLoader)
 	{
 		this.version=version;
+		this.modLoader=modLoader;
 	}
 	
-	public TerraformersMC()
+	public TerraformersMC(ModLoaders modLoader)
 	{
-		this("1.20");
+		this("1.20", modLoader);
 	}
 	
 	@Override
@@ -188,6 +191,11 @@ public class TerraformersMC implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 
+		if(version.equals("1.21.3"))
+		{
+			McwAPI.fixForPaleGarden(LOCATION, CompatModid, MAT_WOOD);
+		}
+		
 		/*JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blossom", "quark:blossom_slab", "quark:blossom_planks_slab");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "azalea", "quark:azalea_slab", "quark:azalea_planks_slab");
 		
@@ -326,8 +334,8 @@ public class TerraformersMC implements Presetting
 		res.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		res.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		res.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		dat.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod);
+		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
@@ -337,8 +345,8 @@ public class TerraformersMC implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, Stem);
-		dat.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem);
-		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem, compat, ModidOfBaseMod);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compat.equals(Compatibilities.MCW_FENCES_MODID))
@@ -346,9 +354,9 @@ public class TerraformersMC implements Presetting
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 	

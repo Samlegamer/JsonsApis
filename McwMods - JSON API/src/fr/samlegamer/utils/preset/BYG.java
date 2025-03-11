@@ -7,6 +7,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -54,8 +55,9 @@ public class BYG implements Presetting
 	private boolean trapdoors;
 	private boolean doors;
 	private boolean windows;
-	
-	public BYG(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean trapdoors, boolean doors, boolean windows, boolean paths)
+	private ModLoaders modLoader;
+
+	public BYG(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean trapdoors, boolean doors, boolean windows, boolean paths, ModLoaders modLoader)
 	{
 		this.bridges = bridges;
 		this.roofs = roofs;
@@ -66,11 +68,12 @@ public class BYG implements Presetting
 		this.doors = doors;
 		this.windows = windows;
 		this.paths = paths;
+		this.modLoader=modLoader;
 	}
 	
-	public BYG()
+	public BYG(ModLoaders modLoader)
 	{
-		this(true, true, true, true, true, true, true, true, true);
+		this(true, true, true, true, true, true, true, true, true, modLoader);
 	}
 	
 	@Override
@@ -379,8 +382,8 @@ public class BYG implements Presetting
 		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
-		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, Compatibilities.BYG_MODID);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compatmcw.equals(Compatibilities.MCW_FENCES_MODID))
@@ -388,9 +391,9 @@ public class BYG implements Presetting
 			client.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			client.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
 			client.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, Compatibilities.BYG_MODID);
+			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 
 	}
@@ -400,8 +403,8 @@ public class BYG implements Presetting
 		client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL, compatmcw, ModidOfBaseMod);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK,compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL, compatmcw, ModidOfBaseMod, modLoader);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	

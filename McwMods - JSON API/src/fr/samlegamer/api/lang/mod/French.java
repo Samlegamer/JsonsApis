@@ -106,11 +106,16 @@ public class French
 	
 	public static class Quark
 	{
+		public static void quarkLeavesLang(List<String> LEAVES_LANG)
+		{
+			LEAVES_LANG.addAll(List.of("fleur givrée", "fleur sereine", "fleur chaude", "fleur douce", "fleur ardente", "fleur ensoleillée"));
+		}
+		
 		public static void quarkRockLang(List<String> MAJ_ROCK)
 		{
-			Collection<String> mat = List.of("brique d'Andesite poli", "Basalt Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "brique de granite poli", "Jasper Bricks", 
-			"Limestone Bricks", "Magma Bricks", "Marble Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Slate Bricks", "Soul Sandstone Bricks");
-			MAJ_ROCK.addAll(mat);
+			MAJ_ROCK.addAll(List.of("brique d'andésite polie", "brique de pierre du vide poli", "brique de biotite", "brique de diorite poli", "brique d'ancienne prismarine", "brique de granite poli", 
+			"brique de pierre de jaspe poli", "brique de calcaire poli", "brique de magma", "brique de marbre poli", "brique de permafrost", "brique de grès rouge", "brique de grès", 
+			"brique de d'ardoise polie", "brique de grès de l'âme"));
 		}
 	}
 	

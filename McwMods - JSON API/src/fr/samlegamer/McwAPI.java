@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
+import fr.samlegamer.utils.JsonsUtils;
 
 public class McwAPI
 {
@@ -436,6 +437,15 @@ public class McwAPI
 		{
 			l.clear();
 		}
+	}
+
+	public static void fixForPaleGarden(String LOCATION, String CompatModid, List<String> MAT_WOOD)
+	{
+		McwAPI.registerFolder(McwMain.LOCATION, ClassicFolderTypes.ITEMS.getPath());
+		
+		JsonsUtils.adder1214(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_ITEM.getPath(), ".json", "\"model\" : {\r\n"
+				+ "    \"type\" : \"minecraft:model\",", "}");
+		JsonsUtils.Doors1214(LOCATION, CompatModid, MAT_WOOD);
 	}
 		
 	public static void verifJson(BufferedWriter buffer, String i, List<String> MAT_WOOD) throws IOException

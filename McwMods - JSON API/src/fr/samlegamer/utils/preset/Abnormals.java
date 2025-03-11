@@ -8,6 +8,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -44,13 +45,15 @@ public class Abnormals implements Presetting
 	private boolean activeDoors;
 	private boolean activeTraps;
 	private boolean activeWindows;
+	private ModLoaders modLoader;
 
 	public Abnormals()
 	{
-		this(true, true, true, true, true, true, true, true, true);
+		this(true, true, true, true, true, true, true, true, true, ModLoaders.FORGE);
 	}
 	
-	public Abnormals(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs, boolean activePaths, boolean activeDoors, boolean activeTraps, boolean activeWindows)
+	public Abnormals(boolean activeBridges, boolean activeRoofs, boolean activeFences, boolean activeFurnitures, boolean activeStairs, boolean activePaths, boolean activeDoors, boolean activeTraps, 
+	boolean activeWindows, ModLoaders modLoader)
 	{
 		this.activeBridges=activeBridges;
 		this.activeRoofs=activeRoofs;
@@ -61,6 +64,7 @@ public class Abnormals implements Presetting
 		this.activeDoors=activeDoors;
 		this.activeTraps=activeTraps;
 		this.activeWindows=activeWindows;
+		this.modLoader=modLoader;
 	}
 	
 	protected void genRessources(String LOCATION, String CompatModid, List<String> MAT_WOOD, String txtLocMod, String ModidOfBaseMod, boolean isStem, String compat, McwModsRessources res, McwDataGen dat)
@@ -69,9 +73,9 @@ public class Abnormals implements Presetting
 		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		res.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, isStem);
 		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		dat.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compat, ModidOfBaseMod, modLoader);
 	}
 	
 	protected void genRessourcesStone(String LOCATION, String CompatModid, List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR, String txtLocMod, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
@@ -79,9 +83,9 @@ public class Abnormals implements Presetting
 		res.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		res.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 		res.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		dat.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, compat, ModidOfBaseMod, modLoader);
 		dat.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod);
+		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
 
 	}
 
@@ -90,9 +94,19 @@ public class Abnormals implements Presetting
 		res.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 		res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
 		res.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-		data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+		data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-		data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+		data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+	}
+	
+	protected void genEndergetic(String LOCATION, String CompatModid, List<String> MAT_WOOD, String txtLocMod, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
+	{
+		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
+		res.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
+		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, compat, ModidOfBaseMod, modLoader);
+		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, compat, ModidOfBaseMod, modLoader);
 	}
 	
 	@Override
@@ -156,12 +170,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_bridges.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_bridges.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, client_wood_bridges, data_bridges);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 	
@@ -180,9 +189,9 @@ public class Abnormals implements Presetting
 			client_stone_bridges.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 			client_stone_bridges.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 			client_stone_bridges.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-			data_bridges.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+			data_bridges.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 			data_bridges.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-			data_bridges.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, List.of("smooth_red_arid_sandstone", "smooth_arid_sandstone"), Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
+			data_bridges.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, List.of("smooth_red_arid_sandstone", "smooth_arid_sandstone"), Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 			McwAPI.clears(MAT_ROCK, WALL, FLOOR);
 	
 			ModsList.abnormalsRock(MAT_ROCK, WALL, FLOOR, Compatibilities.AUTUM_MODID);
@@ -240,13 +249,8 @@ public class Abnormals implements Presetting
 			
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
-			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_fences.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_fences.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_fences.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";			
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_FENCES_MODID, client_wood_fences, data_fences);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 	
@@ -306,13 +310,8 @@ public class Abnormals implements Presetting
 	
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
-			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_roofs.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_roofs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
+			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";			
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, client_wood_roofs, data_roofs);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 	
@@ -372,12 +371,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_furnitures.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_furnitures.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_FURNITURES_MODID, client_wood_furnitures, data_furnitures);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 		}
@@ -417,12 +411,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_stairs.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_STAIRS_MODID, client_wood_stairs, data_stairs);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 		}
@@ -500,13 +489,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			//genRessources(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, true, Compatibilities.MCW_DOORS_MODID, client_wood_doors, data_doors);
-			client_wood_doors.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_doors.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_doors.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_doors.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_doors.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_doors.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_DOORS_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_DOORS_MODID, client_wood_doors, data_doors);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 		}
@@ -545,13 +528,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			//genRessources(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, true, Compatibilities.MCW_TRAPDOORS_MODID, client_wood_trapdoors, data_trapdoors);
-			client_wood_trapdoors.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_trapdoors.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_trapdoors.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_trapdoors.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_trapdoors.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_trapdoors.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_TRAPDOORS_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_TRAPDOORS_MODID, client_wood_trapdoors, data_trapdoors);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 		}
@@ -590,13 +567,7 @@ public class Abnormals implements Presetting
 			ModsList.abnormalsWood(MAT_WOOD, Compatibilities.ENDERGETIC_MODID);
 			txtLocMod = Compatibilities.ENDERGETIC_TEXTURES; //"endergetic:block";
 			ModidOfBaseMod = Compatibilities.ENDERGETIC_MODID; //"endergetic";
-			//genRessources(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, true, Compatibilities.MCW_WINDOWS_MODID, client_wood_windows, data_windows);
-			client_wood_windows.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-			client_wood_windows.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, "poise_planks", "poise_stem", "poise_stem_stripped");
-			client_wood_windows.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_windows.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true);
-			data_windows.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_windows.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, true, Compatibilities.MCW_WINDOWS_MODID, ModidOfBaseMod);
+			genEndergetic(LOCATION, CompatModid, MAT_WOOD, txtLocMod, ModidOfBaseMod, Compatibilities.MCW_WINDOWS_MODID, client_wood_windows, data_windows);
 			MAT_WOOD.clear();
 			System.out.println("Done Wood Client");
 		}

@@ -193,6 +193,11 @@ public class BOP implements Presetting
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "cherry_hedge.json");
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
 		}
+		
+		if(versioning.equals("1.21.3"))
+		{
+			McwAPI.fixForPaleGarden(LOCATION, CompatModid, MAT_WOOD);
+		}
 	}
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)

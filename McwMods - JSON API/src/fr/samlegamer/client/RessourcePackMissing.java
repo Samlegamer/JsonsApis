@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import fr.samlegamer.McwAPI.ClassicFolderTypes;
-
+@Deprecated
 public class RessourcePackMissing
 {
 	public static void generateBlockstate(String inputDirectory, String outputDirectory) {

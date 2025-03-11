@@ -6,6 +6,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
@@ -34,8 +35,6 @@ import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class BWG implements Presetting
 {
-	private String version = "1.21";
-	
 	protected final List<String> MAT_WOOD = new ArrayList<String>();
 	protected final List<String> MAT_ROCK = new ArrayList<String>();
 	protected final List<String> WALL = new ArrayList<String>();
@@ -44,21 +43,23 @@ public class BWG implements Presetting
 	protected final List<String> MAJ_ROCK = new ArrayList<String>();
 	protected final List<String> LEAVES = new ArrayList<String>();
 	protected final List<String> LEAVES_LANG = new ArrayList<String>();
+	private ModLoaders modLoader;
+	private String version;
 	
-	public BWG(String version)
+	public BWG(String version, ModLoaders modLoader)
 	{
 		this.version = version;
+		this.modLoader=modLoader;
 	}
 	
-	public BWG()
+	public BWG(ModLoaders modLoader)
 	{
-		this("1.20");
+		this("1.20", modLoader);
 	}
 
 	@Override
 	public void init(String LOCATION)
 	{
-
 		McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.FencesGenFolder(LOCATION);
@@ -304,7 +305,6 @@ public class BWG implements Presetting
 		client.setModid(CompatModid);
 		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 		client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		//client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
 		if(isStem)
 		{
 			client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "stem", "stripped_stem");
@@ -313,8 +313,8 @@ public class BWG implements Presetting
 		{
 			client.createWoodCustomModelsBlocksBYGSetting(LOCATION, TextureLocationFormodid, MAT_WOOD, "planks", "log", "stripped_log");
 		}
-		data.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem);
-		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, Compatibilities.BYG_MODID_120);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
 		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
 		
 		if(compatmcw.equals(Compatibilities.MCW_FENCES_MODID))
@@ -328,9 +328,9 @@ public class BWG implements Presetting
 				client.createWoodCustomModelsBlocksBYGSettingwithResearch(LOCATION, TextureLocationFormodid, LEAVES, "planks", "log", "stripped_log", "leaves", "acacia_wall");
 			}
 			client.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, compatmcw, ModidOfBaseMod, modLoader);
 			data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", compatmcw, Compatibilities.BYG_MODID_120);
+			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", compatmcw, ModidOfBaseMod, modLoader);
 		}
 	}
 	
@@ -339,8 +339,8 @@ public class BWG implements Presetting
 		client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
 		client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
-		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL, compatmcw, ModidOfBaseMod);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL, compatmcw, ModidOfBaseMod, modLoader);
 		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
 	}
 	

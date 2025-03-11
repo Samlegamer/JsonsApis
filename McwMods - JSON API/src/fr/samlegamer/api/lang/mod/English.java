@@ -159,7 +159,7 @@ public class English
 
 		public static void quarkRockLang(List<String> MAJ_ROCK)
 		{
-			Collection<String> mat = List.of("Andesite Bricks", "Basalt Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "Granite Bricks", "Jasper Bricks", 
+			Collection<String> mat = List.of("Andesite Bricks", "Voidstone Bricks", "Biotite Bricks", "Diorite Bricks", "Elder Pismarine Bricks", "Granite Bricks", "Jasper Bricks", 
 			"Limestone Bricks", "Magma Bricks", "Marble Bricks", "Permafrost Bricks", "Red Sandstone Bricks", "Sandstone Bricks", "Slate Bricks", "Soul Sandstone Bricks");
 			MAJ_ROCK.addAll(mat);
 		}

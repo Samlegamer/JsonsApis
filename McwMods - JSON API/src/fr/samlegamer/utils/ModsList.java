@@ -102,7 +102,8 @@ public class ModsList
 	/* For 1.16.5 */
 	public static void quarkRock(List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR)
 	{
-		Collection<String> mat = List.of("andesite_bricks", "basalt_bricks", "biotite_bricks", "diorite_bricks", "elder_prismarine_bricks", "granite_bricks", "jasper_bricks", "limestone_bricks", "magma_bricks", "marble_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "slate_bricks", "soul_sandstone_bricks");
+		Collection<String> mat = List.of("andesite_bricks", "basalt_bricks", "biotite_bricks", "diorite_bricks", "elder_prismarine_bricks", "granite_bricks", "jasper_bricks", "limestone_bricks", 
+				"magma_bricks", "marble_bricks", "permafrost_bricks", "red_sandstone_bricks", "sandstone_bricks", "slate_bricks", "soul_sandstone_bricks");
 		MAT_ROCK.addAll(mat);
 		WALL.addAll(mat);
 		Collection<String> flo = List.of("andesite", "basalt", "biotite_block", "diorite", "elder_prismarine", "granite", "jasper", "limestone", "magma_block", "marble", "permafrost", "red_sandstone", "sandstone", "slate", "soul_sandstone");

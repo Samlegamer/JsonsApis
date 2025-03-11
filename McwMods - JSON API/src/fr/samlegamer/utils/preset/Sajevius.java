@@ -6,6 +6,7 @@ import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
 import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
@@ -51,7 +52,8 @@ public class Sajevius implements Presetting
 	private boolean fences;
 	private boolean furnitures;
 	private boolean stairs;
-	
+	private final ModLoaders modLoader = ModLoaders.FORGE;
+
 	public Sajevius(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs)
 	{
 		this.bridges=bridges;
@@ -97,52 +99,52 @@ public class Sajevius implements Presetting
 			client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_bridges.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_bridges.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 			data_bridges.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
+			data_bridges.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(roofs)
 		{
 			client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_roofs.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_roofs.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 			data_roofs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
+			data_roofs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(fences)
 		{
 			client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_fences.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 			client_wood_fences.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_fences.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data_fences.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data_fences.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			
 			client_wood_fences.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
 			client_wood_fences.createWoodModelsBlockswithResearch(LOCATION, txtLocMod, LEAVES, Boolean.FALSE, "acacia_wall");
 			client_wood_fences.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data_fences.AdvancementsLeavesHedges(LOCATION, CompatModid, ModidOfBaseMod, LEAVES);
+			data_fences.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data_fences.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data_fences.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data_fences.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(furnitures)
 		{
 			client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_furnitures.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 			client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_furnitures.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod, modLoader);
 			data_furnitures.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
+			data_furnitures.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(stairs)
 		{
 			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_stairs.createWoodModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, false);
 			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.AdvancementsLogAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false);
+			data_stairs.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod, modLoader);
 			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			data_stairs.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod, modLoader);
 		}
 		LEAVES.clear();
 		MAT_WOOD.clear();
@@ -153,27 +155,27 @@ public class Sajevius implements Presetting
 			client_stone_bridges.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 			client_stone_bridges.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 			client_stone_bridges.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-			data_bridges.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+			data_bridges.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 			data_bridges.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-			data_bridges.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
+			data_bridges.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(roofs)
 		{
 			client_stone_roofs.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 			client_stone_roofs.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 			client_stone_roofs.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-			data_roofs.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+			data_roofs.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 			data_roofs.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-			data_roofs.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
+			data_roofs.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(fences)
 		{
 			client_stone_fences.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
 			client_stone_fences.createStoneModelsBlocks(LOCATION, txtLocMod, MAT_ROCK, WALL, FLOOR);
 			client_stone_fences.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-			data_fences.AdvancementsStoneAll(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK);
+			data_fences.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data_fences.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
-			data_fences.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data_fences.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 		McwAPI.clears(MAT_ROCK, WALL, FLOOR);
 
@@ -253,45 +255,45 @@ public class Sajevius implements Presetting
 			client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_bridges.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, nameOfTexturesStripped);
 			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.AdvancementsLogAllCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae);
+			data_bridges.AdvancementsLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 			data_bridges.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_bridges.RecipesLogAllIsChargedCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);
+			data_bridges.RecipesLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(roofs)
 		{
 			client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_roofs.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, nameOfTexturesStripped);
 			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.AdvancementsLogAllCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae);
+			data_roofs.AdvancementsLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 			data_roofs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_roofs.RecipesLogAllIsChargedCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);
+			data_roofs.RecipesLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(fences)
 		{
 			client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_fences.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, nameOfTexturesStripped);
 			client_wood_fences.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.AdvancementsLogAllCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae);
+			data_fences.AdvancementsLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 			data_fences.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_fences.RecipesLogAllIsChargedCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);
+			data_fences.RecipesLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(furnitures)
 		{
 			client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_furnitures.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, nameOfTexturesStripped);
 			client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.AdvancementsLogAllCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae);
+			data_furnitures.AdvancementsLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod, modLoader);
 			data_furnitures.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_furnitures.RecipesLogAllIsChargedCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);
+			data_furnitures.RecipesLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod, modLoader);
 		}
 		if(stairs)
 		{
 			client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
 			client_wood_stairs.createWoodCustomModelsBlocks(LOCATION, txtLocMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, nameOfTexturesStripped);
 			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.AdvancementsLogAllCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae);
+			data_stairs.AdvancementsLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod, modLoader);
 			data_stairs.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
-			data_stairs.RecipesLogAllIsChargedCustom(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);
+			data_stairs.RecipesLogAllCustomIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, nameOfTexturesPlanks, nameOfTexturesLogs, hyphae, planksStuff, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 }
