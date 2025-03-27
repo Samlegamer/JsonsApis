@@ -1,0 +1,6 @@
+<%k_picket_fence>: "Clôture à piquets en %l"
+<%k_stockade_fence>: "Clôture à palissade en %l"
+<%k_horse_fence>: "Clôture pour chevaux en %l"
+<%k_wired_fence>: "Clôture grillagée en %l"
+<%k_highley_gate>: "Grand portillon en %l"
+<%k_pyramid_gate>: "Portillon pyramidal en %l"

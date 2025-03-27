@@ -1,0 +1,6 @@
+<%k_log_bridge_middle>: "Pont en %l"
+<rope_%k_bridge>: "Pont en %l avec corde"
+<%k_bridge_pier>: "Support de pont en %l"
+<%k_log_bridge_stair>: "Escalier en %l"
+<%k_rope_bridge_stair>: "Escalier en pont de corde en %l"
+<%k_rail_bridge>: "Pont ferroviaire en %l"

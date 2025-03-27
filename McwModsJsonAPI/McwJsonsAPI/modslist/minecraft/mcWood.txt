@@ -1,0 +1,11 @@
+oak
+birch
+acacia
+spruce
+jungle
+dark_oak
+crimson
+warped
+mangrove
+cherry
+pale_oak

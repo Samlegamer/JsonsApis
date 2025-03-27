@@ -1,0 +1,2 @@
+basalt_cobblestone
+mossy_basalt_cobblestone

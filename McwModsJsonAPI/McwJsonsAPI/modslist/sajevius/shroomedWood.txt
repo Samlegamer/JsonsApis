@@ -1,0 +1,4 @@
+blue_hard_mushroom
+hard_mushroom
+orange_hard_mushroom
+purple_hard_mushroom

@@ -1,0 +1,15 @@
+andesite_bricks
+basalt_bricks
+biotite_bricks
+diorite_bricks
+elder_prismarine_bricks
+granite_bricks
+jasper_bricks
+limestone_bricks
+magma_bricks
+marble_bricks
+permafrost_bricks
+red_sandstone_bricks
+sandstone_bricks
+slate_bricks
+soul_sandstone_bricks

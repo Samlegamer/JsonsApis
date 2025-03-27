@@ -1,0 +1,8 @@
+<%k_terrace_stairs>: "%l Terrace Stairs"
+<%k_skyline_stairs>: "%l Skyline Stairs"
+<%k_compact_stairs>: "%l Compact Stairs"
+<%k_bulk_stairs>: "%l Bulk Stairs"
+<%k_loft_stairs>: "%l Loft Stairs"
+<%k_railing>: "%l Railing"
+<%k_balcony>: "%l Balcony"
+<%k_platform>: "%l Platform"

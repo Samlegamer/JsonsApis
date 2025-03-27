@@ -1,0 +1,16 @@
+black_terracotta_tiles
+blue_terracotta_tiles
+brown_terracotta_tiles
+claystone_tiles
+cyan_terracotta_tiles
+gray_terracotta_tiles
+green_terracotta_tiles
+light_blue_terracotta_tiles
+light_gray_terracotta_tiles
+lime_terracotta_tiles
+magenta_terracotta_tiles
+orange_terracotta_tiles
+red_terracotta_tiles
+terracotta_tiles
+white_terracotta_tiles
+yellow_terracotta_tiles

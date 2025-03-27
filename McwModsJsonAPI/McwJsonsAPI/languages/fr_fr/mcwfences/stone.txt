@@ -1,0 +1,5 @@
+<modern_%k_wall>: "Mur moderne en %l"
+<railing_%k_wall>: "Balustrade mur en %l"
+<%k_railing_gate>: "Portail en %l"
+<%k_pillar_wall>: "Mur de piliers en %l"
+<%k_grass_topped_wall>: "Mur en %l surmonté d'herbe"

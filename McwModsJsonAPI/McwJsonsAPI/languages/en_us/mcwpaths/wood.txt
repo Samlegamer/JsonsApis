@@ -1,0 +1,1 @@
+<%k_planks_path>: "%l Planks Path"

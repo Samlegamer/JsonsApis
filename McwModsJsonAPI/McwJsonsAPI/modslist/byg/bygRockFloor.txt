@@ -1,0 +1,7 @@
+cryptic_stone
+dacite
+travertine
+purpur_stone
+red_rock
+scoria_stone
+soapstone

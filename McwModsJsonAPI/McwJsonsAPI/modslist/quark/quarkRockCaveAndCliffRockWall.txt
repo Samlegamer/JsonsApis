@@ -1,0 +1,16 @@
+soul_sandstone_bricks
+limestone_bricks
+jasper_bricks
+shale_bricks
+permafrost_bricks
+red_sandstone_bricks
+sandstone_bricks
+cobblestone_bricks
+mossy_cobblestone_bricks
+blackstone_bricks
+diorite_bricks
+granite_bricks
+andesite_bricks
+calcite_bricks
+dripstone_bricks
+tuff_bricks

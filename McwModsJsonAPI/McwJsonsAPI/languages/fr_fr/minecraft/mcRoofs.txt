@@ -1,0 +1,56 @@
+terre cuite blanche
+terre cuite gris clair
+terre cuite grise
+terre cuite noire
+terre cuite bleue
+terre cuite bleu clair
+terre cuite cyan
+terre cuite vert clair
+terre cuite verte
+terre cuite jaune
+terre cuite marron
+terre cuite orange
+terre cuite rouge
+terre cuite magenta
+terre cuite rose
+terre cuite violette
+béton blanc
+béton gris clair
+béton gris
+béton noir
+béton bleu
+béton bleu clair
+béton cyan
+béton vert clair
+béton vert
+béton jaune
+béton marron
+béton orange
+béton rouge
+béton magenta
+béton rose
+béton violette
+blanc
+gris clair
+gris
+noir
+basic
+roche
+granite
+diorite
+andésite
+pierre
+grès
+grès rouge
+briques
+roche noire
+ardoise des abîmes
+briques de terre crue
+briques du nether
+briques du nether rouges
+chaume
+briques de prismarine
+prismarine sombre
+pierre taillée
+mosaïque de bambou
+herbe

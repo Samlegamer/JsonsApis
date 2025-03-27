@@ -1,0 +1,2 @@
+snail_shell_block_stripes
+snail_shell_bricks

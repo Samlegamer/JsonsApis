@@ -1,0 +1,13 @@
+andesite
+diorite
+granite
+sandstone
+red_sandstone
+brick
+cobblestone
+mossy_cobblestone
+cobbled_deepslate
+deepslate
+mud_brick
+blackstone
+dark_prismarine

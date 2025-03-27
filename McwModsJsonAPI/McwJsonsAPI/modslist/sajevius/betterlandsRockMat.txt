@@ -1,0 +1,16 @@
+black_terracotta_bricks
+blue_terracotta_bricks
+brown_terracotta_bricks
+claystone_bricks
+cyan_terracotta_bricks
+gray_terracotta_bricks
+green_terracotta_bricks
+light_blue_terracotta_bricks
+light_gray_terracotta_bricks
+lime_terracotta_bricks
+magenta_terracotta_bricks
+orange_terracotta_bricks
+red_terracotta_bricks
+terracotta_bricks
+white_terracotta_bricks
+yellow_terracotta_bricks

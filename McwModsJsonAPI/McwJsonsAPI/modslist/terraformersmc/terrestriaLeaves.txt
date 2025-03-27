@@ -1,0 +1,12 @@
+redwood
+hemlock
+rubber
+cypress
+willow
+japanese_maple
+rainbow_eucalyptus
+sakura
+yucca_palm
+japanese_maple_shrub
+dark_japanese_maple
+jungle_palm

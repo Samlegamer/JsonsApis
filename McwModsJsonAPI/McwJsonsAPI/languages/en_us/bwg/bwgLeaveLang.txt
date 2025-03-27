@@ -1,0 +1,45 @@
+Aspen
+Baobab
+Blue Enchanted
+Cika
+Cypress
+Ebony
+Fir
+Green Enchanted
+Holly
+Ironwood
+Jacaranda
+Mahogany
+Maple
+Palm
+Pine
+Rainbow Eucalyptus
+Redwood
+Skyris
+White Mangrove
+Willow
+Witch Hazel
+Zelkova
+Blue Spruce
+Orange Spruce
+Red Spruce
+Yellow Spruce
+Brown Birch
+Orange Birch
+Red Birch
+Yellow Birch
+Brown Oak
+Orange Oak
+Red Oak
+White Sakura
+Yellow Sakura
+Red Maple
+Araucaria
+Blooming Witch Hazel
+Flowering Indigo Jacaranda
+Flowering Ironwood
+Flowering Jacaranda
+Flowering Orchard
+Flowering Palo Verde
+Flowering Skyris
+Flowering Yucca

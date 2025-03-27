@@ -1,0 +1,5 @@
+polished_soapstone
+polished_travertine
+dacite_bricks
+red_rock_bricks
+scoria_stone_bricks

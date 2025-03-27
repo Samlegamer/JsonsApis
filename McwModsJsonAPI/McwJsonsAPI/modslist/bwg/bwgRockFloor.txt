@@ -1,0 +1,8 @@
+dacite
+red_rock
+pink_sand
+white_sand
+blue_sand
+purple_sand
+black_sand
+windswept_sand

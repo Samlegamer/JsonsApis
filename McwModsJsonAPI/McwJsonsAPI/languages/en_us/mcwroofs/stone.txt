@@ -1,0 +1,7 @@
+<%k_roof>: "%l Roof"
+<%k_attic_roof>: "%l Attic Roof"
+<%k_top_roof>: "%l Top Roof"
+<%k_lower_roof>: "%l Lower Base Roof"
+<%k_steep_roof>: "%l Steep Base Roof"
+<%k_upper_lower_roof>: "%l Lower Top Roof"
+<%k_upper_steep_roof>: "%l Steep Top Roof"

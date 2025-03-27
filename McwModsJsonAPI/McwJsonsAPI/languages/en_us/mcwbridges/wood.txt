@@ -1,0 +1,6 @@
+<%k_log_bridge_middle>: "%l Bridge"
+<rope_%k_bridge>: "Rope %l Bridge"
+<%k_bridge_pier>: "%l Bridge Support"
+<%k_log_bridge_stair>: "%l Bridge Stair"
+<%k_rope_bridge_stair>: "Rope %l Bridge Stair"
+<%k_rail_bridge>: "%l Rail Bridge"

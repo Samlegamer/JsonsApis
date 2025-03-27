@@ -1,0 +1,7 @@
+blue_blossom
+lavender_blossom
+orange_blossom
+pink_blossom
+red_blossom
+yellow_blossom
+ancient

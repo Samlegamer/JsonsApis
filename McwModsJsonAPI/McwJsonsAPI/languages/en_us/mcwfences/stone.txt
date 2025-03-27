@@ -1,0 +1,5 @@
+<modern_%k_wall>: "Modern %l Wall"
+<railing_%k_wall>: "Railing %l Wall"
+<%k_railing_gate>: "%l Railing Gate"
+<%k_pillar_wall>: "%l Pillar Wall"
+<%k_grass_topped_wall>: "%l Grass Topped Wall"

@@ -1,0 +1,4 @@
+<%k_bridge>: "%l Bridge"
+<%k_bridge_pier>: "%l Bridge Support"
+<%k_bridge_stair>: "%l Bridge Stair"
+<balustrade_%k_bridge>: "Balustrade %l Bridge"

@@ -1,0 +1,15 @@
+andesite
+basalt
+biotite_block
+diorite
+elder_prismarine
+granite
+jasper
+limestone
+magma_block
+marble
+permafrost
+red_sandstone
+sandstone
+slate
+soul_sandstone

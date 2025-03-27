@@ -1,0 +1,14 @@
+stone_brick
+andesite
+diorite
+granite
+blackstone
+sandstone
+red_sandstone
+nether_brick
+end_brick
+deepslate
+deepslate_brick
+quartz
+mud_brick
+prismarine

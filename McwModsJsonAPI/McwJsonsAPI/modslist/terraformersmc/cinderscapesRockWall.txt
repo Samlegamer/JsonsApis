@@ -1,0 +1,3 @@
+sulfur_quartz_bricks
+rose_quartz_bricks
+smoky_quartz_bricks

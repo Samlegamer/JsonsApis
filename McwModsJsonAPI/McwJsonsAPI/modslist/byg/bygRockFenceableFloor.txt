@@ -1,0 +1,5 @@
+soapstone
+travertine
+dacite
+red_rock
+scoria_stone

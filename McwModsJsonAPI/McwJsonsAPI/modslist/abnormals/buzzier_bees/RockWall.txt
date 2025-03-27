@@ -1,0 +1,2 @@
+honeycomb_bricks
+honeycomb_tiles

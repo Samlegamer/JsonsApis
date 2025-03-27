@@ -1,0 +1,7 @@
+cryptic_stone
+dacite_bricks
+polished_travertine
+purpur_stone
+red_rock_bricks
+scoria_stone_bricks
+soapstone_bricks

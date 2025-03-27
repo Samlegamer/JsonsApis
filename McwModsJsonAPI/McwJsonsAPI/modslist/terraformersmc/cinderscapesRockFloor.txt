@@ -1,0 +1,3 @@
+sulfur_quartz_block
+rose_quartz_block
+smoky_quartz_block

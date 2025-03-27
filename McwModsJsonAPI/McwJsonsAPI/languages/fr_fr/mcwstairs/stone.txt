@@ -1,0 +1,8 @@
+<%k_terrace_stairs>: "Escalier de terrasse en %l"
+<%k_skyline_stairs>: "Escalier horizontale en %l"
+<%k_compact_stairs>: "Escalier compact en %l"
+<%k_bulk_stairs>: "Escalier vraceux en %l"
+<%k_loft_stairs>: "Escalier de grenier en %l"
+<%k_railing>: "Rampe d'escalier en %l"
+<%k_balcony>: "Balcon en %l"
+<%k_platform>: "Plate-forme en %l"

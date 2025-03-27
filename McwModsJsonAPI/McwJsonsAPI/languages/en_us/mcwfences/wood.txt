@@ -1,0 +1,6 @@
+<%k_picket_fence>: "%l Picket Fence"
+<%k_stockade_fence>: "%l Stockade Fence"
+<%k_horse_fence>: "%l Horse Fence"
+<%k_wired_fence>: "%l Wired Fence"
+<%k_highley_gate>: "%l Highley Gate"
+<%k_pyramid_gate>: "%l Pyramid Gate"
