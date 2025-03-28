@@ -62,7 +62,7 @@ public class Aurora implements Presetting
 
 		for(String mcwMod : mcwMods)
 		{
-			ClientFolderTypes clientFolderType = getFoldersWoodWithMcwMod(mcwMod);
+			ClientFolderTypes clientFolderType = Reference.getFoldersWoodWithMcwMod(mcwMod);
 
 			System.out.println("Start Wood Client/Data " + mcwMod);
 			if(version.equals("1.16.5"))
@@ -361,22 +361,6 @@ public class Aurora implements Presetting
 		System.out.println("Done replacing");
 
 		System.out.println("Finish Aurora Registries");
-	}
-
-	private ClientFolderTypes getFoldersWoodWithMcwMod(String mcwMod)
-	{
-		return switch (mcwMod) {
-			case Compatibilities.MCW_ROOFS_MODID -> ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_FURNITURES_MODID -> ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL;
-			case Compatibilities.MCW_BRIDGES_MODID -> ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_FENCES_MODID -> ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_TRAPDOORS_MODID -> ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_PATHS_MODID -> ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_DOORS_MODID -> ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_WINDOWS_MODID -> ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD;
-			case Compatibilities.MCW_STAIRS_MODID -> ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD;
-			default -> ClientFolderTypes.DEFAULT;
-		};
 	}
 
 	private void genRsc(String LOCATION, String CompatModid, String txtLocMod, String ModidOfBaseMod, List<String> ID_WOOD, String compat, boolean isStem, McwModsRessources res, McwDataGen data)

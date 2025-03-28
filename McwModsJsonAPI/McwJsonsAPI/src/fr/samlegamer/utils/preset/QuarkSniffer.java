@@ -17,22 +17,12 @@ import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
 import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
-import fr.samlegamer.api.lang.BridgesLangGenerator;
-import fr.samlegamer.api.lang.DoorsLangGenerator;
-import fr.samlegamer.api.lang.FencesLangGenerator;
-import fr.samlegamer.api.lang.FurnituresLangGenerator;
-import fr.samlegamer.api.lang.PathsLangGenerator;
-import fr.samlegamer.api.lang.RoofsLangGenerator;
-import fr.samlegamer.api.lang.StairsLangGenerator;
-import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
-import fr.samlegamer.api.lang.WindowsLangGenerator;
+import fr.samlegamer.api.lang.*;
 import fr.samlegamer.api.lang.mod.English;
 import fr.samlegamer.registry.Compatibilities;
+import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
-import fr.samlegamer.utils.JsonsUtils;
-import fr.samlegamer.utils.ModsList;
-import fr.samlegamer.utils.Presetting;
 
 public class QuarkSniffer implements Presetting
 {
@@ -61,9 +51,9 @@ public class QuarkSniffer implements Presetting
 		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		ModsList.quarkWood119(MAT_WOOD);
-		ModsList.quarkLeaves120(LEAVES);
-		ModsList.quarkRock120(MAT_ROCK, WALL, FLOOR);
+		NewModsList.Quark.quarkWoodWarden(MAT_WOOD);
+		NewModsList.Quark.quarkLeavesSniffer(LEAVES);
+		NewModsList.Quark.quarkRockSniffer(MAT_ROCK, WALL, FLOOR);
 		
 		String TextureLocationFormodid = Compatibilities.QUARK_TEXTURE;
 		String ModidOfBaseMod = Compatibilities.QUARK_MODID;
@@ -132,21 +122,19 @@ public class QuarkSniffer implements Presetting
 		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
 		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
+		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 
-		English.Quark.quarkRock120Lang(MAJ_ROCK);
-		English.Quark.quarkWood119Lang(MAJ_WOOD);
-		English.Quark.quarkLeaves120Lang(LEAVES_LANG);
+		genLang(LOCATION, CompatModid, "en_us");
 
-		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
-		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
+//		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
 		
 		MAJ_WOOD.clear();
 		LEAVES_LANG.clear();
@@ -247,9 +235,16 @@ public class QuarkSniffer implements Presetting
 		tag.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
 	}
 	
-	private void genLangEnglish(String LOCATION, String CompatModid, ILang lang)
+	private void genLang(String LOCATION, String CompatModid, String language)
 	{
-		lang.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
-		lang.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
+		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+
+		LangMods.Quark.quarkRockSnifferLang(MAJ_ROCK, language);
+		LangMods.Quark.quarkWoodSnifferLang(MAJ_WOOD, language);
+		LangMods.Quark.quarkLeaveSnifferLang(LEAVES_LANG, language);
+
+		langSearcher.initWood(LOCATION, CompatModid, MAT_WOOD, MAJ_WOOD, language, Reference.allMcwMods());
+		langSearcher.initLeaves(LOCATION, CompatModid, LEAVES, LEAVES_LANG, language);
+		langSearcher.initRock(LOCATION, CompatModid, MAT_ROCK, MAJ_ROCK, language, Reference.allMcwModsStone());
 	}
 }

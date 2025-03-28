@@ -39,7 +39,8 @@ public interface IModFiles
 		void createStoneModelsBlocks(String LOCATION, String TextureLocationFormodid, List<String> MAT_ROCK, List<String> WALL, List<String> FLOOR);
 		void createStoneModelItem(String LOCATION, String CompatModid, List<String> MAT_ROCK);
 	}
-	
+
+	@Deprecated
 	public static interface IProgram
 	{
 		public static interface TabBuild
@@ -75,6 +76,7 @@ public interface IModFiles
 		}
 	}
 
+	@Deprecated
 	public static interface ILang
 	{
 		void initAllWoodEnglish(String CompatModid, List<String> MAT_WOOD, List<String> MAJ_MAT);

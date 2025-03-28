@@ -1,5 +1,6 @@
 package fr.samlegamer.utils;
 
+import fr.samlegamer.McwAPI;
 import fr.samlegamer.registry.Compatibilities;
 
 import java.io.BufferedReader;
@@ -30,6 +31,32 @@ public final class Reference
     // For Classic Vanilla Only
     public static final String minecraftFolder = "minecraft" + sep;
 
+    public static McwAPI.ClientFolderTypes getFoldersWoodWithMcwMod(String mcwMod)
+    {
+        return switch (mcwMod) {
+            case Compatibilities.MCW_ROOFS_MODID -> McwAPI.ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_FURNITURES_MODID -> McwAPI.ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL;
+            case Compatibilities.MCW_BRIDGES_MODID -> McwAPI.ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_FENCES_MODID -> McwAPI.ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_TRAPDOORS_MODID -> McwAPI.ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_PATHS_MODID -> McwAPI.ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_DOORS_MODID -> McwAPI.ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_WINDOWS_MODID -> McwAPI.ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_STAIRS_MODID -> McwAPI.ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD;
+            default -> McwAPI.ClientFolderTypes.DEFAULT;
+        };
+    }
+
+    public static McwAPI.ClientFolderTypes getFoldersStoneWithMcwMod(String mcwMod)
+    {
+        return switch (mcwMod) {
+            case Compatibilities.MCW_ROOFS_MODID -> McwAPI.ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD;
+            case Compatibilities.MCW_BRIDGES_MODID -> McwAPI.ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE;
+            case Compatibilities.MCW_FENCES_MODID -> McwAPI.ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE;
+            default -> McwAPI.ClientFolderTypes.DEFAULT;
+        };
+    }
+
     public static List<String> allMcwMods()
     {
         return List.of(
@@ -42,6 +69,14 @@ public final class Reference
                 Compatibilities.MCW_DOORS_MODID,
                 Compatibilities.MCW_WINDOWS_MODID,
                 Compatibilities.MCW_STAIRS_MODID);
+    }
+
+    public static List<String> allMcwModsStone()
+    {
+        return List.of(
+                Compatibilities.MCW_ROOFS_MODID,
+                Compatibilities.MCW_BRIDGES_MODID,
+                Compatibilities.MCW_FENCES_MODID);
     }
 
     public static void makeFileWithList(String LOCATION, String MODID, String fileName, List<String> list)

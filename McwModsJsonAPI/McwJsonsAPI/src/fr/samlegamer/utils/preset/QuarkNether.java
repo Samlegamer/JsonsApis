@@ -14,7 +14,6 @@ import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.lang.LangSearcher;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class QuarkNether implements Presetting
@@ -30,42 +29,6 @@ public class QuarkNether implements Presetting
 	protected static final List<String> LANG_LEAVE = new ArrayList<>();
 	private final ModLoaders modLoader = ModLoaders.FORGE;
 
-	protected void clearAll()
-	{
-		McwAPI.clears(ID_WOOD, ID_ROCK, WALL, FLOOR, LANG_WOOD, LANG_ROCK, ID_LEAVE, LANG_LEAVE);
-	}
-
-	protected void genHedges(String LOCATION, String CompatModid, List<String> ID_LEAVE, String TextureLocationFormodid, String ModidOfBaseMod, McwModsRessources client, McwDataGen dat)
-	{
-		client.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
-		client.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, ID_LEAVE, Boolean.FALSE, "acacia_wall");
-		client.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
-		dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
-		dat.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
-		dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
-	}
-
-	protected void genStoneBYG(String LOCATION, String CompatModid, List<String> ID_ROCK, List<String> WALL, List<String> FLOOR, String TextureLocationFormodid, String ModidOfBaseMod, String compat, 
-	McwModsRessources client, McwDataGen dat)
-	{
-		client.createStoneBlockstates(LOCATION, CompatModid, ID_ROCK);
-		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, ID_ROCK, WALL, FLOOR);
-		client.createStoneModelItem(LOCATION, CompatModid, ID_ROCK);
-		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, compat, ModidOfBaseMod, modLoader);
-		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
-		dat.LootTableStoneAll(LOCATION, CompatModid, ID_ROCK);
-	}
-	
-	protected void genLangStoneEn(String CompatModid, ILang lang)
-	{
-		lang.initAllStoneEnglish(CompatModid, ID_ROCK, LANG_ROCK);
-	}
-	
-	protected void genLangStoneFr(String CompatModid, ILang lang)
-	{
-		lang.initAllStoneFrench(CompatModid, ID_ROCK, LANG_ROCK);
-	}
-	
 	protected void genTagStone(String LOCATION, String CompatModid, ITagData tag)
 	{
 		tag.PickaxeDataGen(LOCATION, CompatModid, ID_ROCK);
@@ -168,7 +131,31 @@ public class QuarkNether implements Presetting
 			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "red_sandstone_bricks", "red_sandstone_bricks_top", "red_sandstone_bricks");
 			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "sandstone_bricks", "sandstone_bricks_top", "sandstone_bricks");
 		}
-
 	}
-	
+
+	protected void clearAll()
+	{
+		McwAPI.clears(ID_WOOD, ID_ROCK, WALL, FLOOR, LANG_WOOD, LANG_ROCK, ID_LEAVE, LANG_LEAVE);
+	}
+
+	protected void genHedges(String LOCATION, String CompatModid, List<String> ID_LEAVE, String TextureLocationFormodid, String ModidOfBaseMod, McwModsRessources client, McwDataGen dat)
+	{
+		client.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+		client.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, ID_LEAVE, Boolean.FALSE, "acacia_wall");
+		client.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+		dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+		dat.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+		dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+	}
+
+	protected void genStoneBYG(String LOCATION, String CompatModid, List<String> ID_ROCK, List<String> WALL, List<String> FLOOR, String TextureLocationFormodid, String ModidOfBaseMod, String compat,
+							   McwModsRessources client, McwDataGen dat)
+	{
+		client.createStoneBlockstates(LOCATION, CompatModid, ID_ROCK);
+		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, ID_ROCK, WALL, FLOOR);
+		client.createStoneModelItem(LOCATION, CompatModid, ID_ROCK);
+		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
+		dat.LootTableStoneAll(LOCATION, CompatModid, ID_ROCK);
+	}
 }

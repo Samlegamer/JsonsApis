@@ -33,7 +33,7 @@ public class McwMain
 		/*ModsList.BlueSkiesBsky1201(MAT_WOOD);
 		ModsList.PremiumWoodPwood(MAT_WOOD);
 		fixForPaleGarden("mcwmoddinglegacy", MAT_WOOD);*/
-		preset(new Aurora("1.20.1"));
+		preset(new BOP(true, "1.21", ModLoaders.FORGE));
 	}
 	
 	

@@ -1,11 +1,14 @@
 package fr.samlegamer.utils;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -129,79 +132,87 @@ public final class JsonsUtils
 		}
 	}
 
-	
-	public static void PreReplacedRecipe1213(String LOCATION) {
-	    File outputDir = new File("convert");
-	    if (!outputDir.exists()) {
-	        outputDir.mkdir();
-	    }
+    public static void addToLangStone(String LOCATION, String compatId, List<String> ID_ROCK,
+                                List<String> LANG_ROCK, String language, List<String> modidCharged) {
+        Path file = Paths.get(LOCATION, language + "(STONE).json");
 
-        File directory = new File(LOCATION);
-        File[] files = directory.listFiles((dir, name) -> name.endsWith(".json"));
-
-        if (files == null || files.length == 0) {
-            System.out.println("❌ Aucun fichier JSON trouvé dans '" + LOCATION + "' !");
-            return;
-        }
-
-        for (File file : files) {
-            try {
-                // Lire le contenu du fichier
-                String content = Files.readString(file.toPath());
-                System.out.println("\n🔹 JSON d'origine de " + file.getName() + " :\n" + content);
-
-                // Supprimer les conditions (optionnel)
-                content = removeConditions(content);
-
-                // Convertir le format JSON
-                String convertedContent = convertRecipeFormat(content);
-                System.out.println("\n🔹 JSON converti :\n" + convertedContent);
-
-                // Trouver le nom du fichier basé sur "result" : { "id": "mod:item" }
-                String outputFilename = file.getName();
-                Matcher matcher = Pattern.compile("\"id\"\\s*:\\s*\"([a-z0-9_]+):([a-z0-9_]+)\"").matcher(convertedContent);
-                if (matcher.find()) {
-                    outputFilename = matcher.group(2) + ".json";
-                }
-
-                // Sauvegarder le fichier converti
-                Files.writeString(Path.of("convert", outputFilename), convertedContent);
-                System.out.println("✅ Converti : " + file.getName() + " → " + outputFilename);
-
-            } catch (Exception e) {
-                System.err.println("❌ Erreur lors de la conversion de " + file.getName());
-                e.printStackTrace();
+        try {
+            // Lire l'ancien JSON si le fichier existe
+            StringBuilder ancienJson = new StringBuilder();
+            if (Files.exists(file)) {
+                ancienJson.append(Files.readString(file, StandardCharsets.UTF_8).trim());
             }
-        }
 
-        System.out.println("\n🎉 Conversion terminée ! Les fichiers sont dans 'convert/'.");
+            // Construire les nouvelles entrées JSON
+            StringBuilder nouvellesEntrees = new StringBuilder();
+            nouvellesEntrees.append("{\n");
+
+            List<String> keys = new ArrayList<>();
+            List<String> languages = new ArrayList<>();
+
+            final String baseFile = "stone.txt";
+
+            for (String folder : modidCharged) {
+                Path directoryForLang = Path.of("READER", language, folder, baseFile);
+
+                try (BufferedReader br2 = Files.newBufferedReader(directoryForLang)) {
+                    br2.lines().forEach(line -> {
+                        final String key = getWithDelimiter(line, '<', '>');
+                        final String lang = getWithDelimiter(line, '"');
+                        keys.add(key);
+                        languages.add(lang);
+                    });
+                } catch (IOException e) {
+                    System.err.println("Erreur lors de la lecture du fichier : " + directoryForLang);
+                    e.printStackTrace();
+                }
+            }
+
+            boolean firstEntry = true;
+            if (languages.size() == keys.size()) {
+                for (int i = 0; i < keys.size(); i++) {
+                    if (ID_ROCK.size() == LANG_ROCK.size()) {
+                        for (int k = 0; k < LANG_ROCK.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_ROCK.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_ROCK.get(k));
+
+                            if (!firstEntry) {
+                                nouvellesEntrees.append(",\n");
+                            }
+                            nouvellesEntrees.append("  \"block.").append(compatId).append(".").append(key).append("\": \"").append(lang).append("\"");
+                            firstEntry = false;
+                        }
+                    }
+                }
+            }
+
+            // Ajouter l'ancien JSON après les nouvelles entrées
+            if (!ancienJson.isEmpty() && !ancienJson.toString().equals("{}")) {
+                if (!firstEntry) {
+                    nouvellesEntrees.append(",\n");
+                }
+                nouvellesEntrees.append(ancienJson.substring(1)); // Enlever la première accolade '{'
+            } else {
+                nouvellesEntrees.append("\n}");
+            }
+
+            // Écriture dans le fichier
+            Files.writeString(file, nouvellesEntrees.toString(), StandardCharsets.UTF_8);
+            System.out.println("Mise à jour réussie !");
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture du fichier : " + file);
+            e.printStackTrace();
+        }
     }
 
-    private static String removeConditions(String json) {
-        // Supprime les "conditions": [...] du JSON (facultatif)
-        return json.replaceAll("\"conditions\"\\s*:\\s*\\[.*?],", "");
+    private static String getWithDelimiter(String line, char start, char end) {
+        int startIndex = line.indexOf(start) + 1;
+        int endIndex = line.indexOf(end, startIndex);
+        return (startIndex > 0 && endIndex > startIndex) ? line.substring(startIndex, endIndex) : "";
     }
 
-    private static String convertRecipeFormat(String json) {
-        // Remplace les anciennes clés JSON dans "key" pour shaped
-        Pattern shapedPattern = Pattern.compile("\"([a-zA-Z0-9_])\"\\s*:\\s*\\{\\s*\"item\"\\s*:\\s*\"([^\"]+)\"\\s*}");
-        Matcher shapedMatcher = shapedPattern.matcher(json);
-        StringBuffer sb = new StringBuffer();
-        while (shapedMatcher.find()) {
-            shapedMatcher.appendReplacement(sb, "\"" + shapedMatcher.group(1) + "\": \"" + shapedMatcher.group(2) + "\"");
-        }
-        shapedMatcher.appendTail(sb);
-        json = sb.toString();
-
-        // Remplace les ingrédients dans "ingredients" pour shapeless
-        Pattern shapelessPattern = Pattern.compile("\\{\\s*\"item\"\\s*:\\s*\"([^\"]+)\"\\s*}");
-        Matcher shapelessMatcher = shapelessPattern.matcher(json);
-        sb = new StringBuffer();
-        while (shapelessMatcher.find()) {
-            shapelessMatcher.appendReplacement(sb, "\"" + shapelessMatcher.group(1) + "\"");
-        }
-        shapelessMatcher.appendTail(sb);
-
-        return sb.toString();
+    private static String getWithDelimiter(String line, char delimiter) {
+        int index = line.indexOf(delimiter);
+        return (index >= 0) ? line.substring(index + 1) : "";
     }
 }

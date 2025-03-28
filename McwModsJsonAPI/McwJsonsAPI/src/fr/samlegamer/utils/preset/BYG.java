@@ -17,68 +17,40 @@ import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
 import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
-import fr.samlegamer.api.lang.BridgesLangGenerator;
-import fr.samlegamer.api.lang.DoorsLangGenerator;
-import fr.samlegamer.api.lang.FencesLangGenerator;
-import fr.samlegamer.api.lang.FurnituresLangGenerator;
-import fr.samlegamer.api.lang.PathsLangGenerator;
-import fr.samlegamer.api.lang.RoofsLangGenerator;
-import fr.samlegamer.api.lang.StairsLangGenerator;
-import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
-import fr.samlegamer.api.lang.WindowsLangGenerator;
-import fr.samlegamer.api.lang.mod.English;
-import fr.samlegamer.api.lang.mod.French;
+import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
-import fr.samlegamer.utils.ModsList;
-import fr.samlegamer.utils.Presetting;
+import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
-import fr.samlegamer.utils.JsonsUtils;
 
 public class BYG implements Presetting
 {
-	protected static final List<String> MAT_WOOD = new ArrayList<String>();
-	protected static final List<String> MAT_ROCK = new ArrayList<String>();
-	protected static final List<String> WALL = new ArrayList<String>();
-	protected static final List<String> FLOOR = new ArrayList<String>();
-	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
-	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
-	protected static final List<String> LEAVES = new ArrayList<String>();
-	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
-	
-	private boolean bridges;
-	private boolean roofs;
-	private boolean fences;
-	private boolean furnitures;
-	private boolean stairs;
-	private boolean paths;
-	private boolean trapdoors;
-	private boolean doors;
-	private boolean windows;
-	private ModLoaders modLoader;
+	protected static final List<String> ID_WOOD = new ArrayList<>();
+	protected static final List<String> ID_ROCK = new ArrayList<>();
+	protected static final List<String> WALL = new ArrayList<>();
+	protected static final List<String> FLOOR = new ArrayList<>();
+	protected static final List<String> ID_LEAVE = new ArrayList<>();
 
-	public BYG(boolean bridges, boolean roofs, boolean fences, boolean furnitures, boolean stairs, boolean trapdoors, boolean doors, boolean windows, boolean paths, ModLoaders modLoader)
+	protected static final List<String> LANG_WOOD = new ArrayList<>();
+	protected static final List<String> LANG_ROCK = new ArrayList<>();
+	protected static final List<String> LANG_LEAVE = new ArrayList<>();
+	
+	private final List<String> mcwMods;
+	private final ModLoaders modLoader;
+
+	public BYG(List<String> mcwMods, ModLoaders modLoader)
 	{
-		this.bridges = bridges;
-		this.roofs = roofs;
-		this.fences = fences;
-		this.furnitures = furnitures;
-		this.stairs = stairs;
-		this.trapdoors = trapdoors;
-		this.doors = doors;
-		this.windows = windows;
-		this.paths = paths;
 		this.modLoader=modLoader;
+		this.mcwMods=mcwMods;
 	}
 	
 	public BYG(ModLoaders modLoader)
 	{
-		this(true, true, true, true, true, true, true, true, true, modLoader);
+		this(Reference.allMcwMods(), modLoader);
 	}
-	
+
 	@Override
-	public void init(String LOCATION)
-	{
+	public void init(String LOCATION) {
 		McwAPI.BridgesGenFolder(LOCATION);
 		McwAPI.RoofsGenFolder(LOCATION);
 		McwAPI.FencesGenFolder(LOCATION);
@@ -93,227 +65,250 @@ public class BYG implements Presetting
 		String TextureLocationFormodid = Compatibilities.BYG_TEXTURES;
 		String ModidOfBaseMod = Compatibilities.BYG_MODID;
 		String CompatModid = "mcwbyg";
-		System.out.println("Start Wood Data/Client");
-		ModsList.byg(MAT_WOOD, false);
-		ModsList.bygLeaves(LEAVES);
 
-		if(bridges)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_BRIDGES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
-		}
-		
-		if(fences)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_FENCES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
-		}
-		
-		if(roofs)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_ROOFS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-		}
-		
-		if(furnitures)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_FURNITURES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
-					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-		}
-		
-		if(stairs)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_STAIRS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-		}
-		
-		if(trapdoors)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_TRAPDOORS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
-		}
-		
-		if(doors)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_DOORS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_DOORS_MODID));
-		}
-		
-		if(windows)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_WINDOWS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
-		}
-		
-		if(paths)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_PATHS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_PATHS_MODID));
-		}
-		
-		MAT_WOOD.clear();
-		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		
-		ModsList.byg(MAT_WOOD, true);
+		NewModsList.BYG.bygWood(ID_WOOD, false);
+		NewModsList.BYG.bygLeaves(ID_LEAVE);
 
-		if(bridges)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_BRIDGES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
-		}
-		
-		if(fences)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_FENCES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
-		}
-		
-		if(roofs)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_ROOFS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-		}
-		
-		if(furnitures)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_FURNITURES_MODID, 
-					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
-					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-		}
-		
-		if(stairs)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_STAIRS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-		}
-		
-		if(trapdoors)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_TRAPDOORS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
-		}
-		
-		if(doors)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_DOORS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_DOORS_MODID));
-		}
-		
-		if(windows)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_WINDOWS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
-		}
-		
+		for (String mcwMod : mcwMods) {
+			ClientFolderTypes clientFolderType = Reference.getFoldersWoodWithMcwMod(mcwMod);
 
-		if(paths)
-		{
-			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_PATHS_MODID, 
-					new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
-					new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+			System.out.println("Start Wood Client/Data LOG " + mcwMod);
+
+			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, mcwMod,
+					new McwModsRessources(mcwMod, clientFolderType),
+					new McwDataGen(mcwMod));
+
+			System.out.println("Done Wood Client/Data LOG " + mcwMod);
 		}
-		
-		MAT_WOOD.clear();
-		System.out.println("Done Wood Data/Client");
-		System.out.println("Start Stone Data/Client");
-		ModsList.bygRockFenceable(MAT_ROCK, WALL, FLOOR);
-		
-		if(roofs)
+
+		ID_WOOD.clear();
+		ID_LEAVE.clear();
+		NewModsList.BYG.bygWood(ID_WOOD, true);
+
+		for (String mcwMod : mcwMods) {
+			ClientFolderTypes clientFolderType = Reference.getFoldersWoodWithMcwMod(mcwMod);
+
+			System.out.println("Start Wood Client/Data STEM " + mcwMod);
+
+			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, mcwMod,
+					new McwModsRessources(mcwMod, clientFolderType),
+					new McwDataGen(mcwMod));
+
+			System.out.println("Done Wood Client/Data STEM " + mcwMod);
+		}
+
+		ID_WOOD.clear();
+		System.out.println("Start Wood Client/Data ROCK");
+		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);
+
+		if(mcwMods.contains(Compatibilities.MCW_ROOFS_MODID))
 		{
 			genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID,
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
 					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
 		}
-		
-		if(fences)
+
+		if(mcwMods.contains(Compatibilities.MCW_FENCES_MODID))
 		{
 			genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_FENCES_MODID,
 					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE),
 					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
 		}
-		
-		MAT_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
-		LEAVES.clear();
-		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
-		
-		if(bridges)
+
+		McwAPI.clears(ID_ROCK, WALL, FLOOR);
+		NewModsList.BYG.bygRock(ID_ROCK, WALL, FLOOR);
+
+		if(mcwMods.contains(Compatibilities.MCW_BRIDGES_MODID))
 		{
 			genStoneRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID,
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE),
 					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
 		}
-		
-		System.out.println("Done Stone Data/Client");
-		
-		ModsList.byg(MAT_WOOD);
-		ModsList.bygLeaves(LEAVES);
-		ModsList.bygRock(MAT_ROCK, WALL, FLOOR);
+
+		McwAPI.clears(ID_ROCK, WALL, FLOOR);
+		System.out.println("Done Wood Client/Data ROCK");
+
+		NewModsList.BYG.bygWood(ID_WOOD);
+		NewModsList.BYG.bygLeaves(ID_LEAVE);
+		NewModsList.BYG.bygRock(ID_ROCK, WALL, FLOOR);
 
 		System.out.println("Start Generate Tags");
 		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-		MAT_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
-		ModsList.bygRockFenceable(MAT_ROCK, WALL, FLOOR);
+		McwAPI.clears(ID_ROCK, WALL, FLOOR);
+		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);
 		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, new FencesTagsGenerator(LEAVES));
+		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
 		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
 		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
+		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
+		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 		System.out.println("Done Generate Tags");
 
-		System.out.println("Start Generate English Files");
-		English.BYG.bygLeavesLang(LEAVES_LANG);
-		English.BYG.bygLang(MAJ_WOOD);
-		English.BYG.bygRockFenceableLang(MAJ_ROCK);
-		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
-		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
-		System.out.println("Done Generate English Files");
+		genLang(LOCATION, CompatModid, "en_us");
+		genLang(LOCATION, CompatModid, "fr_fr");
 
-		System.out.println("Start Generate French Files");
-		McwAPI.clears(MAJ_WOOD, MAJ_ROCK, LEAVES_LANG);
-		French.BYG.bygLeavesLang(LEAVES_LANG);
-		French.BYG.bygLang(MAJ_WOOD);
-		French.BYG.bygRockFenceableLang(MAJ_ROCK);
-		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
-		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
+//		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
+
+//		System.out.println("Start Generate French Files");
+//		McwAPI.clears(LANG_WOOD, LANG_ROCK, LANG_LEAVE);
+//		French.BYG.bygLeavesLang(LANG_LEAVE);
+//		French.BYG.bygLang(LANG_WOOD);
+//		French.BYG.bygRockFenceableLang(LANG_ROCK);
+//		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
+//		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
+//
+//		McwAPI.clears(LANG_ROCK, ID_ROCK, WALL, FLOOR);
+////		genLangBridges(CompatModid);
+//		System.out.println("Done Generate French Files");
+//		if(bridges)
+//		{
+//		}
+//
+//		if(fences)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_FENCES_MODID,
+//					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
+//		}
+//
+//		if(roofs)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_ROOFS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+//		}
+//
+//		if(furnitures)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_FURNITURES_MODID,
+//					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
+//					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
+//		}
+//
+//		if(stairs)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_STAIRS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
+//		}
+//
+//		if(trapdoors)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_TRAPDOORS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
+//		}
+//
+//		if(doors)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_DOORS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_DOORS_MODID));
+//		}
+//
+//		if(windows)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_WINDOWS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
+//		}
+//
+//		if(paths)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false, Compatibilities.MCW_PATHS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+//		}
+//
+		//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 		
-		McwAPI.clears(MAJ_ROCK, MAT_ROCK, WALL, FLOOR);		
-		genLangBridges(CompatModid);
-		System.out.println("Done Generate French Files");
+
+//		if(bridges)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_BRIDGES_MODID,
+//					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
+//		}
+//
+//		if(fences)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_FENCES_MODID,
+//					new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_FENCES_MODID));
+//		}
+//
+//		if(roofs)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_ROOFS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
+//		}
+//
+//		if(furnitures)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_FURNITURES_MODID,
+//					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
+//					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
+//		}
+//
+//		if(stairs)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_STAIRS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
+//		}
+//
+//		if(trapdoors)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_TRAPDOORS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
+//		}
+//
+//		if(doors)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_DOORS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_DOORS_MODID));
+//		}
+//
+//		if(windows)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_WINDOWS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
+//		}
+//
+//
+//		if(paths)
+//		{
+//			genWoodRsc(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true, Compatibilities.MCW_PATHS_MODID,
+//					new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
+//					new McwDataGen(Compatibilities.MCW_PATHS_MODID));
+//		}
+
+//		System.out.println("Done Wood Data/Client");
+//		System.out.println("Start Stone Data/Client");
+
+		
+		//System.out.println("Done Stone Data/Client");
+		
+
 		
 		/* Replace Error for textures  */
 		
@@ -358,74 +353,80 @@ public class BYG implements Presetting
 
 		System.out.println("Finish Registries");
 	}
+
+	private void genLang(String LOCATION, String CompatModid, String language)
+	{
+		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		System.out.println("Start Generate "+language+" Files");
+		LangMods.BYG.bygLeaveLang(LANG_LEAVE, language);
+		LangMods.BYG.bygWoodLang(LANG_WOOD, language);
+		LangMods.BYG.bygRockFencesAndRoofsLang(LANG_ROCK, language);
+
+		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, mcwMods);
+		langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
+		langSearcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, List.of(Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
+
+		McwAPI.clears(ID_ROCK, WALL, FLOOR, LANG_ROCK);
+		NewModsList.BYG.bygRock(ID_ROCK, WALL, FLOOR);
+		LangMods.BYG.bygRockBridgesLang(LANG_ROCK, language);
+		JsonsUtils.addToLangStone(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, List.of(Compatibilities.MCW_BRIDGES_MODID));
+		System.out.println("Done Generate "+language+" Files");
+		McwAPI.clears(LANG_WOOD, LANG_ROCK, LANG_LEAVE);
+	}
 	
 	/* Separed method for remove error */
-	private void genLangBridges(String CompatModid)
-	{
-		List<String> A = new ArrayList<String>();
-		List<String> W = new ArrayList<String>();
-		List<String> F = new ArrayList<String>();
-		List<String> MAJ = new ArrayList<String>();
-		BridgesLangGenerator lang = new BridgesLangGenerator();
-		
-		ModsList.bygRock(A, W, F);
-		English.BYG.bygRockLang(MAJ);
-		lang.initAllStoneEnglish(CompatModid, A, MAJ);
-		MAJ.clear();
-		French.BYG.bygRockLang(MAJ);
-		lang.initAllStoneFrench(CompatModid, A, MAJ);
-	}
+//	private void genLangBridges(String CompatModid)
+//	{
+//		List<String> A = new ArrayList<String>();
+//		List<String> W = new ArrayList<String>();
+//		List<String> F = new ArrayList<String>();
+//		List<String> MAJ = new ArrayList<String>();
+//		BridgesLangGenerator lang = new BridgesLangGenerator();
+//
+//		lang.initAllStoneEnglish(CompatModid, A, MAJ);
+//		MAJ.clear();
+//		French.BYG.bygRockLang(MAJ);
+//		lang.initAllStoneFrench(CompatModid, A, MAJ);
+//	}
 	
 	protected void genWoodRsc(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, boolean isStem, String compatmcw, McwModsRessources client, McwDataGen data)
 	{
 		client.setModid(CompatModid);
-		client.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-		client.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		client.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, isStem);
-		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
-		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
-		data.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+		client.createWoodBlockstates(LOCATION, CompatModid, ID_WOOD);
+		client.createWoodModelItem(LOCATION, CompatModid, ID_WOOD);
+		client.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, ID_WOOD, isStem);
+		data.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, isStem, compatmcw, ModidOfBaseMod, modLoader);
+		data.LootTableLogAll(LOCATION, CompatModid, ID_WOOD);
 		
 		if(compatmcw.equals(Compatibilities.MCW_FENCES_MODID))
 		{
-			client.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			client.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
-			client.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
-			data.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+			client.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			client.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, ID_LEAVE, Boolean.FALSE, "acacia_wall");
+			client.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			data.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+			data.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			data.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 
 	}
 	
 	protected void genStoneRsc(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compatmcw, McwModsRessources client, McwDataGen data)
 	{
-		client.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
-		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
-		client.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK,compatmcw, ModidOfBaseMod, modLoader);
-		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, WALL, compatmcw, ModidOfBaseMod, modLoader);
-		data.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
+		client.createStoneBlockstates(LOCATION, CompatModid, ID_ROCK);
+		client.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, ID_ROCK, WALL, FLOOR);
+		client.createStoneModelItem(LOCATION, CompatModid, ID_ROCK);
+		data.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK,compatmcw, ModidOfBaseMod, modLoader);
+		data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, WALL, compatmcw, ModidOfBaseMod, modLoader);
+		data.LootTableStoneAll(LOCATION, CompatModid, ID_ROCK);
 	}
 	
 	private void genTags(String LOCATION, String CompatModid, ITagData tag)
 	{
-		tag.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
-		tag.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
-		tag.HoeDataGenWood(LOCATION, CompatModid, LEAVES);
-		tag.TagsWood(LOCATION, CompatModid, MAT_WOOD);
-		tag.TagsRock(LOCATION, CompatModid, MAT_ROCK);
-	}
-	
-	private void genLangEnglish(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
-		lang.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
-	}
-	
-	private void genLangFrench(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
-		lang.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		tag.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+		tag.PickaxeDataGen(LOCATION, CompatModid, ID_ROCK);
+		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
+		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
+		tag.TagsRock(LOCATION, CompatModid, ID_ROCK);
 	}
 }

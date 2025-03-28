@@ -68,7 +68,7 @@ public class LangSearcher {
         return getWithDelimiter(line, delimiter, delimiter);
     }
 
-    public void initWood(String LOCATION, String compatId, List<String> MAT_WOOD, List<String> MAJ_WOOD, String language, List<String> modidCharged) {
+    public void initWood(String LOCATION, String compatId, List<String> ID_WOOD, List<String> LANG_WOOD, String language, List<String> modidCharged) {
         Path file = Paths.get(LOCATION, language + "(WOOD).json");
 
         try (BufferedWriter bw = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
@@ -102,10 +102,10 @@ public class LangSearcher {
 
             if (languages.size() == keys.size()) {
                 for (int i = 0; i < keys.size(); i++) {
-                    if (MAT_WOOD.size() == MAJ_WOOD.size()) {
-                        for (int k = 0; k < MAJ_WOOD.size(); k++) {
-                            final String key = keys.get(i).replace("%k", MAT_WOOD.get(k));
-                            final String lang = languages.get(i).replace("%l", MAJ_WOOD.get(k));
+                    if (ID_WOOD.size() == LANG_WOOD.size()) {
+                        for (int k = 0; k < LANG_WOOD.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_WOOD.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_WOOD.get(k));
                             if (k != 0) {
                                 bw.write(",");
                                 bw.newLine();
@@ -129,7 +129,7 @@ public class LangSearcher {
         }
     }
 
-    public void initLeaves(String LOCATION, String compatId, List<String> MAT_LEAVE, List<String> MAJ_LEAVE, String language) {
+    public void initLeaves(String LOCATION, String compatId, List<String> ID_LEAVE, List<String> LANG_LEAVE, String language) {
         Path file = Paths.get(LOCATION, language + "(LEAVE).json");
 
         try (BufferedWriter bw = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
@@ -165,10 +165,10 @@ public class LangSearcher {
 
             if (languages.size() == keys.size()) {
                 for (int i = 0; i < keys.size(); i++) {
-                    if (MAT_LEAVE.size() == MAJ_LEAVE.size()) {
-                        for (int k = 0; k < MAJ_LEAVE.size(); k++) {
-                            final String key = keys.get(i).replace("%k", MAT_LEAVE.get(k));
-                            final String lang = languages.get(i).replace("%l", MAJ_LEAVE.get(k));
+                    if (ID_LEAVE.size() == LANG_LEAVE.size()) {
+                        for (int k = 0; k < LANG_LEAVE.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_LEAVE.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_LEAVE.get(k));
                             if (k != 0) {
                                 bw.write(",");
                                 bw.newLine();
@@ -192,7 +192,7 @@ public class LangSearcher {
         }
     }
 
-    public void initRock(String LOCATION, String compatId, List<String> MAT_ROCK, List<String> MAJ_ROCK, String language, List<String> modidCharged) {
+    public void initRock(String LOCATION, String compatId, List<String> ID_ROCK, List<String> LANG_ROCK, String language, List<String> modidCharged) {
         Path file = Paths.get(LOCATION, language + "(STONE).json");
 
         try (BufferedWriter bw = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
@@ -226,10 +226,10 @@ public class LangSearcher {
 
             if (languages.size() == keys.size()) {
                 for (int i = 0; i < keys.size(); i++) {
-                    if (MAT_ROCK.size() == MAJ_ROCK.size()) {
-                        for (int k = 0; k < MAJ_ROCK.size(); k++) {
-                            final String key = keys.get(i).replace("%k", MAT_ROCK.get(k));
-                            final String lang = languages.get(i).replace("%l", MAJ_ROCK.get(k));
+                    if (ID_ROCK.size() == LANG_ROCK.size()) {
+                        for (int k = 0; k < LANG_ROCK.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_ROCK.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_ROCK.get(k));
                             if (k != 0) {
                                 bw.write(",");
                                 bw.newLine();
