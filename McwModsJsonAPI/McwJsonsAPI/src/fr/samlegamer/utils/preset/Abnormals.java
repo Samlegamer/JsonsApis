@@ -645,6 +645,16 @@ public class Abnormals implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "honeycomb_brick", "\"buzzier_bees:honeycomb_brick\"", "\"buzzier_bees:honeycomb_bricks\"");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "honeycomb_tile", "\"buzzier_bees:honeycomb_tile\"", "\"buzzier_bees:honeycomb_tiles\"");
 
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "wisteria_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "wisteria_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "driftwood_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "driftwood_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "poise_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "poise_hedge.json");
+
 		System.out.println("Finish Abnormals Registries");
 	}
 

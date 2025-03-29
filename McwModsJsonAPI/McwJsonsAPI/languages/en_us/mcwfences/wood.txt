@@ -4,3 +4,4 @@
 <%k_wired_fence>: "%l Wired Fence"
 <%k_highley_gate>: "%l Highley Gate"
 <%k_pyramid_gate>: "%l Pyramid Gate"
+<%k_curved_gate>: "%l Curved Gate"

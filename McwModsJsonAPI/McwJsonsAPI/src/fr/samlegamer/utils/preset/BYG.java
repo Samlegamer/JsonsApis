@@ -146,6 +146,7 @@ public class BYG implements Presetting
 		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 		System.out.println("Done Generate Tags");
 
+		McwAPI.clears(ID_ROCK, WALL, FLOOR);
 		genLang(LOCATION, CompatModid, "en_us");
 		genLang(LOCATION, CompatModid, "fr_fr");
 
@@ -351,6 +352,23 @@ public class BYG implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "scoria_stone", "scoria_stone_brick_slab", "scoria_stonebrick_slab");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "scoria_stone", "scoria_stone_brick_slab", "scoria_stonebrick_slab");
 
+
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "imparius_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "imparius_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "nightshade_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "nightshade_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "bulbis_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "bulbis_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "sythian_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "sythian_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "cherry_hedge.json");
+
 		System.out.println("Finish Registries");
 	}
 
@@ -358,6 +376,8 @@ public class BYG implements Presetting
 	{
 		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
 		System.out.println("Start Generate "+language+" Files");
+		McwAPI.clears(ID_ROCK, WALL, FLOOR, LANG_ROCK);
+		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);
 		LangMods.BYG.bygLeaveLang(LANG_LEAVE, language);
 		LangMods.BYG.bygWoodLang(LANG_WOOD, language);
 		LangMods.BYG.bygRockFencesAndRoofsLang(LANG_ROCK, language);
@@ -370,8 +390,8 @@ public class BYG implements Presetting
 		NewModsList.BYG.bygRock(ID_ROCK, WALL, FLOOR);
 		LangMods.BYG.bygRockBridgesLang(LANG_ROCK, language);
 		JsonsUtils.addToLangStone(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, List.of(Compatibilities.MCW_BRIDGES_MODID));
-		System.out.println("Done Generate "+language+" Files");
 		McwAPI.clears(LANG_WOOD, LANG_ROCK, LANG_LEAVE);
+		System.out.println("Done Generate "+language+" Files");
 	}
 	
 	/* Separed method for remove error */

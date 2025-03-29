@@ -35,9 +35,14 @@ public class Aurora implements Presetting
 		this.mcwMods=mcwMods;
 	}
 	
+	public Aurora(String version, ModLoaders modLoader)
+	{
+		this(version, Reference.allMcwMods(), modLoader);
+	}
+
 	public Aurora(String version)
 	{
-		this(version, Reference.allMcwMods(), ModLoaders.FORGE);
+		this(version, ModLoaders.FORGE);
 	}
 
 	@Override
@@ -357,6 +362,12 @@ public class Aurora implements Presetting
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
 		}
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "red_mushroom_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "red_mushroom_hedge.json");
+
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "brown_mushroom_hedge.json");
+		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "brown_mushroom_hedge.json");
 
 		System.out.println("Done replacing");
 

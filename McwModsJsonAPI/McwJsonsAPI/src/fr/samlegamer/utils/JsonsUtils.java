@@ -153,7 +153,7 @@ public final class JsonsUtils
             final String baseFile = "stone.txt";
 
             for (String folder : modidCharged) {
-                Path directoryForLang = Path.of("READER", language, folder, baseFile);
+                Path directoryForLang = Path.of(McwAPI.READER_MCW_LANG, language, folder, baseFile);
 
                 try (BufferedReader br2 = Files.newBufferedReader(directoryForLang)) {
                     br2.lines().forEach(line -> {
@@ -179,7 +179,7 @@ public final class JsonsUtils
                             if (!firstEntry) {
                                 nouvellesEntrees.append(",\n");
                             }
-                            nouvellesEntrees.append("  \"block.").append(compatId).append(".").append(key).append("\": \"").append(lang).append("\"");
+                            nouvellesEntrees.append("  \"block.").append(compatId).append(".").append(key).append("\": \"").append(lang).append("");
                             firstEntry = false;
                         }
                     }

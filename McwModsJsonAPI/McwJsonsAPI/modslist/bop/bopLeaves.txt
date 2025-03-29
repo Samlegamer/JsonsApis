@@ -12,7 +12,7 @@ willow
 maple
 orange_autumn
 yellow_autumn
-snowblossom
+white_cherry
 flowering_oak
 rainbow_birch
 origin

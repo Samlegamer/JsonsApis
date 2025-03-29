@@ -3,12 +3,8 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
-import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.preset.Aurora;
-import fr.samlegamer.utils.preset.BOP;
-import fr.samlegamer.utils.preset.QuarkNether;
+import fr.samlegamer.utils.preset.*;
 
 public class McwMain
 {	
@@ -26,14 +22,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		/* Reload recipes for quark and modding legacy */
-		
-		
-		//JsonsUtils.PreReplacedRecipe1213(LOCATION + ClassicFolderTypes.RECIPE.getPath());
-		/*ModsList.BlueSkiesBsky1201(MAT_WOOD);
-		ModsList.PremiumWoodPwood(MAT_WOOD);
-		fixForPaleGarden("mcwmoddinglegacy", MAT_WOOD);*/
-		preset(new BOP(true, "1.21", ModLoaders.FORGE));
+		preset(new Aurora("1.16.5"));
 	}
 	
 	

@@ -53,6 +53,7 @@ public class McwAPI
 		result.add("wired"+File.separator);
 		result.add("pyramid_gate"+File.separator);
 		result.add("hedges"+File.separator);
+		result.add("double_gate"+File.separator);
 		return result;
 	}
 	
@@ -311,6 +312,7 @@ public class McwAPI
 		registerFolder(location, "models/block/wired/");
 		registerFolder(location, "models/block/pyramid_gate/");
 		registerFolder(location, "models/block/hedges/");
+		registerFolder(location, "models/block/double_gate/");
 		
 		registerFolder(location, "models/block/grass_topped/");
 		registerFolder(location, "models/block/pillar/");

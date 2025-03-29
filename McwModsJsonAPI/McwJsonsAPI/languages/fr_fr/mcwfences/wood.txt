@@ -4,3 +4,4 @@
 <%k_wired_fence>: "Clôture grillagée en %l"
 <%k_highley_gate>: "Grand portillon en %l"
 <%k_pyramid_gate>: "Portillon pyramidal en %l"
+<%k_curved_gate>: "Portail courbé en %l"
