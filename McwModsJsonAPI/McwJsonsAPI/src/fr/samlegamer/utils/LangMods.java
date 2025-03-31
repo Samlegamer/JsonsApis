@@ -180,6 +180,10 @@ public class LangMods {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, sajeviusFolder + "sajeviusWoodLang", LANG_WOOD);
         }
 
+        public static void sajeviusLeaveLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, sajeviusFolder + "sajeviusLeaveLang", LANG_LEAVE);
+        }
+
         public static void sajeviusRockLang(List<String> LANG_ROCK, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, sajeviusFolder + "sajeviusRockLang", LANG_ROCK);
         }

@@ -1,7 +1,6 @@
 package fr.samlegamer.utils;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -10,12 +9,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwMain;
+import fr.samlegamer.registry.Compatibilities;
 
 public final class JsonsUtils
 {
@@ -175,6 +173,152 @@ public final class JsonsUtils
                         for (int k = 0; k < LANG_ROCK.size(); k++) {
                             final String key = keys.get(i).replace("%k", ID_ROCK.get(k));
                             final String lang = languages.get(i).replace("%l", LANG_ROCK.get(k));
+
+                            if (!firstEntry) {
+                                nouvellesEntrees.append(",\n");
+                            }
+                            nouvellesEntrees.append("  \"block.").append(compatId).append(".").append(key).append("\": \"").append(lang).append("");
+                            firstEntry = false;
+                        }
+                    }
+                }
+            }
+
+            // Ajouter l'ancien JSON après les nouvelles entrées
+            if (!ancienJson.isEmpty() && !ancienJson.toString().equals("{}")) {
+                if (!firstEntry) {
+                    nouvellesEntrees.append(",\n");
+                }
+                nouvellesEntrees.append(ancienJson.substring(1)); // Enlever la première accolade '{'
+            } else {
+                nouvellesEntrees.append("\n}");
+            }
+
+            // Écriture dans le fichier
+            Files.writeString(file, nouvellesEntrees.toString(), StandardCharsets.UTF_8);
+            System.out.println("Mise à jour réussie !");
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture du fichier : " + file);
+            e.printStackTrace();
+        }
+    }
+
+    public static void addToLangWood(String LOCATION, String compatId, List<String> ID_WOOD,
+                                      List<String> LANG_WOOD, String language, List<String> modidCharged) {
+        Path file = Paths.get(LOCATION, language + "(WOOD).json");
+
+        try {
+            // Lire l'ancien JSON si le fichier existe
+            StringBuilder ancienJson = new StringBuilder();
+            if (Files.exists(file)) {
+                ancienJson.append(Files.readString(file, StandardCharsets.UTF_8).trim());
+            }
+
+            // Construire les nouvelles entrées JSON
+            StringBuilder nouvellesEntrees = new StringBuilder();
+            nouvellesEntrees.append("{\n");
+
+            List<String> keys = new ArrayList<>();
+            List<String> languages = new ArrayList<>();
+
+            final String baseFile = "wood.txt";
+
+            for (String folder : modidCharged) {
+                Path directoryForLang = Path.of(McwAPI.READER_MCW_LANG, language, folder, baseFile);
+
+                try (BufferedReader br2 = Files.newBufferedReader(directoryForLang)) {
+                    br2.lines().forEach(line -> {
+                        final String key = getWithDelimiter(line, '<', '>');
+                        final String lang = getWithDelimiter(line, '"');
+                        keys.add(key);
+                        languages.add(lang);
+                    });
+                } catch (IOException e) {
+                    System.err.println("Erreur lors de la lecture du fichier : " + directoryForLang);
+                    e.printStackTrace();
+                }
+            }
+
+            boolean firstEntry = true;
+            if (languages.size() == keys.size()) {
+                for (int i = 0; i < keys.size(); i++) {
+                    if (ID_WOOD.size() == LANG_WOOD.size()) {
+                        for (int k = 0; k < LANG_WOOD.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_WOOD.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_WOOD.get(k));
+
+                            if (!firstEntry) {
+                                nouvellesEntrees.append(",\n");
+                            }
+                            nouvellesEntrees.append("  \"block.").append(compatId).append(".").append(key).append("\": \"").append(lang).append("");
+                            firstEntry = false;
+                        }
+                    }
+                }
+            }
+
+            // Ajouter l'ancien JSON après les nouvelles entrées
+            if (!ancienJson.isEmpty() && !ancienJson.toString().equals("{}")) {
+                if (!firstEntry) {
+                    nouvellesEntrees.append(",\n");
+                }
+                nouvellesEntrees.append(ancienJson.substring(1)); // Enlever la première accolade '{'
+            } else {
+                nouvellesEntrees.append("\n}");
+            }
+
+            // Écriture dans le fichier
+            Files.writeString(file, nouvellesEntrees.toString(), StandardCharsets.UTF_8);
+            System.out.println("Mise à jour réussie !");
+        } catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture du fichier : " + file);
+            e.printStackTrace();
+        }
+    }
+
+    public static void addToLangLeave(String LOCATION, String compatId, List<String> ID_LEAVE,
+                                     List<String> LANG_LEAVE, String language) {
+        Path file = Paths.get(LOCATION, language + "(LEAVE).json");
+
+        try {
+            // Lire l'ancien JSON si le fichier existe
+            StringBuilder ancienJson = new StringBuilder();
+            if (Files.exists(file)) {
+                ancienJson.append(Files.readString(file, StandardCharsets.UTF_8).trim());
+            }
+
+            // Construire les nouvelles entrées JSON
+            StringBuilder nouvellesEntrees = new StringBuilder();
+            nouvellesEntrees.append("{\n");
+
+            List<String> keys = new ArrayList<>();
+            List<String> languages = new ArrayList<>();
+
+            final String baseFile = "leave.txt";
+
+            for (String folder : List.of(Compatibilities.MCW_FENCES_MODID)) {
+                Path directoryForLang = Path.of(McwAPI.READER_MCW_LANG, language, folder, baseFile);
+
+                try (BufferedReader br2 = Files.newBufferedReader(directoryForLang)) {
+                    br2.lines().forEach(line -> {
+                        final String key = getWithDelimiter(line, '<', '>');
+                        final String lang = getWithDelimiter(line, '"');
+                        keys.add(key);
+                        languages.add(lang);
+                    });
+                } catch (IOException e) {
+                    System.err.println("Erreur lors de la lecture du fichier : " + directoryForLang);
+                    e.printStackTrace();
+                }
+            }
+
+            boolean firstEntry = true;
+            if (languages.size() == keys.size()) {
+                for (int i = 0; i < keys.size(); i++) {
+                    if (ID_LEAVE.size() == LANG_LEAVE.size()) {
+                        for (int k = 0; k < LANG_LEAVE.size(); k++) {
+                            final String key = keys.get(i).replace("%k", ID_LEAVE.get(k));
+                            final String lang = languages.get(i).replace("%l", LANG_LEAVE.get(k));
 
                             if (!firstEntry) {
                                 nouvellesEntrees.append(",\n");

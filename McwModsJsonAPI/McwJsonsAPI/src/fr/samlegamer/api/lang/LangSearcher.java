@@ -1,5 +1,7 @@
 package fr.samlegamer.api.lang;
 
+import fr.samlegamer.McwAPI;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -12,33 +14,14 @@ import java.util.List;
 
 public class LangSearcher {
     private final List<String> modidCharged = new ArrayList<>();
-    private final boolean bridges;
-    private final boolean roofs;
-    private final boolean fences;
-    private final boolean furnitures;
-    private final boolean stairs;
-    private final boolean paths;
-    private final boolean doors;
-    private final boolean trapdoors;
-    private final boolean windows;
     private final String READER;
 
-    public LangSearcher(String READER, boolean bridges, boolean roofs, boolean fences, boolean furnitures,
-                        boolean stairs, boolean paths, boolean doors, boolean trapdoors, boolean windows) {
-        this.bridges = bridges;
-        this.roofs = roofs;
-        this.fences = fences;
-        this.furnitures = furnitures;
-        this.stairs = stairs;
-        this.paths = paths;
-        this.doors = doors;
-        this.trapdoors = trapdoors;
-        this.windows = windows;
+    public LangSearcher(String READER) {
         this.READER = READER;
     }
 
-    public LangSearcher(String READER) {
-        this(READER, true, true, true, true, true, true, true, true, true);
+    public LangSearcher() {
+        this(McwAPI.READER_MCW_LANG);
     }
 
     private void addWithBool(boolean b, String str) {
@@ -57,7 +40,7 @@ public class LangSearcher {
                     str.append(line.charAt(j));
                     j++;
                 }
-                break; // On sort après avoir trouvé la première occurrence
+                break;
             }
         }
 

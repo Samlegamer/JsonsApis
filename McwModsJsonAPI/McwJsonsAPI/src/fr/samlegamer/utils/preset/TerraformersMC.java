@@ -17,44 +17,32 @@ import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
 import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
 import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
 import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
-import fr.samlegamer.api.lang.BridgesLangGenerator;
-import fr.samlegamer.api.lang.DoorsLangGenerator;
-import fr.samlegamer.api.lang.FencesLangGenerator;
-import fr.samlegamer.api.lang.FurnituresLangGenerator;
-import fr.samlegamer.api.lang.PathsLangGenerator;
-import fr.samlegamer.api.lang.RoofsLangGenerator;
-import fr.samlegamer.api.lang.StairsLangGenerator;
-import fr.samlegamer.api.lang.TrapdoorsLangGenerator;
-import fr.samlegamer.api.lang.WindowsLangGenerator;
-import fr.samlegamer.api.lang.mod.English;
-import fr.samlegamer.api.lang.mod.French;
+import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
-import fr.samlegamer.utils.IModFiles.ILang;
+import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.IModFiles.ITagData;
-import fr.samlegamer.utils.JsonsUtils;
-import fr.samlegamer.utils.ModsList;
-import fr.samlegamer.utils.Presetting;
 
 public class TerraformersMC implements Presetting
 {
-	protected static final List<String> MAT_WOOD = new ArrayList<String>();
-	protected static final List<String> MAJ_WOOD = new ArrayList<String>();
-	protected static final List<String> LEAVES = new ArrayList<String>();
-	protected static final List<String> LEAVES_LANG = new ArrayList<String>();
-
-	protected static final List<String> MAT_ROCK = new ArrayList<String>();
-	protected static final List<String> WALL = new ArrayList<String>();
-	protected static final List<String> FLOOR = new ArrayList<String>();
-	protected static final List<String> MAJ_ROCK = new ArrayList<String>();
-	private String version;
-	private ModLoaders modLoader;
+	protected static final List<String> ID_WOOD = new ArrayList<>();
+	protected static final List<String> ID_ROCK = new ArrayList<>();
+	protected static final List<String> WALL = new ArrayList<>();
+	protected static final List<String> FLOOR = new ArrayList<>();
+	protected static final List<String> ID_LEAVE = new ArrayList<>();
+	
+	protected static final List<String> LANG_WOOD = new ArrayList<>();
+	protected static final List<String> LANG_ROCK = new ArrayList<>();
+	protected static final List<String> LANG_LEAVE = new ArrayList<>();
+	
+	private final String version;
+	private final ModLoaders modLoader;
 
 	public TerraformersMC(String version, ModLoaders modLoader)
 	{
-		this.version=version;
-		this.modLoader=modLoader;
+		this.version = version;
+		this.modLoader = modLoader;
 	}
-	
+
 	public TerraformersMC(ModLoaders modLoader)
 	{
 		this("1.20", modLoader);
@@ -82,8 +70,8 @@ public class TerraformersMC implements Presetting
 		TextureLocationFormodid = Compatibilities.TRAVERSE_TEXTURES;
 		ModidOfBaseMod = Compatibilities.TRAVERSE_MODID;
 
-		ModsList.TerraformersMCWood(MAT_WOOD, ModidOfBaseMod);
-		ModsList.TerraformersMCLeaves(LEAVES, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCWood(ID_WOOD, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCLeaves(ID_LEAVE, ModidOfBaseMod);
 
 		wood(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false);
 		System.out.println("Finish Traverse !");
@@ -94,8 +82,8 @@ public class TerraformersMC implements Presetting
 		TextureLocationFormodid = Compatibilities.CINDERSCAPES_TEXTURES;
 		ModidOfBaseMod = Compatibilities.CINDERSCAPES_MODID;
 
-		ModsList.TerraformersMCWood(MAT_WOOD, ModidOfBaseMod);
-		ModsList.TerraformersMCRock(MAT_ROCK, WALL, FLOOR, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCWood(ID_WOOD, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCRock(ID_ROCK, WALL, FLOOR, ModidOfBaseMod);
 
 		wood(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, true);
 		stone(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod);
@@ -107,63 +95,62 @@ public class TerraformersMC implements Presetting
 		TextureLocationFormodid = Compatibilities.TERRESTRIA_TEXTURES;
 		ModidOfBaseMod = Compatibilities.TERRESTRIA_MODID;
 
-		ModsList.TerraformersMCWood(MAT_WOOD, ModidOfBaseMod);
-		ModsList.TerraformersMCLeaves(LEAVES, ModidOfBaseMod);
-		ModsList.TerraformersMCRock(MAT_ROCK, WALL, FLOOR, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCWood(ID_WOOD, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCLeaves(ID_LEAVE, ModidOfBaseMod);
+		NewModsList.TerraformersMC.TerraformersMCRock(ID_ROCK, WALL, FLOOR, ModidOfBaseMod);
 
 		wood(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod, false);
 		stone(LOCATION, CompatModid, TextureLocationFormodid, ModidOfBaseMod);
 		System.out.println("Finish Terrestria !");
 		clearAll();
 
-		
-		ModsList.TerraformersMCWood(MAT_WOOD);
-		ModsList.TerraformersMCLeaves(LEAVES);
-		ModsList.TerraformersMCRock(MAT_ROCK, WALL, FLOOR);
+
+		NewModsList.TerraformersMC.TerraformersMCWood(ID_WOOD);
+		NewModsList.TerraformersMC.TerraformersMCLeaves(ID_LEAVE);
+		NewModsList.TerraformersMC.TerraformersMCRock(ID_ROCK, WALL, FLOOR);
 
 		System.out.println("Tags...");
 		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
 		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, new FencesTagsGenerator(true, MAT_ROCK, LEAVES));
+		genTags(LOCATION, CompatModid, new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE));
 		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
 		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
 		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
 		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());		
+		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 
-		English.TerraformersMC.TerraformersMCRockLang(MAJ_ROCK);
-		English.TerraformersMC.TerraformersMCWoodLang(MAJ_WOOD);
-		English.TerraformersMC.TerraformersMCLeavesLang(LEAVES_LANG);
+		addLang(LOCATION, CompatModid, "en_us");
+		addLang(LOCATION, CompatModid, "fr_fr");
 
-		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
-		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
-		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
-		
-		MAJ_WOOD.clear();
-		MAJ_ROCK.clear();
-		LEAVES_LANG.clear();
-		
-		French.TerraformersMC.TerraformersMCRockLang(MAJ_ROCK);
-		French.TerraformersMC.TerraformersMCWoodLang(MAJ_WOOD);
-		French.TerraformersMC.TerraformersMCLeavesLang(LEAVES_LANG);
-
-		genLangFrench(LOCATION, CompatModid, new BridgesLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(LEAVES, LEAVES_LANG));
-		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
-		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
-
+//		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
+//		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
+//		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
+//
+//		LANG_WOOD.clear();
+//		LANG_ROCK.clear();
+//		LANG_LEAVE.clear();
+//
+//		French.TerraformersMC.TerraformersMCRockLang(LANG_ROCK);
+//		French.TerraformersMC.TerraformersMCWoodLang(LANG_WOOD);
+//		French.TerraformersMC.TerraformersMCLeavesLang(LANG_LEAVE);
+//
+//		genLangFrench(LOCATION, CompatModid, new BridgesLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
+//		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
+//		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
+//
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "dark_japanese_maple", "dark_japanese_maple_leaves", "japanese_maple_leaves_dark");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "japanese_maple_shrub", "japanese_maple_shrub_leaves", "japanese_maple_leaves_green");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "yucca_palm", "yucca_palm_log_top", "yucca_palm_log_section");
@@ -193,7 +180,7 @@ public class TerraformersMC implements Presetting
 
 		if(version.equals("1.21.3"))
 		{
-			McwAPI.fixForPaleGarden(LOCATION, CompatModid, MAT_WOOD);
+			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
 		
 		/*JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blossom", "quark:blossom_slab", "quark:blossom_planks_slab");
@@ -253,6 +240,23 @@ public class TerraformersMC implements Presetting
 
 		//JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "cherry_hedge.json");
 		//JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "cherry_hedge.json");
+		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "scorched_hedge.json");
+		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "umbral_hedge.json");
+	}
+
+	public static void addLang(String LOCATION, String CompatModid, String language)
+	{
+		System.out.println("Start Language: " + language);
+		LangSearcher langSearcher = new LangSearcher();
+		LangMods.TerraformersMC.terraformersMCRockLang(LANG_ROCK, language);
+		LangMods.TerraformersMC.terraformersMCWoodLang(LANG_WOOD, language);
+		LangMods.TerraformersMC.terraformersMCLeaveLang(LANG_LEAVE, language);
+
+		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, Reference.allMcwMods());
+		langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
+		langSearcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, Reference.allMcwModsStone());
+		McwAPI.clears(LANG_WOOD, LANG_ROCK, LANG_LEAVE);
+		System.out.println("Done Language: " + language);
 	}
 	
 	private void fixSakuraFabric(String LOCATION, List<String> pathList)
@@ -326,58 +330,46 @@ public class TerraformersMC implements Presetting
 	
 	protected void clearAll()
 	{
-		McwAPI.clears(MAT_WOOD, MAT_ROCK, WALL, FLOOR, MAJ_WOOD, MAJ_ROCK, LEAVES, LEAVES_LANG);
+		McwAPI.clears(ID_WOOD, ID_ROCK, WALL, FLOOR, LANG_WOOD, LANG_ROCK, ID_LEAVE, LANG_LEAVE);
 	}
 		
 	private void genRessourcesStone(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
 	{
-		res.createStoneBlockstates(LOCATION, CompatModid, MAT_ROCK);
-		res.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, MAT_ROCK, WALL, FLOOR);
-		res.createStoneModelItem(LOCATION, CompatModid, MAT_ROCK);
-		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, compat, ModidOfBaseMod, modLoader);
-		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
-		dat.LootTableStoneAll(LOCATION, CompatModid, MAT_ROCK);
+		res.createStoneBlockstates(LOCATION, CompatModid, ID_ROCK);
+		res.createStoneModelsBlocks(LOCATION, TextureLocationFormodid, ID_ROCK, WALL, FLOOR);
+		res.createStoneModelItem(LOCATION, CompatModid, ID_ROCK);
+		dat.AdvancementsStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, FLOOR, compat, ModidOfBaseMod, modLoader);
+		dat.LootTableStoneAll(LOCATION, CompatModid, ID_ROCK);
 	}
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat, boolean Stem)
 	{
 		res.setModid(CompatModid);
-		res.createWoodBlockstates(LOCATION, CompatModid, MAT_WOOD);
-		res.createWoodModelItem(LOCATION, CompatModid, MAT_WOOD);
-		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, MAT_WOOD, Stem);
-		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
-		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, MAT_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
-		dat.LootTableLogAll(LOCATION, CompatModid, MAT_WOOD);
+		res.createWoodBlockstates(LOCATION, CompatModid, ID_WOOD);
+		res.createWoodModelItem(LOCATION, CompatModid, ID_WOOD);
+		res.createWoodModelsBlocks(LOCATION, TextureLocationFormodid, ID_WOOD, Stem);
+		dat.AdvancementsLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
+		dat.RecipesLogAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, Stem, compat, ModidOfBaseMod, modLoader);
+		dat.LootTableLogAll(LOCATION, CompatModid, ID_WOOD);
 		
 		if(compat.equals(Compatibilities.MCW_FENCES_MODID))
 		{
-			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, LEAVES, Boolean.FALSE, "acacia_wall");
-			res.createWoodModelItemwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
-			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, LEAVES, "acacia_hedge");
-			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, LEAVES, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			res.createWoodModelsBlockswithResearch(LOCATION, TextureLocationFormodid, ID_LEAVE, Boolean.FALSE, "acacia_wall");
+			res.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 	
 	private void genTags(String LOCATION, String CompatModid, ITagData tag)
 	{
-		tag.AxeDataGenWood(LOCATION, CompatModid, MAT_WOOD);
-		tag.HoeDataGenWood(LOCATION, CompatModid, LEAVES);
-		tag.TagsWood(LOCATION, CompatModid, MAT_WOOD);
-		tag.TagsRock(LOCATION, CompatModid, MAT_ROCK);
-		tag.PickaxeDataGen(LOCATION, CompatModid, MAT_ROCK);
-	}
-	
-	private void genLangEnglish(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodEnglish(CompatModid, MAT_WOOD, MAJ_WOOD);
-		lang.initAllStoneEnglish(CompatModid, MAT_ROCK, MAJ_ROCK);
-	}
-	
-	private void genLangFrench(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodFrench(CompatModid, MAT_WOOD, MAJ_WOOD);
-		lang.initAllStoneFrench(CompatModid, MAT_ROCK, MAJ_ROCK);
+		tag.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
+		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
+		tag.TagsRock(LOCATION, CompatModid, ID_ROCK);
+		tag.PickaxeDataGen(LOCATION, CompatModid, ID_ROCK);
 	}
 }

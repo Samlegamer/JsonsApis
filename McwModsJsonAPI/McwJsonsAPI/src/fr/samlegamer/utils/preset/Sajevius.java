@@ -72,15 +72,15 @@ public class Sajevius implements Presetting
 		McwAPI.StairsGenFolder(LOCATION);
 		McwAPI.DataGenFolder(LOCATION);
 
-		List<String> ID_WOOD = new ArrayList<String>();
-		List<String> ID_ROCK = new ArrayList<String>();
-		List<String> WALL = new ArrayList<String>();
-		List<String> FLOOR = new ArrayList<String>();
-		List<String> ID_LEAVE = new ArrayList<String>();
+		List<String> ID_WOOD = new ArrayList<>();
+		List<String> ID_ROCK = new ArrayList<>();
+		List<String> WALL = new ArrayList<>();
+		List<String> FLOOR = new ArrayList<>();
+		List<String> ID_LEAVE = new ArrayList<>();
 
-		List<String> LANG_WOOD = new ArrayList<String>();
-		List<String> LANG_ROCK = new ArrayList<String>();
-		List<String> LANG_LEAVE = new ArrayList<String>();
+		List<String> LANG_WOOD = new ArrayList<>();
+		List<String> LANG_ROCK = new ArrayList<>();
+		List<String> LANG_LEAVE = new ArrayList<>();
 		String CompatModid = "mcwsajevius";
 		String txtLocMod, ModidOfBaseMod;
 		
@@ -194,8 +194,8 @@ public class Sajevius implements Presetting
 		ID_WOOD.clear();
 		
 		System.out.println("Start Tags");
-		NewModsList.Sajevius.shroomedWood(ID_WOOD);
 		NewModsList.Sajevius.betterlandsWood(ID_WOOD);
+		NewModsList.Sajevius.shroomedWood(ID_WOOD);
 		NewModsList.Sajevius.betterlandsWood(ID_LEAVE);
 		NewModsList.Sajevius.betterlandsRock(ID_ROCK, WALL, FLOOR);
 
@@ -246,7 +246,7 @@ public class Sajevius implements Presetting
 		System.out.println("Start Lang "+language);
 		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
 		LangMods.Sajevius.sajeviusWoodLang(LANG_WOOD, language);
-		LangMods.Sajevius.sajeviusWoodLang(LANG_LEAVE, language);
+		LangMods.Sajevius.sajeviusLeaveLang(LANG_LEAVE, language);
 		LangMods.Sajevius.sajeviusRockLang(LANG_ROCK, language);
 
 		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, List.of(
@@ -256,9 +256,10 @@ public class Sajevius implements Presetting
 				Compatibilities.MCW_FURNITURES_MODID,
 				Compatibilities.MCW_STAIRS_MODID));
 		langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
-		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, Reference.allMcwModsStone());
+		langSearcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, Reference.allMcwModsStone());
 		LANG_WOOD.clear();
 		LANG_LEAVE.clear();
+		LANG_ROCK.clear();
 		System.out.println("Done Lang "+language);
 	}
 	
