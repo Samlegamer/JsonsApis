@@ -72,7 +72,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_highley_gate\",");
 					buffer.newLine();
-					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\"");
+					buffer.write("\""+CompatModid+":"+i+"_pyramid_gate\",");
 					buffer.newLine();
 					buffer.write("\""+CompatModid+":"+i+"_curved_gate\"");
 				}
@@ -176,6 +176,7 @@ public class FencesTagsGenerator implements IModFiles.ITagData
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "pyramid_gates", "pyramid_gate");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "stockade_fences", "stockade_fence");
 		addTagWood(LOCATION, CompatModid, MAT_WOOD, "wired_fences", "wired_fence");
+		addTagWood(LOCATION, CompatModid, MAT_WOOD, "curved_double_gates", "curved_gate");
 
 		Path fenceTagBlock = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "fences.json");
 		Path fenceGatesTagBlock = Path.of(LOCATION, ClassicFolderTypes.TAGS_BLOCK.getPath(), "fence_gates.json");

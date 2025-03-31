@@ -3,7 +3,6 @@ package fr.samlegamer;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.preset.*;
@@ -24,7 +23,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new BOP(ModLoaders.FORGE));
+		preset(new ModdingLegacy(true));
 	}
 	
 	
