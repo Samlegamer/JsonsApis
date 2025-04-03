@@ -19,7 +19,6 @@ import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class BWG implements Presetting
@@ -45,9 +44,14 @@ public class BWG implements Presetting
 		this.mcwMods=mcwMods;
 	}
 	
+	public BWG(String version, ModLoaders modLoader)
+	{
+		this(version, Reference.allMcwMods(), modLoader);
+	}
+
 	public BWG(ModLoaders modLoader)
 	{
-		this("1.20", Reference.allMcwMods(), modLoader);
+		this("1.20", modLoader);
 	}
 
 	@Override
@@ -366,21 +370,5 @@ public class BWG implements Presetting
 		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
 		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
 		tag.TagsRock(LOCATION, CompatModid, ID_ROCK);
-	}
-	
-	private void genLangEnglish(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-		lang.initAllStoneEnglish(CompatModid, ID_ROCK, LANG_ROCK);
-	}
-	
-	private void genLangFrench(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodFrench(CompatModid, ID_WOOD, LANG_WOOD);
-		lang.initAllStoneFrench(CompatModid, ID_ROCK, LANG_ROCK);
-	}
-
-	public String getVersion() {
-		return version;
 	}
 }

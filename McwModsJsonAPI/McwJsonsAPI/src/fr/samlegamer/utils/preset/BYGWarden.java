@@ -20,7 +20,6 @@ import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class BYGWarden implements Presetting

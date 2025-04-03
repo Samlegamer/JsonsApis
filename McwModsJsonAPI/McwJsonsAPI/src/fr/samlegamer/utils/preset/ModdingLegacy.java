@@ -315,8 +315,6 @@ public class ModdingLegacy implements Presetting
 
 		NewModsList.ModdingLegacy.BlueSkiesBsky(PREFIX_ID_WOOD);
 		NewModsList.ModdingLegacy.PremiumWoodPwood(PREFIX_ID_WOOD);
-//		LangMods.ModdingLegacy.blueSkiesWoodLang(LANG_WOOD, "en_us");
-//		LangMods.ModdingLegacy.premiumWoodWoodLang(LANG_WOOD, "en_us");
 		PREFIX_ID_WOOD.add("bsky_crystallized");
 		LANG_WOOD.add("Crystallized");
 
@@ -325,19 +323,11 @@ public class ModdingLegacy implements Presetting
 		bridges_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		RoofsTagsGenerator roofs_tags = new RoofsTagsGenerator();
 		roofs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-
-
-//		BridgesLangGenerator bridges_lang = new BridgesLangGenerator();
-//		RoofsLangGenerator roofs_lang = new RoofsLangGenerator();
-//		bridges_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
-//		roofs_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 		PREFIX_ID_WOOD.clear();
 		LANG_WOOD.clear();
 
 		NewModsList.ModdingLegacy.BlueSkiesBsky(PREFIX_ID_WOOD);
 		NewModsList.ModdingLegacy.PremiumWoodPwood(PREFIX_ID_WOOD);
-//		LangMods.ModdingLegacy.blueSkiesWoodLang(LANG_WOOD, "en_us");
-//		LangMods.ModdingLegacy.premiumWoodWoodLang(LANG_WOOD, "en_us");
 		LANG_LEAVE.addAll(LANG_WOOD);
 		PREFIX_ID_LEAVE.addAll(PREFIX_ID_WOOD);
 		PREFIX_ID_LEAVE.add("bsky_crystallized");
@@ -347,46 +337,35 @@ public class ModdingLegacy implements Presetting
 		fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_ID_LEAVE);
 		fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		FencesLangGenerator fences_lang = new FencesLangGenerator(PREFIX_ID_LEAVE, LANG_LEAVE);
-//		fences_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
-		
+
 		FurnituresTagsGenerator furni_tags = new FurnituresTagsGenerator();
 		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		FurnituresLangGenerator furni_lang = new FurnituresLangGenerator();
-//		furni_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
-		
+
 		StairsTagsGenerator stairs_tags = new StairsTagsGenerator();
 		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		StairsLangGenerator stairs_lang = new StairsLangGenerator();
-//		stairs_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
-		
+
 		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
 		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		paths_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		PathsLangGenerator paths_lang = new PathsLangGenerator();
-//		paths_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 
 		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
 		doors_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		doors_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		DoorsLangGenerator doors_lang = new DoorsLangGenerator();
-//		doors_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 
 		TrapdoorsTagsGenerator traps_tags = new TrapdoorsTagsGenerator();
 		traps_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		traps_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		TrapdoorsLangGenerator traps_lang = new TrapdoorsLangGenerator();
-//		traps_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 
 		WindowsTagsGenerator wins_tags = new WindowsTagsGenerator();
 		wins_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		wins_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		WindowsLangGenerator wins_lang = new WindowsLangGenerator();
-//		wins_lang.initAllWoodEnglish(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 
 		McwAPI.clears(LANG_LEAVE, PREFIX_ID_LEAVE, PREFIX_ID_WOOD, LANG_WOOD);
+
+		addLang(LOCATION, CompatModid, PREFIX_ID_WOOD, LANG_WOOD, PREFIX_ID_LEAVE, LANG_LEAVE, "en_us", "Crystallized");
+		addLang(LOCATION, CompatModid, PREFIX_ID_WOOD, LANG_WOOD, PREFIX_ID_LEAVE, LANG_LEAVE, "fr_fr", "cristallisé");
 
 //		ModsList.BlueSkiesBsky(PREFIX_ID_WOOD);
 //		ModsList.PremiumWoodPwood(PREFIX_ID_WOOD);
@@ -428,8 +407,6 @@ public class ModdingLegacy implements Presetting
 //		wins_lang.initAllWoodFrench(CompatModid, PREFIX_ID_WOOD, LANG_WOOD);
 
 
-		addLang(LOCATION, CompatModid, PREFIX_ID_WOOD, LANG_WOOD, PREFIX_ID_LEAVE, LANG_LEAVE, "en_us", "Crystallized");
-		addLang(LOCATION, CompatModid, PREFIX_ID_WOOD, LANG_WOOD, PREFIX_ID_LEAVE, LANG_LEAVE, "fr_fr", "cristallisé");
 
 
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "crystallized", "blue_skies:crystallized_fence", "blue_skies:crystallized_wall");

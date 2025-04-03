@@ -34,6 +34,7 @@ import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
+@Deprecated
 public class Abnormals1201 implements Presetting
 {
 	private boolean activeBridges;
