@@ -23,9 +23,8 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new BYG(ModLoaders.FABRIC));
+		preset(new BYGWarden(ModLoaders.FORGE));
 	}
-	
 	
 	public static void preset(Presetting preset)
 	{
