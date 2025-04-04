@@ -1,0 +1,5 @@
+modern_%k_wall
+railing_%k_wall
+%k_railing_gate
+%k_pillar_wall
+%k_grass_topped_wall

@@ -16,6 +16,7 @@ import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
+@Deprecated(forRemoval = true)
 public class StairsTagsGenerator implements IModFiles.ITagData
 {
 	private final List<String> MAT_ROCK;

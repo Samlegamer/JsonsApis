@@ -1,0 +1,8 @@
+%k_terrace_stairs
+%k_skyline_stairs
+%k_compact_stairs
+%k_bulk_stairs
+%k_loft_stairs
+%k_railing
+%k_balcony
+%k_platform

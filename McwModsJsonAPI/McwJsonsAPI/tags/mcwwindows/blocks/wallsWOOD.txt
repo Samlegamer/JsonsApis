@@ -1,0 +1,12 @@
+%k_window
+%k_plank_window
+%k_window2
+%k_plank_window2
+stripped_%k_log_window
+stripped_%k_log_window2
+%k_four_window
+%k_plank_four_window
+stripped_%k_log_four_window
+%k_pane_window
+stripped_%k_pane_window
+%k_plank_pane_window

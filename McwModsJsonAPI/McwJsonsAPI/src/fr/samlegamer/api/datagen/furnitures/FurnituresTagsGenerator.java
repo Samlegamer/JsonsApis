@@ -15,6 +15,7 @@ import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
+@Deprecated(forRemoval = true)
 public class FurnituresTagsGenerator implements IModFiles.ITagData
 {
 	public FurnituresTagsGenerator() {

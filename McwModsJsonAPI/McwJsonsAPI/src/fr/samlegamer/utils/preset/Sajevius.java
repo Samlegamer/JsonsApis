@@ -7,11 +7,7 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
@@ -199,12 +195,23 @@ public class Sajevius implements Presetting
 		NewModsList.Sajevius.betterlandsWood(ID_LEAVE);
 		NewModsList.Sajevius.betterlandsRock(ID_ROCK, WALL, FLOOR);
 
-		BridgesTagsGenerator tag_bridges = new BridgesTagsGenerator();
-		RoofsTagsGenerator tag_roofs = new RoofsTagsGenerator();
-		FencesTagsGenerator tag_fences = new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE);
-		FurnituresTagsGenerator tag_furnitures = new FurnituresTagsGenerator();
-		StairsTagsGenerator tag_stairs = new StairsTagsGenerator();
+		List<String> modsMcw = List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_FURNITURES_MODID, Compatibilities.MCW_STAIRS_MODID);
+
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, modsMcw);
+
+		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, modsMcw);
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), modsMcw);
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), modsMcw);
+
+//		BridgesTagsGenerator tag_bridges = new BridgesTagsGenerator();
+//		RoofsTagsGenerator tag_roofs = new RoofsTagsGenerator();
+//		FencesTagsGenerator tag_fences = new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE);
+//		FurnituresTagsGenerator tag_furnitures = new FurnituresTagsGenerator();
+//		StairsTagsGenerator tag_stairs = new StairsTagsGenerator();
 		System.out.println("Done Tags");
+
 
 
 //		BridgesLangGenerator lang_bridges = new BridgesLangGenerator();
@@ -213,18 +220,18 @@ public class Sajevius implements Presetting
 //		FurnituresLangGenerator lang_furnitures = new FurnituresLangGenerator();
 //		StairsLangGenerator lang_stairs = new StairsLangGenerator();
 		
-		tag_bridges.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag_bridges.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag_bridges.TagsRock(LOCATION, CompatModid, ID_ROCK);
-		tag_roofs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag_roofs.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag_fences.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag_fences.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-		tag_fences.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag_furnitures.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag_furnitures.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag_stairs.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_bridges.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_bridges.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_bridges.TagsRock(LOCATION, CompatModid, ID_ROCK);
+//		tag_roofs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_roofs.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_fences.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_fences.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
+//		tag_fences.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_furnitures.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_furnitures.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_stairs.TagsWood(LOCATION, CompatModid, ID_WOOD);
 
 		
 //		lang_bridges.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);

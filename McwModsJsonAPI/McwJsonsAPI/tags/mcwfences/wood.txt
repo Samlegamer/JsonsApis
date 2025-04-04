@@ -1,0 +1,7 @@
+%k_picket_fence
+%k_stockade_fence
+%k_horse_fence
+%k_wired_fence
+%k_highley_gate
+%k_pyramid_gate
+%k_curved_gate

@@ -1,0 +1,6 @@
+%k_kitchen_cabinet
+stripped_%k_kitchen_cabinet
+%k_double_kitchen_cabinet
+stripped_%k_double_kitchen_cabinet
+%k_glass_kitchen_cabinet
+stripped_%k_glass_kitchen_cabinet

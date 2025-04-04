@@ -7,20 +7,10 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.LangSearcher;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ILang;
-import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class BOP implements Presetting
 {
@@ -114,15 +104,21 @@ public class BOP implements Presetting
 				new McwDataGen(Compatibilities.MCW_PATHS_MODID, this.versioning));
 
 		System.out.println("Tags...");
-		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
-		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
+
+		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
+//		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
+//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
+//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
+//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 
 		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "fr_fr");
@@ -219,23 +215,5 @@ public class BOP implements Presetting
         langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
         LANG_WOOD.clear();
 		LANG_LEAVE.clear();
-	}
-
-
-	private void genTags(String LOCATION, String CompatModid, ITagData tag)
-	{
-		tag.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
-	}
-	
-	private void genLangEnglish(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-	}
-	
-	private void genLangFrench(String LOCATION, String CompatModid, ILang lang)
-	{
-		lang.initAllWoodFrench(CompatModid, ID_WOOD, LANG_WOOD);
 	}
 }

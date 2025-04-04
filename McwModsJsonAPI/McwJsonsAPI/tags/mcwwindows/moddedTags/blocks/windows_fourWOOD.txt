@@ -1,0 +1,3 @@
+%k_four_window
+%k_plank_four_window
+stripped_%k_log_four_window

@@ -14,6 +14,7 @@ import fr.samlegamer.McwAPI.ClassicFolderTypes;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
+@Deprecated(forRemoval = true)
 public class DoorsTagsGenerator implements ITagData
 {
 	public DoorsTagsGenerator()

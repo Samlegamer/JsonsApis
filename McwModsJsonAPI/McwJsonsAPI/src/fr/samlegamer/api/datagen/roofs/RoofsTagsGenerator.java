@@ -11,6 +11,7 @@ import java.util.List;
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.utils.IModFiles;
 
+@Deprecated(forRemoval = true)
 public class RoofsTagsGenerator implements IModFiles.ITagData
 {
 	@Override

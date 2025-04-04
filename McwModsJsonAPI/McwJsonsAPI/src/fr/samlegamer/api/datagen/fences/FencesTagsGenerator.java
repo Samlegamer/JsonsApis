@@ -15,6 +15,7 @@ import fr.samlegamer.McwMain;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.IModFiles;
 
+@Deprecated(forRemoval = true)
 public class FencesTagsGenerator implements IModFiles.ITagData
 {
 	private final boolean stone;

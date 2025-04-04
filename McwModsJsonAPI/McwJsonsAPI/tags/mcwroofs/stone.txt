@@ -1,0 +1,7 @@
+%k_roof
+%k_attic_roof
+%k_top_roof
+%k_lower_roof
+%k_steep_roof
+%k_upper_lower_roof
+%k_upper_steep_roof

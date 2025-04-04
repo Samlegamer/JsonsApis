@@ -1,0 +1,2 @@
+%k_shutter
+%k_louvered_shutter

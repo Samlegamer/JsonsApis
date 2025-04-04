@@ -1,0 +1,6 @@
+%k_log_bridge_middle
+rope_%k_bridge
+%k_bridge_pier
+%k_log_bridge_stair
+%k_rope_bridge_stair
+%k_rail_bridge

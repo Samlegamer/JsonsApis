@@ -1,0 +1,14 @@
+%k_roof
+%k_attic_roof
+%k_top_roof
+%k_lower_roof
+%k_steep_roof
+%k_upper_lower_roof
+%k_upper_steep_roof
+%k_planks_roof
+%k_planks_attic_roof
+%k_planks_top_roof
+%k_planks_lower_roof
+%k_planks_steep_roof
+%k_planks_upper_lower_roof
+%k_planks_upper_steep_roof

@@ -1,0 +1,17 @@
+%k_barn_trapdoor
+%k_barred_trapdoor
+%k_beach_trapdoor
+%k_cottage_trapdoor
+%k_four_panel_trapdoor
+%k_glass_trapdoor
+%k_mystic_trapdoor
+%k_paper_trapdoor
+%k_tropical_trapdoor
+%k_swamp_trapdoor
+%k_blossom_trapdoor
+%k_classic_trapdoor
+%k_bamboo_trapdoor
+%k_bark_trapdoor
+%k_barrel_trapdoor
+%k_ranch_trapdoor
+%k_whispering_trapdoor
