@@ -8,13 +8,10 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.LangSearcher;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class QuarkNether implements Presetting
 {
@@ -28,12 +25,6 @@ public class QuarkNether implements Presetting
 	protected static final List<String> LANG_ROCK = new ArrayList<>();
 	protected static final List<String> LANG_LEAVE = new ArrayList<>();
 	private final ModLoaders modLoader = ModLoaders.FORGE;
-
-	protected void genTagStone(String LOCATION, String CompatModid, ITagData tag)
-	{
-		tag.PickaxeDataGen(LOCATION, CompatModid, ID_ROCK);
-		tag.TagsRock(LOCATION, CompatModid, ID_ROCK);
-	}
 	
 	@Override
 	public void init(String LOCATION)
@@ -66,34 +57,43 @@ public class QuarkNether implements Presetting
 		System.out.println("Ressources/Data Finish !");
 
 		System.out.println("Tags Loading...");
-		final FencesTagsGenerator tag_fences = new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE);
-		genTagStone(LOCATION, CompatModid, tag_fences);
-		tag_fences.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag_fences.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-		genTagStone(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTagStone(LOCATION, CompatModid, new BridgesTagsGenerator());
+
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwModsStone());
+		tagsGenerator.pickaxe(LOCATION, CompatModid, ID_ROCK, Reference.allMcwModsStone());
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwModsStone());
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwModsStone());
+
+//		final FencesTagsGenerator tag_fences = new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE);
+//		genTagStone(LOCATION, CompatModid, tag_fences);
+//		tag_fences.TagsWood(LOCATION, CompatModid, ID_WOOD);
+//		tag_fences.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
+//		genTagStone(LOCATION, CompatModid, new RoofsTagsGenerator());
+//		genTagStone(LOCATION, CompatModid, new BridgesTagsGenerator());
 		System.out.println("Tags Finish !");
 		
 		LangMods.Quark.quarkRockLang(LANG_ROCK, "en_us");
 		LangMods.Quark.quarkLeaveLang(LANG_LEAVE, "en_us");
 
-		System.out.println("Lang Loading...");
-		final LangSearcher lang_searcher = new LangSearcher(McwAPI.READER_MCW_LANG);
-
-		lang_searcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, "en_us");
-		lang_searcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, "en_us",
-				List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
-		
-		LANG_LEAVE.clear();
-		LANG_ROCK.clear();
-		LangMods.Quark.quarkRockLang(LANG_ROCK, "fr_fr");
-		LangMods.Quark.quarkLeaveLang(LANG_LEAVE, "fr_fr");
-
-		lang_searcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, "fr_fr");
-		lang_searcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, "fr_fr",
-				List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
-		
-		System.out.println("Lang Finish !");
+		genLang(LOCATION, CompatModid, "en_us");
+		genLang(LOCATION, CompatModid, "fr_fr");
+//		System.out.println("Lang Loading...");
+//		final LangSearcher lang_searcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+//
+//		lang_searcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, "en_us");
+//		lang_searcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, "en_us",
+//				List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
+//
+//		LANG_LEAVE.clear();
+//		LANG_ROCK.clear();
+//		LangMods.Quark.quarkRockLang(LANG_ROCK, "fr_fr");
+//		LangMods.Quark.quarkLeaveLang(LANG_LEAVE, "fr_fr");
+//
+//		lang_searcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, "fr_fr");
+//		lang_searcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, "fr_fr",
+//				List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
+//
+//		System.out.println("Lang Finish !");
 		
 		System.out.println("Quark Finish !");
 		
@@ -131,6 +131,23 @@ public class QuarkNether implements Presetting
 			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "red_sandstone_bricks", "red_sandstone_bricks_top", "red_sandstone_bricks");
 			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "sandstone_bricks", "sandstone_bricks_top", "sandstone_bricks");
 		}
+	}
+
+	private void genLang(String LOCATION, String CompatModid, String language)
+	{
+		LangMods.Quark.quarkRockLang(LANG_ROCK, language);
+		LangMods.Quark.quarkLeaveLang(LANG_LEAVE, language);
+
+		System.out.println("Lang Loading "+language);
+		final LangSearcher lang_searcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+
+		lang_searcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
+		lang_searcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language,
+				List.of(Compatibilities.MCW_BRIDGES_MODID, Compatibilities.MCW_FENCES_MODID, Compatibilities.MCW_ROOFS_MODID));
+
+		LANG_LEAVE.clear();
+		LANG_ROCK.clear();
+		System.out.println("Lang Finish "+language);
 	}
 
 	protected void clearAll()

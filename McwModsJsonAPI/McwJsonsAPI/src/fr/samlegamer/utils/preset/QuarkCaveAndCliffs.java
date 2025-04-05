@@ -8,19 +8,10 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class QuarkCaveAndCliffs implements Presetting
 {
@@ -112,15 +103,24 @@ public class QuarkCaveAndCliffs implements Presetting
 				new McwDataGen(Compatibilities.MCW_FENCES_MODID));
 		
 		System.out.println("Tags...");
-		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE));
-		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-		genTags(LOCATION, CompatModid, new StairsTagsGenerator());		
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
+
+		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+		tagsGenerator.pickaxe(LOCATION, CompatModid, ID_ROCK, Reference.allMcwModsStone());
+
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
+
+//		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
+//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE));
+//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
+//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 
 		genLang(LOCATION, CompatModid, "en_us");
 //		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
@@ -232,14 +232,5 @@ public class QuarkCaveAndCliffs implements Presetting
 		langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
 		langSearcher.initRock(LOCATION, CompatModid, ID_ROCK, LANG_ROCK, language, Reference.allMcwModsStone());
 		McwAPI.clears(LANG_ROCK, LANG_WOOD, LANG_LEAVE);
-	}
-	
-	private void genTags(String LOCATION, String CompatModid, ITagData tag)
-	{
-		tag.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
-		tag.TagsRock(LOCATION, CompatModid, ID_ROCK);
-		tag.PickaxeDataGen(LOCATION, CompatModid, ID_ROCK);
 	}
 }

@@ -9,6 +9,7 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
 import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
 import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;

@@ -1,6 +1,7 @@
 package fr.samlegamer;
 
 import java.io.File;
+
 import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.preset.*;
@@ -12,7 +13,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new BYGWarden(ModLoaders.FABRIC));
+		preset(new BOP(ModLoaders.FORGE));
 	}
 	
 	public static void preset(Presetting preset)

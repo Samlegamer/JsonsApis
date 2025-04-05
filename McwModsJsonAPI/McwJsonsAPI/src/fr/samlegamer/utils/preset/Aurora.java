@@ -8,19 +8,10 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class Aurora implements Presetting
 {
@@ -306,15 +297,23 @@ public class Aurora implements Presetting
 
 
 		System.out.println("Start Tags");
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new BridgesTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FencesTagsGenerator(ID_LEAVE));
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FurnituresTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new StairsTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new PathsTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new DoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new TrapdoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new WindowsTagsGenerator());
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
+
+		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
+
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new BridgesTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new RoofsTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FencesTagsGenerator(ID_LEAVE));
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FurnituresTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new StairsTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new PathsTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new DoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new TrapdoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new WindowsTagsGenerator());
 		System.out.println("Done Tags");
 
 		System.out.println("Start Languages");
@@ -422,12 +421,5 @@ public class Aurora implements Presetting
         }
 		LANG_WOOD.clear();
 		LANG_LEAVE.clear();
-	}
-	
-	private void genTags(String LOCATION, String CompatModid, List<String> ID_WOOD, List<String> ID_LEAVE, ITagData tag)
-	{
-		tag.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-		tag.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-		tag.TagsWood(LOCATION, CompatModid, ID_WOOD);
 	}
 }

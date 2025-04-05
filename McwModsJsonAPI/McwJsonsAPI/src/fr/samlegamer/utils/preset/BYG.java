@@ -9,19 +9,9 @@ import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.api.datagen.TagsGenerator;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
-import fr.samlegamer.utils.IModFiles.ILang;
 import fr.samlegamer.utils.IModFiles.ITagData;
 
 public class BYG implements Presetting
