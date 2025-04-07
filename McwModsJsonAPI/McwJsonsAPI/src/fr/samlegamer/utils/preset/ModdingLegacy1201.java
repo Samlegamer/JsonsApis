@@ -3,21 +3,12 @@ package fr.samlegamer.utils.preset;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
@@ -311,54 +302,99 @@ public class ModdingLegacy1201 implements Presetting
 		PREFIX_ID_LEAVE.clear();
 
 
-		NewModsList.ModdingLegacy.BlueSkiesBsky(PREFIX_ID_WOOD);
+		NewModsList.ModdingLegacy.BlueSkiesBsky1201(PREFIX_ID_WOOD);
 		NewModsList.ModdingLegacy.PremiumWoodPwood(PREFIX_ID_WOOD);
 		PREFIX_ID_WOOD.add("bsky_crystallized");
 		LANG_WOOD.add("Crystallized");
 
-		BridgesTagsGenerator bridges_tags = new BridgesTagsGenerator();
-		bridges_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		bridges_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		RoofsTagsGenerator roofs_tags = new RoofsTagsGenerator();
-		roofs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+		TagsGenerator tags = new TagsGenerator(LOCATION, Reference.allMcwMods());
+
+		tags.axeCustom(LOCATION, CompatModid, PREFIX_ID_WOOD, "RoofsAndBridges", List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_BRIDGES_MODID));
+
+		tags.vanilla(LOCATION, CompatModid, PREFIX_ID_WOOD, List.of(), List.of(), List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_BRIDGES_MODID));
+		tags.mcwMods(LOCATION, CompatModid, PREFIX_ID_WOOD, List.of(), List.of(), List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_BRIDGES_MODID));
+
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "fence_gates.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "fences.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "walls.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "wooden_doors.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "wooden_fences.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/blocks/", "wooden_trapdoors.json");
+
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/items/", "fences.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/items/", "walls.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/items/", "wooden_doors.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/items/", "wooden_fences.json");
+		JsonsUtils.deleter(LOCATION+File.separator+"data/tagsNewGen/minecraft/tags/items/", "wooden_trapdoors.json");
+//		BridgesTagsGenerator bridges_tags = new BridgesTagsGenerator();
+//		bridges_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		bridges_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		RoofsTagsGenerator roofs_tags = new RoofsTagsGenerator();
+//		roofs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 		PREFIX_ID_WOOD.clear();
 		LANG_WOOD.clear();
 
-		NewModsList.ModdingLegacy.BlueSkiesBsky(PREFIX_ID_WOOD);
+		NewModsList.ModdingLegacy.BlueSkiesBsky1201(PREFIX_ID_WOOD);
 		NewModsList.ModdingLegacy.PremiumWoodPwood(PREFIX_ID_WOOD);
 		LANG_LEAVE.addAll(LANG_WOOD);
 		PREFIX_ID_LEAVE.addAll(PREFIX_ID_WOOD);
 		PREFIX_ID_LEAVE.add("bsky_crystallized");
 		LANG_LEAVE.add("Crystallized");
 
-		FencesTagsGenerator fences_tags = new FencesTagsGenerator(PREFIX_ID_LEAVE);
-		fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_ID_LEAVE);
-		fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+		tags.axeCustom(LOCATION, CompatModid, PREFIX_ID_WOOD, "Other", List.of(Compatibilities.MCW_FURNITURES_MODID,
+				Compatibilities.MCW_FENCES_MODID,
+				Compatibilities.MCW_TRAPDOORS_MODID,
+				Compatibilities.MCW_PATHS_MODID,
+				Compatibilities.MCW_DOORS_MODID,
+				Compatibilities.MCW_WINDOWS_MODID,
+				Compatibilities.MCW_STAIRS_MODID));
 
-		FurnituresTagsGenerator furni_tags = new FurnituresTagsGenerator();
-		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+		tags.hoe(LOCATION, CompatModid, PREFIX_ID_LEAVE);
 
-		StairsTagsGenerator stairs_tags = new StairsTagsGenerator();
-		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+		tags.vanilla(LOCATION, CompatModid, PREFIX_ID_WOOD, PREFIX_ID_LEAVE, List.of(), List.of(Compatibilities.MCW_FURNITURES_MODID,
+				Compatibilities.MCW_FENCES_MODID,
+				Compatibilities.MCW_TRAPDOORS_MODID,
+				Compatibilities.MCW_PATHS_MODID,
+				Compatibilities.MCW_DOORS_MODID,
+				Compatibilities.MCW_WINDOWS_MODID,
+				Compatibilities.MCW_STAIRS_MODID));
+		tags.mcwMods(LOCATION, CompatModid, PREFIX_ID_WOOD, PREFIX_ID_LEAVE, List.of(), List.of(Compatibilities.MCW_FURNITURES_MODID,
+				Compatibilities.MCW_FENCES_MODID,
+				Compatibilities.MCW_TRAPDOORS_MODID,
+				Compatibilities.MCW_PATHS_MODID,
+				Compatibilities.MCW_DOORS_MODID,
+				Compatibilities.MCW_WINDOWS_MODID,
+				Compatibilities.MCW_STAIRS_MODID));
 
-		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
-		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		paths_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 
-		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
-		doors_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		doors_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-
-		TrapdoorsTagsGenerator traps_tags = new TrapdoorsTagsGenerator();
-		traps_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		traps_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-
-		WindowsTagsGenerator wins_tags = new WindowsTagsGenerator();
-		wins_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-		wins_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		FencesTagsGenerator fences_tags = new FencesTagsGenerator(PREFIX_ID_LEAVE);
+//		fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_ID_LEAVE);
+//		fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		FurnituresTagsGenerator furni_tags = new FurnituresTagsGenerator();
+//		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		StairsTagsGenerator stairs_tags = new StairsTagsGenerator();
+//		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
+//		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		paths_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
+//		doors_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		doors_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		TrapdoorsTagsGenerator traps_tags = new TrapdoorsTagsGenerator();
+//		traps_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		traps_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//
+//		WindowsTagsGenerator wins_tags = new WindowsTagsGenerator();
+//		wins_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
+//		wins_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
 
 		McwAPI.clears(LANG_LEAVE, PREFIX_ID_LEAVE, PREFIX_ID_WOOD, LANG_WOOD);
 

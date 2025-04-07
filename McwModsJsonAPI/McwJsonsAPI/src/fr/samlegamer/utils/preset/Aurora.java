@@ -300,8 +300,10 @@ public class Aurora implements Presetting
 		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
 
 		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
-		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
-
+		if(version.equals("1.16.5"))
+		{
+			tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+		}
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
 
@@ -360,6 +362,9 @@ public class Aurora implements Presetting
 		{
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
+
+			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "mushroom_hedge.json");
+			JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mushroom_hedge.json");
 		}
 
 		JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "red_mushroom_hedge.json");

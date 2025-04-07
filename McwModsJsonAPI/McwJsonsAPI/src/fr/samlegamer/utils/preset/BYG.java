@@ -129,12 +129,12 @@ public class BYG implements Presetting
 
 		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
 		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
-		tagsGenerator.pickaxeBYGSetting(LOCATION, CompatModid, ID_ROCK, "Bridges", List.of(Compatibilities.MCW_BRIDGES_MODID));
+		tagsGenerator.pickaxeCustom(LOCATION, CompatModid, ID_ROCK, "Bridges", List.of(Compatibilities.MCW_BRIDGES_MODID));
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, List.of(Compatibilities.MCW_BRIDGES_MODID));
 //		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
 		McwAPI.clears(ID_ROCK, WALL, FLOOR);
 		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);
-		tagsGenerator.pickaxeBYGSetting(LOCATION, CompatModid, ID_ROCK, "RoofsAndFences", List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_FENCES_MODID));
+		tagsGenerator.pickaxeCustom(LOCATION, CompatModid, ID_ROCK, "RoofsAndFences", List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_FENCES_MODID));
 
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());

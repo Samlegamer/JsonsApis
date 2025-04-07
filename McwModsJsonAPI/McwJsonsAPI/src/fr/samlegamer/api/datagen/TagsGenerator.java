@@ -95,6 +95,58 @@ public class TagsGenerator
         }
     }
 
+    public void axeCustom(String LOCATION, String CompatModid, List<String> ID_WOOD, String customName, List<String> modidIncluded)
+    {
+        Path file = Paths.get(LOCATION, "data/tagsNewGen/minecraft/tags/blocks/mineable/axe"+customName+".json");
+
+        try (BufferedWriter bw = Files.newBufferedWriter(file, StandardCharsets.UTF_8)) {
+            System.out.println("Début");
+
+            List<String> keys = new ArrayList<>();
+            final String baseFile = "wood.txt";
+
+            System.out.println("Get Keys for Tags");
+
+            for (String folder : modidIncluded) {
+                Path directoryForLang = Path.of(READER_MCW_TAGS, folder, baseFile);
+
+                try (BufferedReader br2 = Files.newBufferedReader(directoryForLang)) {
+                    br2.lines().forEach(keys::add);
+                } catch (IOException e) {
+                    System.err.println("Erreur lors de la lecture du fichier : " + directoryForLang);
+                }
+            }
+            System.out.println("Set in file");
+
+            bw.write("""
+                    {\r
+                      "replace": false,\r
+                      "values": [""");
+            bw.newLine();
+
+            for (int i = 0; i < keys.size(); i++) {
+                for (int k = 0; k < ID_WOOD.size(); k++) {
+                    final String key = keys.get(i).replace("%k", ID_WOOD.get(k));
+                    if (k != 0) {
+                        bw.write(",");
+                        bw.newLine();
+                    }
+                    bw.write("  \""+CompatModid+":" + key + "\"");
+                }
+                if (i != keys.size() - 1) {
+                    bw.write(",");
+                }
+                bw.newLine();
+            }
+            bw.write("  ]\r\n" + "}");
+            System.out.println("Finish");
+        }
+        catch (IOException e) {
+            System.err.println("Erreur lors de l'écriture du fichier : " + file);
+            e.printStackTrace();
+        }
+    }
+
     public void pickaxe(String LOCATION, String CompatModid, List<String> ID_ROCK, List<String> modidIncluded)
     {
         Path file = Paths.get(LOCATION, "data/tagsNewGen/minecraft/tags/blocks/mineable/pickaxe.json");
@@ -147,7 +199,7 @@ public class TagsGenerator
         }
     }
 
-    public void pickaxeBYGSetting(String LOCATION, String CompatModid, List<String> ID_ROCK, String customName, List<String> modidIncluded)
+    public void pickaxeCustom(String LOCATION, String CompatModid, List<String> ID_ROCK, String customName, List<String> modidIncluded)
     {
         Path file = Paths.get(LOCATION, "data/tagsNewGen/minecraft/tags/blocks/mineable/pickaxe"+customName+".json");
 

@@ -635,10 +635,10 @@ public class AbnormalsSniffer implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "yellow_maple", "yellow_maple_leaves", "maple_leaves");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "orange_maple", "orange_maple_leaves", "maple_leaves");
 
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "white_wisteria", "white_wisteria_leaves", "white_wisteria_flowers");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "purple_wisteria", "purple_wisteria_leaves", "purple_wisteria_flowers");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "pink_wisteria", "pink_wisteria_leaves", "pink_wisteria_flowers");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "blue_wisteria", "blue_wisteria_leaves", "blue_wisteria_flowers");
+//		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "white_wisteria", "white_wisteria_leaves", "white_wisteria_flowers");
+//		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "purple_wisteria", "purple_wisteria_leaves", "purple_wisteria_flowers");
+//		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "pink_wisteria", "pink_wisteria_leaves", "pink_wisteria_flowers");
+//		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "blue_wisteria", "blue_wisteria_leaves", "blue_wisteria_flowers");
 
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "honeycomb_brick", "buzzier_bees:honeycomb_block", "minecraft:honeycomb_block");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "honeycomb_brick", "\"buzzier_bees:honeycomb_brick\"", "\"buzzier_bees:honeycomb_bricks\"");
