@@ -1,6 +1,7 @@
 package fr.samlegamer.utils.preset;
 
 import java.io.File;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI;
@@ -179,7 +180,7 @@ public class TerraformersMC implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 
-		if(version.equals("1.21.3"))
+		if(version.equals("1.21.3") || version.equals("1.21.4"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
@@ -243,6 +244,46 @@ public class TerraformersMC implements Presetting
 		//JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "cherry_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "scorched_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "umbral_hedge.json");
+
+		if(version.equals("1.21.4"))
+		{
+			List<String> LEAVES_NO_COLORED = List.of("redwood", "hemlock", "rubber", "cypress",
+					"willow", "japanese_maple_shrub", "rainbow_eucalyptus");
+			for (String leave : LEAVES_NO_COLORED)
+			{
+				JsonsUtils.deleter(LOCATION + "/items/", leave+"_hedge.json");
+
+				APIWriter.write(Path.of(LOCATION + "/items/"+leave+"_hedge.json"), "{\n" +
+						"  \"model\" : {\n" +
+						"    \"type\" : \"minecraft:model\",\n" +
+						"    \"model\": \""+CompatModid+":block/hedges/"+leave+"_wall_inventory\",\n" +
+						"    \"tints\": [\n" +
+						"      {\n" +
+						"        \"type\": \"minecraft:constant\",\n" +
+						"        \"value\": -12012264\n" +
+						"      }\n" +
+						"    ]\n" +
+						"  }\n" +
+						"}\n");
+			}
+
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "sakura", "terrestria:block/sakura_log_section", "terrestria:block/sakura_log_top");
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "yucca_palm", "terrestria:block/yucca_palm_log_section", "terrestria:block/yucca_palm_log_top");
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "sakura", "terrestria:block/sakura_log_section", "terrestria:block/sakura_log_top");
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "yucca_palm", "terrestria:block/yucca_palm_log_section", "terrestria:block/yucca_palm_log_top");
+
+			for(String folder : McwAPI.ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE.getPathList()) {
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_bricks", "terrestria:block/mossy_volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_cobblestone", "terrestria:block/mossy_volcanic_rock_cobblestone");
+
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_bricks", "terrestria:block/volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_cobblestone", "terrestria:block/volcanic_rock_cobblestone");
+			}
+
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "japanese_maple_shrub", "terrestria:block/japanese_maple_leaves_green", "terrestria:block/japanese_maple_shrub_leaves");
+			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "dark_japanese_maple", "terrestria:block/japanese_maple_leaves_dark", "terrestria:block/dark_japanese_maple_leaves");
+		}
+
 	}
 
 	public static void addLang(String LOCATION, String CompatModid, String language)

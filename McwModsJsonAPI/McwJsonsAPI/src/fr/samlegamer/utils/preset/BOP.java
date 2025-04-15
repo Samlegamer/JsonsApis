@@ -1,5 +1,6 @@
 package fr.samlegamer.utils.preset;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI;
@@ -110,54 +111,12 @@ public class BOP implements Presetting
 		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
-//		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
-//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 
 		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "fr_fr");
-//		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
-//
-//		LANG_WOOD.clear();
-//		LANG_LEAVE.clear();
-//
-//		if(this.b)
-//		{
-//			French.BOP.bop1204Lang(LANG_WOOD);
-//			French.BOP.bopLeaves1204Lang(LANG_LEAVE);
-//		}
-//		else
-//		{
-//			French.BOP.bopLang(LANG_WOOD, false);
-//			French.BOP.bopLeavesLang(LANG_LEAVE, false);
-//		}
-//		genLangFrench(LOCATION, CompatModid, new BridgesLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
-		
+
 		if(this.b)
 		{
-			//Delete maple hedge data
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "maple_hedge.json");
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "maple_hedge.json");
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "maple_hedge.json");
@@ -169,9 +128,32 @@ public class BOP implements Presetting
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
 		}
 		
-		if(versioning.equals("1.21.3"))
+		if(versioning.equals("1.21.3") || versioning.equals("1.21.4"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
+		}
+
+		if(versioning.equals("1.21.4"))
+		{
+			final List<String> LEAVES_NO_COLORED = List.of("pine", "mahogany", "willow", "palm", "flowering_oak");
+
+			for (String leave : LEAVES_NO_COLORED)
+			{
+				JsonsUtils.deleter(LOCATION + "/items/", leave+"_hedge.json");
+
+				APIWriter.write(Path.of(LOCATION + "/items/"+leave+"_hedge.json"), "{\n" +
+						"  \"model\" : {\n" +
+						"    \"type\" : \"minecraft:model\",\n" +
+						"    \"model\": \""+CompatModid+":block/hedges/"+leave+"_wall_inventory\",\n" +
+						"    \"tints\": [\n" +
+						"      {\n" +
+						"        \"type\": \"minecraft:constant\",\n" +
+						"        \"value\": -12012264\n" +
+						"      }\n" +
+						"    ]\n" +
+						"  }\n" +
+						"}\n");
+			}
 		}
 	}
 	

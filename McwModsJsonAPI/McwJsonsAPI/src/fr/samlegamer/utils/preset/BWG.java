@@ -1,5 +1,6 @@
 package fr.samlegamer.utils.preset;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import fr.samlegamer.McwAPI;
@@ -302,6 +303,31 @@ public class BWG implements Presetting
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "florus_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "florus_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "florus_hedge.json");
+
+		if(version.equals("1.21.4"))
+		{
+			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
+
+			final List<String> LEAVES_NO_COLORED = List.of("mahogany", "maple");
+
+			for (String leave : LEAVES_NO_COLORED)
+			{
+				JsonsUtils.deleter(LOCATION + "/items/", leave+"_hedge.json");
+
+				APIWriter.write(Path.of(LOCATION + "/items/"+leave+"_hedge.json"), "{\n" +
+						"  \"model\" : {\n" +
+						"    \"type\" : \"minecraft:model\",\n" +
+						"    \"model\": \""+CompatModid+":block/hedges/"+leave+"_wall_inventory\",\n" +
+						"    \"tints\": [\n" +
+						"      {\n" +
+						"        \"type\": \"minecraft:constant\",\n" +
+						"        \"value\": -12012264\n" +
+						"      }\n" +
+						"    ]\n" +
+						"  }\n" +
+						"}\n");
+			}
+		}
 
 		System.out.println("Finish Registries");
 	}

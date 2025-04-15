@@ -199,6 +199,10 @@ public class McwModsRessources implements IModFiles.IClient
 						            	aaa = MAT_WOOD.get(a)+"_log_side";
 						            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log_side";
 					            		break;
+									case "1.21.3":
+										aaa = MAT_WOOD.get(a)+"_log_side";
+										bbb = "stripped_"+MAT_WOOD.get(a)+"_log_side";
+										break;
 					            	case "1.21.4":
 						            	aaa = MAT_WOOD.get(a)+"_log";
 						            	bbb = "stripped_"+MAT_WOOD.get(a)+"_log";
