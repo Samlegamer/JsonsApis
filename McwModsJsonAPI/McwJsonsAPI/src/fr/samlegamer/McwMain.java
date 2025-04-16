@@ -17,7 +17,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new BWG("1.21.4", ModLoaders.FORGE));
+		preset(new BWG("1.21.4", ModLoaders.NEOFORGE));
 		renameFoldersData();
 	}
 
