@@ -18,22 +18,24 @@ public class Aurora implements Presetting
 	private final String version;
 	private final ModLoaders modLoader;
 	private final List<String> mcwMods;
-	
-	public Aurora(String version, List<String> mcwMods, ModLoaders modLoader)
+	private final String recipeVersion;
+
+	public Aurora(String version, List<String> mcwMods, ModLoaders modLoader, String recipeVersion)
 	{
 		this.version=version;
 		this.modLoader=modLoader;
 		this.mcwMods=mcwMods;
+		this.recipeVersion=recipeVersion;
 	}
 	
-	public Aurora(String version, ModLoaders modLoader)
+	public Aurora(String version, ModLoaders modLoader, String recipeVersion)
 	{
-		this(version, Reference.allMcwMods(), modLoader);
+		this(version, Reference.allMcwMods(), modLoader, recipeVersion);
 	}
 
 	public Aurora(String version)
 	{
-		this(version, ModLoaders.FORGE);
+		this(version, ModLoaders.FORGE, "1.20");
 	}
 
 	@Override
@@ -66,13 +68,52 @@ public class Aurora implements Presetting
 				NewModsList.Aurora.auroraWood(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID);
 				genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD,
 						mcwMod, false, new McwModsRessources(mcwMod, clientFolderType),
-				new McwDataGen(mcwMod));
+				new McwDataGen(mcwMod, recipeVersion));
 				ID_WOOD.clear();
 
 				NewModsList.Aurora.auroraWood(ID_WOOD, Compatibilities.ABUNDANCE_MODID);
 				genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-				mcwMod, false, new McwModsRessources(mcwMod, clientFolderType), new McwDataGen(mcwMod));
+				mcwMod, false, new McwModsRessources(mcwMod, clientFolderType), new McwDataGen(mcwMod, recipeVersion));
 				ID_WOOD.clear();
+			}
+			else if(version.equals("1.21.1"))
+			{
+				final String txtLocMod = Compatibilities.NOMANSLAND_TEXTURES;
+				final String ModidOfBaseMod = Compatibilities.NOMANSLAND;
+
+				final McwModsRessources RSC = new McwModsRessources(mcwMod, clientFolderType);
+				final McwDataGen DATA = new McwDataGen(mcwMod, recipeVersion);
+
+				NewModsList.Aurora.auroraBreezeWood(ID_WOOD, Compatibilities.NOMANSLAND);
+
+				for(String wood : ID_WOOD)
+				{
+					genRsc(LOCATION, CompatModid, txtLocMod + "/"+wood, Compatibilities.NOMANSLAND, List.of(wood),
+							mcwMod, false, RSC, DATA);
+				}
+				ID_WOOD.clear();
+
+				if(mcwMod.equals(Compatibilities.MCW_FENCES_MODID)) {
+					NewModsList.Aurora.auroraBreezeNormalFolderLeave(ID_LEAVE);
+
+					RSC.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					RSC.createWoodModelsBlockswithResearch(LOCATION, txtLocMod+"/plants", ID_LEAVE, Boolean.FALSE, "acacia_wall");
+					RSC.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					DATA.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+					DATA.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					DATA.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+					ID_LEAVE.clear();
+
+					NewModsList.Aurora.auroraBreezeSpecialFolderLeave(ID_LEAVE);
+
+					RSC.createWoodBlockstateswithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					RSC.createWoodModelsBlockswithResearch(LOCATION, txtLocMod+"/maple", ID_LEAVE, Boolean.FALSE, "acacia_wall");
+					RSC.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					DATA.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+					DATA.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
+					DATA.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
+					ID_LEAVE.clear();
+				}
 			}
 
 			if(version.equals("1.20.1"))
@@ -88,196 +129,12 @@ public class Aurora implements Presetting
 				NewModsList.Aurora.auroraWood(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID);
 			}
 			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-			mcwMod, true, new McwModsRessources(mcwMod, clientFolderType), new McwDataGen(mcwMod));
+			mcwMod, true, new McwModsRessources(mcwMod, clientFolderType), new McwDataGen(mcwMod, recipeVersion));
 			ID_WOOD.clear();
 
 			System.out.println("Done Wood Client/Data "+mcwMod);
 		}
-//		/*Bridges*/
-//		if(activeBridges)
-//		{
-//
-//		}
-//
-//		/*Fences*/
-//		if(activeFences)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_FENCES_MODID, false, new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_FENCES_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_FENCES_MODID, true, new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_FENCES_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_FENCES_MODID, false, new McwModsRessources(Compatibilities.MCW_FENCES_MODID, ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_FENCES_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Stone Client");
-//		}
-//
-//		/*Roofs*/
-//		if(activeRoofs)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_ROOFS_MODID, false, new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_ROOFS_MODID, true, new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_ROOFS_MODID, false, new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Stone Client");
-//		}
-//
-//		/*Furnitures*/
-//		if(activeFurnitures)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_FURNITURES_MODID, false, new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
-//			new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_FURNITURES_MODID, true, new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
-//			new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_FURNITURES_MODID, false, new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL),
-//			new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
-//
-//		/*Stairs*/
-//		if(activeStairs)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_STAIRS_MODID, false, new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_STAIRS_MODID, true, new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_STAIRS_MODID, false, new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
-//
-//		if(activePaths)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_PATHS_MODID, false, new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_PATHS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_PATHS_MODID, true, new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_PATHS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_PATHS_MODID, false, new McwModsRessources(Compatibilities.MCW_PATHS_MODID, ClientFolderTypes.MCW_PATHS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_PATHS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
-//
-//		if(activeDoors)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_DOORS_MODID, false, new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_DOORS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_DOORS_MODID, true, new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_DOORS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_DOORS_MODID, false, new McwModsRessources(Compatibilities.MCW_DOORS_MODID, ClientFolderTypes.MCW_DOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_DOORS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
-//
-//		if(activeTraps)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_TRAPDOORS_MODID, false, new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_TRAPDOORS_MODID, true, new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_TRAPDOORS_MODID, false, new McwModsRessources(Compatibilities.MCW_TRAPDOORS_MODID, ClientFolderTypes.MCW_TRAPDOORS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_TRAPDOORS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
-//
-//		if(activeWindows)
-//		{
-//			System.out.println("Start Wood Client");
-//			genRsc(LOCATION, CompatModid, Compatibilities.BAYOU_BLUES_TEXTURES, Compatibilities.BAYOU_BLUES_MODID, ID_WOOD, list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.BAYOU_BLUES_MODID),
-//			Compatibilities.MCW_WINDOWS_MODID, false, new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ENHANCED_MUSHROOMS_TEXTURES, Compatibilities.ENHANCED_MUSHROOMS_MODID, ID_WOOD,
-//			this.is120 ? list ->  ModsList.AuroraWoods1201(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID) : list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID),
-//			Compatibilities.MCW_WINDOWS_MODID, true, new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
-//			ID_WOOD.clear();
-//
-//			genRsc(LOCATION, CompatModid, Compatibilities.ABUNDANCE_TEXTURES, Compatibilities.ABUNDANCE_MODID, ID_WOOD,
-//			list -> ModsList.AuroraWoods(ID_WOOD, Compatibilities.ABUNDANCE_MODID),
-//			Compatibilities.MCW_WINDOWS_MODID, false, new McwModsRessources(Compatibilities.MCW_WINDOWS_MODID, ClientFolderTypes.MCW_WINDOWS_BLOCK_MODEL_WOOD),
-//			new McwDataGen(Compatibilities.MCW_WINDOWS_MODID));
-//			ID_WOOD.clear();
-//			System.out.println("Done Wood Client");
-//		}
+
 		switch (version) {
 			case "1.16.5" -> {
 				NewModsList.Aurora.auroraWood(ID_WOOD);
@@ -287,8 +144,10 @@ public class Aurora implements Presetting
 				NewModsList.Aurora.auroraSnifferWood(ID_WOOD);
 			}
 			case "1.21.1" -> {
-//			NewModsList.Aurora.auroraBreezeWood(ID_WOOD);
-//			LangMods.Aurora.auroraBreezeWood(LANG_WOOD, language);
+				NewModsList.Aurora.auroraBreezeWood(ID_WOOD);
+				NewModsList.Aurora.auroraBreezeLeave(ID_LEAVE);
+				NewModsList.Aurora.auroraBreezeNormalFolderLeave(ID_LEAVE);
+				NewModsList.Aurora.auroraBreezeSpecialFolderLeave(ID_LEAVE);
 			}
 			default -> {
 				NewModsList.Aurora.auroraCaveWood(ID_WOOD);
@@ -300,65 +159,28 @@ public class Aurora implements Presetting
 		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
 
 		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
-		if(version.equals("1.16.5"))
+		if(version.equals("1.16.5") || version.equals("1.21.1"))
 		{
 			tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
 		}
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), Reference.allMcwMods());
 
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new BridgesTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new RoofsTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FencesTagsGenerator(ID_LEAVE));
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new FurnituresTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new StairsTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new PathsTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new DoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new TrapdoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new WindowsTagsGenerator());
 		System.out.println("Done Tags");
 
 		System.out.println("Start Languages");
 		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
-		addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "fr_fr");
+		if(!version.equals("1.21.1"))
+		{
+			addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "fr_fr");
+		}
 		System.out.println("Done Languages");
 
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new BridgesLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new RoofsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new FurnituresLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new StairsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new PathsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new DoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new TrapdoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new WindowsLangGenerator());
-//
-//		LANG_WOOD.clear();
-//		LANG_LEAVE.clear();
-//
-//		if(this.is120)
-//		{
-//			French.Aurora.AuroraWoods1201Lang(LANG_WOOD);
-//		}
-//		else
-//		{
-//			French.Aurora.AuroraWoodsLang(LANG_WOOD);
-//		}
-//		French.Aurora.AuroraLeavesLang(LANG_LEAVE);
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new BridgesLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new RoofsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new FurnituresLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new StairsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new PathsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new DoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new TrapdoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, new WindowsLangGenerator());
 
 
 		System.out.println("Start replacing");
 
-		if(version.equals("1.20.1"))
+		if(version.equals("1.20.1") || version.equals("1.21.1"))
 		{
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "mushroom", "enhanced_mushrooms:mushroom_stem", "minecraft:mushroom_stem");
@@ -416,9 +238,14 @@ public class Aurora implements Presetting
                 langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, mcwMods);
             }
             case "1.21.1" -> {
-//			NewModsList.Aurora.auroraBreezeWood(ID_WOOD);
-//			LangMods.Aurora.auroraBreezeWood(LANG_WOOD, language);
-            }
+				LangMods.Aurora.auroraWoodBreezeLang(LANG_WOOD, language);
+				LangMods.Aurora.auroraLeaveBreezeLang(LANG_LEAVE, language);
+				langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, mcwMods);
+				langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);
+
+				System.out.println(ID_LEAVE.toString());
+				System.out.println(LANG_LEAVE.toString());
+			}
             default -> {
                 LangMods.Aurora.auroraWoodCaveLang(LANG_WOOD, language);
                 langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, mcwMods);

@@ -17,7 +17,7 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new BWG("1.21.4", ModLoaders.NEOFORGE));
+		preset(new Aurora("1.21.1", ModLoaders.NEOFORGE, "1.21"));
 		renameFoldersData();
 	}
 

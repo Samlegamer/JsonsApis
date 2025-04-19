@@ -113,7 +113,14 @@ public class LangMods {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, auroraFolder + "auroraLeaveLang", LANG_LEAVE);
         }
 
+        public static void auroraLeaveBreezeLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, auroraFolder + "auroraLeaveBreezeLang", LANG_LEAVE);
+        }
+
         //!No Man Land + EM 1.21+
+        public static void auroraWoodBreezeLang(List<String> LANG_WOOD, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, auroraFolder + "auroraWoodBreezeLang", LANG_WOOD);
+        }
     }
 
     public static class ModdingLegacy {

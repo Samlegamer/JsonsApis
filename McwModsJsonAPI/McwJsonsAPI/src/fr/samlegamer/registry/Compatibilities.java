@@ -53,7 +53,10 @@ public class Compatibilities
 	public static final String ENHANCED_MUSHROOMS_TEXTURES = "enhanced_mushrooms:block";
 	public static final String ABUNDANCE_MODID = "abundance";
 	public static final String ABUNDANCE_TEXTURES = "abundance:block";
-	
+
+	public static final String NOMANSLAND = "nomansland";
+	public static final String NOMANSLAND_TEXTURES = "nomansland:block";
+
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
 	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";

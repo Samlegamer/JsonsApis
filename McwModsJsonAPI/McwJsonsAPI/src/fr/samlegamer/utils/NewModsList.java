@@ -565,6 +565,7 @@ public class NewModsList
                     Compatibilities.ENHANCED_MUSHROOMS_MODID + File.separator + "WoodSniffer", ID_WOOD);
         }
 
+        /* For 1.21.1 Neoforge */
         public static void auroraBreezeWood(List<String> ID_WOOD, String compat)
         {
             if(compat.equals(Compatibilities.ENHANCED_MUSHROOMS_MODID))
@@ -572,11 +573,32 @@ public class NewModsList
                 auroraSnifferWood(ID_WOOD);
             }
 
-//            if(compat.equals(Compatibilities.NOMANSLAND))
-//            {
-//                addListWithPath(McwAPI.READER_MODLIST, auroraFolder +
-//                        Compatibilities.NOMANSLAND + File.separator + "WoodBreeze", ID_WOOD);
-//            }
+            if(compat.equals(Compatibilities.NOMANSLAND))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, auroraFolder +
+                        Compatibilities.NOMANSLAND + File.separator + "WoodBreeze", ID_WOOD);
+            }
+        }
+
+        public static void auroraBreezeLeave(List<String> ID_LEAVE) {
+            addListWithPath(McwAPI.READER_MODLIST, auroraFolder +
+                    Compatibilities.NOMANSLAND + File.separator + "LeaveBreeze", ID_LEAVE);
+        }
+
+        public static void auroraBreezeNormalFolderLeave(List<String> ID_LEAVE) {
+            addListWithPath(McwAPI.READER_MODLIST, auroraFolder +
+                    Compatibilities.NOMANSLAND + File.separator + "LeaveNormalFolderBreeze", ID_LEAVE);
+        }
+
+        public static void auroraBreezeSpecialFolderLeave(List<String> ID_LEAVE) {
+            addListWithPath(McwAPI.READER_MODLIST, auroraFolder +
+                    Compatibilities.NOMANSLAND + File.separator + "LeaveSpecialFolderBreeze", ID_LEAVE);
+        }
+
+        public static void auroraBreezeWood(List<String> ID_WOOD)
+        {
+            auroraBreezeWood(ID_WOOD, Compatibilities.ENHANCED_MUSHROOMS_MODID);
+            auroraBreezeWood(ID_WOOD, Compatibilities.NOMANSLAND);
         }
     }
 
