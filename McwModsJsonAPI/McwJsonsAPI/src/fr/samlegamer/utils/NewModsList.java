@@ -2,7 +2,6 @@ package fr.samlegamer.utils;
 
 import fr.samlegamer.McwAPI;
 import fr.samlegamer.registry.Compatibilities;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,6 +9,19 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class NewModsList
 {
+    public static class RegionsUnexplored
+    {
+        public static void regionsUnexploredWood(List<String> ID_WOOD)
+        {
+            addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredWood", ID_WOOD);
+        }
+
+        public static void regionsUnexploredLeave(List<String> ID_LEAVE)
+        {
+            addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredLeave", ID_LEAVE);
+        }
+    }
+
     public static class BOP
     {
         public static void bopWood(List<String> ID_WOOD)

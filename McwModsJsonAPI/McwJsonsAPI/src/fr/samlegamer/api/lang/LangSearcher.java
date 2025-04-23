@@ -16,12 +16,13 @@ public class LangSearcher {
     private final List<String> modidCharged = new ArrayList<>();
     private final String READER;
 
+    @Deprecated(forRemoval = true)
     public LangSearcher(String READER) {
         this.READER = READER;
     }
 
     public LangSearcher() {
-        this(McwAPI.READER_MCW_LANG);
+        this.READER = McwAPI.READER_MCW_LANG;
     }
 
     private void addWithBool(boolean b, String str) {

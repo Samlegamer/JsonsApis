@@ -4,7 +4,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.Presetting;
 import fr.samlegamer.utils.Reference;
@@ -17,8 +16,8 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new Aurora("1.21.1", ModLoaders.NEOFORGE, "1.21"));
-		renameFoldersData();
+		preset(new RegionsUnexplored(ModLoaders.FORGE));
+		//renameFoldersData();
 	}
 
 	private static void renameFoldersData()

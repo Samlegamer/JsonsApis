@@ -377,7 +377,7 @@ public class BYG implements Presetting
 
 	private void genLang(String LOCATION, String CompatModid, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 		System.out.println("Start Generate "+language+" Files");
 		McwAPI.clears(ID_ROCK, WALL, FLOOR, LANG_ROCK);
 		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);

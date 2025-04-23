@@ -1,0 +1,15 @@
+baobab
+blackwood
+cherry
+cypress
+dead
+eucalyptus
+joshua
+larch
+maple
+mauve
+palm
+pine
+redwood
+sculkwood
+willow

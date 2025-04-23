@@ -152,7 +152,7 @@ public class BWG implements Presetting
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "florus_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "florus_hedge.json");
 
-		if(version.equals("1.21.4"))
+		if(version.equals("1.21.4") || version.equals("1.21.5"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 
@@ -182,7 +182,7 @@ public class BWG implements Presetting
 
 	private void genLang(String LOCATION, String CompatModid, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 		System.out.println("Start Generate "+language+" Files");
 		LangMods.BWG.bwgLeaveLang(LANG_LEAVE, language);
 		LangMods.BWG.bwgWoodLang(LANG_WOOD, language);

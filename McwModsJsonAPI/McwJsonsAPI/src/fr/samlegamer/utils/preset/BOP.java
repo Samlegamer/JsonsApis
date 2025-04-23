@@ -128,12 +128,12 @@ public class BOP implements Presetting
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
 		}
 		
-		if(versioning.equals("1.21.3") || versioning.equals("1.21.4"))
+		if(versioning.equals("1.21.3") || versioning.equals("1.21.4") || versioning.equals("1.21.5"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
 
-		if(versioning.equals("1.21.4"))
+		if(versioning.equals("1.21.4") || versioning.equals("1.21.5"))
 		{
 			final List<String> LEAVES_NO_COLORED = List.of("pine", "mahogany", "willow", "palm", "flowering_oak");
 
@@ -155,6 +155,24 @@ public class BOP implements Presetting
 						"}\n");
 			}
 		}
+
+		if(versioning.equals("1.21.5")) //Fix for dead hedge in 1.21.5
+		{
+			JsonsUtils.deleter(LOCATION + "/items/", "dead_hedge.json");
+
+			APIWriter.write(Path.of(LOCATION + "/items/dead_hedge.json"), "{\n" +
+					"  \"model\" : {\n" +
+					"    \"type\" : \"minecraft:model\",\n" +
+					"    \"model\": \""+CompatModid+":block/hedges/dead_wall_inventory\",\n" +
+					"    \"tints\": [\n" +
+					"      {\n" +
+					"        \"type\": \"minecraft:constant\",\n" +
+					"        \"value\": -10732494\n" +
+					"      }\n" +
+					"    ]\n" +
+					"  }\n" +
+					"}\n");
+		}
 	}
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
@@ -174,13 +192,13 @@ public class BOP implements Presetting
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
 			dat.AdvancementsLeavesHedgesIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, compat, ModidOfBaseMod, modLoader);
 			dat.LootTableLogAllwithResearch(LOCATION, CompatModid, ID_LEAVE, "acacia_hedge");
-			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, Compatibilities.BOP_MODID, modLoader);
+			dat.RecipesLogAllwithResearchIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_LEAVE, Boolean.FALSE, "acacia_hedge", Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod, modLoader);
 		}
 	}
 
 	private void addLanguage(String LOCATION, String CompatModid, List<String> ID_WOOD, List<String> LANG_WOOD, List<String> ID_LEAVE, List<String> LANG_LEAVE, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 
 		if(this.b)
 		{

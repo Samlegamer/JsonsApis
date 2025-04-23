@@ -6,7 +6,18 @@ import java.io.File;
 import java.util.List;
 import static fr.samlegamer.utils.Reference.*;
 
-public class LangMods {
+public class LangMods
+{
+    public static class RegionsUnexplored
+    {
+        public static void regionsUnexploredWoodLang(List<String> LANG_WOOD, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredWoodLang", LANG_WOOD);
+        }
+
+        public static void regionsUnexploredLeaveLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredLeaveLang", LANG_LEAVE);
+        }
+    }
 
     public static class BOP {
         public static void bopWood(List<String> LANG_WOOD, String language) {
