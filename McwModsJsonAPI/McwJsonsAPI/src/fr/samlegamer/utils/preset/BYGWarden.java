@@ -8,15 +8,7 @@ import fr.samlegamer.McwAPI.ClientFolderTypes;
 import fr.samlegamer.api.clientgen.McwModsRessources;
 import fr.samlegamer.api.datagen.McwDataGen;
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.api.datagen.bridges.BridgesTagsGenerator;
-import fr.samlegamer.api.datagen.doors.DoorsTagsGenerator;
-import fr.samlegamer.api.datagen.fences.FencesTagsGenerator;
-import fr.samlegamer.api.datagen.furnitures.FurnituresTagsGenerator;
-import fr.samlegamer.api.datagen.paths.PathsTagsGenerator;
-import fr.samlegamer.api.datagen.roofs.RoofsTagsGenerator;
-import fr.samlegamer.api.datagen.stairs.StairsTagsGenerator;
-import fr.samlegamer.api.datagen.traps.TrapdoorsTagsGenerator;
-import fr.samlegamer.api.datagen.windows.WindowsTagsGenerator;
+import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
@@ -144,19 +136,29 @@ public class BYGWarden implements Presetting
 		NewModsList.BYG.bygRock(ID_ROCK, WALL, FLOOR);
 
 		System.out.println("Start Generate Tags");
-		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-		ID_ROCK.clear();
-		WALL.clear();
-		FLOOR.clear();
+
+		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
+
+		tagsGenerator.axe(LOCATION, CompatModid, ID_WOOD, Reference.allMcwMods());
+		tagsGenerator.hoe(LOCATION, CompatModid, ID_LEAVE);
+		tagsGenerator.pickaxeCustom(LOCATION, CompatModid, ID_ROCK, "Bridges", List.of(Compatibilities.MCW_BRIDGES_MODID));
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, List.of(Compatibilities.MCW_BRIDGES_MODID));
+//		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
+		McwAPI.clears(ID_ROCK, WALL, FLOOR);
 		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);
-		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
-		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
-		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
+		tagsGenerator.pickaxeCustom(LOCATION, CompatModid, ID_ROCK, "RoofsAndFences", List.of(Compatibilities.MCW_ROOFS_MODID, Compatibilities.MCW_FENCES_MODID));
+
+		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
+		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
+
+//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
+//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
+//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
+//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 		System.out.println("Done Generate Tags");
 
 		McwAPI.clears(ID_ROCK, WALL, FLOOR, LANG_ROCK);
@@ -385,7 +387,7 @@ public class BYGWarden implements Presetting
 	
 	private void genLang(String LOCATION, String CompatModid, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 		System.out.println("Start Generate "+language+" Files");
 		McwAPI.clears(ID_ROCK, WALL, FLOOR, LANG_ROCK);
 		NewModsList.BYG.bygRockFenceable(ID_ROCK, WALL, FLOOR);

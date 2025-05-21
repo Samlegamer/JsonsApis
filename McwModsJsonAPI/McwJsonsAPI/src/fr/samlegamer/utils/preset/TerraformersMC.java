@@ -112,47 +112,9 @@ public class TerraformersMC implements Presetting
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
 
-//		genTags(LOCATION, CompatModid, new BridgesTagsGenerator());
-//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE));
-//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
-
 		addLang(LOCATION, CompatModid, "en_us");
 		addLang(LOCATION, CompatModid, "fr_fr");
 
-//		genLangEnglish(LOCATION, CompatModid, new BridgesLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new RoofsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangEnglish(LOCATION, CompatModid, new FurnituresLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new DoorsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new WindowsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new PathsLangGenerator());
-//		genLangEnglish(LOCATION, CompatModid, new StairsLangGenerator());
-//
-//		LANG_WOOD.clear();
-//		LANG_ROCK.clear();
-//		LANG_LEAVE.clear();
-//
-//		French.TerraformersMC.TerraformersMCRockLang(LANG_ROCK);
-//		French.TerraformersMC.TerraformersMCWoodLang(LANG_WOOD);
-//		French.TerraformersMC.TerraformersMCLeavesLang(LANG_LEAVE);
-//
-//		genLangFrench(LOCATION, CompatModid, new BridgesLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new RoofsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new FencesLangGenerator(ID_LEAVE, LANG_LEAVE));
-//		genLangFrench(LOCATION, CompatModid, new FurnituresLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new TrapdoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new DoorsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new WindowsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new PathsLangGenerator());
-//		genLangFrench(LOCATION, CompatModid, new StairsLangGenerator());
-//
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "dark_japanese_maple", "dark_japanese_maple_leaves", "japanese_maple_leaves_dark");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "japanese_maple_shrub", "japanese_maple_shrub_leaves", "japanese_maple_leaves_green");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "yucca_palm", "yucca_palm_log_top", "yucca_palm_log_section");
@@ -184,64 +146,7 @@ public class TerraformersMC implements Presetting
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
-		
-		/*JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blossom", "quark:blossom_slab", "quark:blossom_planks_slab");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "azalea", "quark:azalea_slab", "quark:azalea_planks_slab");
-		
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "sandstone_bricks", "\"quark:smooth_sandstone_bricks\"", "\"minecraft:smooth_sandstone\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "red_sandstone_bricks", "\"quark:smooth_red_sandstone_bricks\"", "\"minecraft:smooth_red_sandstone\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "calcite_bricks", "\"quark:calcite\"", "\"minecraft:calcite\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blackstone_bricks", "\"quark:blackstone\"", "\"minecraft:blackstone\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mossy_cobblestone_bricks", "\"quark:mossy_cobblestone\"", "\"minecraft:mossy_cobblestone\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cobblestone_bricks", "\"quark:cobblestone\"", "\"minecraft:cobblestone\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "andesite_bricks", "\"quark:andesite\"", "\"minecraft:andesite\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "tuff_bricks", "\"quark:tuff\"", "\"minecraft:tuff\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "granite_bricks", "\"quark:granite\"", "\"minecraft:granite\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "diorite_bricks", "\"quark:diorite\"", "\"minecraft:diorite\"");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "dripstone_bricks", "\"quark:dripstone\"", "\"minecraft:dripstone_block\"");
 
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "soul_sandstone_bricks", "\"quark:smooth_soul_sandstone_bricks\"", "\"quark:smooth_soul_sandstone\"");
-
-		
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mossy_cobblestone_bricks", "\"quark:mossy_cobblestone_brick_", "\"quark:mossy_cobblestone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "sandstone_bricks", "\"quark:sandstone_brick_", "\"quark:sandstone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "soul_sandstone_bricks", "\"quark:soul_sandstone_brick_", "\"quark:soul_sandstone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "jasper_bricks", "\"quark:jasper_brick_", "\"quark:jasper_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "tuff_bricks", "\"quark:tuff_brick_", "\"quark:tuff_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "shale_bricks", "\"quark:shale_brick_", "\"quark:shale_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "permafrost_bricks", "\"quark:permafrost_brick_", "\"quark:permafrost_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "andesite_bricks", "\"quark:andesite_brick_", "\"quark:andesite_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "limestone_bricks", "\"quark:limestone_brick_", "\"quark:limestone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "diorite_bricks", "\"quark:diorite_brick_", "\"quark:diorite_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "red_sandstone_bricks", "\"quark:red_sandstone_brick_", "\"quark:red_sandstone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "calcite_bricks", "\"quark:calcite_brick_", "\"quark:calcite_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cobblestone_bricks", "\"quark:cobblestone_brick_", "\"quark:cobblestone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "tuff_bricks", "\"quark:tuff_brick_", "\"quark:tuff_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "limestone_bricks", "\"quark:limestone_brick_", "\"quark:limestone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "dripstone_bricks", "\"quark:dripstone_brick_", "\"quark:dripstone_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "granite_bricks", "\"quark:granite_brick_", "\"quark:granite_bricks_");
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blackstone_bricks", "\"quark:blackstone_brick_", "\"quark:blackstone_bricks_");
-
-		//JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mossy_cobblestone_bricks", "minecraft:mossy_cobblestone_bricks_wall", "minecraft:mossy_cobblestone_brick_wall");
-		//JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "mossy_cobblestone_bricks", "minecraft:mossy_cobblestone_bricks_wall", "minecraft:mossy_cobblestone_brick_wall");
-		
-		for(String folderInModel : McwAPI.ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE.getPathList())
-		{
-			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "soul_sandstone_bricks", "soul_sandstone_bricks_top", "soul_sandstone_bricks");
-			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "red_sandstone_bricks", "red_sandstone_bricks_top", "red_sandstone_bricks");
-			JsonsUtils.replacer(LOCATION+File.separator+McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+folderInModel+File.separator, "sandstone_bricks", "sandstone_bricks_top", "sandstone_bricks");
-
-		}
-		
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "blossom_hedge.json");
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "azalea_hedge.json");
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "blossom_hedge.json");
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "azalea_hedge.json");
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "blossom_hedge.json");
-		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "azalea_hedge.json");*/
-
-		//JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "cherry_hedge.json");
-		//JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.LOOT_TABLES.getPath(), "cherry_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "scorched_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "umbral_hedge.json");
 
@@ -273,6 +178,22 @@ public class TerraformersMC implements Presetting
 			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "yucca_palm", "terrestria:block/yucca_palm_log_section", "terrestria:block/yucca_palm_log_top");
 
 			for(String folder : McwAPI.ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE.getPathList()) {
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_bricks", "terrestria:block/mossy_volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_cobblestone", "terrestria:block/mossy_volcanic_rock_cobblestone");
+
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_bricks", "terrestria:block/volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_cobblestone", "terrestria:block/volcanic_rock_cobblestone");
+			}
+
+			for(String folder : ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE.getPathList()) {
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_bricks", "terrestria:block/mossy_volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_cobblestone", "terrestria:block/mossy_volcanic_rock_cobblestone");
+
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_bricks", "terrestria:block/volcanic_rock_bricks");
+				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "basalt_bricks", "terrestria:block/basalt_cobblestone", "terrestria:block/volcanic_rock_cobblestone");
+			}
+
+			for(String folder : ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD.getPathList()) {
 				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_bricks", "terrestria:block/mossy_volcanic_rock_bricks");
 				JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folder + File.separator, "mossy_basalt_bricks", "terrestria:block/mossy_basalt_cobblestone", "terrestria:block/mossy_volcanic_rock_cobblestone");
 

@@ -16,8 +16,8 @@ public class McwMain
 	
 	public static void main(String[] args)
 	{
-		preset(new RegionsUnexplored(ModLoaders.FORGE));
-		//renameFoldersData();
+		preset(new BOP(true, "1.21.5", ModLoaders.FABRIC));
+		renameFoldersData();
 	}
 
 	private static void renameFoldersData()
