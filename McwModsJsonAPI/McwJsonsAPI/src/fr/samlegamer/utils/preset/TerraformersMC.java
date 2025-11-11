@@ -142,7 +142,7 @@ public class TerraformersMC implements Presetting
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "wired" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "inventory" + File.separator, "sakura", "terrestria:block/sakura_log_mcw_section", "terrestria:block/sakura_log_section");
 
-		if(version.equals("1.21.3") || version.equals("1.21.4"))
+		if(version.equals("1.21.3") || version.equals("1.21.4") || version.equals("1.21.10"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
@@ -150,7 +150,7 @@ public class TerraformersMC implements Presetting
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "scorched_hedge.json");
 		JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "umbral_hedge.json");
 
-		if(version.equals("1.21.4"))
+		if(version.equals("1.21.4") || version.equals("1.21.10"))
 		{
 			List<String> LEAVES_NO_COLORED = List.of("redwood", "hemlock", "rubber", "cypress",
 					"willow", "japanese_maple_shrub", "rainbow_eucalyptus");

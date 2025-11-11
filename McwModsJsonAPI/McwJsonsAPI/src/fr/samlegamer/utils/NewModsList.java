@@ -43,6 +43,11 @@ public class NewModsList
         {
             addListWithPath(McwAPI.READER_MODLIST, bopFolder + "bop1201Leaves", ID_LEAVE);
         }
+
+        public static void bopLeaveCopperGolem(List<String> ID_LEAVE)
+        {
+            addListWithPath(McwAPI.READER_MODLIST, bopFolder + "bopCopperGolemLeaves", ID_LEAVE);
+        }
     }
 
     public static class BYG {

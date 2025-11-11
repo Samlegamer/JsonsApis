@@ -1,0 +1,2 @@
+%k_kitchen_sink
+stripped_%k_kitchen_sink

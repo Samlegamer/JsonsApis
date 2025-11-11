@@ -119,6 +119,8 @@ public class McwModsRessources implements IModFiles.IClient
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    // Remplacer "acacia" par "cherry" dans le contenu
 			                    List<String> modifiedLines = lines.stream()
+                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
+                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
 			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
 			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
@@ -217,7 +219,9 @@ public class McwModsRessources implements IModFiles.IClient
 					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_louvered_shutter"))
+                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
+                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
+                                        .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_louvered_shutter"))
 			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+bbb))
 			                            .map(line -> line.replace("minecraft:block/acacia_log_top", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")+"_top"))

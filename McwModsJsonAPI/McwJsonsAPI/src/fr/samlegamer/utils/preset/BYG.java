@@ -139,14 +139,6 @@ public class BYG implements Presetting
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, ID_ROCK, Reference.allMcwMods());
 
-//		genTags(LOCATION, CompatModid, new RoofsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new FencesTagsGenerator(ID_LEAVE));
-//		genTags(LOCATION, CompatModid, new FurnituresTagsGenerator());
-//		genTags(LOCATION, CompatModid, new TrapdoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new DoorsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new WindowsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new StairsTagsGenerator());
-//		genTags(LOCATION, CompatModid, new PathsTagsGenerator());
 		System.out.println("Done Generate Tags");
 
 		McwAPI.clears(ID_ROCK, WALL, FLOOR);

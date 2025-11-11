@@ -58,3 +58,5 @@
 <stripped_%k_kitchen_cabinet>: "Armoire de cuisine en %l écorcée"
 <stripped_%k_double_kitchen_cabinet>: "Armoire de cuisine double en %l écorcée"
 <stripped_%k_glass_kitchen_cabinet>: "Armoire de cuisine en %l écorcée vitré"
+<%k_kitchen_sink>: "Évier de cuisine en %l"
+<stripped_%k_kitchen_sink>: "Évier de cuisine en %l écorcée"

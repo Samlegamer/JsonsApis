@@ -45,7 +45,7 @@ public class McwDataGen implements IModFiles.IData
 		switch(modLoader)
         {
         	case FORGE:
-        		if(this.VERSION.equals("1.21.3") || this.VERSION.equals("1.21.4") || this.VERSION.equals("1.21.5"))
+        		if(this.VERSION.equals("1.21.3") || this.VERSION.equals("1.21.4") || this.VERSION.equals("1.21.5") || this.VERSION.equals("1.21.10"))
         		{
                     if(isAdvancement)
                     {

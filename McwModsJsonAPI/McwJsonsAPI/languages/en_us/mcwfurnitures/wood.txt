@@ -58,3 +58,5 @@
 <stripped_%k_kitchen_cabinet>: "Stripped %l Kitchen Cabinet"
 <stripped_%k_double_kitchen_cabinet>: "Stripped %l Double Kitchen"
 <stripped_%k_glass_kitchen_cabinet>: "Stripped %l Glass Kitchen Cabinet"
+<%k_kitchen_sink>: "%l Kitchen Sink"
+<stripped_%k_kitchen_sink>: "Stripped %l Kitchen Sink"

@@ -50,8 +50,15 @@ public class BOP implements Presetting
 
 		if(this.b)
 		{
-			NewModsList.BOP.bopWood1201(ID_WOOD);
-			NewModsList.BOP.bopLeave1201(ID_LEAVE);
+            NewModsList.BOP.bopWood1201(ID_WOOD);
+            if(this.versioning.equals("1.21.10"))
+            {
+                NewModsList.BOP.bopLeaveCopperGolem(ID_LEAVE);
+            }
+            else
+            {
+                NewModsList.BOP.bopLeave1201(ID_LEAVE);
+            }
 		}
 		else
 		{
@@ -128,12 +135,12 @@ public class BOP implements Presetting
 			JsonsUtils.deleter(LOCATION + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cherry_hedge.json");
 		}
 		
-		if(versioning.equals("1.21.3") || versioning.equals("1.21.4") || versioning.equals("1.21.5"))
+		if(versioning.equals("1.21.3") || versioning.equals("1.21.4") || versioning.equals("1.21.5") || versioning.equals("1.21.10"))
 		{
 			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
 		}
 
-		if(versioning.equals("1.21.4") || versioning.equals("1.21.5"))
+		if(versioning.equals("1.21.4") || versioning.equals("1.21.5") || versioning.equals("1.21.10"))
 		{
 			final List<String> LEAVES_NO_COLORED = List.of("pine", "mahogany", "willow", "palm", "flowering_oak");
 
@@ -156,7 +163,7 @@ public class BOP implements Presetting
 			}
 		}
 
-		if(versioning.equals("1.21.5")) //Fix for dead hedge in 1.21.5
+		if(versioning.equals("1.21.5") || versioning.equals("1.21.10")) //Fix for dead hedge in 1.21.5
 		{
 			JsonsUtils.deleter(LOCATION + "/items/", "dead_hedge.json");
 
@@ -173,6 +180,14 @@ public class BOP implements Presetting
 					"  }\n" +
 					"}\n");
 		}
+
+        if(versioning.equals("1.21.10"))
+        {
+            JsonsUtils.replacer(LOCATION + "/models/block/hedges/", "origin", "origin_leaves", "origin_oak_leaves");
+            JsonsUtils.replacer(LOCATION + "/data/recipes/", "origin", "origin_leaves", "origin_oak_leaves");
+            JsonsUtils.replacer(LOCATION + "/data/advancements/recipes/", "origin", "origin_leaves", "origin_oak_leaves");
+            JsonsUtils.replacer(LOCATION + "/data/loot_tables/blocks/", "origin", "origin_leaves", "origin_oak_leaves");
+        }
 	}
 	
 	private void genRessources(String LOCATION, String CompatModid, String TextureLocationFormodid, String ModidOfBaseMod, String compat, McwModsRessources res, McwDataGen dat)
@@ -202,9 +217,15 @@ public class BOP implements Presetting
 
 		if(this.b)
 		{
-			LangMods.BOP.bopWoodSniffer(LANG_WOOD, language);
-			LangMods.BOP.bopLeaveSniffer(LANG_LEAVE, language);
-
+            LangMods.BOP.bopWoodSniffer(LANG_WOOD, language);
+            if(this.versioning.equals("1.21.10"))
+            {
+                LangMods.BOP.bopLeaveCopperGolem(LANG_LEAVE, language);
+            }
+            else
+            {
+                LangMods.BOP.bopLeaveSniffer(LANG_LEAVE, language);
+            }
         }
 		else
 		{

@@ -35,6 +35,10 @@ public class LangMods
         public static void bopLeaveSniffer(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bopFolder + "bopLeaveSnifferLang", LANG_LEAVE);
         }
+
+        public static void bopLeaveCopperGolem(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bopFolder + "bopLeaveCopperGolemLang", LANG_LEAVE);
+        }
     }
 
     public static class BYG {

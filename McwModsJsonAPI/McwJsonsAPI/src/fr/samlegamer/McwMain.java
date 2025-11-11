@@ -4,19 +4,19 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
 import fr.samlegamer.api.datagen.ModLoaders;
-import fr.samlegamer.utils.Presetting;
-import fr.samlegamer.utils.Reference;
+import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.preset.*;
 
 public class McwMain
 {
 	public static final String LOCATION = System.getProperty("user.dir")+File.separator+"genRessourcesMcw"+File.separator;// Local Path
 	public static final String RP = System.getProperty("user.dir")+File.separator+"ressourcepack"+File.separator;// Local Path
-	
+
 	public static void main(String[] args)
 	{
-		preset(new BOP(true, "1.21.5", ModLoaders.FABRIC));
+        preset(new BWG("1.21.4", ModLoaders.NEOFORGE));
 		renameFoldersData();
 	}
 
