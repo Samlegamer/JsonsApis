@@ -349,7 +349,9 @@ public class McwModsRessources implements IModFiles.IClient
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    
 			                    List<String> modifiedLines = lines.stream()
-			                    		.map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
+                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
+                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
+                                        .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
 			                    		.map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
 			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesStripped))
 			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLogs))
