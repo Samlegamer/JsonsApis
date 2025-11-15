@@ -1,0 +1,9 @@
+cut_amethyst_bricks
+spinel_bricks
+sanguine_tiles
+lapis_bricks
+cobblestone_bricks
+polished_calcite
+cobbled_deepslate_bricks
+mossy_cobblestone_bricks
+flooded_dripstone_shingles

@@ -227,7 +227,7 @@ public class QuarkSniffer implements Presetting
 	
 	private void genLang(String LOCATION, String CompatModid, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 
 		LangMods.Quark.quarkRockSnifferLang(LANG_ROCK, language);
 		LangMods.Quark.quarkWoodSnifferLang(LANG_WOOD, language);

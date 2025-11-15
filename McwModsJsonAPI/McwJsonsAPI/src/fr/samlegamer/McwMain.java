@@ -16,7 +16,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new BWG("1.21.4", ModLoaders.NEOFORGE));
+        preset(new AbnormalsSniffer("1.21", ModLoaders.NEOFORGE));
 		renameFoldersData();
 	}
 

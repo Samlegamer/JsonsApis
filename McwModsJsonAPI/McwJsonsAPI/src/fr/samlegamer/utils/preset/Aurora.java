@@ -223,7 +223,7 @@ public class Aurora implements Presetting
 
 	private void addLanguage(String LOCATION, String CompatModid, List<String> ID_WOOD, List<String> LANG_WOOD, List<String> ID_LEAVE, List<String> LANG_LEAVE, String language)
 	{
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 
         switch (version) {
             case "1.16.5" -> {

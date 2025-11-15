@@ -175,12 +175,18 @@ public class AbnormalsSniffer implements Presetting
 			ModidOfBaseMod = Compatibilities.AUTUM_MODID; //"autumnity";
 			genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);
 			McwAPI.clears(ID_ROCK, WALL, FLOOR);
+
+            NewModsList.Abnormals.abnormalsRock(ID_ROCK, WALL, FLOOR, Compatibilities.CAVERNCHASMS_MODID);
+            txtLocMod = Compatibilities.CAVERNCHASMS_TEXTURES;
+            ModidOfBaseMod = Compatibilities.CAVERNCHASMS_MODID;
+            genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);
+            McwAPI.clears(ID_ROCK, WALL, FLOOR);
 			System.out.println("Done Stone Client");
 		}
 
 
 		NewModsList.Abnormals.abnormalsWood120(ID_WOOD);
-		NewModsList.Abnormals.abnormalsRock(ID_ROCK);
+		NewModsList.Abnormals.abnormalsRockWarden(ID_ROCK);
 		NewModsList.Abnormals.abnormalsLeaves120(ID_LEAVE);
 
 		System.out.println("Start Tags");
@@ -224,6 +230,24 @@ public class AbnormalsSniffer implements Presetting
 
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "honeycomb_brick", "\"buzzier_bees:honeycomb_brick\"", "\"buzzier_bees:honeycomb_bricks\"");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "honeycomb_tile", "\"buzzier_bees:honeycomb_tile\"", "\"buzzier_bees:honeycomb_tiles\"");
+
+
+
+        List<List<String>> pathsStone = List.of(ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_STONE.getPathList(), ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD.getPathList(), ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_STONE.getPathList());
+
+        for(List<String> path : pathsStone) {
+            for (String folderInModel : path) {
+                JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator, "cobbled_deepslate_bricks", "caverns_and_chasms:block/cobbled_deepslate\"", "minecraft:block/cobbled_deepslate\"");
+                JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator, "polished_calcite", "caverns_and_chasms:block/calcite\"", "minecraft:block/calcite\"");
+                JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator, "lapis_bricks", "caverns_and_chasms:block/lapis_block\"", "minecraft:block/lapis_block\"");
+                JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator, "flooded_dripstone_shingles", "caverns_and_chasms:block/dripstone_block\"", "minecraft:block/dripstone_block\"");
+            }
+        }
+
+        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "cobbled_deepslate_bricks", "\"caverns_and_chasms:cobbled_deepslate\"", "\"minecraft:cobbled_deepslate\"");
+        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "polished_calcite", "\"caverns_and_chasms:calcite\"", "\"minecraft:calcite\"");
+        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "lapis_bricks", "\"caverns_and_chasms:lapis_block\"", "\"minecraft:lapis_block\"");
+        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "flooded_dripstone_shingles", "\"caverns_and_chasms:dripstone_block\"", "\"minecraft:dripstone_block\"");
 
 
 
@@ -290,7 +314,7 @@ public class AbnormalsSniffer implements Presetting
 		System.out.println("Start Lang "+ language);
 		LangSearcher langSearcher = new LangSearcher();
 		LangMods.Abnormals.abnormalsWoodSnifferLang(LANG_WOOD, language);
-		LangMods.Abnormals.abnormalsRockLang(LANG_ROCK, language);
+		LangMods.Abnormals.abnormalsRockWardenLang(LANG_ROCK, language);
 		LangMods.Abnormals.abnormalsLeaveSnifferLang(LANG_LEAVE, language);
 
 		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, Reference.allMcwMods());

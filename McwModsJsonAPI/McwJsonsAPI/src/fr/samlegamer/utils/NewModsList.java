@@ -405,6 +405,16 @@ public class NewModsList
                 addListWithPath(McwAPI.READER_MODLIST, abnormalsFolder +
                         Compatibilities.AUTUM_MODID + File.separator + "RockFloor", FLOOR);
             }
+
+            if(compat.equals(Compatibilities.CAVERNCHASMS_MODID))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, abnormalsFolder +
+                        Compatibilities.CAVERNCHASMS_MODID + File.separator + "RockMat", ID_ROCK);
+                addListWithPath(McwAPI.READER_MODLIST, abnormalsFolder +
+                        Compatibilities.CAVERNCHASMS_MODID + File.separator + "RockWall", WALL);
+                addListWithPath(McwAPI.READER_MODLIST, abnormalsFolder +
+                        Compatibilities.CAVERNCHASMS_MODID + File.separator + "RockFloor", FLOOR);
+            }
         }
 
         public static void abnormalsRock(List<String> ID_ROCK)
@@ -412,6 +422,14 @@ public class NewModsList
             abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.BUZZBEES_MODID);
             abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.ATMO_MODID);
             abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.AUTUM_MODID);
+        }
+
+        public static void abnormalsRockWarden(List<String> ID_ROCK)
+        {
+            abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.BUZZBEES_MODID);
+            abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.ATMO_MODID);
+            abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.AUTUM_MODID);
+            abnormalsRock(ID_ROCK, new ArrayList<String>(), new ArrayList<String>(), Compatibilities.CAVERNCHASMS_MODID);
         }
 
         public static void abnormalsLeaves(List<String> ID_LEAVE)
