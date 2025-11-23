@@ -381,12 +381,17 @@ public class ModdingLegacy1213 implements Presetting
 		
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "crystallized", "blue_skies:crystallized_fence", "blue_skies:crystallized_wall");
 
-		for(String folderInModel : ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD.getPathList())
-		{
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ folderInModel + File.separator, "crystallized", "stripped_crystallized_log_side", "crystallized_planks");
-		}
+        List<ClientFolderTypes> folders = List.of(ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
 
-		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ "hedges" + File.separator, "bsky_comet", "comet_leaves", "comet_leaves_can_grow");
+        for(ClientFolderTypes folder : folders) {
+            for (String folderInModel : folder.getPathList()) {
+                String path = LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator;
+                JsonsUtils.replacer(path, "crystallized", "stripped_crystallized_log_side", "crystallized_planks");
+                JsonsUtils.replacer(path, "crystallized", "cutout", "translucent");
+            }
+        }
+
+        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ "hedges" + File.separator, "bsky_comet", "comet_leaves", "comet_leaves_can_grow");
 		
 		PREFIX_ID_WOOD.clear();
 

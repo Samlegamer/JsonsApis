@@ -16,8 +16,8 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new AbnormalsSniffer("1.21", ModLoaders.NEOFORGE));
-		renameFoldersData();
+        preset(new QuarkSniffer());
+		//renameFoldersData();
 	}
 
 	private static void renameFoldersData()

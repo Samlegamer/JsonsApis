@@ -81,12 +81,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD), 
 					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
-			/*client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_bridges.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_bridges.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_bridges.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(roofs)
@@ -94,12 +88,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), 
 					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-			/*client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_roofs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_roofs.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_roofs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(fences)
@@ -111,13 +99,6 @@ public class ModdingLegacy1201 implements Presetting
 					res, 
 					data);
 
-			/*client_wood_fences.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_fences.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_fences.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_fences.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_fences.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_fences.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_FENCES_MODID, ModidOfBaseMod);*/
-			
 			res.createWoodBlockstateswithResearch(LOCATION, CompatModid, PREFIX_ID_LEAVE, "acacia_hedge");
 			res.createWoodModelsBlockswithResearchPrefixed(LOCATION, txtLocMod+"/leaves", ID_LEAVE, PREFIX_ID_LEAVE, false, "acacia_wall");
 			res.createWoodModelItemwithResearch(LOCATION, CompatModid, PREFIX_ID_LEAVE, "acacia_hedge");
@@ -132,13 +113,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_FURNITURES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_FURNITURES_MODID, ClientFolderTypes.MCW_FURNITURES_BLOCK_MODEL), 
 					new McwDataGen(Compatibilities.MCW_FURNITURES_MODID));
-
-			/*client_wood_furnitures.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_furnitures.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_furnitures.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_furnitures.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_furnitures.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_furnitures.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_FURNITURES_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(stairs)
@@ -146,13 +120,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_STAIRS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_STAIRS_MODID, ClientFolderTypes.MCW_STAIRS_BLOCK_MODEL_WOOD), 
 					new McwDataGen(Compatibilities.MCW_STAIRS_MODID));
-
-			/*client_wood_stairs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_stairs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_stairs.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_stairs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_stairs.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_stairs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_STAIRS_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(traps)
@@ -198,13 +165,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_BRIDGES_MODID, 
 					new McwModsRessources(Compatibilities.MCW_BRIDGES_MODID, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD), 
 					new McwDataGen(Compatibilities.MCW_BRIDGES_MODID));
-
-			/*client_wood_bridges.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_bridges.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_bridges.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_bridges.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_bridges.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_bridges.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(roofs)
@@ -212,13 +172,6 @@ public class ModdingLegacy1201 implements Presetting
 			genRessourcesBsky(LOCATION, CompatModid, txtLocMod, PREFIX_ID_WOOD, ID_WOOD, ModidOfBaseMod, Compatibilities.MCW_ROOFS_MODID, 
 					new McwModsRessources(Compatibilities.MCW_ROOFS_MODID, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD), 
 					new McwDataGen(Compatibilities.MCW_ROOFS_MODID));
-
-			/*client_wood_roofs.createWoodBlockstates(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			client_wood_roofs.createWoodModelsBlocksPrefixed(LOCATION, txtLocMod+"/wood", ID_WOOD, PREFIX_ID_WOOD, false);
-			client_wood_roofs.createWoodModelItem(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_roofs.AdvancementsLogAllPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false);
-			data_roofs.LootTableLogAll(LOCATION, CompatModid, PREFIX_ID_WOOD);
-			data_roofs.RecipesLogAllIsChargedPrefixed(LOCATION, CompatModid, ModidOfBaseMod, ID_WOOD, PREFIX_ID_WOOD, false, Compatibilities.MCW_ROOFS_MODID, ModidOfBaseMod);*/
 		}
 		
 		if(fences)
@@ -366,36 +319,6 @@ public class ModdingLegacy1201 implements Presetting
 				Compatibilities.MCW_WINDOWS_MODID,
 				Compatibilities.MCW_STAIRS_MODID));
 
-
-//		FencesTagsGenerator fences_tags = new FencesTagsGenerator(PREFIX_ID_LEAVE);
-//		fences_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		fences_tags.HoeDataGenWood(LOCATION, CompatModid, PREFIX_ID_LEAVE);
-//		fences_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		FurnituresTagsGenerator furni_tags = new FurnituresTagsGenerator();
-//		furni_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		furni_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		StairsTagsGenerator stairs_tags = new StairsTagsGenerator();
-//		stairs_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		stairs_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		PathsTagsGenerator paths_tags = new PathsTagsGenerator();
-//		paths_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		paths_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		DoorsTagsGenerator doors_tags = new DoorsTagsGenerator();
-//		doors_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		doors_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		TrapdoorsTagsGenerator traps_tags = new TrapdoorsTagsGenerator();
-//		traps_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		traps_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//
-//		WindowsTagsGenerator wins_tags = new WindowsTagsGenerator();
-//		wins_tags.AxeDataGenWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-//		wins_tags.TagsWood(LOCATION, CompatModid, PREFIX_ID_WOOD);
-
 		McwAPI.clears(LANG_LEAVE, PREFIX_ID_LEAVE, PREFIX_ID_WOOD, LANG_WOOD);
 
 		addLang(LOCATION, CompatModid, PREFIX_ID_WOOD, LANG_WOOD, PREFIX_ID_LEAVE, LANG_LEAVE, "en_us", "Crystallized");
@@ -404,14 +327,18 @@ public class ModdingLegacy1201 implements Presetting
 
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "crystallized", "blue_skies:crystallized_fence", "blue_skies:crystallized_wall");
 
+        List<ClientFolderTypes> folders = List.of(ClientFolderTypes.MCW_FENCES_BLOCK_MODEL_WOOD, ClientFolderTypes.MCW_ROOFS_BLOCK_MODEL_WOOD, ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD);
 
-		for(String folderInModel : ClientFolderTypes.MCW_BRIDGES_BLOCK_MODEL_WOOD.getPathList())
-		{
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ folderInModel + File.separator, "crystallized", "stripped_crystallized_log_side", "crystallized_planks");
-		}
+        for(ClientFolderTypes folder : folders) {
+            for (String folderInModel : folder.getPathList()) {
+                String path = LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel + File.separator;
+                JsonsUtils.replacer(path, "crystallized", "stripped_crystallized_log_side", "crystallized_planks");
+                JsonsUtils.replacer(path, "crystallized", "cutout", "translucent");
+            }
+        }
 
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath()+ "hedges" + File.separator, "bsky_comet", "comet_leaves", "comet_leaves_can_grow");
-	}
+    }
 
 	private void addLang(String LOCATION, String CompatModid, List<String> PREFIX_ID_WOOD, List<String> LANG_WOOD, List<String> PREFIX_ID_LEAVE,
 						 List<String> LANG_LEAVE, String language, String cristalized)
