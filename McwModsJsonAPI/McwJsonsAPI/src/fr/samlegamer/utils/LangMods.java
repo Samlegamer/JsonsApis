@@ -112,6 +112,10 @@ public class LangMods
         public static void abnormalsRockWardenLang(List<String> LANG_ROCK, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, abnormalsFolder + "abnormalsRockWardenLang", LANG_ROCK);
         }
+
+        public static void abnormalsRockSnifferLang(List<String> LANG_ROCK, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, abnormalsFolder + "abnormalsRockSnifferLang", LANG_ROCK);
+        }
     }
 
     public static class Aurora {

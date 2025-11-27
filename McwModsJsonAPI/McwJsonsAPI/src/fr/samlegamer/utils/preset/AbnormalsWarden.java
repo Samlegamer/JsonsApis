@@ -155,7 +155,6 @@ public class AbnormalsWarden implements Presetting
 			if(mod.equals(Compatibilities.MCW_BRIDGES_MODID))
 			{
 				data.RecipesStoneAllIsCharged(LOCATION, CompatModid, ModidOfBaseMod, ID_ROCK, List.of("smooth_red_arid_sandstone", "smooth_arid_sandstone"), Compatibilities.MCW_BRIDGES_MODID, ModidOfBaseMod, modLoader);
-
 			}
 			else
 			{
@@ -169,7 +168,7 @@ public class AbnormalsWarden implements Presetting
 			genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);
 			McwAPI.clears(ID_ROCK, WALL, FLOOR);
 
-            NewModsList.Abnormals.abnormalsRock(ID_ROCK, WALL, FLOOR, Compatibilities.CAVERNCHASMS_MODID);
+            NewModsList.Abnormals.abnormalsRockWarden(ID_ROCK, WALL, FLOOR, Compatibilities.CAVERNCHASMS_MODID);
             txtLocMod = Compatibilities.CAVERNCHASMS_TEXTURES;
             ModidOfBaseMod = Compatibilities.CAVERNCHASMS_MODID;
             genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);

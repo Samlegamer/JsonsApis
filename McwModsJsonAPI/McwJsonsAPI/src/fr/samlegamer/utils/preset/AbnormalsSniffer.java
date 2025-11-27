@@ -176,7 +176,7 @@ public class AbnormalsSniffer implements Presetting
 			genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);
 			McwAPI.clears(ID_ROCK, WALL, FLOOR);
 
-            NewModsList.Abnormals.abnormalsRock(ID_ROCK, WALL, FLOOR, Compatibilities.CAVERNCHASMS_MODID);
+            NewModsList.Abnormals.abnormalsRockSniffer(ID_ROCK, WALL, FLOOR, Compatibilities.CAVERNCHASMS_MODID);
             txtLocMod = Compatibilities.CAVERNCHASMS_TEXTURES;
             ModidOfBaseMod = Compatibilities.CAVERNCHASMS_MODID;
             genRessourcesStone(LOCATION, CompatModid, ID_ROCK, WALL, FLOOR, txtLocMod, ModidOfBaseMod, mod, client, data);
@@ -186,7 +186,7 @@ public class AbnormalsSniffer implements Presetting
 
 
 		NewModsList.Abnormals.abnormalsWood120(ID_WOOD);
-		NewModsList.Abnormals.abnormalsRockWarden(ID_ROCK);
+		NewModsList.Abnormals.abnormalsRockSniffer(ID_ROCK);
 		NewModsList.Abnormals.abnormalsLeaves120(ID_LEAVE);
 
 		System.out.println("Start Tags");
@@ -314,7 +314,7 @@ public class AbnormalsSniffer implements Presetting
 		System.out.println("Start Lang "+ language);
 		LangSearcher langSearcher = new LangSearcher();
 		LangMods.Abnormals.abnormalsWoodSnifferLang(LANG_WOOD, language);
-		LangMods.Abnormals.abnormalsRockWardenLang(LANG_ROCK, language);
+		LangMods.Abnormals.abnormalsRockSnifferLang(LANG_ROCK, language);
 		LangMods.Abnormals.abnormalsLeaveSnifferLang(LANG_LEAVE, language);
 
 		langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, Reference.allMcwMods());

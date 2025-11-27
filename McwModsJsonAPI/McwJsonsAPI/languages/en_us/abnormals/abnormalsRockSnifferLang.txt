@@ -6,8 +6,10 @@ Snail Shell Bricks
 Snail Shell Tiles
 Cut Amethyst Bricks
 Spinel Bricks
+Sanguine Tiles
 Lapis Bricks
 Cobblestone Bricks
 Polished Calcite
+Cobbled Deepslate Bricks
 Mossy Cobblestone Bricks
 Flooded Dripstone Shingles

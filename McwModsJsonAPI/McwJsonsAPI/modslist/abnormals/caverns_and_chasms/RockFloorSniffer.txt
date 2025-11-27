@@ -1,7 +1,9 @@
 cut_amethyst
 spinel_block
+sanguine_block
 lapis_block
 cobblestone_tiles
 calcite
+cobbled_deepslate
 mossy_cobblestone_tiles
 dripstone_block
