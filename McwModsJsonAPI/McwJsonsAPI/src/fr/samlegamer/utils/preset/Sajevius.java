@@ -204,44 +204,7 @@ public class Sajevius implements Presetting
 
 		tagsGenerator.vanilla(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), modsMcw);
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, List.of(), modsMcw);
-
-//		BridgesTagsGenerator tag_bridges = new BridgesTagsGenerator();
-//		RoofsTagsGenerator tag_roofs = new RoofsTagsGenerator();
-//		FencesTagsGenerator tag_fences = new FencesTagsGenerator(true, ID_ROCK, ID_LEAVE);
-//		FurnituresTagsGenerator tag_furnitures = new FurnituresTagsGenerator();
-//		StairsTagsGenerator tag_stairs = new StairsTagsGenerator();
 		System.out.println("Done Tags");
-
-
-
-//		BridgesLangGenerator lang_bridges = new BridgesLangGenerator();
-//		RoofsLangGenerator lang_roofs = new RoofsLangGenerator();
-//		FencesLangGenerator lang_fences = new FencesLangGenerator(ID_LEAVE, LANG_LEAVE);
-//		FurnituresLangGenerator lang_furnitures = new FurnituresLangGenerator();
-//		StairsLangGenerator lang_stairs = new StairsLangGenerator();
-		
-//		tag_bridges.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_bridges.TagsWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_bridges.TagsRock(LOCATION, CompatModid, ID_ROCK);
-//		tag_roofs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_roofs.TagsWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_fences.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_fences.HoeDataGenWood(LOCATION, CompatModid, ID_LEAVE);
-//		tag_fences.TagsWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_furnitures.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_furnitures.TagsWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_stairs.AxeDataGenWood(LOCATION, CompatModid, ID_WOOD);
-//		tag_stairs.TagsWood(LOCATION, CompatModid, ID_WOOD);
-
-		
-//		lang_bridges.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-//		lang_bridges.initAllStoneEnglish(CompatModid, ID_ROCK, LANG_ROCK);
-//		lang_roofs.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-//		lang_roofs.initAllStoneEnglish(CompatModid, ID_ROCK, LANG_ROCK);
-//		lang_fences.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-//		lang_fences.initAllStoneEnglish(CompatModid, ID_ROCK, LANG_ROCK);
-//		lang_furnitures.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
-//		lang_stairs.initAllWoodEnglish(CompatModid, ID_WOOD, LANG_WOOD);
 
 		genLang(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_ROCK, LANG_ROCK, ID_LEAVE, LANG_LEAVE, "en_us");
 		System.out.println("Done Data/Tags/Lang");
@@ -251,7 +214,7 @@ public class Sajevius implements Presetting
 	List<String> LANG_ROCK, List<String> ID_LEAVE, List<String> LANG_LEAVE, String language)
 	{
 		System.out.println("Start Lang "+language);
-		LangSearcher langSearcher = new LangSearcher(McwAPI.READER_MCW_LANG);
+		LangSearcher langSearcher = new LangSearcher();
 		LangMods.Sajevius.sajeviusWoodLang(LANG_WOOD, language);
 		LangMods.Sajevius.sajeviusLeaveLang(LANG_LEAVE, language);
 		LangMods.Sajevius.sajeviusRockLang(LANG_ROCK, language);

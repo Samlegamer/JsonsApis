@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.preset.*;
 
@@ -15,7 +16,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new QuarkWarden());
+        preset(new Sajevius());
 		//renameFoldersData();
 	}
 
