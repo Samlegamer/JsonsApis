@@ -60,6 +60,9 @@ public class Compatibilities
 	public static final String REGIONS_UNEXPLORED_MODID = "regions_unexplored";
 	public static final String REGIONS_UNEXPLORED_TEXTURES = "regions_unexplored:block";
 
+	public static final String MYSTICBIOMES_MODID = "mysticbiomes";
+	public static final String MYSTICBIOMES_TEXTURES = "mysticbiomes:block";
+
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
 	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";

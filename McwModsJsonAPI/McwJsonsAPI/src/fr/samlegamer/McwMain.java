@@ -16,7 +16,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new Sajevius());
+        preset(new MysticBiomes(ModLoaders.FORGE));
 		//renameFoldersData();
 	}
 

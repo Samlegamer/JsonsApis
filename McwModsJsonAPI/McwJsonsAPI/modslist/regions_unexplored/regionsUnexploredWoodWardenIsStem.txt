@@ -1,0 +1,4 @@
+blue_bioshroom
+green_bioshroom
+pink_bioshroom
+yellow_bioshroom

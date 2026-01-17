@@ -28,6 +28,7 @@ public final class Reference
     public static final String auroraFolder = "aurora" + sep;
     public static final String moddingLegacyFolder = "moddinglegacy" + sep;
     public static final String regionsUnexploredFolder = "regions_unexplored" + sep;
+    public static final String mysticBiomesFolder = "mysticbiomes" + sep;
 
     // For Classic Vanilla Only
     public static final String minecraftFolder = "minecraft" + sep;

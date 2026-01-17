@@ -9,6 +9,16 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class NewModsList
 {
+    public static class MysticBiomes {
+        public static void mysticBiomesWood(List<String> ID_WOOD) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + "mysticBiomesWood", ID_WOOD);
+        }
+
+        public static void mysticBiomesLeave(List<String> ID_LEAVE) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + "mysticBiomesLeave", ID_LEAVE);
+        }
+    }
+
     public static class RegionsUnexplored
     {
         public static void regionsUnexploredWood(List<String> ID_WOOD)
@@ -19,6 +29,26 @@ public class NewModsList
         public static void regionsUnexploredLeave(List<String> ID_LEAVE)
         {
             addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredLeave", ID_LEAVE);
+        }
+
+        public static void regionsUnexploredWoodWarden(List<String> ID_WOOD, boolean isStem)
+        {
+            if (isStem) {
+                addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredWoodWardenIsStem", ID_WOOD);
+            } else {
+                addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredWoodWardenNotStem", ID_WOOD);
+            }
+        }
+
+        public static void regionsUnexploredWoodWarden(List<String> ID_WOOD)
+        {
+            regionsUnexploredWoodWarden(ID_WOOD, false);
+            regionsUnexploredWoodWarden(ID_WOOD, true);
+        }
+
+        public static void regionsUnexploredLeaveWarden(List<String> ID_LEAVE)
+        {
+            addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredLeaveWarden", ID_LEAVE);
         }
     }
 

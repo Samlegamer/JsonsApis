@@ -8,6 +8,17 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class LangMods
 {
+    public static class MysticBiomes
+    {
+        public static void mysticBiomesWoodLang(List<String> LANG_WOOD, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + "mysticBiomesWoodLang", LANG_WOOD);
+        }
+
+        public static void mysticBiomesLeaveLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + "mysticBiomesLeaveLang", LANG_LEAVE);
+        }
+    }
+
     public static class RegionsUnexplored
     {
         public static void regionsUnexploredWoodLang(List<String> LANG_WOOD, String language) {
@@ -16,6 +27,14 @@ public class LangMods
 
         public static void regionsUnexploredLeaveLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredLeaveLang", LANG_LEAVE);
+        }
+
+        public static void regionsUnexploredWoodWardenLang(List<String> LANG_WOOD, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredWoodWardenLang", LANG_WOOD);
+        }
+
+        public static void regionsUnexploredLeaveWardenLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredLeaveWardenLang", LANG_LEAVE);
         }
     }
 

@@ -117,27 +117,19 @@ public class McwModsRessources implements IModFiles.IClient
 			            	try {
 			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-			                    // Remplacer "acacia" par "cherry" dans le contenu
+
+			                    // Créer le contexte de remplacement
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                i + (isStemWood ? "_stem" : "_log"),
+			                                "stripped_" + i + (isStemWood ? "_stem" : "_log"),
+			                                null
+			                            )
+			                            .withStemWood(isStemWood);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
-			                            .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
-			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
-			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
-			                            .map(line -> line.replace("acacia", i))
-			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 			                    
 			                    // D�terminer le nouveau nom de fichier
@@ -218,27 +210,19 @@ public class McwModsRessources implements IModFiles.IClient
 					            String log = isBlueSkiesPrefix ? MAT_WOOD.get(a)+"_log_side" : aaa;
 					            
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+
+			                    // Créer le contexte de remplacement
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, MAT_WOOD.get(a), PREFIX_WOOD.get(a))
+			                            .withLogVariants(
+			                                log,
+			                                bbb,
+			                                MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log") + "_top"
+			                            )
+			                            .withStemWood(isStemWood);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_louvered_shutter"))
-			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+PREFIX_WOOD.get(a)+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+bbb))
-			                            .map(line -> line.replace("minecraft:block/acacia_log_top", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")+"_top"))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+log))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_leaves"))
-			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
-			                            .map(line -> line.replace("acacia", PREFIX_WOOD.get(a)))
-			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 			                    
 			                    // D�terminer le nouveau nom de fichier
@@ -282,32 +266,17 @@ public class McwModsRessources implements IModFiles.IClient
 			            	try {
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 
+			                    // Créer le contexte de remplacement
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                nameOfTexturesLogs,
+			                                nameOfTexturesStripped,
+			                                null
+			                            );
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
-			                            .map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+nameOfTexturesStripped))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
-			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
-			                            .map(line -> line.replace("acacia", i))
-			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
-			                            /*.map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+nameOfTexturesStripped))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+nameOfTexturesLogs))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+nameOfTexturesPlanks))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))		                            
-			                            .map(line -> line.replace("mcwtrpdoors", Modid))
-			                            .map(line -> line.replace("mcwdoors", Modid))*/
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
@@ -350,27 +319,18 @@ public class McwModsRessources implements IModFiles.IClient
 			            	try {
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
 			                    
+			                    // Créer le contexte de remplacement avec mode BYG activé
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                i + "/" + nameOfTexturesLogs,
+			                                i + "/" + nameOfTexturesStripped,
+			                                null
+			                            )
+			                            .withBYGMode(true);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-                                        .map(line -> line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle"))
-                                        .map(line -> line.replace("mcwwindows:block/acacia_louvered_shutter", Modid+":block/"+i+"_louvered_shutter"))
-			                    		.map(line -> line.replace("mcwwindows:block/acacia_shutter", Modid+":block/"+i+"_shutter"))
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesStripped))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLogs))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesPlanks))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"/leaves"))
-			                            .map(line -> line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \""+Modid+":block"))
-			                            .map(line -> line.replace("acacia", i))
-			                            .map(line -> line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"top\": \"mcwdoors:block", "\"top\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"0\": \"mcwdoors:block", "\"0\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"2\": \"mcwdoors:block", "\"2\": \""+Modid+":block"))
-			                            .map(line -> line.replace("\"1\": \"mcwdoors:block", "\"1\": \""+Modid+":block"))
-			                            //.map(line -> line.replace("mcwtrpdoors", Modid))
-			                            //.map(line -> line.replace("mcwdoors", Modid))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
@@ -628,13 +588,19 @@ public class McwModsRessources implements IModFiles.IClient
 			            	try {
 			                    // Lire tout le contenu du fichier
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
-			                    // Remplacer "acacia" par "cherry" dans le contenu
+
+			                    // Créer le contexte de remplacement
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                i + (isStemWood ? "_stem" : "_log"),
+			                                "stripped_" + i + (isStemWood ? "_stem" : "_log"),
+			                                null
+			                            )
+			                            .withStemWood(isStemWood);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"_leaves"))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    // D�terminer le nouveau nom de fichier
@@ -679,12 +645,19 @@ public class McwModsRessources implements IModFiles.IClient
 					            final int a = i;
 
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+
+			                    // Créer le contexte de remplacement
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, MAT_WOOD.get(a), PREFIX_WOOD.get(a))
+			                            .withLogVariants(
+			                                MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log"),
+			                                "stripped_" + MAT_WOOD.get(a) + (isStemWood ? "_stem" : "_log"),
+			                                null
+			                            )
+			                            .withStemWood(isStemWood);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_planks"))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+MAT_WOOD.get(a)+"_leaves"))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    String newFileName = file.getFileName().toString().replace("acacia", PREFIX_WOOD.get(a));
@@ -725,12 +698,20 @@ public class McwModsRessources implements IModFiles.IClient
 			            for (Path file : acaciaFiles) {
 			            	try {
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+
+			                    // Créer le contexte de remplacement avec custom leaves
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                i + (isStemWood ? "_stem" : "_log"),
+			                                "stripped_" + i + (isStemWood ? "_stem" : "_log"),
+			                                null
+			                            )
+			                            .withStemWood(isStemWood)
+			                            .withCustomLeaves(customTextureLeaves);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/stripped_"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+(isStemWood ? "_stem" : "_log")))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"_planks"))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+customTextureLeaves))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
@@ -771,11 +752,20 @@ public class McwModsRessources implements IModFiles.IClient
 			            for (Path file : acaciaFiles) {
 			            	try {
 			                    List<String> lines = Files.readAllLines(file, StandardCharsets.UTF_8);
+
+			                    // Créer le contexte de remplacement avec mode BYG et custom leaves
+			                    ReplacementContext ctx = new ReplacementContext(Modid, TextureLocationFormodid, i, i)
+			                            .withLogVariants(
+			                                i + "/" + nameOfTexturesLogs,
+			                                i + "/" + nameOfTexturesStripped,
+			                                null
+			                            )
+			                            .withBYGMode(true)
+			                            .withCustomLeaves(i + "/" + nameOfTexturesLeaves);
+
+			                    // Appliquer tous les remplacements en une seule passe
 			                    List<String> modifiedLines = lines.stream()
-			                            .map(line -> line.replace("minecraft:block/stripped_acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesStripped))
-			                            .map(line -> line.replace("minecraft:block/acacia_log", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLogs))
-			                            .map(line -> line.replace("minecraft:block/acacia_planks", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesPlanks))
-			                            .map(line -> line.replace("mcwfences:block/acacia_leaves", TextureLocationFormodid+"/"+i+"/"+nameOfTexturesLeaves))
+			                            .map(line -> applyTextureReplacements(line, ctx))
 			                            .collect(Collectors.toList());
 		
 			                    String newFileName = file.getFileName().toString().replace("acacia", i);
@@ -826,5 +816,116 @@ public class McwModsRessources implements IModFiles.IClient
 	            e.printStackTrace();
 	        }
 		}
+	}
+
+	/**
+	 * Classe interne pour encapsuler tous les paramètres de remplacement de textures
+	 */
+	private static class ReplacementContext {
+		String modid;
+		String textureLocation;
+		String material;
+		String prefix;
+		String strippedLog;
+		String log;
+		String logTop;
+		String customLeaves; // Chemin personnalisé pour les leaves (optionnel)
+		boolean isStemWood;
+		boolean isBYGMode; // Si true, ajoute le préfixe dans les chemins (ex: textureLocation/prefix/planks)
+
+		public ReplacementContext(String modid, String textureLocation, String material, String prefix) {
+			this.modid = modid;
+			this.textureLocation = textureLocation;
+			this.material = material;
+			this.prefix = prefix;
+			this.isBYGMode = false;
+			this.customLeaves = null;
+		}
+
+		public ReplacementContext withLogVariants(String log, String strippedLog, String logTop) {
+			this.log = log;
+			this.strippedLog = strippedLog;
+			this.logTop = logTop;
+			return this;
+		}
+
+		public ReplacementContext withStemWood(boolean isStemWood) {
+			this.isStemWood = isStemWood;
+			return this;
+		}
+
+		public ReplacementContext withBYGMode(boolean isBYGMode) {
+			this.isBYGMode = isBYGMode;
+			return this;
+		}
+
+		public ReplacementContext withCustomLeaves(String customLeaves) {
+			this.customLeaves = customLeaves;
+			return this;
+		}
+	}
+
+	/**
+	 * Méthode utilitaire pour appliquer tous les remplacements de textures en une seule passe
+	 * @param line La ligne à traiter
+	 * @param ctx Le contexte contenant tous les paramètres de remplacement
+	 * @return La ligne avec tous les remplacements appliqués
+	 */
+	private String applyTextureReplacements(String line, ReplacementContext ctx) {
+		// Remplacements de handles (furnitures)
+		line = line.replace("mcwfurnitures:block/str_acacia_handle", "mcwfurnitures:block/oak_handle");
+		line = line.replace("mcwfurnitures:block/acacia_handle", "mcwfurnitures:block/oak_handle");
+
+		// Remplacements de shutters (windows)
+		line = line.replace("mcwwindows:block/acacia_louvered_shutter", ctx.modid + ":block/" + ctx.prefix + "_louvered_shutter");
+		line = line.replace("mcwwindows:block/acacia_shutter", ctx.modid + ":block/" + ctx.prefix + "_shutter");
+
+		// Remplacements de logs et planks
+		if (ctx.strippedLog != null) {
+			line = line.replace("minecraft:block/stripped_acacia_log", ctx.textureLocation + "/" + ctx.strippedLog);
+		}
+		if (ctx.logTop != null) {
+			line = line.replace("minecraft:block/acacia_log_top", ctx.textureLocation + "/" + ctx.logTop);
+		}
+		if (ctx.log != null) {
+			line = line.replace("minecraft:block/acacia_log", ctx.textureLocation + "/" + ctx.log);
+		}
+
+		// Gestion spéciale pour BYG (ajoute le préfixe dans le chemin)
+		String planksPath = ctx.isBYGMode
+			? ctx.textureLocation + "/" + ctx.prefix + "/" + ctx.material + "_planks"
+			: ctx.textureLocation + "/" + ctx.material + "_planks";
+		line = line.replace("minecraft:block/acacia_planks", planksPath);
+
+		// Remplacements de leaves
+		String leavesPath;
+		if (ctx.customLeaves != null) {
+			leavesPath = ctx.textureLocation + "/" + ctx.customLeaves;
+		} else if (ctx.isBYGMode) {
+			leavesPath = ctx.textureLocation + "/" + ctx.prefix + "/leaves";
+		} else {
+			leavesPath = ctx.textureLocation + "/" + ctx.material + "_leaves";
+		}
+		line = line.replace("mcwfences:block/acacia_leaves", leavesPath);
+
+		// Remplacements de chemins de textures génériques
+		line = line.replace("\"texture\": \"mcwtrpdoors:block", "\"texture\": \"" + ctx.modid + ":block");
+
+		// Remplacement du nom de matériau de base
+		line = line.replace("acacia", ctx.prefix);
+
+		// Remplacements de chemins de textures pour paths
+		line = line.replace("\"particle\": \"mcwpaths:block", "\"particle\": \"" + ctx.modid + ":block");
+		line = line.replace("\"pavement\": \"mcwpaths:block", "\"pavement\": \"" + ctx.modid + ":block");
+
+		// Remplacements de chemins de textures pour doors
+		line = line.replace("\"bottom\": \"mcwdoors:block", "\"bottom\": \"" + ctx.modid + ":block");
+		line = line.replace("\"particle\": \"mcwdoors:block", "\"particle\": \"" + ctx.modid + ":block");
+		line = line.replace("\"top\": \"mcwdoors:block", "\"top\": \"" + ctx.modid + ":block");
+		line = line.replace("\"0\": \"mcwdoors:block", "\"0\": \"" + ctx.modid + ":block");
+		line = line.replace("\"2\": \"mcwdoors:block", "\"2\": \"" + ctx.modid + ":block");
+		line = line.replace("\"1\": \"mcwdoors:block", "\"1\": \"" + ctx.modid + ":block");
+
+		return line;
 	}
 }
