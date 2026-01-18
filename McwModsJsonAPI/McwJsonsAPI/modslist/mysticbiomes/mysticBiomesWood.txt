@@ -1,7 +1,3 @@
 cherry
-jacaranda
-maple
-peach
-sea_foam
+lavender
 strawberry
-tropical
