@@ -16,7 +16,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new MysticBiomes(ModLoaders.FORGE));
+        preset(new MysticBiomes(ModLoaders.FORGE, Versions.CAVEANDCLIFFS));
 		//renameFoldersData();
 	}
 

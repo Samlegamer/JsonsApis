@@ -10,12 +10,15 @@ import static fr.samlegamer.utils.Reference.*;
 public class NewModsList
 {
     public static class MysticBiomes {
-        public static void mysticBiomesWood(List<String> ID_WOOD) {
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + "mysticBiomesWood", ID_WOOD);
+        private static final String fileWood = "mysticBiomesWood";
+        private static final String fileLeave = "mysticBiomesLeave";
+
+        public static void mysticBiomesWood(List<String> ID_WOOD, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileWood + version.getName(), ID_WOOD);
         }
 
-        public static void mysticBiomesLeave(List<String> ID_LEAVE) {
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + "mysticBiomesLeave", ID_LEAVE);
+        public static void mysticBiomesLeave(List<String> ID_LEAVE, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileLeave + version.getName(), ID_LEAVE);
         }
     }
 

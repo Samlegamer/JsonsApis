@@ -20,16 +20,23 @@ public class MysticBiomes implements Presetting
 
     private final String versioning;
     private final ModLoaders modLoader;
+    private final Versions version;
 
-    public MysticBiomes(String versioning, ModLoaders modLoader)
+    public MysticBiomes(String versioning, ModLoaders modLoader, Versions version)
     {
         this.versioning = versioning;
         this.modLoader = modLoader;
+        this.version = version;
+    }
+
+    public MysticBiomes(ModLoaders modL, Versions version)
+    {
+        this("1.20", modL, version);
     }
 
     public MysticBiomes(ModLoaders modL)
     {
-        this("1.20", modL);
+        this(modL, Versions.NONE);
     }
 
 
@@ -47,8 +54,8 @@ public class MysticBiomes implements Presetting
         McwAPI.StairsGenFolder(LOCATION);
         McwAPI.DataGenFolder(LOCATION);
 
-        NewModsList.MysticBiomes.mysticBiomesWood(ID_WOOD);
-        NewModsList.MysticBiomes.mysticBiomesLeave(ID_LEAVE);
+        NewModsList.MysticBiomes.mysticBiomesWood(ID_WOOD, version);
+        NewModsList.MysticBiomes.mysticBiomesLeave(ID_LEAVE, version);
 
         String TextureLocationFormodid = Compatibilities.MYSTICBIOMES_TEXTURES;
         String ModidOfBaseMod = Compatibilities.MYSTICBIOMES_MODID;
@@ -154,8 +161,8 @@ public class MysticBiomes implements Presetting
     {
         LangSearcher langSearcher = new LangSearcher();
 
-        LangMods.MysticBiomes.mysticBiomesWoodLang(LANG_WOOD, language);
-        LangMods.MysticBiomes.mysticBiomesLeaveLang(LANG_LEAVE, language);
+        LangMods.MysticBiomes.mysticBiomesWoodLang(LANG_WOOD, language, version);
+        LangMods.MysticBiomes.mysticBiomesLeaveLang(LANG_LEAVE, language, version);
 
         langSearcher.initWood(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, language, Reference.allMcwMods());
         langSearcher.initLeaves(LOCATION, CompatModid, ID_LEAVE, LANG_LEAVE, language);

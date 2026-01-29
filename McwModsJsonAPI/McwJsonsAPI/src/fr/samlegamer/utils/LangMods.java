@@ -8,14 +8,18 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class LangMods
 {
+    private static final String suffix = "Lang";
+
     public static class MysticBiomes
     {
-        public static void mysticBiomesWoodLang(List<String> LANG_WOOD, String language) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + "mysticBiomesWoodLang", LANG_WOOD);
-        }
+        private static final String fileWood = "mysticBiomesWood";
+        private static final String fileLeave = "mysticBiomesLeave";
 
-        public static void mysticBiomesLeaveLang(List<String> LANG_LEAVE, String language) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + "mysticBiomesLeaveLang", LANG_LEAVE);
+        public static void mysticBiomesWoodLang(List<String> LANG_WOOD, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileWood+version.getName()+suffix, LANG_WOOD);
+        }
+        public static void mysticBiomesLeaveLang(List<String> LANG_LEAVE, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileLeave+version.getName()+suffix, LANG_LEAVE);
         }
     }
 
