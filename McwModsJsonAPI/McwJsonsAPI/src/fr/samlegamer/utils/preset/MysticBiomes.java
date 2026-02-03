@@ -114,7 +114,7 @@ public class MysticBiomes implements Presetting
 
         addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 
-        if(version.equals(Versions.CAVEANDCLIFFS))
+        if(version.equals(Versions.CAVEANDCLIFFS) || version.equals(Versions.THEWILDUPDATE))
         {
             JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "pink_cherry_blossoms", "pink_cherry_blossoms_leaves", "pink_cherry_blossoms");
             JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "white_cherry_blossoms", "white_cherry_blossoms_leaves", "white_cherry_blossoms");
