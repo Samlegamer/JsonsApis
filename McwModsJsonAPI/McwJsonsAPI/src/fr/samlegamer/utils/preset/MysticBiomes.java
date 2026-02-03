@@ -8,6 +8,8 @@ import fr.samlegamer.api.datagen.TagsGenerator;
 import fr.samlegamer.api.lang.LangSearcher;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
+
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -112,26 +114,13 @@ public class MysticBiomes implements Presetting
 
         addLanguage(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 
-//        for(McwAPI.ClientFolderTypes list : McwAPI.getClientFolderTypesWood())
-//        {
-//            for(String folderInModel : list.getPathList())
-//            {
-//                JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + folderInModel +
-//                File.separator, "sculkwood", "stripped_sculkwood_log", "sculkwood_log_dark");
-//            }
-//        }
-//
-//        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "palm", "palm_leaves", "palm_leaves_side");
-//
-//
-//        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "sculkwood", "stripped_sculkwood_log\"", "sculkwood_log_dark\"");
-//        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "sculkwood", "stripped_sculkwood_log\"", "sculkwood_log_dark\"");
-//
-//        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "alpha_oak", "alpha_oak_leaves\"", "alpha_leaves\"");
-//        JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "alpha_oak", "alpha_oak_leaves\"", "alpha_leaves\"");
-//
-//        JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.RECIPE.getPath(), "joshua_hedge.json");
-//        JsonsUtils.deleter(LOCATION + File.separator + McwAPI.ClassicFolderTypes.ADVANCEMENT_RECIPE.getPath(), "joshua_hedge.json");
+        if(version.equals(Versions.CAVEANDCLIFFS))
+        {
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "pink_cherry_blossoms", "pink_cherry_blossoms_leaves", "pink_cherry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "white_cherry_blossoms", "white_cherry_blossoms_leaves", "white_cherry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "strawberry_blossoms", "strawberry_blossoms_leaves", "strawberry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "jacaranda_blossoms", "jacaranda_blossoms_leaves", "jacaranda_blossoms");
+        }
 
         System.out.println("Done!");
     }
