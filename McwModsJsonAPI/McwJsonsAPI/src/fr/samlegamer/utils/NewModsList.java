@@ -265,21 +265,49 @@ public class NewModsList
     }
 
     public static class Quark {
+        private static final String fileWood = "quarkWood";
+        private static final String fileLeave = "quarkLeaves";
+        private static final String fileRock = "quarkRockMat";
+        private static final String fileRockWall = "quarkRockWall";
+        private static final String fileRockFloor = "quarkRockFloor";
+
+        public static void quarkWood(List<String> ID_WOOD, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileWood + version.getName(), ID_WOOD);
+        }
+
+        public static void quarkLeave(List<String> ID_LEAVE, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileLeave + version.getName(), ID_LEAVE);
+        }
+
+        public static void quarkRock(List<String> ID_ROCK, List<String> WALL, List<String> FLOOR, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRock + version.getName(), ID_ROCK);
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRockWall + version.getName(), WALL);
+            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRockFloor + version.getName(), FLOOR);
+        }
+
+        public static void quarkRock(List<String> ID_ROCK, Versions version) {
+            quarkRock(ID_ROCK, List.of(), List.of(), version);
+        }
+
+        @Deprecated(forRemoval = true)
         public static void quarkRock(List<String> ID_ROCK) {
             quarkRock(ID_ROCK, List.of(), List.of());
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRock(List<String> ID_ROCK, List<String> WALL, List<String> FLOOR) {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockMat", ID_ROCK);
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockWall", WALL);
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockFloor", FLOOR);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockCaveAndCliff(List<String> ID_ROCK)
         {
             quarkRockCaveAndCliff(ID_ROCK, List.of(), List.of());
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockCaveAndCliff(List<String> ID_ROCK, List<String> WALL, List<String> FLOOR)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockCaveAndCliffRockMat", ID_ROCK);
@@ -287,11 +315,13 @@ public class NewModsList
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockCaveAndCliffRockFloor", FLOOR);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockSniffer(List<String> ID_ROCK)
         {
             quarkRockSniffer(ID_ROCK, List.of(), List.of());
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockSniffer(List<String> ID_ROCK, List<String> WALL, List<String> FLOOR)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockSnifferRockMat", ID_ROCK);
@@ -299,26 +329,31 @@ public class NewModsList
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkRockSnifferRockFloor", FLOOR);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeaves(List<String> ID_LEAVE)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkLeaves", ID_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeavesWarden(List<String> ID_LEAVE)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkLeavesWarden", ID_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeavesSniffer(List<String> ID_LEAVE)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkLeavesSniffer", ID_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkWoodCaveAndCliff(List<String> ID_WOOD)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkWoodCaveAndCliff", ID_WOOD);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkWoodWarden(List<String> ID_WOOD)
         {
             addListWithPath(McwAPI.READER_MODLIST, quarkFolder + "quarkWoodWarden", ID_WOOD);

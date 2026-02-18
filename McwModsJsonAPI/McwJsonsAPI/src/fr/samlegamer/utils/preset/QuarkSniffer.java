@@ -13,6 +13,7 @@ import fr.samlegamer.api.lang.*;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
 
+@Deprecated(forRemoval = true)
 public class QuarkSniffer implements Presetting
 {
 	protected static final List<String> ID_WOOD = new ArrayList<>();

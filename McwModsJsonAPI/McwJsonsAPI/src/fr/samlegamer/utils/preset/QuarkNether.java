@@ -13,6 +13,7 @@ import fr.samlegamer.api.lang.LangSearcher;
 import fr.samlegamer.registry.Compatibilities;
 import fr.samlegamer.utils.*;
 
+@Deprecated(forRemoval = true)
 public class QuarkNether implements Presetting
 {
 	protected static final List<String> ID_WOOD = new ArrayList<>();

@@ -185,43 +185,67 @@ public class LangMods
     }
 
     public static class Quark {
+        private static final String fileWood = "quarkWood";
+        private static final String fileLeave = "quarkLeave";
+        private static final String fileRock = "quarkRock";
 
+        public static void quarkWoodLang(List<String> LANG_WOOD, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileWood+version.getName()+suffix, LANG_WOOD);
+        }
+        public static void quarkLeaveLang(List<String> LANG_LEAVE, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileLeave+version.getName()+suffix, LANG_LEAVE);
+        }
+
+        public static void quarkRockLang(List<String> LANG_ROCK, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileRock+version.getName()+suffix, LANG_ROCK);
+        }
+
+        @Deprecated(forRemoval = true)
         public static void quarkWoodCaveLang(List<String> LANG_WOOD, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkWoodCaveLang", LANG_WOOD);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkWoodWardenLang(List<String> LANG_WOOD, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkWoodWardenLang", LANG_WOOD);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkWoodSnifferLang(List<String> LANG_WOOD, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkWoodSnifferLang", LANG_WOOD);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockLang(List<String> LANG_ROCK, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkRockLang", LANG_ROCK);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockCaveLang(List<String> LANG_ROCK, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkRockCaveLang", LANG_ROCK);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkRockSnifferLang(List<String> LANG_ROCK, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkRockSnifferLang", LANG_ROCK);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeaveLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkLeaveLang", LANG_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeaveCaveLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkLeaveCaveLang", LANG_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeaveWardenLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkLeaveWardenLang", LANG_LEAVE);
         }
 
+        @Deprecated(forRemoval = true)
         public static void quarkLeaveSnifferLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + "quarkLeaveSnifferLang", LANG_LEAVE);
         }
