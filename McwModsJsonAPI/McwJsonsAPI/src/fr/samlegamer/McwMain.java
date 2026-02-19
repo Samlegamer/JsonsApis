@@ -4,7 +4,6 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
 import fr.samlegamer.api.datagen.ModLoaders;
 import fr.samlegamer.utils.*;
 import fr.samlegamer.utils.preset.*;
@@ -16,8 +15,8 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-        preset(new MysticBiomes(ModLoaders.FORGE, Versions.THEWILDUPDATE));
-		//renameFoldersData();
+		preset(new Quark(ModLoaders.FORGE, Versions.TRICKYTRIALS));
+		renameFoldersData();
 	}
 
 	private static void renameFoldersData()

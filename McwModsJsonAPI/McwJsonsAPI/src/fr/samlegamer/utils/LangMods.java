@@ -190,14 +190,24 @@ public class LangMods
         private static final String fileRock = "quarkRock";
 
         public static void quarkWoodLang(List<String> LANG_WOOD, String language, Versions version) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileWood+version.getName()+suffix, LANG_WOOD);
+            String val = version.getName();
+            if(version.equals(Versions.TRAILSANDTALES) || version.equals(Versions.TRICKYTRIALS))
+            {
+                val = Versions.THEWILDUPDATE.getName();
+            }
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + fileWood+val+suffix, LANG_WOOD);
         }
         public static void quarkLeaveLang(List<String> LANG_LEAVE, String language, Versions version) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileLeave+version.getName()+suffix, LANG_LEAVE);
+            String val = version.getName();
+            if(version.equals(Versions.TRICKYTRIALS))
+            {
+                val = Versions.TRAILSANDTALES.getName();
+            }
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + fileLeave+val+suffix, LANG_LEAVE);
         }
 
         public static void quarkRockLang(List<String> LANG_ROCK, String language, Versions version) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, mysticBiomesFolder + fileRock+version.getName()+suffix, LANG_ROCK);
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, quarkFolder + fileRock+version.getName()+suffix, LANG_ROCK);
         }
 
         @Deprecated(forRemoval = true)

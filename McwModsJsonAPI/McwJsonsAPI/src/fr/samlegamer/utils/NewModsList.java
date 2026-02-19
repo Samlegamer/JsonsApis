@@ -272,21 +272,31 @@ public class NewModsList
         private static final String fileRockFloor = "quarkRockFloor";
 
         public static void quarkWood(List<String> ID_WOOD, Versions version) {
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileWood + version.getName(), ID_WOOD);
+            String val = version.getName();
+            if(version.equals(Versions.TRAILSANDTALES) || version.equals(Versions.TRICKYTRIALS))
+            {
+                val = Versions.THEWILDUPDATE.getName();
+            }
+            addListWithPath(McwAPI.READER_MODLIST, quarkFolder + fileWood + val, ID_WOOD);
         }
 
         public static void quarkLeave(List<String> ID_LEAVE, Versions version) {
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileLeave + version.getName(), ID_LEAVE);
+            String val = version.getName();
+            if(version.equals(Versions.TRICKYTRIALS))
+            {
+                val = Versions.TRAILSANDTALES.getName();
+            }
+            addListWithPath(McwAPI.READER_MODLIST, quarkFolder + fileLeave + val, ID_LEAVE);
         }
 
         public static void quarkRock(List<String> ID_ROCK, List<String> WALL, List<String> FLOOR, Versions version) {
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRock + version.getName(), ID_ROCK);
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRockWall + version.getName(), WALL);
-            addListWithPath(McwAPI.READER_MODLIST, mysticBiomesFolder + fileRockFloor + version.getName(), FLOOR);
+            addListWithPath(McwAPI.READER_MODLIST, quarkFolder + fileRock + version.getName(), ID_ROCK);
+            addListWithPath(McwAPI.READER_MODLIST, quarkFolder + fileRockWall + version.getName(), WALL);
+            addListWithPath(McwAPI.READER_MODLIST, quarkFolder + fileRockFloor + version.getName(), FLOOR);
         }
 
         public static void quarkRock(List<String> ID_ROCK, Versions version) {
-            quarkRock(ID_ROCK, List.of(), List.of(), version);
+            quarkRock(ID_ROCK, new ArrayList<>(), new ArrayList<>(), version);
         }
 
         @Deprecated(forRemoval = true)
