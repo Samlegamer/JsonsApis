@@ -40,6 +40,14 @@ public class LangMods
         public static void regionsUnexploredLeaveWardenLang(List<String> LANG_LEAVE, String language) {
             addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredLeaveWardenLang", LANG_LEAVE);
         }
+
+        public static void regionsUnexploredWoodBreezeLang(List<String> LANG_WOOD, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredWoodBreezeLang", LANG_WOOD);
+        }
+
+        public static void regionsUnexploredLeaveBreezeLang(List<String> LANG_LEAVE, String language) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, regionsUnexploredFolder + "regionsUnexploredLeaveBreezeLang", LANG_LEAVE);
+        }
     }
 
     public static class BOP {

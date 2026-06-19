@@ -15,7 +15,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new Quark(ModLoaders.FORGE, Versions.TRICKYTRIALS));
+		preset(new RegionsUnexploredBreeze(ModLoaders.FORGE));
 		renameFoldersData();
 	}
 

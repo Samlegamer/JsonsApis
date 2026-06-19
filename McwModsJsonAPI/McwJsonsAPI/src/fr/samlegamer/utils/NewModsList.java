@@ -53,6 +53,27 @@ public class NewModsList
         {
             addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredLeaveWarden", ID_LEAVE);
         }
+
+
+        public static void regionsUnexploredWoodBreeze(List<String> ID_WOOD, boolean isStem)
+        {
+            if (isStem) {
+                addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredWoodBreezeIsStem", ID_WOOD);
+            } else {
+                addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredWoodBreezeNotStem", ID_WOOD);
+            }
+        }
+
+        public static void regionsUnexploredWoodBreeze(List<String> ID_WOOD)
+        {
+            regionsUnexploredWoodBreeze(ID_WOOD, false);
+            regionsUnexploredWoodBreeze(ID_WOOD, true);
+        }
+
+        public static void regionsUnexploredLeaveBreeze(List<String> ID_LEAVE)
+        {
+            addListWithPath(McwAPI.READER_MODLIST, regionsUnexploredFolder + "regionsUnexploredLeaveBreeze", ID_LEAVE);
+        }
     }
 
     public static class BOP
