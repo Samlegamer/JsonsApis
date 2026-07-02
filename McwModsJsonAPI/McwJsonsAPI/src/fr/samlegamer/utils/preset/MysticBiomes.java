@@ -121,6 +121,13 @@ public class MysticBiomes implements Presetting
             JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "strawberry_blossoms", "strawberry_blossoms_leaves", "strawberry_blossoms");
             JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "jacaranda_blossoms", "jacaranda_blossoms_leaves", "jacaranda_blossoms");
         }
+        else if(version.equals(Versions.TRAILSANDTALES))
+        {
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "pink_cherry_blossoms", "pink_cherry_blossoms_leaves", "pink_cherry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "white_cherry_blossoms", "white_cherry_blossoms_leaves", "white_cherry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "strawberry_blossoms", "strawberry_blossoms_leaves", "strawberry_blossoms");
+            JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "lavender_blossoms", "lavender_blossoms_leaves", "lavender_blossoms");
+        }
 
         System.out.println("Done!");
     }

@@ -1,0 +1,8 @@
+black_cherry
+lavender
+maple
+peach
+sea_foam
+strawberry
+tropical
+vanilla

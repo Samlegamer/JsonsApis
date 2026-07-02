@@ -1,0 +1,13 @@
+strawberry_blossoms
+pink_cherry_blossoms
+white_cherry_blossoms
+lavender_blossoms
+peach
+maple
+orange_maple
+yellow_maple
+sea_shrub
+tropical
+vanilla
+peony
+hydrangea

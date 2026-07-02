@@ -15,7 +15,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new RegionsUnexploredBreeze(ModLoaders.FORGE));
+		preset(new MysticBiomes(ModLoaders.FORGE, Versions.TRAILSANDTALES));
 		renameFoldersData();
 	}
 
