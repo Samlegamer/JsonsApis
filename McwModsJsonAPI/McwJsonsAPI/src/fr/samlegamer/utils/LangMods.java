@@ -10,6 +10,19 @@ public class LangMods
 {
     private static final String suffix = "Lang";
 
+    public static class NaturesSpirit
+    {
+        private static final String fileWood = "naturesSpiritWood";
+        private static final String fileLeave = "naturesSpiritLeave";
+
+        public static void naturesSpiritWoodLang(List<String> LANG_WOOD, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, naturesSpiritFolder + fileWood+version.getName()+suffix, LANG_WOOD);
+        }
+        public static void naturesSpiritLeaveLang(List<String> LANG_LEAVE, String language, Versions version) {
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, naturesSpiritFolder + fileLeave+version.getName()+suffix, LANG_LEAVE);
+        }
+    }
+
     public static class MysticBiomes
     {
         private static final String fileWood = "mysticBiomesWood";

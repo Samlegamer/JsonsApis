@@ -63,6 +63,9 @@ public class Compatibilities
 	public static final String MYSTICBIOMES_MODID = "mysticsbiomes";
 	public static final String MYSTICBIOMES_TEXTURES = "mysticsbiomes:block";
 
+	public static final String NATURES_SPIRIT_MODID = "natures_spirit";
+	public static final String NATURES_SPIRIT_TEXTURES = "natures_spirit:block";
+
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
 	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";

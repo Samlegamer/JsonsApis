@@ -1,0 +1,17 @@
+aspen
+cedar
+coconut
+cypress
+fir
+ghaf
+joshua
+larch
+mahogany
+maple
+olive
+palo_verde
+redwood
+saxaul
+sugi
+willow
+wisteria

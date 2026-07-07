@@ -9,6 +9,19 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class NewModsList
 {
+    public static class NaturesSpirit {
+        private static final String fileWood = "naturesSpiritWood";
+        private static final String fileLeave = "naturesSpiritLeave";
+
+        public static void naturesSpiritWood(List<String> ID_WOOD, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, naturesSpiritFolder + fileWood + version.getName(), ID_WOOD);
+        }
+
+        public static void naturesSpiritLeave(List<String> ID_LEAVE, Versions version) {
+            addListWithPath(McwAPI.READER_MODLIST, naturesSpiritFolder + fileLeave + version.getName(), ID_LEAVE);
+        }
+    }
+
     public static class MysticBiomes {
         private static final String fileWood = "mysticBiomesWood";
         private static final String fileLeave = "mysticBiomesLeave";
