@@ -110,7 +110,7 @@ public class Betters implements Presetting
 
 		genLang(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 
-		if(versions == Versions.NONE) {
+		if(versions == Versions.NONE || versions == Versions.CAVEANDCLIFFS) {
 			for (String mod : mcwMods) {
 				ClientFolderTypes clientFolderTypes = Reference.getFoldersWoodWithMcwMod(mod);
 				for (String path : clientFolderTypes.getPathList()) {
@@ -132,10 +132,12 @@ public class Betters implements Presetting
 						JsonsUtils.replacer(pathModel, value, value + "_bark_top", "striped_log_" + value + "_top");
 					}
 
+					String stripped_anchor_tree_log_replacement = versions != Versions.NONE ? "anchor_tree_stripped_log_side_1" : "striped_log_anchor_tree_side_1";
+					String anchor_tree_log_side_top_replacement = versions != Versions.NONE ? "anchor_tree_stripped_log_top" : "striped_log_anchor_tree_top";
 					JsonsUtils.replacer(pathModel, "anchor_tree", "anchor_tree_log", "anchor_tree_log_side");
-					JsonsUtils.replacer(pathModel, "anchor_tree", "stripped_anchor_tree_log", "striped_log_anchor_tree_side_1");
-					JsonsUtils.replacer(pathModel, "anchor_tree", "striped_log_anchor_tree_side_1_side", "striped_log_anchor_tree_side_1");
-					JsonsUtils.replacer(pathModel, "anchor_tree", "anchor_tree_log_side_top", "striped_log_anchor_tree_top");
+					JsonsUtils.replacer(pathModel, "anchor_tree", "stripped_anchor_tree_log", stripped_anchor_tree_log_replacement);
+					JsonsUtils.replacer(pathModel, "anchor_tree", stripped_anchor_tree_log_replacement+"_side", stripped_anchor_tree_log_replacement);
+					JsonsUtils.replacer(pathModel, "anchor_tree", "anchor_tree_log_side_top", anchor_tree_log_side_top_replacement);
 
 					JsonsUtils.replacer(pathModel, "mushroom", "mushroom_log", "mushroom_stem_side_mcw");
 					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_log", "minecraft:block/mushroom_stem");
@@ -143,43 +145,57 @@ public class Betters implements Presetting
 					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/mushroom_stem_side_mcw_top_mcw", "minecraft:block/mushroom_stem");
 					JsonsUtils.replacer(pathModel, "mushroom", "minecraft:block/mushroom_stem_mcw", "minecraft:block/mushroom_stem");
 
+					String nether_sakura_log_side_top_replacement = versions != Versions.NONE ? "nether_sakura_stripped_log_top" : "striped_log_nether_sakura_top";
 					JsonsUtils.replacer(pathModel, "nether_sakura", "nether_sakura_log", "nether_sakura_log_side");
 					JsonsUtils.replacer(pathModel, "nether_sakura", "stripped_nether_sakura_log", "striped_log_nether_sakura_side");
 					JsonsUtils.replacer(pathModel, "nether_sakura", "striped_log_nether_sakura_side_side", "striped_log_nether_sakura_side");
-					JsonsUtils.replacer(pathModel, "nether_sakura", "nether_sakura_log_side_top", "striped_log_nether_sakura_top");
+					JsonsUtils.replacer(pathModel, "nether_sakura", "nether_sakura_log_side_top", nether_sakura_log_side_top_replacement);
 
 					JsonsUtils.replacer(pathModel, "rubeus", "rubeus_log", "rubeus_log_side");
 					JsonsUtils.replacer(pathModel, "rubeus", "stripped_rubeus_log", "striped_rubeus_log_side");
 					JsonsUtils.replacer(pathModel, "rubeus", "striped_rubeus_log_side_side", "striped_rubeus_log_side");
 					JsonsUtils.replacer(pathModel, "rubeus", "rubeus_log_side_top", "striped_rubeus_log_top");
 
+					String stalagnate_bark_side_top_replacement = versions != Versions.NONE ? "stalagnate_stripped_log_top" : "striped_log_stalagnate_top";
 					JsonsUtils.replacer(pathModel, "stalagnate", "stalagnate_log", "stalagnate_bark_side");
 					JsonsUtils.replacer(pathModel, "stalagnate", "stripped_stalagnate_log", "striped_log_stalagnate_side");
 					JsonsUtils.replacer(pathModel, "stalagnate", "stripped_stalagnate_bark_side", "striped_log_stalagnate_side");
-					JsonsUtils.replacer(pathModel, "stalagnate", "stalagnate_bark_side_top", "striped_log_stalagnate_top");
+					JsonsUtils.replacer(pathModel, "stalagnate", "stalagnate_bark_side_top", stalagnate_bark_side_top_replacement);
+
+					if(versions != Versions.NONE)
+					{
+						JsonsUtils.replacer(pathModel, "mushroom", "mushroom_planks\"", "nether_mushroom_planks\"");
+
+						JsonsUtils.replacer(pathModel, "mushroom_fir", "striped_log_mushroom_fir_side", "mushroom_fir_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "wart", "striped_log_wart_side", "wart_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "willow", "striped_log_willow_side", "willow_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "mushroom_fir", "striped_log_mushroom_fir_top", "mushroom_fir_stripped_log_top");
+						JsonsUtils.replacer(pathModel, "wart", "striped_log_wart_top", "wart_stripped_log_top");
+						JsonsUtils.replacer(pathModel, "willow", "striped_log_willow_top", "willow_stripped_log_top");
+
+						JsonsUtils.replacer(pathModel, "nether_sakura", "striped_log_nether_sakura_side", "nether_sakura_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "stalagnate", "striped_log_stalagnate_side", "stalagnate_stripped_log_side");
+					}
 				}
 			}
-
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "lucernia", "lucernia_leaves", "lucernia_leaves_1");
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "nether_sakura", "nether_sakura_leaves", "nether_sakura_leaves_2");
 		}
-		else {
-			for (String mod : mcwMods) {
-				ClientFolderTypes clientFolderTypes = Reference.getFoldersWoodWithMcwMod(mod);
-				for (String path : clientFolderTypes.getPathList()) {
-					String pathModel = LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + path + File.separator;
-
-					JsonsUtils.replacer(pathModel, "mushroom", "mushroom_log", "mushroom_stem_side_mcw");
-					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_log", "minecraft:block/mushroom_stem");
-					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_stem_side", "minecraft:block/mushroom_stem");
-					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/mushroom_stem_side_mcw_top_mcw", "minecraft:block/mushroom_stem");
-					JsonsUtils.replacer(pathModel, "mushroom", "minecraft:block/mushroom_stem_mcw", "minecraft:block/mushroom_stem");
-				}
-			}
-
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "lucernia", "lucernia_leaves", "lucernia_leaves_1");
-			JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "nether_sakura", "nether_sakura_leaves", "nether_sakura_leaves_2");
-		}
+//		else {
+//			for (String mod : mcwMods) {
+//				ClientFolderTypes clientFolderTypes = Reference.getFoldersWoodWithMcwMod(mod);
+//				for (String path : clientFolderTypes.getPathList()) {
+//					String pathModel = LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + path + File.separator;
+//
+//					JsonsUtils.replacer(pathModel, "mushroom", "mushroom_log", "mushroom_stem_side_mcw");
+//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_log", "minecraft:block/mushroom_stem");
+//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_stem_side", "minecraft:block/mushroom_stem");
+//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/mushroom_stem_side_mcw_top_mcw", "minecraft:block/mushroom_stem");
+//					JsonsUtils.replacer(pathModel, "mushroom", "minecraft:block/mushroom_stem_mcw", "minecraft:block/mushroom_stem");
+//				}
+//			}
+//
+//		}
+		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "lucernia", "lucernia_leaves", "lucernia_leaves_1");
+		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "nether_sakura", "nether_sakura_leaves", "nether_sakura_leaves_2");
 
 		System.out.println("Finish Betters Registries");
 	}
