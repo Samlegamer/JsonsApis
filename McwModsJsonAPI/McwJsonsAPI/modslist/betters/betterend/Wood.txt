@@ -1,0 +1,10 @@
+dragon_tree
+end_lotus
+helix_tree
+jellyshroom
+lacugrove
+lucernia
+mossy_glowshroom
+pythadendron
+tenanea
+umbrella_tree

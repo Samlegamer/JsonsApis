@@ -30,6 +30,7 @@ public final class Reference
     public static final String regionsUnexploredFolder = "regions_unexplored" + sep;
     public static final String mysticBiomesFolder = "mysticbiomes" + sep;
     public static final String naturesSpiritFolder = "natures_spirit" + sep;
+    public static final String bettersFolder = "betters" + sep;
 
     // For Classic Vanilla Only
     public static final String minecraftFolder = "minecraft" + sep;

@@ -66,6 +66,15 @@ public class Compatibilities
 	public static final String NATURES_SPIRIT_MODID = "natures_spirit";
 	public static final String NATURES_SPIRIT_TEXTURES = "natures_spirit:block";
 
+	public static final String BETTER_END_MODID = "betterend";
+	public static final String BETTER_END_TEXTURES = "betterend:block";
+
+	public static final String BETTER_END_FORGE_MODID = "betterendforge";
+	public static final String BETTER_END_FORGE_TEXTURES = "betterendforge:block";
+
+	public static final String BETTER_NETHER_MODID = "betternether";
+	public static final String BETTER_NETHER_TEXTURES = "betternether:block";
+
 	public static final String MCW_ROOFS_MODID = "mcwroofs";
 	public static final String MCW_FURNITURES_MODID = "mcwfurnitures";
 	public static final String MCW_BRIDGES_MODID = "mcwbridges";

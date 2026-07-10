@@ -15,7 +15,7 @@ public class McwMain
 
 	public static void main(String[] args)
 	{
-		preset(new NaturesSpirit(ModLoaders.FORGE, Versions.TRAILSANDTALES));
+		preset(new Betters(Versions.CAVEANDCLIFFS));
 		renameFoldersData();
 	}
 

@@ -9,6 +9,51 @@ import static fr.samlegamer.utils.Reference.*;
 
 public class NewModsList
 {
+    public static class Betters
+    {
+        public static void bettersWood(List<String> ID_WOOD)
+        {
+            bettersWood(ID_WOOD, Compatibilities.BETTER_END_MODID);
+            bettersWood(ID_WOOD, Compatibilities.BETTER_NETHER_MODID);
+        }
+
+        public static void bettersWood(List<String> ID_WOOD, String compat)
+        {
+            if(compat.equals(Compatibilities.BETTER_END_MODID))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
+                        Compatibilities.BETTER_END_MODID + File.separator + "Wood", ID_WOOD);
+            }
+
+            if(compat.equals(Compatibilities.BETTER_NETHER_MODID))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
+                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Wood", ID_WOOD);
+            }
+        }
+
+        public static void bettersLeaves(List<String> ID_LEAVE)
+        {
+            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_END_MODID);
+            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_NETHER_MODID);
+        }
+
+        public static void bettersLeaves(List<String> ID_LEAVE, String compat)
+        {
+            if(compat.equals(Compatibilities.BETTER_END_MODID))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
+                        Compatibilities.BETTER_END_MODID + File.separator + "Leave", ID_LEAVE);
+            }
+
+            if(compat.equals(Compatibilities.BETTER_NETHER_MODID))
+            {
+                addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
+                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Leave", ID_LEAVE);
+            }
+        }
+    }
+
     public static class NaturesSpirit {
         private static final String fileWood = "naturesSpiritWood";
         private static final String fileLeave = "naturesSpiritLeave";
