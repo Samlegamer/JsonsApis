@@ -15,11 +15,13 @@ public class LangMods
         private static final String fileLeave = "bettersLeave";
 
         public static void bettersWoodLang(List<String> LANG_WOOD, String language, Versions version) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bettersFolder + fileWood+version.getName()+suffix, LANG_WOOD);
+            String v = version == Versions.MM ? version.getName() : "";
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bettersFolder + fileWood+v+suffix, LANG_WOOD);
         }
 
         public static void bettersLeaveLang(List<String> LANG_LEAVE, String language, Versions version) {
-            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bettersFolder + fileLeave+version.getName()+suffix, LANG_LEAVE);
+            String v = version == Versions.MM ? version.getName() : "";
+            addListWithPath(McwAPI.READER_MCW_LANG + language + sep, bettersFolder + fileLeave+v+suffix, LANG_LEAVE);
         }
     }
 

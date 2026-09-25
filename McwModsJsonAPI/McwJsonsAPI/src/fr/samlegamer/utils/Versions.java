@@ -3,7 +3,7 @@ package fr.samlegamer.utils;
 public enum Versions
 {
     NONE(""), CAVEANDCLIFFS("CaveAndCliff"), THEWILDUPDATE("Warden"), TRAILSANDTALES("Sniffer"),
-    TRICKYTRIALS("Breeze"), COPPERAGE("CopperGolem");
+    TRICKYTRIALS("Breeze"), COPPERAGE("CopperGolem"), MM("MM");
     private final String name;
 
     Versions(String name)

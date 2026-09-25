@@ -11,45 +11,48 @@ public class NewModsList
 {
     public static class Betters
     {
-        public static void bettersWood(List<String> ID_WOOD)
+        public static void bettersWood(List<String> ID_WOOD, Versions version)
         {
-            bettersWood(ID_WOOD, Compatibilities.BETTER_END_MODID);
-            bettersWood(ID_WOOD, Compatibilities.BETTER_NETHER_MODID);
+            bettersWood(ID_WOOD, Compatibilities.BETTER_END_MODID, version);
+            bettersWood(ID_WOOD, Compatibilities.BETTER_NETHER_MODID, version);
         }
 
-        public static void bettersWood(List<String> ID_WOOD, String compat)
+        public static void bettersWood(List<String> ID_WOOD, String compat, Versions version)
         {
+            String suffix = version == Versions.MM && compat.equals(Compatibilities.BETTER_NETHER_MODID) ? version.getName() : "";
+
             if(compat.equals(Compatibilities.BETTER_END_MODID))
             {
                 addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
-                        Compatibilities.BETTER_END_MODID + File.separator + "Wood", ID_WOOD);
+                        Compatibilities.BETTER_END_MODID + File.separator + "Wood"+suffix, ID_WOOD);
             }
 
             if(compat.equals(Compatibilities.BETTER_NETHER_MODID))
             {
                 addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
-                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Wood", ID_WOOD);
+                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Wood"+suffix, ID_WOOD);
             }
         }
 
-        public static void bettersLeaves(List<String> ID_LEAVE)
+        public static void bettersLeaves(List<String> ID_LEAVE, Versions version)
         {
-            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_END_MODID);
-            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_NETHER_MODID);
+            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_END_MODID, version);
+            bettersLeaves(ID_LEAVE, Compatibilities.BETTER_NETHER_MODID, version);
         }
 
-        public static void bettersLeaves(List<String> ID_LEAVE, String compat)
+        public static void bettersLeaves(List<String> ID_LEAVE, String compat, Versions version)
         {
+            String suffix = version == Versions.MM && compat.equals(Compatibilities.BETTER_NETHER_MODID) ? version.getName() : "";
             if(compat.equals(Compatibilities.BETTER_END_MODID))
             {
                 addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
-                        Compatibilities.BETTER_END_MODID + File.separator + "Leave", ID_LEAVE);
+                        Compatibilities.BETTER_END_MODID + File.separator + "Leave"+suffix, ID_LEAVE);
             }
 
             if(compat.equals(Compatibilities.BETTER_NETHER_MODID))
             {
                 addListWithPath(McwAPI.READER_MODLIST, bettersFolder +
-                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Leave", ID_LEAVE);
+                        Compatibilities.BETTER_NETHER_MODID + File.separator + "Leave"+suffix, ID_LEAVE);
             }
         }
     }

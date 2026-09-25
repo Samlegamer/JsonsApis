@@ -468,4 +468,17 @@ public class McwAPI {
 		}
 	}
 
+	public static void countListCompare(List<List<String>> listOfListString, String language)
+	{
+		for(List<String> list : listOfListString)
+		{
+			System.out.println("Lang "+ language + " : " + list.size());
+			StringBuilder text = new StringBuilder();
+			for(String s : list)
+			{
+				text.append(s).append(", ");
+			}
+			System.out.println(text);
+		}
+	}
 }

@@ -67,13 +67,13 @@ public class Betters implements Presetting
 			final McwDataGen data = new McwDataGen(mod);
 
 			System.out.println("Start Wood "+ mod +" Client/Data");
-			NewModsList.Betters.bettersWood(ID_WOOD, Compatibilities.BETTER_END_MODID);
+			NewModsList.Betters.bettersWood(ID_WOOD, Compatibilities.BETTER_END_MODID, versions);
 			txtLocMod = versions == Versions.NONE ? Compatibilities.BETTER_END_FORGE_TEXTURES : Compatibilities.BETTER_END_TEXTURES;
 			ModidOfBaseMod = Compatibilities.BETTER_END_MODID;
 			genRessources(LOCATION, CompatModid, ID_WOOD, txtLocMod, ModidOfBaseMod, false, mod, client, data);
 			ID_WOOD.clear();
 
-			NewModsList.Betters.bettersWood(ID_WOOD, Compatibilities.BETTER_NETHER_MODID);
+			NewModsList.Betters.bettersWood(ID_WOOD, Compatibilities.BETTER_NETHER_MODID, versions);
 			txtLocMod = Compatibilities.BETTER_NETHER_TEXTURES;
 			ModidOfBaseMod = Compatibilities.BETTER_NETHER_MODID;
 			genRessources(LOCATION, CompatModid, ID_WOOD, txtLocMod, ModidOfBaseMod, false, mod, client, data);
@@ -81,13 +81,13 @@ public class Betters implements Presetting
 
 			if(mod.equals(Compatibilities.MCW_FENCES_MODID))
 			{
-				NewModsList.Betters.bettersLeaves(ID_LEAVE, Compatibilities.BETTER_END_MODID);
+				NewModsList.Betters.bettersLeaves(ID_LEAVE, Compatibilities.BETTER_END_MODID, versions);
 				txtLocMod = versions == Versions.NONE ? Compatibilities.BETTER_END_FORGE_TEXTURES : Compatibilities.BETTER_END_TEXTURES;
 				ModidOfBaseMod = Compatibilities.BETTER_END_MODID;
 				genHedges(LOCATION, CompatModid, ID_LEAVE, txtLocMod, ModidOfBaseMod, client, data);
 				ID_LEAVE.clear();
 
-				NewModsList.Betters.bettersLeaves(ID_LEAVE, Compatibilities.BETTER_NETHER_MODID);
+				NewModsList.Betters.bettersLeaves(ID_LEAVE, Compatibilities.BETTER_NETHER_MODID, versions);
 				txtLocMod = Compatibilities.BETTER_NETHER_TEXTURES;
 				ModidOfBaseMod = Compatibilities.BETTER_NETHER_MODID;
 				genHedges(LOCATION, CompatModid, ID_LEAVE, txtLocMod, ModidOfBaseMod, client, data);
@@ -97,8 +97,8 @@ public class Betters implements Presetting
 			System.out.println("Done Wood "+ mod +" Client/Data");
 		}
 
-		NewModsList.Betters.bettersWood(ID_WOOD);
-		NewModsList.Betters.bettersLeaves(ID_LEAVE);
+		NewModsList.Betters.bettersWood(ID_WOOD, versions);
+		NewModsList.Betters.bettersLeaves(ID_LEAVE, versions);
 
 		System.out.println("Start Tags");
 		TagsGenerator tagsGenerator = new TagsGenerator(LOCATION, Reference.allMcwMods());
@@ -108,9 +108,12 @@ public class Betters implements Presetting
 		tagsGenerator.mcwMods(LOCATION, CompatModid, ID_WOOD, ID_LEAVE, new ArrayList<>(), Reference.allMcwMods());
 		System.out.println("Done Tags");
 
-		genLang(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
+		if(versions == Versions.MM)
+		{
+			McwAPI.fixForPaleGarden(LOCATION, CompatModid, ID_WOOD);
+		}
 
-		if(versions == Versions.NONE || versions == Versions.CAVEANDCLIFFS) {
+		if(versions == Versions.NONE || versions == Versions.CAVEANDCLIFFS || versions == Versions.TRICKYTRIALS || versions == Versions.MM) {
 			for (String mod : mcwMods) {
 				ClientFolderTypes clientFolderTypes = Reference.getFoldersWoodWithMcwMod(mod);
 				for (String path : clientFolderTypes.getPathList()) {
@@ -162,6 +165,12 @@ public class Betters implements Presetting
 					JsonsUtils.replacer(pathModel, "stalagnate", "stripped_stalagnate_bark_side", "striped_log_stalagnate_side");
 					JsonsUtils.replacer(pathModel, "stalagnate", "stalagnate_bark_side_top", stalagnate_bark_side_top_replacement);
 
+					if(versions == Versions.TRICKYTRIALS || versions == Versions.MM)
+					{
+						JsonsUtils.replacer(pathModel, "rubeus", "striped_rubeus_log_side",  "stripped_rubeus_log_side");
+						JsonsUtils.replacer(pathModel, "rubeus", "striped_rubeus_log_top",  "stripped_rubeus_log_top");
+					}
+
 					if(versions != Versions.NONE)
 					{
 						JsonsUtils.replacer(pathModel, "mushroom", "mushroom_planks\"", "nether_mushroom_planks\"");
@@ -176,27 +185,32 @@ public class Betters implements Presetting
 						JsonsUtils.replacer(pathModel, "nether_sakura", "striped_log_nether_sakura_side", "nether_sakura_stripped_log_side");
 						JsonsUtils.replacer(pathModel, "stalagnate", "striped_log_stalagnate_side", "stalagnate_stripped_log_side");
 					}
+
+					if(versions == Versions.MM)
+					{
+						JsonsUtils.replacer(pathModel, "gloomwood", "/gloomwood_log", "/gloomwood_log_side");
+						JsonsUtils.replacer(pathModel, "gloomwood", "stripped_gloomwood_log", "gloomwood_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "gloomwood", "/gloomwood_log_side_top", "/gloomwood_log_top");
+						JsonsUtils.replacer(pathModel, "gloomwood", "/gloomwood_log_side_top\"", "/gloomwood_log_top\"");
+
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "/gloomwood_dark_log_side_top", "/gloomwood_dark_log_top");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "dark_gloomwood_planks", "gloomwood_dark_planks");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "dark_gloomwood_log", "gloomwood_dark_log_side");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "stripped_dark_gloomwood_log", "gloomwood_dark_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "stripped_gloomwood_dark_log_side", "gloomwood_dark_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "gloomwood_dark_stripped_log_side_side", "gloomwood_dark_stripped_log_side");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "dark_gloomwood_log_side_top", "gloomwood_dark_stripped_log_top");
+
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "/gloomwood_dark_log_side_top\"", "/gloomwood_dark_stripped_log_top\"");
+						JsonsUtils.replacer(pathModel, "dark_gloomwood", "/gloomwood_dark_planks_path\"", "/dark_gloomwood_planks_path\"");
+					}
 				}
 			}
 		}
-//		else {
-//			for (String mod : mcwMods) {
-//				ClientFolderTypes clientFolderTypes = Reference.getFoldersWoodWithMcwMod(mod);
-//				for (String path : clientFolderTypes.getPathList()) {
-//					String pathModel = LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + path + File.separator;
-//
-//					JsonsUtils.replacer(pathModel, "mushroom", "mushroom_log", "mushroom_stem_side_mcw");
-//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_log", "minecraft:block/mushroom_stem");
-//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/stripped_mushroom_stem_side", "minecraft:block/mushroom_stem");
-//					JsonsUtils.replacer(pathModel, "mushroom", "betternether:block/mushroom_stem_side_mcw_top_mcw", "minecraft:block/mushroom_stem");
-//					JsonsUtils.replacer(pathModel, "mushroom", "minecraft:block/mushroom_stem_mcw", "minecraft:block/mushroom_stem");
-//				}
-//			}
-//
-//		}
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "lucernia", "lucernia_leaves", "lucernia_leaves_1");
 		JsonsUtils.replacer(LOCATION + File.separator + McwAPI.ClassicFolderTypes.MODEL_BLOCK.getPath() + "hedges" + File.separator, "nether_sakura", "nether_sakura_leaves", "nether_sakura_leaves_2");
 
+		genLang(LOCATION, CompatModid, ID_WOOD, LANG_WOOD, ID_LEAVE, LANG_LEAVE, "en_us");
 		System.out.println("Finish Betters Registries");
 	}
 

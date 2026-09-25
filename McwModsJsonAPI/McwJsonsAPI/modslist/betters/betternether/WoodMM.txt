@@ -1,0 +1,10 @@
+anchor_tree
+mushroom_fir
+mushroom
+nether_sakura
+rubeus
+stalagnate
+wart
+willow
+gloomwood
+dark_gloomwood
